@@ -38,7 +38,7 @@
 
 ## 编写原则
 
-- 只写产品规则，不写技术实现、接口、表结构或任务拆分；技术方案见[后端方案设计](../engineering/server/design.md)与[前端方案设计](../engineering/client/design.md)。
+- 只写产品规则，不写技术实现、接口、表结构或任务拆分；技术方案见[服务架构方案生成](../engineering/server/architecture-options.md)、[服务端方案实现](../engineering/server/implementation.md)与[前端方案设计](../engineering/client/design.md)。
 - 产品名、产品描述、产品形态、包名与用户规模在项目初始化时确定，见[项目接入](../implementation/project-init.md)；产品文档引用这些结论，不重复定义。
 - 每条规则写成可观察、可验收的行为，避免「优化」「友好」等无法判定的表述。
 - 术语全文统一，新增术语首次出现时给出定义。

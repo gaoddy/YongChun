@@ -50,4 +50,4 @@
 
 ## 相关
 
-- [后端方案设计](server/design.md)
+- [服务端方案实现](server/implementation.md)

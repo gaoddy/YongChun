@@ -30,7 +30,7 @@
 
 ## 技术确认
 
-- 按[后端方案设计](../engineering/server/design.md)、[前端方案设计](../engineering/client/design.md)写 `technical.md`，按端分节；只有一端改动时只写该端。
+- 按[服务端方案实现](../engineering/server/implementation.md)、[前端方案设计](../engineering/client/design.md)写 `technical.md`，按端分节；只有一端改动时只写该端。
 - 覆盖改动边界、分层落点、接口契约、数据模型与迁移、兼容要求、可观测性与测试方式。
 - 每条产品规则能在方案中找到落点；方案不新增未确认的产品规则，发现缺口时回到产品确认。
 - 纯技术改动（重构、性能、依赖升级等）只写 `technical.md`，不补 `product.md`。
