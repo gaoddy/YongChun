@@ -18,7 +18,8 @@
 | 改成、新增、去掉、调整规则或行为 | 需求变动 | [需求变动](../version/requirement-change.md) |
 | 样式、布局、颜色、间距、交互、体验 | UI | [UI 设计](../product/ui/ui-design.md) |
 | 新接口、参数、字段、错误码 | 接口 | [新增接口](../engineering/server/new-api.md) |
-| 表、索引、迁移、列类型 | 数据模型 | [数据模型变更](../engineering/schema-change.md) |
+| 建表、表结构、字段与索引规划 | 表规划 | [数据库表规划](../engineering/database/table-design.md) |
+| 表、索引、迁移、列类型 | 数据模型 | [数据模型变更](../engineering/database/schema-change.md) |
 | 领域模型、DTO、枚举、结构字段 | 数据结构 | [数据结构设计](../engineering/data-structure-design.md) |
 | 同步文档、补说明 | 文档 | [文档回写](../docs/docs-sync.md) |
 | 升依赖、换库、升级版本 | 技术变更 | [技术变更](../engineering/tech-change.md) |

@@ -13,12 +13,12 @@
 | 源码、依赖、部署形态与本地运行 | [runtime.md](runtime.md) |
 | 接口规则：通用契约、协议选择与各协议 | [api/README.md](api/README.md) |
 | 接口的新增与修改 | [new-api.md](new-api.md) |
-| 数据模型、索引与迁移 | [../schema-change.md](../schema-change.md) |
+| 数据模型、索引与迁移 | [../database/schema-change.md](../database/schema-change.md) |
 
 ## 阅读顺序
 
 1. 先读 [layering.md](layering.md)，确认分层与依赖方向。
-2. 架构方向未定时读 [architecture-options.md](architecture-options.md)，选定后再读 [implementation.md](implementation.md) 写实现方案；接口规则从 [api/contract.md](api/contract.md) 选择协议文档、各协议细则见 [api/README.md](api/README.md)，新增或修改接口读 [new-api.md](new-api.md)，数据变更再读 [../schema-change.md](../schema-change.md)。
+2. 架构方向未定时读 [architecture-options.md](architecture-options.md)，选定后再读 [implementation.md](implementation.md) 写实现方案；接口规则从 [api/contract.md](api/contract.md) 选择协议文档、各协议细则见 [api/README.md](api/README.md)，新增或修改接口读 [new-api.md](new-api.md)，数据变更再读 [../database/schema-change.md](../database/schema-change.md)。
 3. 本地运行、依赖与部署形态读 [runtime.md](runtime.md)。
 
 ## 分册规则

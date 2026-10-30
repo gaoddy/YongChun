@@ -3,11 +3,12 @@
 ## 适用场景
 
 - 新增或修改表、字段、索引、约束，或调整迁移。
+- 建表前的表划分、字段与索引规划见[数据库表规划](table-design.md)。
 
 ## 前置读取
 
-- [服务端分层](server/layering.md)
-- [可观测性](../problems/observability.md)
+- [服务端分层](../server/layering.md)
+- [可观测性](../../problems/observability.md)
 
 ## 数据库迁移
 
@@ -50,4 +51,5 @@
 
 ## 相关
 
-- [服务端方案实现](server/implementation.md)
+- [数据库表规划](table-design.md)
+- [服务端方案实现](../server/implementation.md)

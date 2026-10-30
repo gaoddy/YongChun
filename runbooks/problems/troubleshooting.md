@@ -47,4 +47,4 @@
 
 ## 相关
 
-- [数据模型变更](../engineering/schema-change.md)
+- [数据模型变更](../engineering/database/schema-change.md)

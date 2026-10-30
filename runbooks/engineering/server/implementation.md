@@ -53,4 +53,4 @@
 - [需求变动](../../version/requirement-change.md)
 - [服务端运行](runtime.md)
 - [新增接口](new-api.md)
-- [数据模型变更](../schema-change.md)
+- [数据模型变更](../database/schema-change.md)

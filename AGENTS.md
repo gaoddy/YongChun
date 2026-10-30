@@ -80,7 +80,8 @@
 | 新增或调整客户端页面、状态、数据源分层 | [runbooks/engineering/client/layering.md](runbooks/engineering/client/layering.md) |
 | 设计或调整服务端接口通用规则，或 HTTP、WebSocket、gRPC、SSE、消息订阅、长轮询协议规则 | [runbooks/engineering/server/api/contract.md](runbooks/engineering/server/api/contract.md) |
 | 新增或修改服务端接口 | [runbooks/engineering/server/new-api.md](runbooks/engineering/server/new-api.md) |
-| 数据模型、索引或迁移变更 | [runbooks/engineering/schema-change.md](runbooks/engineering/schema-change.md) |
+| 数据库表、字段、关系与索引规划 | [runbooks/engineering/database/table-design.md](runbooks/engineering/database/table-design.md) |
+| 数据模型、索引或迁移变更 | [runbooks/engineering/database/schema-change.md](runbooks/engineering/database/schema-change.md) |
 | 新增或调整代码数据结构、DTO 与枚举 | [runbooks/engineering/data-structure-design.md](runbooks/engineering/data-structure-design.md) |
 | 补充测试与执行验证 | [runbooks/implementation/testing.md](runbooks/implementation/testing.md) |
 | 代码实现后的文档回写 | [runbooks/docs/docs-sync.md](runbooks/docs/docs-sync.md) |
