@@ -39,7 +39,8 @@
 | engineering | [server/architecture-options.md](engineering/server/architecture-options.md) | 按产品需求与用户规模生成三种服务架构方案 |
 | engineering | [server/implementation.md](engineering/server/implementation.md) | 在选定架构下实现服务端方案 |
 | engineering | [server/runtime.md](engineering/server/runtime.md) | 服务端源码、依赖、部署形态与本地运行 |
-| engineering | [server/new-api.md](engineering/server/new-api.md) | 新增或修改 HTTP 接口 |
+| engineering | [server/api.md](engineering/server/api.md) | 服务端接口通用规则与 HTTP、WebSocket、gRPC 协议规则 |
+| engineering | [server/new-api.md](engineering/server/new-api.md) | 新增或修改服务端接口 |
 | engineering | [client/README.md](engineering/client/README.md) | 客户端分册索引与阅读顺序 |
 | engineering | [client/layering.md](engineering/client/layering.md) | 客户端页面、状态、数据源与共享层分层 |
 | engineering | [client/design.md](engineering/client/design.md) | 客户端技术方案设计 |
