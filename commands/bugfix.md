@@ -3,8 +3,8 @@ description: 按 runbook 修复已确认的缺陷：定位根因、先写失败�
 argument-hint: <缺陷描述>
 ---
 
-@runbooks/version/bugfix.md
-@runbooks/problems/troubleshooting.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/version/bugfix.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/problems/troubleshooting.md
 
 按上述 runbook 修复以下缺陷：
 

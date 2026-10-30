@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """check-runbooks.py 的测试：每个用例在临时目录构造最小仓库。"""
+import json
 import os
 import subprocess
 import sys
@@ -83,6 +84,19 @@ def make_repo(overrides=None, extra=None):
     return d
 
 
+def plugin_files(name="demo", entry_name=None, source="./"):
+    return {
+        ".claude-plugin/plugin.json": json.dumps({
+            "name": name, "version": "0.1.0", "description": "测试",
+        }),
+        ".claude-plugin/marketplace.json": json.dumps({
+            "name": "demo",
+            "owner": {"name": "t"},
+            "plugins": [{"name": entry_name or name, "source": source}],
+        }),
+    }
+
+
 def run(root):
     r = subprocess.run(
         [sys.executable, SCRIPT, "--root", root],
@@ -140,10 +154,50 @@ class CheckRunbooksTest(unittest.TestCase):
         self.assertIn("触发表", out)
 
     def test_command_reference_missing_fails(self):
-        cmd = "---\ndescription: 测试\n---\n\n@runbooks/missing.md\n"
-        code, out = run(make_repo(extra={".claude/commands/x.md": cmd}))
+        cmd = "---\ndescription: 测试\n---\n\n@${CLAUDE_PLUGIN_ROOT}/runbooks/missing.md\n"
+        extra = plugin_files()
+        extra["commands/x.md"] = cmd
+        code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("命令引用", out)
+
+    def test_plugin_command_with_variable_passes(self):
+        cmd = "---\ndescription: 测试\n---\n\n@${CLAUDE_PLUGIN_ROOT}/runbooks/a.md\n"
+        extra = plugin_files()
+        extra["commands/x.md"] = cmd
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 0, out)
+
+    def test_plugin_command_bare_path_fails(self):
+        cmd = "---\ndescription: 测试\n---\n\n@runbooks/a.md\n"
+        extra = plugin_files()
+        extra["commands/x.md"] = cmd
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("命令引用", out)
+
+    def test_plugin_name_mismatch_fails(self):
+        extra = plugin_files(entry_name="other")
+        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("插件", out)
+
+    def test_marketplace_source_missing_fails(self):
+        extra = plugin_files(source="./missing")
+        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("插件", out)
+
+    def test_duplicate_command_dirs_fail(self):
+        cmd = "---\ndescription: 测试\n---\n"
+        extra = plugin_files()
+        extra["commands/x.md"] = cmd
+        extra[".claude/commands/x.md"] = cmd
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("副本", out)
 
 
 if __name__ == "__main__":
