@@ -35,7 +35,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 
 ## Claude Code 插件
 
-本仓库同时是 Claude Code plugin 与 marketplace：根 `.claude-plugin/plugin.json` 声明插件，`commands/` 提供五个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
+本仓库同时是 Claude Code plugin 与 marketplace：根 `.claude-plugin/plugin.json` 声明插件，`commands/` 提供六个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
 claude plugin marketplace add gaoddy/agent-runbook
@@ -45,7 +45,7 @@ claude plugin marketplace add gaoddy/agent-runbook
 claude plugin install agent-runbook@agent-runbook
 ```
 
-安装后可用 `/agent-runbook:deliver`、`/agent-runbook:bugfix`、`/agent-runbook:new-api`、`/agent-runbook:plan`、`/agent-runbook:ui`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update agent-runbook`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
+安装后可用 `/agent-runbook:deliver`、`/agent-runbook:bugfix`、`/agent-runbook:new-api`、`/agent-runbook:plan`、`/agent-runbook:ui`、`/agent-runbook:docs-restructure`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update agent-runbook`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
 ## 本仓库结构
 

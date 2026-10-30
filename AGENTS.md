@@ -36,7 +36,7 @@
 - 本仓库无版本目录，任务计划写在 `output/plans/<分支名>/`（`output/` 已忽略，不提交），合并前删除。
 - 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
 - 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符与命令引用），退出码 0 为通过；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
-- Claude Code 插件通过 GitHub marketplace `gaoddy/agent-runbook` 分发；清单在 `.claude-plugin/`，命令在 `commands/`，安装后为 `/agent-runbook:deliver`、`bugfix`、`new-api`、`plan`、`ui` 五项；命令只做路由与执行契约，规则以 runbook 为准。
+- Claude Code 插件通过 GitHub marketplace `gaoddy/agent-runbook` 分发；清单在 `.claude-plugin/`，命令在 `commands/`，安装后为 `/agent-runbook:deliver`、`bugfix`、`new-api`、`plan`、`ui`、`docs-restructure` 六项；命令只做路由与执行契约，规则以 runbook 为准。
 - 开发阶段只提交并推送 `develop`；正式发版时快进合并到 `main`，不压缩历史，以 `.claude-plugin/plugin.json` 的 `version` 打 `v<version>` annotated tag 并推送。
 
 ## 触发
@@ -90,3 +90,4 @@
 | 客户端运行、联调与实机验证 | [runbooks/engineering/client/runtime.md](runbooks/engineering/client/runtime.md) |
 | 文档写作与表述规范 | [runbooks/docs/docs-writing.md](runbooks/docs/docs-writing.md) |
 | 新建文档、调整 docs/ 目录与文档结构 | [runbooks/docs/structure/docs-structure.md](runbooks/docs/structure/docs-structure.md) |
+| 按 runbook 模式重构现有 docs 目录 | [runbooks/docs/docs-restructure.md](runbooks/docs/docs-restructure.md) |
