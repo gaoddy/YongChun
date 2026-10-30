@@ -6,9 +6,8 @@
 
 ## 前置读取
 
-- [根规则的项目阶段](../../AGENTS.md#项目阶段)
-- [后端方案设计](server/design.md)
-- [可观测性](../problems/observability.md)（慢查询与错误监控）
+- [服务端分层](server/layering.md)
+- [可观测性](../problems/observability.md)
 
 ## 数据库迁移
 
@@ -48,3 +47,7 @@
 - 端到端测试通过：`<e2e 入口>`
 - 查询命中索引，无 N+1 与大偏移量翻页。
 - 迁移执行后旧实例仍可读写（已上线）。
+
+## 相关
+
+- [后端方案设计](server/design.md)

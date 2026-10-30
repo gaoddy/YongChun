@@ -8,8 +8,7 @@
 
 - [服务端分层](server/layering.md)
 - [服务端运行](server/runtime.md)
-- [后端方案设计](server/design.md)（接口属于方案的一部分）
-- [可观测性](../problems/observability.md)（错误码、日志与指标）
+- [可观测性](../problems/observability.md)
 
 ## 服务端实现约定
 
@@ -52,3 +51,7 @@
 - 端到端测试通过：`<e2e 入口>`
 - 接口路径、字段、状态码与错误码和实现、文档一致。
 - 新错误码已登记，日志与指标可定位失败原因。
+
+## 相关
+
+- [后端方案设计](server/design.md)

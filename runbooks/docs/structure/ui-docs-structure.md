@@ -8,11 +8,7 @@
 ## 前置读取
 
 - [文档结构](docs-structure.md)
-- [版本文档结构](version-docs-structure.md)
-- [文档写作](../docs-writing.md)
 - [UI 设计](../../product/ui/ui-design.md)
-- [页面设计](../../product/ui/pages.md)、[组件设计](../../product/ui/components.md)
-- [设计 tokens](../../product/ui/tokens.md)、[图标](../../product/ui/icons.md)、[交互与反馈](../../product/ui/interaction.md)
 
 ## 落点
 
@@ -90,3 +86,9 @@ docs/product/ui/
 - 页面与组件一文件一主题，页面状态完整，无复制其他文档内容。
 - 索引与入链按[文档结构](docs-structure.md#索引与导航)校验，无死链与孤儿文档。
 - 无设计过程、备选方案与未确认分支。
+
+## 相关
+
+- [文档写作](../docs-writing.md)
+- [页面设计](../../product/ui/pages.md)
+- [交互与反馈](../../product/ui/interaction.md)

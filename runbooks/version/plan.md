@@ -7,10 +7,6 @@
 
 ## 前置读取
 
-- [版本开发](version-development.md)
-- [需求变动](requirement-change.md)
-- [任务执行与交付](../implementation/task-delivery.md)
-- [Worktree 与分支](../implementation/worktree.md)
 - [版本文档结构](../docs/structure/version-docs-structure.md)
 
 ## 规则
@@ -38,3 +34,10 @@
 - 每个任务可独立验证，文件边界清晰，并行任务无文件重叠。
 - 计划未复制 `product.md`、`technical.md` 的内容，只保留链接。
 - 合并后主分支无计划目录残留，worktree 已清理。
+
+## 相关
+
+- [版本开发](version-development.md)
+- [需求变动](requirement-change.md)
+- [任务执行与交付](../implementation/task-delivery.md)
+- [Worktree 与分支](../implementation/worktree.md)

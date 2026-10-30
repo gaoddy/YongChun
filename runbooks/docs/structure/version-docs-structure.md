@@ -8,8 +8,6 @@
 ## 前置读取
 
 - [文档结构](docs-structure.md)
-- [文档写作](../docs-writing.md)
-- [版本开发](../../version/version-development.md)
 
 ## 版本目录
 
@@ -127,3 +125,7 @@ docs/versions/<版本>/
 - 基线只含目标形态，未混入已实现状态，不引用后续版本。
 - `update/`、`bugfix/`、`plans/` 无残留已实现内容。
 - 版本完成后版本内基线与空目录已删除，索引与状态已更新。
+
+## 相关
+
+- [文档写作](../docs-writing.md)

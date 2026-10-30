@@ -9,10 +9,7 @@
 ## 前置读取
 
 - [版本文档结构](../docs/structure/version-docs-structure.md)
-- [版本开发](version-development.md)
 - [产品定义文档](../product/product-definition.md)
-- [后端方案设计](../engineering/server/design.md)、[前端方案设计](../engineering/client/design.md)
-- [文档回写](../docs/docs-sync.md)
 
 ## 需求拆分
 
@@ -68,3 +65,7 @@
 - 产品规则未确认前没有 `technical.md` 与实施。
 - 每条产品规则在技术方案中有落点，技术方案未新增未确认规则。
 - 已实现内容已回写删除，未确认事项只在版本 `open-questions.md`。
+
+## 相关
+
+- [版本开发](version-development.md)

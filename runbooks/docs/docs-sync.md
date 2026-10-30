@@ -6,8 +6,7 @@
 
 ## 前置读取
 
-- [文档规则](docs-writing.md)
-- [版本开发](../version/version-development.md)
+- [文档写作](docs-writing.md)
 
 ## 文档体系约束
 
@@ -44,3 +43,7 @@
 - `update/`、`bugfix/` 只剩未完成项。
 - 新增或修改的相对链接有效，索引已登记。
 - 文档中的命令、路径、字段可在仓库核实。
+
+## 相关
+
+- [版本开发](../version/version-development.md)

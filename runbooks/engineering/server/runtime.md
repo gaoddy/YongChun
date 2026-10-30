@@ -6,11 +6,7 @@
 
 ## 前置读取
 
-- [根规则](../../../AGENTS.md)
 - [服务端分层](layering.md)
-- [Make 构建入口](../../implementation/make.md)
-- [服务端发布](../../delivery/server-deploy.md)
-- [可观测性](../../problems/observability.md)
 
 ## 规则
 
@@ -39,3 +35,7 @@
 - 本地依赖端口与 e2e 环境一致，真机联调使用开发机局域网 IP。
 - 变更不引入单实例假设，可在多实例与滚动更新下运行。
 - 配置缺失时启动失败并打印变量名，不使用兜底默认值。
+
+## 相关
+
+- [Make 构建入口](../../implementation/make.md)

@@ -8,11 +8,6 @@
 ## 前置读取
 
 - [版本文档结构](../docs/structure/version-docs-structure.md)
-- [需求变动](requirement-change.md)
-- [缺陷修复](bugfix.md)
-- [任务计划](plan.md)
-- [任务执行与交付](../implementation/task-delivery.md)
-- [根规则的项目阶段](../../AGENTS.md#项目阶段)
 
 ## 版本状态
 
@@ -72,3 +67,7 @@
 - `update/`、`bugfix/` 只含未完成项。
 - 文档与代码在同一任务内同步。
 - 版本完成后目录与索引符合[版本文档结构](../docs/structure/version-docs-structure.md)。
+
+## 相关
+
+- [缺陷修复](bugfix.md)

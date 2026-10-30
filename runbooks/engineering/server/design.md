@@ -7,11 +7,7 @@
 
 ## 前置读取
 
-- [需求变动](../../version/requirement-change.md)（`update/` 的编写与状态流转）
-- [服务端开发规则](runtime.md)
 - [服务端分层](layering.md)
-- [接口契约](../new-api.md)
-- [数据模型变更](../schema-change.md)
 
 ## 设计要点
 
@@ -49,3 +45,10 @@
 - 依赖方向符合分层约束：跨层依赖面向抽象接口，实现只在入口装配。
 - 部署形态满足无状态与多实例并行，无单实例假设。
 - 未确认事项已进入 `open-questions.md`，方案中无未决分支。
+
+## 相关
+
+- [需求变动](../../version/requirement-change.md)
+- [服务端运行](runtime.md)
+- [新增接口](../new-api.md)
+- [数据模型变更](../schema-change.md)

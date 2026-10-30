@@ -6,11 +6,7 @@
 
 ## 前置读取
 
-- [根规则的触发与必读](../../AGENTS.md#触发)
 - [Worktree 与分支](worktree.md)
-- [任务计划](../version/plan.md)
-- [Make 构建入口](make.md)
-- [补充测试与验证](testing.md)
 
 ## 工程流程约束
 

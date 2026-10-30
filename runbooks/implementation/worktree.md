@@ -9,8 +9,6 @@
 ## 前置读取
 
 - [Worktree 创建时机](worktree-timing.md)
-- [任务执行与交付](../implementation/task-delivery.md)
-- [任务计划](../version/plan.md)
 
 ## 规则
 
@@ -34,3 +32,7 @@
 - 工作区干净，无未提交改动。
 - 分支基于最新 `develop`，合并后无残留 worktree。
 - 计划目录、临时文件与测试专用文件已清理。
+
+## 相关
+
+- [任务计划](../version/plan.md)

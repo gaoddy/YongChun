@@ -6,8 +6,8 @@
 
 ## 前置读取
 
-- [服务端分层](../engineering/server/layering.md)、[客户端分层](../engineering/client/layering.md)
-- [数据模型变更](../engineering/schema-change.md)
+- [服务端分层](../engineering/server/layering.md)
+- [客户端分层](../engineering/client/layering.md)
 
 ## 原则
 
@@ -44,3 +44,7 @@
 - 根因结论有证据支持，假设可被反例推翻。
 - 复现条件可稳定触发，影响范围已界定。
 - 修复方案不属于本 runbook 范围，确认根因后按[修复决策](../problems/fix-decision.md)执行。
+
+## 相关
+
+- [数据模型变更](../engineering/schema-change.md)

@@ -6,9 +6,9 @@
 
 ## 前置读取
 
-- [目录结构与命名](directory-structure.md)（涉及目录或模块调整时）
-- [任务执行与交付](../implementation/task-delivery.md)（验证矩阵）
-- [服务端运行](server/runtime.md)、[客户端运行](client/runtime.md)（依赖清单位置）
+- [目录结构与命名](directory-structure.md)
+- [服务端运行](server/runtime.md)
+- [客户端运行](client/runtime.md)
 
 ## 选型原则
 
@@ -49,3 +49,7 @@
 - 依赖版本已锁定，无重复或冲突依赖。
 - 选型表与仓库实际一致，移除的依赖无残留引用。
 - 升级前后关键指标无明显退化。
+
+## 相关
+
+- [任务执行与交付](../implementation/task-delivery.md)
