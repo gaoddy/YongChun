@@ -3,8 +3,8 @@ description: 按 runbook 编写任务计划：阶段顺序、任务拆分与文�
 argument-hint: <版本或任务范围>
 ---
 
-@runbooks/version/plan.md
-@runbooks/docs/structure/version-docs-structure.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/version/plan.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/docs/structure/version-docs-structure.md
 
 按上述 runbook 为以下范围编写任务计划：
 

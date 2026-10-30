@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """校验 runbook 仓库的结构、链接与前置依赖。退出码 0 表示通过。"""
 import argparse
+import json
 import os
 import re
 import sys
@@ -161,9 +162,54 @@ def main():
         for m in re.finditer(r"<[^>\n]*[，。；、][^>\n]*>", read(p)):
             bad("占位符", rel(root, p), "尖括号内含中文标点: %s" % m.group(0))
 
-    # 命令引用
-    cmd_dir = os.path.join(root, ".claude", "commands")
+    # 插件清单与命令
+    cmd_dir = os.path.join(root, "commands")
+    legacy_cmd_dir = os.path.join(root, ".claude", "commands")
+    if os.path.isdir(cmd_dir) and os.path.isdir(legacy_cmd_dir):
+        bad("命令", rel(root, cmd_dir), "与 .claude/commands 存在副本，只保留 commands/")
+
+    plugin_name = None
     if os.path.isdir(cmd_dir):
+        plugin_path = os.path.join(root, ".claude-plugin", "plugin.json")
+        market_path = os.path.join(root, ".claude-plugin", "marketplace.json")
+        if not os.path.isfile(plugin_path):
+            bad("插件", rel(root, plugin_path), "缺少 plugin.json")
+        else:
+            try:
+                plugin_name = json.loads(read(plugin_path)).get("name")
+            except ValueError as e:
+                bad("插件", rel(root, plugin_path), "不是合法 JSON: %s" % e)
+            else:
+                if not plugin_name:
+                    bad("插件", rel(root, plugin_path), "缺少 name")
+        if not os.path.isfile(market_path):
+            bad("插件", rel(root, market_path), "缺少 marketplace.json")
+        else:
+            try:
+                entries = json.loads(read(market_path)).get("plugins") or []
+            except ValueError as e:
+                bad("插件", rel(root, market_path), "不是合法 JSON: %s" % e)
+            else:
+                if not entries:
+                    bad("插件", rel(root, market_path), "未登记插件")
+                for entry in entries:
+                    if not isinstance(entry, dict):
+                        bad("插件", rel(root, market_path), "条目不是对象")
+                        continue
+                    if entry.get("name") != plugin_name:
+                        bad("插件", rel(root, market_path),
+                            "条目名与 plugin.json 不一致: %s" % entry.get("name"))
+                    source = entry.get("source")
+                    if not isinstance(source, str) or not source.startswith("./"):
+                        bad("插件", rel(root, market_path), "source 必须以 ./ 开头: %s" % source)
+                        continue
+                    target = os.path.normpath(os.path.join(root, source))
+                    if not os.path.isdir(target):
+                        bad("插件", rel(root, market_path), "source 目标不存在: %s" % source)
+                    elif os.path.normpath(target) != os.path.normpath(root) and not os.path.isfile(
+                            os.path.join(target, ".claude-plugin", "plugin.json")):
+                        bad("插件", rel(root, market_path), "source 目标缺少 plugin.json: %s" % source)
+
         for f in sorted(os.listdir(cmd_dir)):
             if not f.endswith(".md"):
                 continue
@@ -171,7 +217,9 @@ def main():
             text = read(p)
             if not re.match(r"---\n.*?description:", text, re.S):
                 bad("命令", rel(root, p), "缺少 description")
-            for m in re.findall(r"@(runbooks/[^\s)`]+\.md)", text):
+            if "@runbooks/" in text:
+                bad("命令引用", rel(root, p), "插件内需用 @${CLAUDE_PLUGIN_ROOT}/runbooks/")
+            for m in re.findall(r"@\$\{CLAUDE_PLUGIN_ROOT\}/(runbooks/[^\s)`]+\.md)", text):
                 if not os.path.exists(os.path.join(root, m)):
                     bad("命令引用", rel(root, p), "目标不存在: %s" % m)
 

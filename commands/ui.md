@@ -3,7 +3,7 @@ description: 按 runbook 执行 UI 设计、改版与实现：方向确认、分
 argument-hint: <UI 任务描述>
 ---
 
-@runbooks/product/ui/ui-design.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/product/ui/ui-design.md
 
 按上述 runbook 执行以下 UI 任务：
 

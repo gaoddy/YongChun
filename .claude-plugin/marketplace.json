@@ -1,0 +1,12 @@
+{
+  "name": "agent-runbook",
+  "owner": {
+    "name": "Gaoddy"
+  },
+  "plugins": [
+    {
+      "name": "agent-runbook",
+      "source": "./"
+    }
+  ]
+}

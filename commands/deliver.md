@@ -3,8 +3,8 @@ description: 按 runbook 执行任务交付：判断 worktree、写计划、实�
 argument-hint: <任务描述>
 ---
 
-@runbooks/implementation/task-delivery.md
-@runbooks/implementation/worktree-timing.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/implementation/task-delivery.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/implementation/worktree-timing.md
 
 按上述 runbook 执行以下任务：
 
