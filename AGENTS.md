@@ -1,6 +1,13 @@
 # {{PROJECT}}
 
-> 本文件同时是接入项目的声明模板：按[项目接入](runbooks/implementation/project-init.md)填写 `{{PROJECT}}`、`{{SERVER_DIR}}`、`{{CLIENT_DIR}}`、`{{VERSION}}` 与正文中的 `<...>` 取值，runbook 仍以本仓库为唯一出处。
+## Runbook
+
+本项目遵循 `<runbook 仓库地址或本地路径>` 的 runbook。
+
+- 场景与必读对应见 `<runbook 仓库>/runbooks/index.md`；修改代码、文档或配置前按场景读取对应 runbook。
+- 项目特有场景在本文件补充入口，指向上述 runbook；不复制 runbook 内容。
+- runbook 与本文件冲突时以 runbook 为准，并修正本文件。
+- 本文件同时是声明模板：接入项目把地址替换为实际仓库，并按[项目接入](runbooks/implementation/project-init.md)填写 `{{...}}` 与 `<...>` 取值，保留声明、协作原则、项目阶段与项目事实四部分；「触发」表只服务本仓库，不复制到项目。
 
 ## 协作原则
 
@@ -25,26 +32,34 @@
 
 当前阶段的 schema 迁移形式与迁移命令的行为见[数据模型变更](runbooks/engineering/schema-change.md#数据库迁移)。
 
+## 项目事实
+
+- 服务端目录 `{{SERVER_DIR}}`：入口包 `<入口包>`、框架 `<框架>`、迁移命令 `<迁移命令>`、运维命令 `<运维命令>`。
+- 客户端目录 `{{CLIENT_DIR}}`。
+- 首个版本 `<版本>`。
+- 构建、测试、静态检查、生成、迁移与本地启动使用 [Make 构建入口](runbooks/implementation/make.md) 登记的目标。
+
 ## 触发
 
 - 只读观察、验证、回查、评审、答疑和检索等不修改仓库文件的任务，无需 worktree。
 - 修改代码、文档或配置前，按触发读取对应 runbook；跨场景任务读取所有相关文档。
+- 本表只服务本仓库；接入项目的场景路由使用[全局索引](runbooks/index.md)，不复制本表。
 
 | 触发 / 场景 | 必读 |
 | --- | --- |
 | 版本建立、推进与收尾的整体流程 | [runbooks/version/version-development.md](runbooks/version/version-development.md) |
-| 新项目接入 runbook，声明 AGENTS.md 与文档骨架 | [runbooks/implementation/project-init.md](runbooks/implementation/project-init.md) |
-| 建立版本或调整版本文档 | [runbooks/docs/structure/version-docs-structure.md](runbooks/docs/structure/version-docs-structure.md) |
+| 新项目接入 runbook，或补建声明与文档骨架 | [runbooks/implementation/project-init.md](runbooks/implementation/project-init.md) |
+| 建立或调整版本文档 | [runbooks/docs/structure/version-docs-structure.md](runbooks/docs/structure/version-docs-structure.md) |
 | 新建或调整 UI 文档 | [runbooks/docs/structure/ui-docs-structure.md](runbooks/docs/structure/ui-docs-structure.md) |
-| 新增、拆分、移动或改名 runbook | [runbooks/runbook.md](runbooks/runbook.md) |
-| 编写或调整需求变动文档 | [runbooks/version/requirement-change.md](runbooks/version/requirement-change.md) |
-| 记录或收尾缺陷修复 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |
-| 编写或清理任务计划 | [runbooks/version/plan.md](runbooks/version/plan.md) |
+| 新增、拆分、合并、移动或删除 runbook，或调整结构、命名与索引 | [runbooks/runbook.md](runbooks/runbook.md) |
+| 需求变动的拆分、确认与实施 | [runbooks/version/requirement-change.md](runbooks/version/requirement-change.md) |
+| 缺陷修复、验证与收尾 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |
+| 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
 | 设计服务端技术方案 | [runbooks/engineering/server/design.md](runbooks/engineering/server/design.md) |
-| 设计客户端技术方案，包括状态与数据驱动 | [runbooks/engineering/client/design.md](runbooks/engineering/client/design.md) |
+| 设计客户端技术方案 | [runbooks/engineering/client/design.md](runbooks/engineering/client/design.md) |
 | UI 设计、实现、改版与评审 | [runbooks/product/ui/ui-design.md](runbooks/product/ui/ui-design.md) |
-| UI 方向方案 | [runbooks/product/ui/directions.md](runbooks/product/ui/directions.md) |
+| UI 设计与改版前的方向方案与选择 | [runbooks/product/ui/directions.md](runbooks/product/ui/directions.md) |
 | 设计系统与公共 UI 落地 | [runbooks/product/ui/design-system.md](runbooks/product/ui/design-system.md) |
 | 主题、深浅色与视觉资源 | [runbooks/product/ui/theme.md](runbooks/product/ui/theme.md) |
 | 页面结构、页面状态与适配 | [runbooks/product/ui/pages.md](runbooks/product/ui/pages.md) |
@@ -55,19 +70,19 @@
 | 修改代码、文档或配置，执行与交付 | [runbooks/implementation/task-delivery.md](runbooks/implementation/task-delivery.md) |
 | 草案、方案探讨或技术咨询，需持续记录结论 | [runbooks/implementation/discussion-record.md](runbooks/implementation/discussion-record.md) |
 | 任务开始前判断是否需要创建 worktree | [runbooks/implementation/worktree-timing.md](runbooks/implementation/worktree-timing.md) |
-| 创建或清理 worktree、切换分支 | [runbooks/implementation/worktree.md](runbooks/implementation/worktree.md) |
+| 创建或清理 worktree、切换分支，或并行派发子 agent | [runbooks/implementation/worktree.md](runbooks/implementation/worktree.md) |
 | 构建、测试、静态检查、本地运行 | [runbooks/implementation/make.md](runbooks/implementation/make.md) |
 | 引入、升级或移除技术依赖 | [runbooks/engineering/tech-change.md](runbooks/engineering/tech-change.md) |
-| 新增或调整目录、模块归属、命名 | [runbooks/engineering/directory-structure.md](runbooks/engineering/directory-structure.md) |
+| 新增或调整目录、模块归属、命名与业务对象登记 | [runbooks/engineering/directory-structure.md](runbooks/engineering/directory-structure.md) |
 | 新增或调整服务端分层、依赖方向与装配 | [runbooks/engineering/server/layering.md](runbooks/engineering/server/layering.md) |
 | 新增或调整客户端页面、状态、数据源分层 | [runbooks/engineering/client/layering.md](runbooks/engineering/client/layering.md) |
 | 新增或修改 HTTP 接口 | [runbooks/engineering/new-api.md](runbooks/engineering/new-api.md) |
 | 数据模型、索引或迁移变更 | [runbooks/engineering/schema-change.md](runbooks/engineering/schema-change.md) |
 | 补充测试与执行验证 | [runbooks/implementation/testing.md](runbooks/implementation/testing.md) |
 | 代码实现后的文档回写 | [runbooks/docs/docs-sync.md](runbooks/docs/docs-sync.md) |
-| 服务端发布与回滚 | [runbooks/delivery/server-deploy.md](runbooks/delivery/server-deploy.md) |
-| 客户端灰度发布 | [runbooks/delivery/client-release.md](runbooks/delivery/client-release.md) |
-| 遇到问题、故障或异常，需先定位根因 | [runbooks/problems/troubleshooting.md](runbooks/problems/troubleshooting.md) |
+| 服务端部署、发布、配置变更与回滚 | [runbooks/delivery/server-deploy.md](runbooks/delivery/server-deploy.md) |
+| 客户端发布、灰度扩量、强制更新与回滚 | [runbooks/delivery/client-release.md](runbooks/delivery/client-release.md) |
+| 测试失败、线上异常或行为不符，先定位根因 | [runbooks/problems/troubleshooting.md](runbooks/problems/troubleshooting.md) |
 | 已确认根因，决定修复层次、修改端与范围 | [runbooks/problems/fix-decision.md](runbooks/problems/fix-decision.md) |
 | 日志、指标、追踪与告警 | [runbooks/problems/observability.md](runbooks/problems/observability.md) |
 | 服务端源码、依赖与本地运行 | [runbooks/engineering/server/runtime.md](runbooks/engineering/server/runtime.md) |
