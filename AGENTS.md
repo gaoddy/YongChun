@@ -35,7 +35,7 @@
 - 文档位于 `runbooks/`，入口见 [runbooks/index.md](runbooks/index.md)。
 - 本仓库无版本目录，任务计划写在 `output/plans/<分支名>/`（`output/` 已忽略，不提交），合并前删除。
 - 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
-- 本仓库不定义构建、测试、静态检查、生成、迁移与本地启动目标；接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
+- 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节与占位符），退出码 0 为通过；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
 
 ## 触发
 
