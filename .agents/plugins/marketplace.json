@@ -1,0 +1,23 @@
+{
+  "name": "agent-runbook",
+  "interface": {
+    "displayName": "Agent Runbook"
+  },
+  "plugins": [
+    {
+      "name": "agent-runbook",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/gaoddy/agent-runbook.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Agent Runbook"
+      }
+    }
+  ]
+}

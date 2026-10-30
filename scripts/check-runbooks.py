@@ -176,10 +176,10 @@ def main():
             bad("占位符", rel(root, p), "尖括号内含中文标点: %s" % m.group(0))
 
     # 插件清单与命令
-    cmd_dir = os.path.join(root, "commands")
+    cmd_dir = os.path.join(root, "claude-commands")
     legacy_cmd_dir = os.path.join(root, ".claude", "commands")
     if os.path.isdir(cmd_dir) and os.path.isdir(legacy_cmd_dir):
-        bad("命令", rel(root, cmd_dir), "与 .claude/commands 存在副本，只保留 commands/")
+        bad("命令", rel(root, cmd_dir), "与 .claude/commands 存在副本，只保留 claude-commands/")
 
     plugin_name = None
     if os.path.isdir(cmd_dir):
@@ -198,6 +198,14 @@ def main():
                     bad("插件", rel(root, plugin_path), "缺少 name")
                 if not plugin_data.get("license") and not os.path.isfile(os.path.join(root, "LICENSE")):
                     bad("插件", rel(root, plugin_path), "缺少许可证：plugin.json 的 license 或根 LICENSE 文件")
+                for key in ("commands", "skills", "hooks"):
+                    value = plugin_data.get(key)
+                    paths = value if isinstance(value, list) else [value]
+                    for item in paths:
+                        if not isinstance(item, str):
+                            continue
+                        if not os.path.exists(os.path.normpath(os.path.join(root, item))):
+                            bad("插件", rel(root, plugin_path), "%s 路径不存在: %s" % (key, item))
         if not os.path.isfile(market_path):
             bad("插件", rel(root, market_path), "缺少 marketplace.json")
         else:
@@ -238,6 +246,64 @@ def main():
             for m in re.findall(r"@\$\{CLAUDE_PLUGIN_ROOT\}/(runbooks/[^\s)`]+\.md)", text):
                 if not os.path.exists(os.path.join(root, m)):
                     bad("命令引用", rel(root, p), "目标不存在: %s" % m)
+
+    # Codex 清单、命令与 marketplace
+    codex_plugin_path = os.path.join(root, ".codex-plugin", "plugin.json")
+    codex_cmd_dir = os.path.join(root, "codex-commands")
+    if os.path.isfile(codex_plugin_path):
+        try:
+            codex_data = json.loads(read(codex_plugin_path))
+        except ValueError as e:
+            bad("Codex", rel(root, codex_plugin_path), "不是合法 JSON: %s" % e)
+        else:
+            if plugin_name and codex_data.get("name") != plugin_name:
+                bad("Codex", rel(root, codex_plugin_path),
+                    "name 与 plugin.json 不一致: %s" % codex_data.get("name"))
+            for key in ("skills", "commands", "hooks"):
+                value = codex_data.get(key)
+                for item in (value if isinstance(value, list) else [value]):
+                    if not isinstance(item, str) or not item.startswith("./"):
+                        continue
+                    if not os.path.exists(os.path.normpath(os.path.join(root, item))):
+                        bad("Codex", rel(root, codex_plugin_path), "%s 路径不存在: %s" % (key, item))
+    if os.path.isdir(codex_cmd_dir):
+        for f in sorted(os.listdir(codex_cmd_dir)):
+            if not f.endswith(".md"):
+                continue
+            p = os.path.join(codex_cmd_dir, f)
+            text = read(p)
+            if not re.match(r"---\n.*?description:", text, re.S):
+                bad("Codex 命令", rel(root, p), "缺少 description")
+            body = re.sub(r"\A---\n.*?\n---\n", "", text, count=1, flags=re.S)
+            for token in ("$ARGUMENTS", "{{", "}}", "!`", "! `"):
+                if token in body:
+                    bad("Codex 命令", rel(root, p), "含 Codex 跳过的 %s" % token)
+            if re.search(r"\$\d", body):
+                bad("Codex 命令", rel(root, p), "含编号占位符")
+            if re.search(r"(^|\s)@\S", body):
+                bad("Codex 命令", rel(root, p), "含 @ 开头的 token")
+
+    codex_market_path = os.path.join(root, ".agents", "plugins", "marketplace.json")
+    if os.path.isfile(codex_market_path):
+        try:
+            codex_market = json.loads(read(codex_market_path))
+        except ValueError as e:
+            bad("Codex", rel(root, codex_market_path), "不是合法 JSON: %s" % e)
+        else:
+            entries = codex_market.get("plugins") or []
+            if not entries:
+                bad("Codex", rel(root, codex_market_path), "未登记插件")
+            for entry in entries:
+                if not isinstance(entry, dict):
+                    bad("Codex", rel(root, codex_market_path), "条目不是对象")
+                    continue
+                if plugin_name and entry.get("name") != plugin_name:
+                    bad("Codex", rel(root, codex_market_path),
+                        "条目名与 plugin.json 不一致: %s" % entry.get("name"))
+                source = entry.get("source") or {}
+                if source.get("source") not in ("url", "git-subdir", "local"):
+                    bad("Codex", rel(root, codex_market_path),
+                        "source 类型不受支持: %s" % source.get("source"))
 
     # 插件钩子引用
     hooks_path = os.path.join(root, "hooks", "hooks.json")

@@ -52,6 +52,7 @@
 | implementation | [testing.md](implementation/testing.md) | 补充测试与执行验证 |
 | delivery | [server-deploy.md](delivery/server-deploy.md) | 服务端发布与回滚 |
 | delivery | [client-release.md](delivery/client-release.md) | 客户端灰度发布 |
+| delivery | [worktree-delivery.md](delivery/worktree-delivery.md) | 隔离 worktree 与合并队列的交付流程 |
 | problems | [troubleshooting.md](problems/troubleshooting.md) | 本地或线上问题定位 |
 | problems | [fix-decision.md](problems/fix-decision.md) | 确认根因后的修复层次、修改端与范围 |
 | problems | [observability.md](problems/observability.md) | 日志、指标、追踪与告警 |

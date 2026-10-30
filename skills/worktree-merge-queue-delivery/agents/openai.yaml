@@ -1,0 +1,7 @@
+interface:
+  display_name: "Worktree Delivery"
+  short_description: "Queue-gated worktree delivery flow"
+  default_prompt: "Use $worktree-merge-queue-delivery to run this project's queue-gated worktree delivery workflow."
+
+policy:
+  allow_implicit_invocation: true

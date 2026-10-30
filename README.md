@@ -33,9 +33,13 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 
 新增场景时先写 runbook，再登记到触发表与[全局索引](runbooks/index.md)；两者缺一，agent 就不会在该场景读到它。
 
-## Claude Code 插件
+## 插件分发
 
-本仓库同时是 Claude Code plugin 与 marketplace：根 `.claude-plugin/plugin.json` 声明插件，`commands/` 提供六个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
+本仓库同时是 Claude Code 与 Codex 插件，两端共用 `runbooks/`、`skills/` 与 `hooks/hooks.json`，命令目录分开维护。
+
+### Claude Code
+
+根 `.claude-plugin/plugin.json` 声明插件，`claude-commands/` 提供六个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
 claude plugin marketplace add gaoddy/agent-runbook
@@ -47,15 +51,34 @@ claude plugin install agent-runbook@agent-runbook
 
 安装后可用 `/agent-runbook:deliver`、`/agent-runbook:bugfix`、`/agent-runbook:new-api`、`/agent-runbook:plan`、`/agent-runbook:ui`、`/agent-runbook:docs-restructure`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update agent-runbook`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
-## 本仓库结构
+### Codex
+
+根 `.codex-plugin/plugin.json` 声明插件，`.agents/plugins/marketplace.json` 提供 marketplace 登记，命令在 `codex-commands/`。接入项目安装：
+
+```bash
+codex plugin marketplace add gaoddy/agent-runbook
+```
+
+```bash
+codex plugin add agent-runbook@agent-runbook
+```
+
+Codex 没有插件斜杠命令，加载时会把 `codex-commands/` 的命令转换为 `source-command-<name>` skill。命令正文含 `$ARGUMENTS`、编号占位符、`{{...}}`、`` !` `` 或 `@` 开头的 token 时会被跳过，两个命令目录因此分开维护。插件钩子需要在本机确认信任，安装后按 Codex 提示审核。
+
+### 本仓库结构
 
 ```text
 AGENTS.md                 本仓库的根规则与场景触发表
 CLAUDE.md                 入口，指向 AGENTS.md
 README.md                 本说明
 LICENSE                   MIT 许可证
-.claude-plugin/          插件与 marketplace 清单
-commands/                Claude Code 插件命令
+.claude-plugin/           Claude Code 插件与 marketplace 清单
+.codex-plugin/            Codex 插件清单
+.agents/plugins/          Codex marketplace 登记
+claude-commands/          Claude Code 插件命令
+codex-commands/           Codex 插件命令
+skills/                   双端共用的 skill：worktree 合并队列交付
+hooks/                    UserPromptSubmit 路由提示
 scripts/                  校验脚本与测试
 runbooks/
 ├── README.md             目录树与项目基线
@@ -66,7 +89,7 @@ runbooks/
 ├── product/              产品定义与 UI 分册
 ├── engineering/          选型、目录、接口、数据与服务端/客户端分册
 ├── implementation/       实施：接入、任务、讨论、worktree、构建、测试
-├── delivery/             交付：服务端与客户端发布
+├── delivery/             交付：服务端发布、客户端发布与合并队列交付
 └── problems/             问题排查与修复决策
 ```
 

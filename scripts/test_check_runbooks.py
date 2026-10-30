@@ -156,7 +156,7 @@ class CheckRunbooksTest(unittest.TestCase):
     def test_command_reference_missing_fails(self):
         cmd = "---\ndescription: 测试\n---\n\n@${CLAUDE_PLUGIN_ROOT}/runbooks/missing.md\n"
         extra = plugin_files()
-        extra["commands/x.md"] = cmd
+        extra["claude-commands/x.md"] = cmd
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("命令引用", out)
@@ -164,13 +164,13 @@ class CheckRunbooksTest(unittest.TestCase):
     def test_plugin_command_with_variable_passes(self):
         cmd = "---\ndescription: 测试\n---\n\n@${CLAUDE_PLUGIN_ROOT}/runbooks/a.md\n"
         extra = plugin_files()
-        extra["commands/x.md"] = cmd
+        extra["claude-commands/x.md"] = cmd
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 0, out)
 
     def _with_hook(self, command):
         extra = plugin_files()
-        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        extra["claude-commands/x.md"] = "---\ndescription: 测试\n---\n"
         extra["hooks/hooks.json"] = json.dumps({
             "hooks": {"UserPromptSubmit": [{"hooks": [
                 {"type": "command", "command": command},
@@ -204,7 +204,7 @@ class CheckRunbooksTest(unittest.TestCase):
         manifest = json.loads(extra[".claude-plugin/plugin.json"])
         del manifest["license"]
         extra[".claude-plugin/plugin.json"] = json.dumps(manifest)
-        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        extra["claude-commands/x.md"] = "---\ndescription: 测试\n---\n"
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("许可证", out)
@@ -215,28 +215,28 @@ class CheckRunbooksTest(unittest.TestCase):
         del manifest["license"]
         extra[".claude-plugin/plugin.json"] = json.dumps(manifest)
         extra["LICENSE"] = "MIT License\n"
-        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        extra["claude-commands/x.md"] = "---\ndescription: 测试\n---\n"
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 0, out)
 
     def test_plugin_command_bare_path_fails(self):
         cmd = "---\ndescription: 测试\n---\n\n@runbooks/a.md\n"
         extra = plugin_files()
-        extra["commands/x.md"] = cmd
+        extra["claude-commands/x.md"] = cmd
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("命令引用", out)
 
     def test_plugin_name_mismatch_fails(self):
         extra = plugin_files(entry_name="other")
-        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        extra["claude-commands/x.md"] = "---\ndescription: 测试\n---\n"
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("插件", out)
 
     def test_marketplace_source_missing_fails(self):
         extra = plugin_files(source="./missing")
-        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        extra["claude-commands/x.md"] = "---\ndescription: 测试\n---\n"
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("插件", out)
@@ -244,11 +244,50 @@ class CheckRunbooksTest(unittest.TestCase):
     def test_duplicate_command_dirs_fail(self):
         cmd = "---\ndescription: 测试\n---\n"
         extra = plugin_files()
-        extra["commands/x.md"] = cmd
+        extra["claude-commands/x.md"] = cmd
         extra[".claude/commands/x.md"] = cmd
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("副本", out)
+
+    def codex_files(self, command_body="---\ndescription: 测试\n---\n\n读取 runbooks/a.md。\n"):
+        extra = plugin_files()
+        extra[".codex-plugin/plugin.json"] = json.dumps({
+            "name": "demo", "version": "0.1.0",
+            "skills": "./skills/", "commands": "./codex-commands/", "hooks": "./hooks/hooks.json",
+        })
+        extra[".agents/plugins/marketplace.json"] = json.dumps({
+            "name": "demo",
+            "plugins": [{"name": "demo", "source": {"source": "url", "url": "https://example.com/x.git"}}],
+        })
+        extra["skills/demo/SKILL.md"] = "---\nname: demo\ndescription: 测试\n---\n"
+        extra["hooks/hooks.json"] = json.dumps({"hooks": {}})
+        extra["codex-commands/x.md"] = command_body
+        return extra
+
+    def test_codex_manifest_passes(self):
+        code, out = run(make_repo(extra=self.codex_files()))
+        self.assertEqual(code, 0, out)
+
+    def test_codex_command_with_arguments_fails(self):
+        code, out = run(make_repo(extra=self.codex_files("---\ndescription: 测试\n---\n\n$ARGUMENTS\n")))
+        self.assertEqual(code, 1, out)
+        self.assertIn("Codex 命令", out)
+
+    def test_codex_command_with_at_token_fails(self):
+        code, out = run(make_repo(extra=self.codex_files("---\ndescription: 测试\n---\n\n@runbooks/a.md\n")))
+        self.assertEqual(code, 1, out)
+        self.assertIn("Codex 命令", out)
+
+    def test_codex_marketplace_source_type_fails(self):
+        extra = self.codex_files()
+        extra[".agents/plugins/marketplace.json"] = json.dumps({
+            "name": "demo",
+            "plugins": [{"name": "demo", "source": {"source": "s3"}}],
+        })
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("source 类型", out)
 
 
 if __name__ == "__main__":

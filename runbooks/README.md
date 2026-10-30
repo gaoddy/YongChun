@@ -19,7 +19,7 @@ runbooks/
 │   ├── server/        服务端分册：分层、方案设计、运行
 │   └── client/        客户端分册：分层、方案设计、运行
 ├── implementation/    实施：任务执行、讨论记录、worktree、构建、测试
-├── delivery/          交付：服务端与客户端发布
+├── delivery/          交付：服务端发布、客户端发布与合并队列交付
 └── problems/          问题处理：排查与修复决策
 ```
 
