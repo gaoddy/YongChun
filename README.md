@@ -38,11 +38,14 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 本仓库同时是 Claude Code plugin 与 marketplace：根 `.claude-plugin/plugin.json` 声明插件，`commands/` 提供五个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
-claude plugin marketplace add <本仓库路径>
+claude plugin marketplace add Gaoddy/agent-runbook
+```
+
+```bash
 claude plugin install agent-runbook@agent-runbook
 ```
 
-安装后可用 `/agent-runbook:deliver`、`/agent-runbook:bugfix`、`/agent-runbook:new-api`、`/agent-runbook:plan`、`/agent-runbook:ui`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。本地目录 marketplace 原地读取，修改 runbook 后执行 `/reload-plugins` 生效；临时加载可用 `claude --plugin-dir <本仓库路径>`。
+安装后可用 `/agent-runbook:deliver`、`/agent-runbook:bugfix`、`/agent-runbook:new-api`、`/agent-runbook:plan`、`/agent-runbook:ui`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update agent-runbook`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
 ## 本仓库结构
 
@@ -50,6 +53,7 @@ claude plugin install agent-runbook@agent-runbook
 AGENTS.md                 本仓库的根规则与场景触发表
 CLAUDE.md                 入口，指向 AGENTS.md
 README.md                 本说明
+LICENSE                   MIT 许可证
 .claude-plugin/          插件与 marketplace 清单
 commands/                Claude Code 插件命令
 scripts/                  校验脚本与测试
@@ -97,3 +101,7 @@ runbooks/
 - **触发即读**：触发表维护场景与 runbook 的对应关系，修改仓库前先读对应手册，不凭记忆执行。
 - **单一出处**：一条规则只写一遍，其余位置链接；接入项目只声明引用，不分叉副本。
 - **验证先于完成**：每篇 runbook 给出可执行的验证项，未通过不算完成。
+
+## 许可证
+
+[MIT](LICENSE)

@@ -87,7 +87,7 @@ def make_repo(overrides=None, extra=None):
 def plugin_files(name="demo", entry_name=None, source="./"):
     return {
         ".claude-plugin/plugin.json": json.dumps({
-            "name": name, "version": "0.1.0", "description": "测试",
+            "name": name, "version": "0.1.0", "description": "测试", "license": "MIT",
         }),
         ".claude-plugin/marketplace.json": json.dumps({
             "name": "demo",
@@ -165,6 +165,26 @@ class CheckRunbooksTest(unittest.TestCase):
         cmd = "---\ndescription: 测试\n---\n\n@${CLAUDE_PLUGIN_ROOT}/runbooks/a.md\n"
         extra = plugin_files()
         extra["commands/x.md"] = cmd
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 0, out)
+
+    def test_missing_license_fails(self):
+        extra = plugin_files()
+        manifest = json.loads(extra[".claude-plugin/plugin.json"])
+        del manifest["license"]
+        extra[".claude-plugin/plugin.json"] = json.dumps(manifest)
+        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("许可证", out)
+
+    def test_license_file_without_field_passes(self):
+        extra = plugin_files()
+        manifest = json.loads(extra[".claude-plugin/plugin.json"])
+        del manifest["license"]
+        extra[".claude-plugin/plugin.json"] = json.dumps(manifest)
+        extra["LICENSE"] = "MIT License\n"
+        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 0, out)
 

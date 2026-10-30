@@ -36,7 +36,7 @@
 - 本仓库无版本目录，任务计划写在 `output/plans/<分支名>/`（`output/` 已忽略，不提交），合并前删除。
 - 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
 - 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符与命令引用），退出码 0 为通过；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
-- Claude Code 插件清单在 `.claude-plugin/`，命令在 `commands/`：安装后为 `/agent-runbook:deliver`、`bugfix`、`new-api`、`plan`、`ui` 五项；命令只做路由与执行契约，规则以 runbook 为准。
+- Claude Code 插件通过 GitHub marketplace `Gaoddy/agent-runbook` 分发；清单在 `.claude-plugin/`，命令在 `commands/`，安装后为 `/agent-runbook:deliver`、`bugfix`、`new-api`、`plan`、`ui` 五项；命令只做路由与执行契约，规则以 runbook 为准。
 
 ## 触发
 
