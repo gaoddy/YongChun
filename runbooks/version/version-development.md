@@ -24,6 +24,7 @@
 ### 建立版本
 
 - 按[版本文档结构](../docs/structure/version-docs-structure.md)创建目录与必需文件，写主题、目标与能力清单，状态「规划中」。
+- 首个版本号默认 `1.0`，目录名、版本记录与首个 tag 一致；版本号在项目初始化时确定，见[项目接入](../implementation/project-init.md)。
 - 建立版本即创建 `open-questions.md`，没有待确认项时写明。
 
 ### 产品定义
@@ -69,6 +70,7 @@
 ## 验证
 
 - 版本状态与实际进度一致。
+- 版本号与项目初始化确定的一致，首个版本为 `1.0`。
 - `update/`、`bugfix/` 只含未完成项。
 - 文档与代码在同一任务内同步。
 - 版本完成后目录与索引符合[版本文档结构](../docs/structure/version-docs-structure.md)。
