@@ -1,0 +1,81 @@
+# Runbook：文档结构
+
+## 适用场景
+
+- 新建 `docs/` 下的文档或目录、调整文档组织方式，或检查现有文档结构是否合规。
+- 文档内容的表述与用词规范见[文档写作](../docs-writing.md)。
+
+## 前置读取
+
+- [根规则](../../../AGENTS.md)
+- [文档写作](../docs-writing.md)
+- [版本文档结构](version-docs-structure.md)（版本文档组成）
+- [UI 文档结构](ui-docs-structure.md)（UI 文档组成）
+- [需求变动](../../version/requirement-change.md)（`update/` 与 `bugfix/` 目录）
+
+## 顶层结构
+
+```text
+docs/
+├── README.md            文档总索引与登记入口
+├── product/             已实现的产品状态
+│   ├── README.md        产品文档索引
+│   └── ui/              UI 设计系统、页面与组件，见 UI 文档
+├── technical/           已实现的技术状态
+│   └── README.md        技术文档索引
+├── versions/            按版本计划
+│   ├── README.md        版本总览
+│   └── <版本>/          版本目录，结构见版本开发
+└── drafts/              进行中的草案与探讨结论，收尾后删除
+```
+
+- `docs/` 保存状态与进行中的讨论：已实现的 `product/`、`technical/`，未实现的 `versions/`，以及收尾前临时存放的 `drafts/`。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
+- 一级目录职责固定；新增一级目录前先确认现有目录无法承载，并在 `docs/README.md` 登记其职责。
+- `product/`、`technical/` 按模块或业务域建子目录，不在根目录堆积文件；每个子目录必须有 `README.md` 说明范围并索引其中的文件。
+- `versions/<版本>/` 的结构固定为 `README.md`、`open-questions.md`、`scope.md`（按需）、`product/`、`technical/`、`update/`、`bugfix/`、`plans/`，细节见[版本文档结构](version-docs-structure.md)。
+- `drafts/` 只存进行中的草案、探讨与咨询结论：一个主题一个文件，只写结论与待确认项；收尾后结论回写正式文档并删除文件，流程与文件结构见[讨论记录](../../implementation/discussion-record.md)。
+- 文件与目录名统一小写、kebab-case、`.md` 扩展名；名称表达主题，不用版本号、人名、日期（`update/`、`bugfix/` 的日期目录除外）或「note」「misc」这类无信息词。
+- 一个文件只写一个主题；内容跨两个业务域或篇幅超过单次阅读范围时拆分，并用子目录 `README.md` 串联。
+
+## 文档内部结构
+
+- 标题：`#` 级标题与文件名一致，使用名词短语；层级不跳级，最多三级。
+- 范围说明：标题下一段说明本文档描述什么、不描述什么，以及它对应的目录职责。
+- 状态标注：`docs/product/`、`docs/technical/` 文档标注「已实现」；版本 `product/`、`technical/` 标注「方案未实施」；`update/` 内文件按[需求变动](../../version/requirement-change.md)的状态规则；`README.md` 索引不标状态。
+- 章节顺序：先总览后细节；规则用列表，字段与对照用表格，操作步骤用编号列表，命令与输出用代码块并标注语言。
+- 相关文档：文末用相对链接列出上游规则、下游文档与索引；链接到具体文件，不复述对方内容。
+- 不写决策过程、备选方案、历史版本与聊天结论；结论直接写进承载它的文档。进行中的 `drafts/` 可保留待确认项与否决原因，随收尾删除。
+- 不内嵌大段代码，指向源码路径；必要的片段只保留能说明问题的最小部分。
+
+## 索引与导航
+
+- `docs/README.md` 是总索引，列出各目录入口与跨版本文档，不重复正文内容。
+- 每个子目录的 `README.md` 列出本目录文件与一句话说明，作为该目录入口。
+- 索引只链一层：总索引指向子目录 `README.md`，子目录索引指向具体文件，避免两级索引重复列同一文件。
+- `drafts/` 不登记总索引：文件随讨论收尾删除，结论在正式文档中可查。
+- 新增、移动、重命名或删除文档时，同一任务内更新索引与所有入链，不留孤儿文档与死链。
+
+## 版本文档结构
+
+- `versions/<版本>/` 以 `README.md` 与 `open-questions.md` 为必需文件，其余按[版本开发](../../version/version-development.md)创建。
+- `update/<YYYY-MM-DD>-<slug>/` 与 `bugfix/<YYYY-MM-DD>-<slug>/` 的日期取建立当天，slug 规则见[需求变动](../../version/requirement-change.md)。
+- 版本内文档只描述本版本，不链接后续版本；后续版本可以引用前面版本。
+- 版本完成后删除版本内的 `product/`、`technical/` 基线，保留 `README.md` 与 `open-questions.md` 作为版本记录。
+- 版本 `product/ui/` 与 `docs/product/ui/` 的文件形式见[UI 文档结构](ui-docs-structure.md)。
+
+## 步骤
+
+1. 判断文档属于已实现状态、版本目标还是跨版本规则，确定目录与层级。
+2. 按顶层结构放置文件，套用命名与拆分规则。
+3. 按内部结构写标题、范围说明、状态与章节。
+4. 更新子目录 `README.md` 与 `docs/README.md` 索引，补齐入链。
+5. 校验链接、状态标注与命令路径。
+
+## 验证
+
+- 文件与目录归属正确，`docs/` 内没有规则或流程内容。
+- 命名符合小写 kebab-case，一文件一主题。
+- 文档有范围说明与状态标注，标题层级不跳级。
+- 索引与入链完整，无死链与孤儿文档。
+- `drafts/` 只含进行中的讨论，收尾后已删除并回写正式文档。
+- 正式文档内容为结论，无决策过程、备选方案与历史记录。
