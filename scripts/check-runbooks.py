@@ -176,12 +176,15 @@ def main():
             bad("插件", rel(root, plugin_path), "缺少 plugin.json")
         else:
             try:
-                plugin_name = json.loads(read(plugin_path)).get("name")
+                plugin_data = json.loads(read(plugin_path))
             except ValueError as e:
                 bad("插件", rel(root, plugin_path), "不是合法 JSON: %s" % e)
             else:
+                plugin_name = plugin_data.get("name")
                 if not plugin_name:
                     bad("插件", rel(root, plugin_path), "缺少 name")
+                if not plugin_data.get("license") and not os.path.isfile(os.path.join(root, "LICENSE")):
+                    bad("插件", rel(root, plugin_path), "缺少许可证：plugin.json 的 license 或根 LICENSE 文件")
         if not os.path.isfile(market_path):
             bad("插件", rel(root, market_path), "缺少 marketplace.json")
         else:
