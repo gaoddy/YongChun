@@ -61,7 +61,7 @@
 
 ### 计划
 
-- 计划结构见[任务计划](../version/plan.md)：`index.md`、`修改任务规划.md`、`tasks/`；产品与技术结论链接 `update/`，不复制。
+- 计划结构见[任务计划](../version/plan.md)：`index.md`、`task-plan.md`、`tasks/`；产品与技术结论链接 `update/`，不复制。
 - 计划随任务创建，合并前删除，不随分支合入主分支。
 
 ### 本地数据
