@@ -168,6 +168,37 @@ class CheckRunbooksTest(unittest.TestCase):
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 0, out)
 
+    def _with_hook(self, command):
+        extra = plugin_files()
+        extra["commands/x.md"] = "---\ndescription: 测试\n---\n"
+        extra["hooks/hooks.json"] = json.dumps({
+            "hooks": {"UserPromptSubmit": [{"hooks": [
+                {"type": "command", "command": command},
+            ]}]},
+        })
+        return extra
+
+    def test_hook_script_missing_fails(self):
+        extra = self._with_hook('"${CLAUDE_PLUGIN_ROOT}/hooks/missing.sh"')
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("钩子", out)
+
+    def test_hook_script_not_executable_fails(self):
+        extra = self._with_hook('"${CLAUDE_PLUGIN_ROOT}/hooks/run.sh"')
+        extra["hooks/run.sh"] = "#!/bin/sh\necho ok\n"
+        code, out = run(make_repo(extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("钩子", out)
+
+    def test_hook_script_executable_passes(self):
+        extra = self._with_hook('"${CLAUDE_PLUGIN_ROOT}/hooks/run.sh"')
+        extra["hooks/run.sh"] = "#!/bin/sh\necho ok\n"
+        root = make_repo(extra=extra)
+        os.chmod(os.path.join(root, "hooks", "run.sh"), 0o755)
+        code, out = run(root)
+        self.assertEqual(code, 0, out)
+
     def test_missing_license_fails(self):
         extra = plugin_files()
         manifest = json.loads(extra[".claude-plugin/plugin.json"])
