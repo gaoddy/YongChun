@@ -36,7 +36,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 ## 本仓库结构
 
 ```text
-AGENTS.md                 本仓库的根规则与场景触发表，同时作为声明模板
+AGENTS.md                 本仓库的根规则与场景触发表
 CLAUDE.md                 入口，指向 AGENTS.md
 README.md                 本说明
 runbooks/

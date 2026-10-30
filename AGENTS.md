@@ -1,13 +1,12 @@
-# {{PROJECT}}
+# AI Agent Runbook
 
 ## Runbook
 
-本项目遵循 `<runbook 仓库地址或本地路径>` 的 runbook。
+本项目遵循本地 `runbooks/` 的 runbook。
 
-- 场景与必读对应见 `<runbook 仓库>/runbooks/index.md`；修改代码、文档或配置前按场景读取对应 runbook。
+- 场景与必读对应见 [runbooks/index.md](runbooks/index.md)；修改代码、文档或配置前按场景读取对应 runbook。
 - 项目特有场景在本文件补充入口，指向上述 runbook；不复制 runbook 内容。
 - runbook 与本文件冲突时以 runbook 为准，并修正本文件。
-- 本文件同时是声明模板：接入项目把地址替换为实际仓库，并按[项目接入](runbooks/implementation/project-init.md)填写 `{{...}}` 与 `<...>` 取值，保留声明、协作原则、项目阶段与项目事实四部分；「触发」表只服务本仓库，不复制到项目。
 
 ## 协作原则
 
@@ -30,14 +29,12 @@
 
 当前阶段的兼容要求：所有修改和方案制定均不考虑旧版兼容，不为旧版本保留兼容逻辑或设计兼容方案。切换到「已上线」时须同步定义兼容窗口与客户端、服务端版本共存的规则。
 
-当前阶段的 schema 迁移形式与迁移命令的行为见[数据模型变更](runbooks/engineering/schema-change.md#数据库迁移)。
-
 ## 项目事实
 
-- 服务端目录 `{{SERVER_DIR}}`：入口包 `<入口包>`、框架 `<框架>`、迁移命令 `<迁移命令>`、运维命令 `<运维命令>`。
-- 客户端目录 `{{CLIENT_DIR}}`。
-- 首个版本 `<版本>`。
-- 构建、测试、静态检查、生成、迁移与本地启动使用 [Make 构建入口](runbooks/implementation/make.md) 登记的目标。
+- 本仓库即 runbook 集合本身，没有服务端与客户端代码，接入项目所需的目录、框架、迁移与运维命令取值在本仓库不适用。
+- 文档位于 `runbooks/`，入口见 [runbooks/index.md](runbooks/index.md)。
+- 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
+- 本仓库不定义构建、测试、静态检查、生成、迁移与本地启动目标；接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
 
 ## 触发
 
