@@ -10,6 +10,7 @@
 | --- | --- | --- |
 | runbook | [runbook.md](runbook.md) | runbook 的编写、拆分、命名与索引维护 |
 | docs | [docs-sync.md](docs/docs-sync.md) | 代码实现后的文档回写 |
+| docs | [docs-restructure.md](docs/docs-restructure.md) | 将现有 docs 目录重构为 runbook 文档结构 |
 | docs | [docs-writing.md](docs/docs-writing.md) | 文档表述、状态标注与写作规则 |
 | docs | [structure/README.md](docs/structure/README.md) | 文档结构分册索引与阅读顺序 |
 | docs | [structure/docs-structure.md](docs/structure/docs-structure.md) | docs 目录与文档内部结构规范 |
