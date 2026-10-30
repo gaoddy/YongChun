@@ -3,7 +3,7 @@ description: 按 runbook 新增或修改 HTTP 接口：契约、分层、生成�
 argument-hint: <接口变更描述>
 ---
 
-@${CLAUDE_PLUGIN_ROOT}/runbooks/engineering/new-api.md
+@${CLAUDE_PLUGIN_ROOT}/runbooks/engineering/server/new-api.md
 
 按上述 runbook 新增或修改用户本次指定的接口。
 

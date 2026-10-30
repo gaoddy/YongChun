@@ -17,7 +17,7 @@
 | 报错、异常、不对、坏了、修一下 | 缺陷 | [缺陷修复](../version/bugfix.md)、[问题定位](../problems/troubleshooting.md) |
 | 改成、新增、去掉、调整规则或行为 | 需求变动 | [需求变动](../version/requirement-change.md) |
 | 样式、布局、颜色、间距、交互、体验 | UI | [UI 设计](../product/ui/ui-design.md) |
-| 新接口、参数、字段、错误码 | 接口 | [新增接口](../engineering/new-api.md) |
+| 新接口、参数、字段、错误码 | 接口 | [新增接口](../engineering/server/new-api.md) |
 | 表、索引、迁移、字段类型 | 数据 | [数据模型变更](../engineering/schema-change.md) |
 | 同步文档、补说明 | 文档 | [文档回写](../docs/docs-sync.md) |
 | 升依赖、换库、升级版本 | 技术变更 | [技术变更](../engineering/tech-change.md) |

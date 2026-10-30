@@ -11,13 +11,13 @@
 | 按产品需求与用户规模生成三种服务架构方案 | [architecture-options.md](architecture-options.md) |
 | 服务端方案实现（选定架构内） | [implementation.md](implementation.md) |
 | 源码、依赖、部署形态与本地运行 | [runtime.md](runtime.md) |
-| HTTP 接口的新增与修改 | [../new-api.md](../new-api.md) |
+| HTTP 接口的新增与修改 | [new-api.md](new-api.md) |
 | 数据模型、索引与迁移 | [../schema-change.md](../schema-change.md) |
 
 ## 阅读顺序
 
 1. 先读 [layering.md](layering.md)，确认分层与依赖方向。
-2. 架构方向未定时读 [architecture-options.md](architecture-options.md)，选定后再读 [implementation.md](implementation.md) 写实现方案；接口与数据变更再读 [../new-api.md](../new-api.md)、[../schema-change.md](../schema-change.md)。
+2. 架构方向未定时读 [architecture-options.md](architecture-options.md)，选定后再读 [implementation.md](implementation.md) 写实现方案；接口变更读 [new-api.md](new-api.md)，数据变更再读 [../schema-change.md](../schema-change.md)。
 3. 本地运行、依赖与部署形态读 [runtime.md](runtime.md)。
 
 ## 分册规则

@@ -29,7 +29,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 - **进场约束**：每篇的「适用场景」判断是否命中，「前置读取」给出动手前必须读的上下文，避免只读到片段就开始改。
 - **执行路径**：「规则」划定边界与禁止项，「步骤」给出顺序，agent 按步骤推进而不是自由发挥。
 - **完成判定**：「验证」列出可检查项，未通过不算完成；跨场景任务要求读完全部相关 runbook。
-- **场景举例**：新增接口读 [new-api](runbooks/engineering/new-api.md)；调整目录或分层读 [directory-structure](runbooks/engineering/directory-structure.md)、[server/layering](runbooks/engineering/server/layering.md)、[client/layering](runbooks/engineering/client/layering.md)；定位问题先读 [troubleshooting](runbooks/problems/troubleshooting.md) 再读 [fix-decision](runbooks/problems/fix-decision.md)；做 UI 从 [ui-design](runbooks/product/ui/ui-design.md) 进入分册；推进版本读 [version-development](runbooks/version/version-development.md)。
+- **场景举例**：新增接口读 [new-api](runbooks/engineering/server/new-api.md)；调整目录或分层读 [directory-structure](runbooks/engineering/directory-structure.md)、[server/layering](runbooks/engineering/server/layering.md)、[client/layering](runbooks/engineering/client/layering.md)；定位问题先读 [troubleshooting](runbooks/problems/troubleshooting.md) 再读 [fix-decision](runbooks/problems/fix-decision.md)；做 UI 从 [ui-design](runbooks/product/ui/ui-design.md) 进入分册；推进版本读 [version-development](runbooks/version/version-development.md)。
 
 新增场景时先写 runbook，再登记到触发表与[全局索引](runbooks/index.md)；两者缺一，agent 就不会在该场景读到它。
 

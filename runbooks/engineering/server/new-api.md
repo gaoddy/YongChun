@@ -6,9 +6,9 @@
 
 ## 前置读取
 
-- [服务端分层](server/layering.md)
-- [服务端运行](server/runtime.md)
-- [可观测性](../problems/observability.md)
+- [服务端分层](layering.md)
+- [服务端运行](runtime.md)
+- [可观测性](../../problems/observability.md)
 
 ## 服务端实现约定
 
@@ -16,8 +16,8 @@
 - 健康检查固定为 `/healthz`（存活）与 `/readyz`（就绪）。
 - 接口文档在 `<文档地址>`；新增或变更接口时同步更新。
 - 接口、响应字段、注释或 OpenAPI 类型变化后，在当前 task worktree 执行 `<生成命令>`，生成物与源契约一起提交。
-- handler 在本接口内只做参数解析、鉴权入口、状态码映射和接口注释；业务规则、事务编排与跨层依赖按[服务端分层](server/layering.md)执行。
-- 新接口的错误码、关键日志字段与指标按[可观测性](../problems/observability.md)同步定义。
+- handler 在本接口内只做参数解析、鉴权入口、状态码映射和接口注释；业务规则、事务编排与跨层依赖按[服务端分层](layering.md)执行。
+- 新接口的错误码、关键日志字段与指标按[可观测性](../../problems/observability.md)同步定义。
 
 ## 契约约束
 
@@ -53,4 +53,4 @@
 
 ## 相关
 
-- [服务端方案实现](server/implementation.md)
+- [服务端方案实现](implementation.md)

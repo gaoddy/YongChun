@@ -78,7 +78,7 @@
 | 新增或调整目录、模块归属、命名与业务对象登记 | [runbooks/engineering/directory-structure.md](runbooks/engineering/directory-structure.md) |
 | 新增或调整服务端分层、依赖方向与装配 | [runbooks/engineering/server/layering.md](runbooks/engineering/server/layering.md) |
 | 新增或调整客户端页面、状态、数据源分层 | [runbooks/engineering/client/layering.md](runbooks/engineering/client/layering.md) |
-| 新增或修改 HTTP 接口 | [runbooks/engineering/new-api.md](runbooks/engineering/new-api.md) |
+| 新增或修改 HTTP 接口 | [runbooks/engineering/server/new-api.md](runbooks/engineering/server/new-api.md) |
 | 数据模型、索引或迁移变更 | [runbooks/engineering/schema-change.md](runbooks/engineering/schema-change.md) |
 | 补充测试与执行验证 | [runbooks/implementation/testing.md](runbooks/implementation/testing.md) |
 | 代码实现后的文档回写 | [runbooks/docs/docs-sync.md](runbooks/docs/docs-sync.md) |

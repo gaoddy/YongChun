@@ -63,4 +63,4 @@
 
 - [需求变动](../../version/requirement-change.md)
 - [客户端运行](runtime.md)
-- [新增接口](../new-api.md)
+- [新增接口](../server/new-api.md)
