@@ -18,6 +18,19 @@ def slug(heading):
     return s.replace(" ", "-")
 
 
+def hook_commands(node):
+    """遍历 hooks.json，产出全部 command 字符串。"""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key == "command" and isinstance(value, str):
+                yield value
+            else:
+                yield from hook_commands(value)
+    elif isinstance(node, list):
+        for value in node:
+            yield from hook_commands(value)
+
+
 def rel(root, path):
     return os.path.relpath(path, root).replace(os.sep, "/")
 
@@ -225,6 +238,23 @@ def main():
             for m in re.findall(r"@\$\{CLAUDE_PLUGIN_ROOT\}/(runbooks/[^\s)`]+\.md)", text):
                 if not os.path.exists(os.path.join(root, m)):
                     bad("命令引用", rel(root, p), "目标不存在: %s" % m)
+
+    # 插件钩子引用
+    hooks_path = os.path.join(root, "hooks", "hooks.json")
+    if os.path.isfile(hooks_path):
+        text = read(hooks_path)
+        try:
+            data = json.loads(text)
+        except ValueError as e:
+            bad("钩子", rel(root, hooks_path), "不是合法 JSON: %s" % e)
+        else:
+            for command in hook_commands(data):
+                for m in re.findall(r"\$\{CLAUDE_PLUGIN_ROOT\}/([^\s\"']+)", command):
+                    target = os.path.join(root, m)
+                    if not os.path.exists(target):
+                        bad("钩子", rel(root, hooks_path), "目标不存在: %s" % m)
+                    elif not os.access(target, os.X_OK):
+                        bad("钩子", rel(root, hooks_path), "目标不可执行: %s" % m)
 
     for cat, path, msg in sorted(problems):
         print("[%s] %s: %s" % (cat, path, msg))
