@@ -38,7 +38,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 本仓库同时是 Claude Code plugin 与 marketplace：根 `.claude-plugin/plugin.json` 声明插件，`commands/` 提供五个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
-claude plugin marketplace add Gaoddy/agent-runbook
+claude plugin marketplace add gaoddy/agent-runbook
 ```
 
 ```bash
