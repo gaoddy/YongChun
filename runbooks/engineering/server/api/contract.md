@@ -1,9 +1,9 @@
-# Runbook：服务端接口
+# Runbook：接口契约
 
 ## 适用场景
 
 - 设计或调整服务端接口的通用契约规则、兼容演进与协议选择。
-- 各协议的具体规则见下方「协议选择」中的文档；新增或修改具体接口的实施步骤见[新增接口](new-api.md)。
+- 各协议的具体规则见下方「协议选择」中的文档；新增或修改具体接口的实施步骤见[新增接口](../new-api.md)。
 
 ## 通用规则
 
@@ -11,8 +11,8 @@
 - 每个接口、消息与事件写明用途、调用方、鉴权要求、幂等语义与失败表现。
 - 对外标识用字符串，不暴露自增主键；时间统一 RFC 3339 UTC 字符串；金额用最小货币单位整数。
 - 兼容演进：开发阶段允许同一批次前后端同批更新；上线后只新增字段与可选参数，重命名、删除或改语义走新版本（HTTP 新前缀、gRPC 新包版本、WebSocket 与事件消息的新版本字段）。
-- 错误使用稳定错误码，不复用、不改语义；错误码、日志字段与指标按[可观测性](../../problems/observability.md)同步定义。
-- 权限在 application 或 domain 校验，不只在网关或 handler；handler 只做参数解析、鉴权入口与状态码映射，分层见[服务端分层](layering.md)。
+- 错误使用稳定错误码，不复用、不改语义；错误码、日志字段与指标按[可观测性](../../../problems/observability.md)同步定义。
+- 权限在 application 或 domain 校验，不只在网关或 handler；handler 只做参数解析、鉴权入口与状态码映射，分层见[服务端分层](../layering.md)。
 - 所有对外接口都有限流；返回列表的接口有分页、条数上限与超时；重复提交有幂等键或明确后果。
 - 破坏性变更、删除接口或变更鉴权方式，先写入版本 `technical.md` 并取得确认。
 
@@ -20,12 +20,12 @@
 
 | 协议 | 适用 | 规则 |
 | --- | --- | --- |
-| HTTP | 请求-响应式 API | [api-http.md](api-http.md) |
-| WebSocket | 双向实时消息 | [api-websocket.md](api-websocket.md) |
-| gRPC | 服务间或强类型调用 | [api-grpc.md](api-grpc.md) |
-| SSE | 服务端单向推送 | [api-sse.md](api-sse.md) |
-| 消息订阅 | 异步事件与解耦 | [api-subscription.md](api-subscription.md) |
-| 长轮询 | 无法使用长连接时的近实时 | [api-long-polling.md](api-long-polling.md) |
+| HTTP | 请求-响应式 API | [http.md](http.md) |
+| WebSocket | 双向实时消息 | [websocket.md](websocket.md) |
+| gRPC | 服务间或强类型调用 | [grpc.md](grpc.md) |
+| SSE | 服务端单向推送 | [sse.md](sse.md) |
+| 消息订阅 | 异步事件与解耦 | [subscription.md](subscription.md) |
+| 长轮询 | 无法使用长连接时的近实时 | [long-polling.md](long-polling.md) |
 
 - 选择协议时写明理由与未选协议的排除理由；同一业务不并行维护多套等价协议，确需并存时说明主用、备用与一致性保证。
 - 新增协议先说明现有协议无法满足的原因，并在版本 `technical.md` 记录取舍；规则冻结后写入本文的协议表。
@@ -35,7 +35,7 @@
 1. 确认协议、调用方与连接或调用方式，从「协议选择」确定规则文档。
 2. 逐项核对通用规则与所选协议文档，列出实现必须遵守的项与本项目例外；例外写入版本 `technical.md` 并取得确认。
 3. 规则调整时先改本文或对应协议文档，再同步版本 `technical.md` 与受影响的接口文档。
-4. 具体接口的新增或修改按[新增接口](new-api.md)执行。
+4. 具体接口的新增或修改按[新增接口](../new-api.md)执行。
 
 ## 验证
 
@@ -46,6 +46,6 @@
 
 ## 相关
 
-- [新增接口](new-api.md)
-- [服务端分层](layering.md)
-- [可观测性](../../problems/observability.md)
+- [新增接口](../new-api.md)
+- [服务端分层](../layering.md)
+- [可观测性](../../../problems/observability.md)

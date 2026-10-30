@@ -3,15 +3,15 @@
 ## 适用场景
 
 - 设计或调整 Server-Sent Events 接口的事件格式、重连补发、心跳与连接限制。
-- 通用规则与协议选择见[服务端接口](api.md)；新增或修改接口的实施步骤见[新增接口](new-api.md)。
+- 通用规则与协议选择见[接口契约](contract.md)；新增或修改接口的实施步骤见[新增接口](../new-api.md)。
 
 ## 前置读取
 
-- [服务端接口](api.md)
+- [接口契约](contract.md)
 
 ## 规则
 
-- SSE 只用于服务端到客户端的单向推送；需要客户端上行时改用[WebSocket](api-websocket.md)。
+- SSE 只用于服务端到客户端的单向推送；需要客户端上行时改用[WebSocket](websocket.md)。
 - 响应头使用 `Content-Type: text/event-stream` 与 `Cache-Control: no-cache`；关闭代理缓冲，压缩与缓存配置不得破坏流式输出。
 - 事件使用 `event`、`data`、`id`、`retry` 字段；`data` 为 JSON，字段只新增不修改，未知字段由客户端忽略。
 - 事件 `id` 单调递增；断线重连携带 `Last-Event-ID`，服务端按序补发，无法补发时明确从何时重新开始。
@@ -25,7 +25,7 @@
 1. 确认推送场景、事件类型与客户端是否只需要下行。
 2. 定义事件格式、事件 ID 规则与重连补发策略。
 3. 定义心跳间隔、连接限制与代理配置；偏离规范时写入版本 `technical.md` 并取得确认。
-4. 按[新增接口](new-api.md)完成契约、测试与文档。
+4. 按[新增接口](../new-api.md)完成契约、测试与文档。
 
 ## 验证
 
@@ -36,5 +36,5 @@
 
 ## 相关
 
-- [新增接口](new-api.md)
-- [可观测性](../../problems/observability.md)
+- [新增接口](../new-api.md)
+- [可观测性](../../../problems/observability.md)

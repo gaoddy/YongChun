@@ -39,13 +39,14 @@
 | engineering | [server/architecture-options.md](engineering/server/architecture-options.md) | 按产品需求与用户规模生成三种服务架构方案 |
 | engineering | [server/implementation.md](engineering/server/implementation.md) | 在选定架构下实现服务端方案 |
 | engineering | [server/runtime.md](engineering/server/runtime.md) | 服务端源码、依赖、部署形态与本地运行 |
-| engineering | [server/api.md](engineering/server/api.md) | 服务端接口通用规则与协议选择 |
-| engineering | [server/api-http.md](engineering/server/api-http.md) | HTTP 接口规则 |
-| engineering | [server/api-websocket.md](engineering/server/api-websocket.md) | WebSocket 接口规则 |
-| engineering | [server/api-grpc.md](engineering/server/api-grpc.md) | gRPC 接口规则 |
-| engineering | [server/api-sse.md](engineering/server/api-sse.md) | SSE 接口规则 |
-| engineering | [server/api-subscription.md](engineering/server/api-subscription.md) | 消息订阅接口规则 |
-| engineering | [server/api-long-polling.md](engineering/server/api-long-polling.md) | 长轮询接口规则 |
+| engineering | [server/api/README.md](engineering/server/api/README.md) | 服务端接口分册索引与阅读顺序 |
+| engineering | [server/api/contract.md](engineering/server/api/contract.md) | 接口通用契约规则与协议选择 |
+| engineering | [server/api/http.md](engineering/server/api/http.md) | HTTP 接口规则 |
+| engineering | [server/api/websocket.md](engineering/server/api/websocket.md) | WebSocket 接口规则 |
+| engineering | [server/api/grpc.md](engineering/server/api/grpc.md) | gRPC 接口规则 |
+| engineering | [server/api/sse.md](engineering/server/api/sse.md) | SSE 接口规则 |
+| engineering | [server/api/subscription.md](engineering/server/api/subscription.md) | 消息订阅接口规则 |
+| engineering | [server/api/long-polling.md](engineering/server/api/long-polling.md) | 长轮询接口规则 |
 | engineering | [server/new-api.md](engineering/server/new-api.md) | 新增或修改服务端接口 |
 | engineering | [client/README.md](engineering/client/README.md) | 客户端分册索引与阅读顺序 |
 | engineering | [client/layering.md](engineering/client/layering.md) | 客户端页面、状态、数据源与共享层分层 |
