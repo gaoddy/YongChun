@@ -34,6 +34,7 @@
 | engineering | [tech-change.md](engineering/tech-change.md) | 引入、升级或移除技术依赖 |
 | engineering | [directory-structure.md](engineering/directory-structure.md) | 顶层与源码目录、模块归属与命名 |
 | engineering | [schema-change.md](engineering/schema-change.md) | 数据模型、索引与迁移变更 |
+| engineering | [data-structure-design.md](engineering/data-structure-design.md) | 代码数据结构：领域模型、值对象、传输结构与枚举 |
 | engineering | [server/README.md](engineering/server/README.md) | 服务端分册索引与阅读顺序 |
 | engineering | [server/layering.md](engineering/server/layering.md) | 服务端依赖方向、端口与装配 |
 | engineering | [server/architecture-options.md](engineering/server/architecture-options.md) | 按产品需求与用户规模生成三种服务架构方案 |
