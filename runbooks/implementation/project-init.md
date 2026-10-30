@@ -20,6 +20,7 @@
 - 项目事实必须覆盖 runbook 正文中出现的全部 `<...>` 取值：服务端与客户端目录、框架、入口、构建与迁移命令、接口前缀等。
 - 项目阶段默认标记「开发阶段」；未上线前不做旧版兼容设计。
 - `docs/` 骨架在项目内建立：`docs/README.md`、`docs/product/`、`docs/technical/`、`docs/versions/<版本>/`，结构按[文档结构](../docs/structure/docs-structure.md)。
+- Claude Code 会话需把本仓库目录加入可访问范围（`claude --add-dir <本仓库路径>`），否则 runbook 与 `.claude/commands/` 不可读；不复制命令文件到项目。
 
 ## 步骤
 
@@ -38,3 +39,4 @@
 - 项目事实覆盖全部 `<...>` 取值，无占位符残留。
 - `docs/` 骨架与首个版本目录符合文档结构与版本文档结构。
 - 项目阶段标记为「开发阶段」。
+- Claude Code 会话可访问本仓库目录，命令层可用；项目内无 `.claude/commands/` 副本。

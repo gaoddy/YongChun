@@ -33,12 +33,19 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 
 新增场景时先写 runbook，再登记到触发表与[全局索引](runbooks/index.md)；两者缺一，agent 就不会在该场景读到它。
 
+## Claude Code 命令层
+
+`.claude/commands/` 提供五个项目级命令，把高频场景从查表变成直接触发：`/deliver`、`/bugfix`、`/new-api`、`/plan`、`/ui`。命令正文只引用对应 runbook 并给出执行契约，规则仍以 runbook 为准。
+
+接入项目不复制命令文件；用 `claude --add-dir <本仓库路径>` 把本仓库加入会话可访问范围，或按[接入方式](#接入方式)声明后由 agent 读取对应 runbook。
+
 ## 本仓库结构
 
 ```text
 AGENTS.md                 本仓库的根规则与场景触发表
 CLAUDE.md                 入口，指向 AGENTS.md
 README.md                 本说明
+.claude/commands/         Claude Code 项目级命令
 scripts/                  校验脚本与测试
 runbooks/
 ├── README.md             目录树与项目基线

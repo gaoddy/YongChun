@@ -161,6 +161,20 @@ def main():
         for m in re.finditer(r"<[^>\n]*[，。；、][^>\n]*>", read(p)):
             bad("占位符", rel(root, p), "尖括号内含中文标点: %s" % m.group(0))
 
+    # 命令引用
+    cmd_dir = os.path.join(root, ".claude", "commands")
+    if os.path.isdir(cmd_dir):
+        for f in sorted(os.listdir(cmd_dir)):
+            if not f.endswith(".md"):
+                continue
+            p = os.path.join(cmd_dir, f)
+            text = read(p)
+            if not re.match(r"---\n.*?description:", text, re.S):
+                bad("命令", rel(root, p), "缺少 description")
+            for m in re.findall(r"@(runbooks/[^\s)`]+\.md)", text):
+                if not os.path.exists(os.path.join(root, m)):
+                    bad("命令引用", rel(root, p), "目标不存在: %s" % m)
+
     for cat, path, msg in sorted(problems):
         print("[%s] %s: %s" % (cat, path, msg))
     print("问题: %d" % len(problems))

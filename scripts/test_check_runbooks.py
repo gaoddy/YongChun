@@ -139,6 +139,12 @@ class CheckRunbooksTest(unittest.TestCase):
         self.assertEqual(code, 1, out)
         self.assertIn("触发表", out)
 
+    def test_command_reference_missing_fails(self):
+        cmd = "---\ndescription: 测试\n---\n\n@runbooks/missing.md\n"
+        code, out = run(make_repo(extra={".claude/commands/x.md": cmd}))
+        self.assertEqual(code, 1, out)
+        self.assertIn("命令引用", out)
+
 
 if __name__ == "__main__":
     unittest.main()
