@@ -6,9 +6,7 @@ argument-hint: <任务描述>
 @${CLAUDE_PLUGIN_ROOT}/runbooks/implementation/task-delivery.md
 @${CLAUDE_PLUGIN_ROOT}/runbooks/implementation/worktree-timing.md
 
-按上述 runbook 执行以下任务：
-
-$ARGUMENTS
+按上述 runbook 执行用户本次给出的任务。
 
 执行要求：
 1. 先判断任务是否修改仓库文件；只读任务直接执行，不建 worktree。

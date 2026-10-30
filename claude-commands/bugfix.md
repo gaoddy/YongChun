@@ -6,9 +6,7 @@ argument-hint: <缺陷描述>
 @${CLAUDE_PLUGIN_ROOT}/runbooks/version/bugfix.md
 @${CLAUDE_PLUGIN_ROOT}/runbooks/problems/troubleshooting.md
 
-按上述 runbook 修复以下缺陷：
-
-$ARGUMENTS
+按上述 runbook 修复用户本次报告的缺陷。
 
 执行要求：
 1. 先确认缺陷不改变产品规则与对外行为；会改变的走需求变动。

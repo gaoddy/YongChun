@@ -6,9 +6,7 @@ argument-hint: <版本或任务范围>
 @${CLAUDE_PLUGIN_ROOT}/runbooks/version/plan.md
 @${CLAUDE_PLUGIN_ROOT}/runbooks/docs/structure/version-docs-structure.md
 
-按上述 runbook 为以下范围编写任务计划：
-
-$ARGUMENTS
+按上述 runbook 为用户本次指定的范围编写任务计划。
 
 执行要求：
 1. 确认版本、关联需求目录与分支名。

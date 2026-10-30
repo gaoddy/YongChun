@@ -5,9 +5,7 @@ argument-hint: <UI 任务描述>
 
 @${CLAUDE_PLUGIN_ROOT}/runbooks/product/ui/ui-design.md
 
-按上述 runbook 执行以下 UI 任务：
-
-$ARGUMENTS
+按上述 runbook 执行用户本次提出的 UI 任务。
 
 执行要求：
 1. 先确认现有实现、受影响页面与需要覆盖的业务状态。

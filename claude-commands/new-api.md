@@ -5,9 +5,7 @@ argument-hint: <接口变更描述>
 
 @${CLAUDE_PLUGIN_ROOT}/runbooks/engineering/new-api.md
 
-按上述 runbook 新增或修改以下接口：
-
-$ARGUMENTS
+按上述 runbook 新增或修改用户本次指定的接口。
 
 执行要求：
 1. 先在版本 `technical.md` 写明路径、字段、错误码、分页与幂等，确认后实施。

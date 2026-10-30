@@ -6,9 +6,7 @@ argument-hint: <docs 目录或范围>
 @${CLAUDE_PLUGIN_ROOT}/runbooks/docs/docs-restructure.md
 @${CLAUDE_PLUGIN_ROOT}/runbooks/docs/structure/docs-structure.md
 
-按上述 runbook 重构以下项目的 docs 目录：
-
-$ARGUMENTS
+按上述 runbook 重构用户本次指定项目的 docs 目录。
 
 执行要求：
 1. 先盘点现有文档，为每篇标注目标位置与处置；盘点完成前不移动或删除。

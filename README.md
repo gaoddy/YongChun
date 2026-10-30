@@ -63,7 +63,7 @@ codex plugin marketplace add gaoddy/agent-runbook
 codex plugin add agent-runbook@agent-runbook
 ```
 
-Codex 没有插件斜杠命令，加载时会把 `codex-commands/` 的命令转换为 `source-command-<name>` skill。命令正文含 `$ARGUMENTS`、编号占位符、`{{...}}`、`` !` `` 或 `@` 开头的 token 时会被跳过，两个命令目录因此分开维护。插件钩子需要在本机确认信任，安装后按 Codex 提示审核。
+Codex 没有插件斜杠命令，加载时会把 `codex-commands/` 的命令转换为 `source-command-<name>` skill。命令正文统一用「用户本次请求」这类通用表述，不写 `$ARGUMENTS`、编号占位符、`{{...}}`、`` !` `` 或 `@` 开头的 token，含这些内容的命令会被 Codex 跳过；Claude Code 在正文没有占位符时把参数以 `ARGUMENTS: <原文>` 追加到末尾，因此两端正文一致，两个命令目录的差异只剩引用 runbook 的写法。插件钩子需要在本机确认信任，安装后按 Codex 提示审核。
 
 ### 本仓库结构
 
