@@ -7,9 +7,7 @@
 
 ## 前置读取
 
-- [问题排查](../problems/troubleshooting.md)
-- [服务端分层](../engineering/server/layering.md)、[客户端分层](../engineering/client/layering.md)
-- [缺陷修复](../version/bugfix.md)
+- [问题排查](troubleshooting.md)
 
 ## 决策点
 
@@ -38,3 +36,8 @@
 - 端到端测试通过：`<e2e 入口>`
 - 修复未引入新的失败项；跳过或放宽的用例已说明原因。
 - `bugfix.md` 中的根因与修复方案和实际改动一致，文档与测试已同步。
+
+## 相关
+
+- [服务端分层](../engineering/server/layering.md)
+- [客户端分层](../engineering/client/layering.md)

@@ -7,7 +7,6 @@
 
 ## 前置读取
 
-- [根规则](../../AGENTS.md)
 - [runbook 编写与维护](../runbook.md)
 - [文档结构](../docs/structure/docs-structure.md)
 - [版本文档结构](../docs/structure/version-docs-structure.md)

@@ -5,13 +5,6 @@
 - 撰写或修改 `docs/` 下文档的内容、表述与状态标注。
 - 文档的目录组织与内部结构见[文档结构](structure/docs-structure.md)。
 
-## 前置读取
-
-- [根规则](../../AGENTS.md)
-- [文档结构](structure/docs-structure.md)
-- [文档回写](docs-sync.md)
-- [版本开发](../version/version-development.md)
-
 ## 写作规则
 
 - 文档必须与本仓库现状一致，不能照搬其他仓库的命令、目录或流程；命令、路径、字段必须能在仓库中核实。
@@ -38,3 +31,7 @@
 - 每条规则可验收，无模糊表述与营销词。
 - 术语统一，命令、路径、字段可在仓库核实。
 - 状态标注正确，相对链接有效，索引已登记。
+
+## 相关
+
+- [版本开发](../version/version-development.md)

@@ -7,8 +7,7 @@
 ## 前置读取
 
 - [UI 设计](ui-design.md)
-- [组件设计](components.md)、[设计 tokens](tokens.md)、[图标](icons.md)、[交互与反馈](interaction.md)
-- [客户端分层](../../engineering/client/layering.md)（共享设计层入口）
+- [组件设计](components.md)
 
 ## 规则
 
@@ -34,3 +33,10 @@
 - 共享内容不含业务规则与数据请求，变体有限。
 - 全部消费者已检查并同步调整。
 - 设计系统文档与页面、组件文档已更新。
+
+## 相关
+
+- [设计 tokens](tokens.md)
+- [图标](icons.md)
+- [交互与反馈](interaction.md)
+- [客户端分层](../../engineering/client/layering.md)

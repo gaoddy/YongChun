@@ -7,11 +7,7 @@
 
 ## 前置读取
 
-- [根规则](../../../AGENTS.md)
 - [文档写作](../docs-writing.md)
-- [版本文档结构](version-docs-structure.md)（版本文档组成）
-- [UI 文档结构](ui-docs-structure.md)（UI 文档组成）
-- [需求变动](../../version/requirement-change.md)（`update/` 与 `bugfix/` 目录）
 
 ## 顶层结构
 

@@ -6,11 +6,7 @@
 
 ## 前置读取
 
-- [根规则](../../../AGENTS.md)
 - [客户端分层](layering.md)
-- [Make 构建入口](../../implementation/make.md)
-- [UI 设计](../../product/ui/ui-design.md)（涉及界面时）
-- [客户端发布](../../delivery/client-release.md)（涉及发布形态时）
 
 ## 规则
 
@@ -36,3 +32,8 @@
 - 真机联调使用开发机局域网 IP，接口数据真实可用。
 - 实机验证使用稳定设备与非 debug 构建，旧缓存已清除。
 - 状态管理作用域与刷新失效符合客户端分层约束。
+
+## 相关
+
+- [客户端发布](../../delivery/client-release.md)
+- [Make 构建入口](../../implementation/make.md)

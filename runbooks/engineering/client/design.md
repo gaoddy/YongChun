@@ -7,11 +7,8 @@
 
 ## 前置读取
 
-- [需求变动](../../version/requirement-change.md)（`update/` 的编写与状态流转）
-- [客户端开发规则](runtime.md)
-- [UI 设计](../../product/ui/ui-design.md)
 - [客户端分层](layering.md)
-- [接口契约](../new-api.md)
+- [UI 设计](../../product/ui/ui-design.md)
 
 ## 设计要点
 
@@ -61,3 +58,9 @@
 - 刷新有明确触发与停止条件；写操作防重复、失败保留输入，乐观更新有回滚。
 - 接口调用与错误处理覆盖服务端方案中的全部错误码。
 - 未确认事项已进入 `open-questions.md`，方案中无未决分支。
+
+## 相关
+
+- [需求变动](../../version/requirement-change.md)
+- [客户端运行](runtime.md)
+- [新增接口](../new-api.md)

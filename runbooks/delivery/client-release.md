@@ -7,8 +7,6 @@
 ## 前置读取
 
 - [客户端运行](../engineering/client/runtime.md)
-- [服务端发布](server-deploy.md)（契约与版本共存）
-- [任务执行与交付](../implementation/task-delivery.md)（验证矩阵）
 
 ## 发布方式
 
@@ -63,3 +61,8 @@
 - 灰度各阶段指标达到发布标准后才扩量。
 - 产物可追溯到提交与构建参数，版本号唯一。
 - 回滚路径已在发布前确认可执行。
+
+## 相关
+
+- [服务端发布](server-deploy.md)
+- [任务执行与交付](../implementation/task-delivery.md)

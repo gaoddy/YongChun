@@ -7,11 +7,8 @@
 
 ## 前置读取
 
-- [文档规则](../docs/docs-writing.md)
-- [版本开发](../version/version-development.md)
-- [需求变动](../version/requirement-change.md)（`update/` 目录与状态流转）
-- 产品文档约定：`docs/product/README.md`（结构见[文档结构](../docs/structure/docs-structure.md)）
-- [UI 设计](ui/ui-design.md)（涉及页面与交互时）
+- [文档写作](../docs/docs-writing.md)
+- [版本文档结构](../docs/structure/version-docs-structure.md)
 
 ## 文档落点
 
@@ -62,3 +59,10 @@
 - 文档中不含技术实现、接口契约与任务拆分。
 - 未确认规则已进入 `open-questions.md`，文档内无待定分支。
 - 状态标注与内容一致，受影响的产品文档已列出或在同一任务内更新。
+
+## 相关
+
+- [版本开发](../version/version-development.md)
+- [需求变动](../version/requirement-change.md)
+- [文档结构](../docs/structure/docs-structure.md)
+- [UI 设计](ui/ui-design.md)

@@ -7,12 +7,8 @@
 
 ## 前置读取
 
-- [UI 分册索引](README.md)（按主题选择分册）
-- [根规则](../../../AGENTS.md)
+- [UI 分册](README.md)
 - [文档写作](../../docs/docs-writing.md)
-- [客户端运行](../../engineering/client/runtime.md)
-- [客户端方案设计](../../engineering/client/design.md)（状态与数据层）
-- [UI 文档结构](../../docs/structure/ui-docs-structure.md)（文档落点与形式）
 
 ## 规则
 
@@ -36,3 +32,8 @@
 - 数据与状态设计已在客户端方案中落点，页面状态与数据状态一一对应。
 - 文档已按[UI 文档结构](../../docs/structure/ui-docs-structure.md)回写，索引与链接完整。
 - 客户端验证入口见[任务执行与交付](../../implementation/task-delivery.md)。
+
+## 相关
+
+- [客户端运行](../../engineering/client/runtime.md)
+- [前端方案设计](../../engineering/client/design.md)

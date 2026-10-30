@@ -7,8 +7,6 @@
 ## 前置读取
 
 - [UI 设计](ui-design.md)
-- [组件设计](components.md)
-- [设计 tokens](tokens.md)
 
 ## 规则
 
@@ -34,3 +32,8 @@
 - 语义唯一，风格与尺寸统一，颜色来自 token。
 - 可点击图标有可访问名称与足够点击区域。
 - 新增或替换已登记并覆盖全部使用处。
+
+## 相关
+
+- [组件设计](components.md)
+- [设计 tokens](tokens.md)

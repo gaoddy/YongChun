@@ -9,9 +9,6 @@
 
 - [问题排查](../problems/troubleshooting.md)
 - [修复决策](../problems/fix-decision.md)
-- [版本文档结构](../docs/structure/version-docs-structure.md)
-- [补充测试与验证](../implementation/testing.md)
-- [需求变动](requirement-change.md)（判断是否属于需求变动）
 
 ## 规则
 
@@ -38,3 +35,7 @@
 - 修复范围与决策一致，无顺带重构。
 - `bugfix.md` 的根因与修复方案和实际改动一致。
 - 文档已回写，缺陷目录已删除，`open-questions.md` 无遗留条目。
+
+## 相关
+
+- [需求变动](requirement-change.md)

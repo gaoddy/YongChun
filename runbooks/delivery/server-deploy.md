@@ -8,7 +8,6 @@
 
 - [服务端运行](../engineering/server/runtime.md)
 - [可观测性](../problems/observability.md)
-- [任务执行与交付](../implementation/task-delivery.md)
 
 ## 环境与配置
 
@@ -68,3 +67,7 @@
 - 关键指标与错误率处于基线。
 - 配置与 Secret 无硬编码，缺失时启动失败。
 - 迁移在旧实例运行期间不产生错误，回滚路径已确认可执行。
+
+## 相关
+
+- [任务执行与交付](../implementation/task-delivery.md)

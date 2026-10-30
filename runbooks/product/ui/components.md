@@ -7,10 +7,6 @@
 ## 前置读取
 
 - [UI 设计](ui-design.md)
-- [页面设计](pages.md)
-- [设计 tokens](tokens.md)
-- [图标](icons.md)
-- [交互与反馈](interaction.md)
 
 ## 规则
 
@@ -47,3 +43,10 @@
 - 组件不含业务规则与数据请求，接口显式。
 - 变体有限且命名清晰，无隐式全局依赖。
 - 共享组件变更已覆盖全部消费者并登记文档。
+
+## 相关
+
+- [页面设计](pages.md)
+- [设计 tokens](tokens.md)
+- [图标](icons.md)
+- [交互与反馈](interaction.md)

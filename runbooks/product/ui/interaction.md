@@ -8,8 +8,6 @@
 
 - [UI 设计](ui-design.md)
 - [页面设计](pages.md)
-- [组件设计](components.md)
-- [数据驱动界面](../../engineering/client/design.md#数据驱动界面)
 
 ## 规则
 
@@ -46,3 +44,8 @@
 - 表单校验时机一致，错误可定位且保留输入。
 - 动效不影响操作，减少动态效果设置下可用。
 - 键盘可完成主要操作，焦点可见，控件有可访问名称。
+
+## 相关
+
+- [组件设计](components.md)
+- [前端方案设计](../../engineering/client/design.md)

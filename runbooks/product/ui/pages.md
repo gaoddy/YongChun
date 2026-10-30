@@ -8,9 +8,6 @@
 
 - [UI 设计](ui-design.md)
 - [组件设计](components.md)
-- [数据驱动界面](../../engineering/client/design.md#数据驱动界面)
-- [设计 tokens](tokens.md)
-- [交互与反馈](interaction.md)
 
 ## 规则
 
@@ -52,3 +49,9 @@
 - 状态清单覆盖加载、空、错误、无权限、离线与限额，每种有出口。
 - 深浅色结构一致，各屏幕比例无拉伸或裁切失真。
 - 页面不重复实现导航与布局，间距尺寸来自 tokens。
+
+## 相关
+
+- [前端方案设计](../../engineering/client/design.md)
+- [设计 tokens](tokens.md)
+- [交互与反馈](interaction.md)

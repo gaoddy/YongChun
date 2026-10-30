@@ -8,7 +8,6 @@
 
 ## 前置读取
 
-- [根规则](../../AGENTS.md)
 - [文档写作](../docs/docs-writing.md)
 - [文档结构](../docs/structure/docs-structure.md)
 
