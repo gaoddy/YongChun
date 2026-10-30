@@ -39,6 +39,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 AGENTS.md                 本仓库的根规则与场景触发表
 CLAUDE.md                 入口，指向 AGENTS.md
 README.md                 本说明
+scripts/                  校验脚本与测试
 runbooks/
 ├── README.md             目录树与项目基线
 ├── index.md              全局索引：全部 runbook 登记
