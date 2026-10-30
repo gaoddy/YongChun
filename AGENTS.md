@@ -58,6 +58,7 @@
 | 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
 | 设计服务端技术方案 | [runbooks/engineering/server/design.md](runbooks/engineering/server/design.md) |
+| 基于产品需求与用户规模生成三种服务架构方案 | [runbooks/engineering/server/architecture-options.md](runbooks/engineering/server/architecture-options.md) |
 | 设计客户端技术方案 | [runbooks/engineering/client/design.md](runbooks/engineering/client/design.md) |
 | UI 设计、实现、改版与评审 | [runbooks/product/ui/ui-design.md](runbooks/product/ui/ui-design.md) |
 | UI 设计与改版前的方向方案与选择 | [runbooks/product/ui/directions.md](runbooks/product/ui/directions.md) |

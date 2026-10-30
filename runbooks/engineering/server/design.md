@@ -50,6 +50,7 @@
 
 ## 相关
 
+- [服务架构方案生成](architecture-options.md)
 - [需求变动](../../version/requirement-change.md)
 - [服务端运行](runtime.md)
 - [新增接口](../new-api.md)

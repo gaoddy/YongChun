@@ -37,6 +37,7 @@
 | engineering | [schema-change.md](engineering/schema-change.md) | 数据模型、索引与迁移变更 |
 | engineering | [server/README.md](engineering/server/README.md) | 服务端分册索引与阅读顺序 |
 | engineering | [server/layering.md](engineering/server/layering.md) | 服务端依赖方向、端口与装配 |
+| engineering | [server/architecture-options.md](engineering/server/architecture-options.md) | 按产品需求与用户规模生成三种服务架构方案 |
 | engineering | [server/design.md](engineering/server/design.md) | 服务端技术方案设计 |
 | engineering | [server/runtime.md](engineering/server/runtime.md) | 服务端源码、依赖、部署形态与本地运行 |
 | engineering | [client/README.md](engineering/client/README.md) | 客户端分册索引与阅读顺序 |
