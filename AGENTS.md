@@ -1,4 +1,4 @@
-# AI Agent Runbook
+# YongChun
 
 ## Runbook
 
@@ -38,7 +38,7 @@
 - 本仓库无版本目录，任务计划写在 `output/plans/<分支名>/`（`output/` 已忽略，不提交），合并前删除。
 - 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
 - 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用与双端插件清单），退出码 0 为通过；skill 执行器测试入口是 `python3 -m unittest discover -s skills/worktree-merge-queue-delivery/scripts`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
-- 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/agent-runbook` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/agent-runbook` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；命令只做路由与执行契约，规则以 runbook 为准。
+- 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；命令只做路由与执行契约，规则以 runbook 为准。
 - 开发阶段只提交并推送 `develop`；正式发版时快进合并到 `main`，不压缩历史，以 `.claude-plugin/plugin.json` 的 `version` 打 `v<version>` annotated tag 并推送。
 
 ## 触发

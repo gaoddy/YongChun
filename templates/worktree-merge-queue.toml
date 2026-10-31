@@ -1,7 +1,7 @@
 # Worktree 合并队列交付配置模板
 #
 # 使用方式：
-# 1. 复制到项目根 `.agent-runbook/worktree-merge-queue.toml`；Codex 兼容位置为
+# 1. 复制到项目根 `.yongchun/worktree-merge-queue.toml`；Codex 兼容位置为
 #    `.codex/worktree-merge-queue-delivery.toml`。
 # 2. 替换全部 <...> 为项目实际值。
 # 3. 删除未启用的段与未使用的注释项。
@@ -15,7 +15,7 @@
 #
 # 预演校验：
 # python3 <插件根>/skills/worktree-merge-queue-delivery/scripts/delivery_helper.py plan \
-#   --config .agent-runbook/worktree-merge-queue.toml \
+#   --config .yongchun/worktree-merge-queue.toml \
 #   --branch <任务分支> --root <任务 worktree 绝对路径>
 
 [project]

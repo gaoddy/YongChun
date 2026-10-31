@@ -1,13 +1,13 @@
 {
-  "name": "agent-runbook",
+  "name": "yongchun",
   "version": "0.2.0",
   "description": "AI agent 可执行的 runbook 集合：协作原则、开发流程、文档规范与验证标准",
   "author": {
     "name": "Gaoddy",
     "url": "https://github.com/gaoddy"
   },
-  "homepage": "https://github.com/gaoddy/agent-runbook",
-  "repository": "https://github.com/gaoddy/agent-runbook",
+  "homepage": "https://github.com/gaoddy/YongChun",
+  "repository": "https://github.com/gaoddy/YongChun",
   "license": "MIT",
   "keywords": [
     "runbook",
@@ -19,7 +19,7 @@
   "commands": "./codex-commands/",
   "hooks": "./hooks/hooks.json",
   "interface": {
-    "displayName": "Agent Runbook",
+    "displayName": "YongChun",
     "shortDescription": "按场景路由的可执行工程 runbook",
     "longDescription": "把协作原则、开发流程、文档规范与验证标准写成 agent 可直接执行的 runbook，并提供任务交付、缺陷修复、接口新增、计划编写、UI 与文档重构入口。",
     "developerName": "Gaoddy",
@@ -32,6 +32,6 @@
       "按 runbook 交付当前任务",
       "按 runbook 修复这个缺陷"
     ],
-    "websiteURL": "https://github.com/gaoddy/agent-runbook"
+    "websiteURL": "https://github.com/gaoddy/YongChun"
   }
 }

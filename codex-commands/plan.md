@@ -3,7 +3,7 @@ description: 按 runbook 编写任务计划：阶段顺序、任务拆分与文�
 argument-hint: <版本或任务范围>
 ---
 
-按 agent-runbook 插件的 runbook 执行用户请求。
+按 yongchun 插件的 runbook 执行用户请求。
 
 1. 定位插件根目录：Claude Code 为插件根（环境变量 CLAUDE_PLUGIN_ROOT）；Codex 为插件安装目录，位于 `~/.codex/plugins/cache` 下。
 2. 读取并按内容执行：

@@ -1,4 +1,4 @@
-# Agent Runbook
+# YongChun
 
 一套集中维护的 runbook 集合：把协作原则、开发流程、文档规范与验证标准写成 AI agent 能直接执行的操作手册。其他项目不需要自建或复制 runbook，只需在根 `AGENTS.md`（`CLAUDE.md` 指向它）中声明引用，agent 便按同一套规则判断该读什么、该做什么、做到什么程度算完成。
 
@@ -42,25 +42,25 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 根 `.claude-plugin/plugin.json` 声明插件，`claude-commands/` 提供六个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
-claude plugin marketplace add gaoddy/agent-runbook
+claude plugin marketplace add gaoddy/YongChun
 ```
 
 ```bash
-claude plugin install agent-runbook@agent-runbook
+claude plugin install yongchun@yongchun
 ```
 
-安装后可用 `/agent-runbook:deliver`、`/agent-runbook:bugfix`、`/agent-runbook:new-api`、`/agent-runbook:plan`、`/agent-runbook:ui`、`/agent-runbook:docs-restructure`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update agent-runbook`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
+安装后可用 `/yongchun:deliver`、`/yongchun:bugfix`、`/yongchun:new-api`、`/yongchun:plan`、`/yongchun:ui`、`/yongchun:docs-restructure`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update yongchun`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
 ### Codex
 
 根 `.codex-plugin/plugin.json` 声明插件，`.agents/plugins/marketplace.json` 提供 marketplace 登记，命令在 `codex-commands/`。接入项目安装：
 
 ```bash
-codex plugin marketplace add gaoddy/agent-runbook
+codex plugin marketplace add gaoddy/YongChun
 ```
 
 ```bash
-codex plugin add agent-runbook@agent-runbook
+codex plugin add yongchun@yongchun
 ```
 
 Codex 没有插件斜杠命令，加载时会把 `codex-commands/` 的命令转换为 `source-command-<name>` skill。命令正文统一用「用户本次请求」这类通用表述，不写 `$ARGUMENTS`、编号占位符、`{{...}}`、`` !` `` 或 `@` 开头的 token，含这些内容的命令会被 Codex 跳过；Claude Code 在正文没有占位符时把参数以 `ARGUMENTS: <原文>` 追加到末尾，因此两端正文一致，两个命令目录的差异只剩引用 runbook 的写法。插件钩子需要在本机确认信任，安装后按 Codex 提示审核。
@@ -101,7 +101,7 @@ runbooks/
 1. 在项目根创建 `AGENTS.md`，加入下面的声明块；`CLAUDE.md` 只写一行 `@AGENTS.md`。
 2. 填写项目事实：服务端与客户端目录、首个版本号，以及 runbook 中 `<...>` 对应的框架、命令与数据库取值。
 3. 按[文档结构](runbooks/docs/structure/docs-structure.md)建立 `docs/` 骨架，按[版本文档结构](runbooks/docs/structure/version-docs-structure.md)建立首个版本目录。
-4. 使用隔离 worktree 与合并队列交付时，从[配置模板](templates/worktree-merge-queue.toml)复制到 `.agent-runbook/worktree-merge-queue.toml` 并替换占位符。
+4. 使用隔离 worktree 与合并队列交付时，从[配置模板](templates/worktree-merge-queue.toml)复制到 `.yongchun/worktree-merge-queue.toml` 并替换占位符。
 5. 不复制 `runbooks/` 到项目；规则变化回本仓库修改，避免版本分叉。
 
 声明块：

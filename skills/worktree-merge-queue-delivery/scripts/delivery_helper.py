@@ -43,7 +43,7 @@ def resolve_root(config: dict[str, Any], root: str | Path | None, branch: str | 
         return Path(root).expanduser().resolve()
 
     config_path = Path(config["__config_path__"])
-    if config_path.parent.name in (".agent-runbook", ".codex"):
+    if config_path.parent.name in (".yongchun", ".codex"):
         fallback = config_path.parent.parent.resolve()
     else:
         fallback = config_path.parent.resolve()

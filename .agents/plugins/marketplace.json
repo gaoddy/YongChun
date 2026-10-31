@@ -1,14 +1,14 @@
 {
-  "name": "agent-runbook",
+  "name": "yongchun",
   "interface": {
-    "displayName": "Agent Runbook"
+    "displayName": "YongChun"
   },
   "plugins": [
     {
-      "name": "agent-runbook",
+      "name": "yongchun",
       "source": {
         "source": "url",
-        "url": "https://github.com/gaoddy/agent-runbook.git"
+        "url": "https://github.com/gaoddy/YongChun.git"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -16,7 +16,7 @@
       },
       "category": "Developer Tools",
       "interface": {
-        "displayName": "Agent Runbook"
+        "displayName": "YongChun"
       }
     }
   ]

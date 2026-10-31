@@ -3,7 +3,7 @@ description: 按 runbook 新增或修改 HTTP 接口：契约、分层、生成�
 argument-hint: <接口变更描述>
 ---
 
-按 agent-runbook 插件的 runbook 执行用户请求。
+按 yongchun 插件的 runbook 执行用户请求。
 
 1. 定位插件根目录：Claude Code 为插件根（环境变量 CLAUDE_PLUGIN_ROOT）；Codex 为插件安装目录，位于 `~/.codex/plugins/cache` 下。
 2. 读取并按内容执行：
