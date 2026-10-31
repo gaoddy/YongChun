@@ -16,6 +16,7 @@
 | --- | --- | --- |
 | 报错、异常、不对、坏了、修一下 | 缺陷 | [缺陷修复](../version/bugfix.md)、[问题定位](../problems/troubleshooting.md) |
 | 改成、新增、去掉、调整规则或行为 | 需求变动 | [需求变动](../version/requirement-change.md) |
+| 想加功能、能不能做、技术可行性、与现有功能冲突 | 功能评估 | [产品功能评估](../product/feature-assessment.md) |
 | 样式、布局、颜色、间距、交互、体验 | UI | [UI 设计](../product/ui/ui-design.md) |
 | 新接口、参数、字段、错误码 | 接口 | [新增接口](../engineering/server/new-api.md) |
 | 建表、表结构、字段与索引规划 | 表规划 | [数据库表规划](../engineering/database/table-design.md) |

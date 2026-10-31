@@ -69,3 +69,4 @@
 - [需求变动](../version/requirement-change.md)
 - [文档结构](../docs/structure/docs-structure.md)
 - [UI 设计](ui/ui-design.md)
+- [产品功能评估](feature-assessment.md)

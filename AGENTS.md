@@ -59,6 +59,7 @@
 | 缺陷修复、验证与收尾 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |
 | 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
+| 新增产品功能，先澄清产品需求再确认技术可行性与冲突 | [runbooks/product/feature-assessment.md](runbooks/product/feature-assessment.md) |
 | 在选定架构下实现服务端技术方案 | [runbooks/engineering/server/implementation.md](runbooks/engineering/server/implementation.md) |
 | 基于产品需求与用户规模生成三种服务架构方案 | [runbooks/engineering/server/architecture-options.md](runbooks/engineering/server/architecture-options.md) |
 | 设计客户端技术方案 | [runbooks/engineering/client/design.md](runbooks/engineering/client/design.md) |
