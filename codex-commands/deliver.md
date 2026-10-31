@@ -11,7 +11,7 @@ argument-hint: <任务描述>
    - `runbooks/implementation/worktree-timing.md`
 3. 只改任务范围内的文件，不扩展功能、不顺带重构。
 4. 按验证矩阵执行构建、检查与测试；验证失败不得跳过或放宽断言。
-5. 同一任务回写文档，提交前检查 `git diff`，合并前删除计划目录。
+5. 同一任务回写文档，提交前检查 `git diff`，任务完成后、合并前删除 `docs/plan/<分支名>/` 计划目录。
 6. 本仓库另需运行 `python3 scripts/check-runbooks.py`。
 
 完成判定：验证通过，`git diff` 只含任务范围，文档已回写，计划目录已清理。

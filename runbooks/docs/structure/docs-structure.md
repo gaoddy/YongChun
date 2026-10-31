@@ -22,16 +22,32 @@ docs/
 ├── versions/            按版本计划
 │   ├── README.md        版本总览
 │   └── <版本>/          版本目录，结构见版本开发
+├── plan/                实施计划，每个计划一个目录（本地，不提交）
 └── drafts/              进行中的草案与探讨结论，收尾后删除
 ```
 
-- `docs/` 保存状态与进行中的讨论：已实现的 `product/`、`technical/`，未实现的 `versions/`，以及收尾前临时存放的 `drafts/`。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
+- `docs/` 保存状态与进行中的讨论：已实现的 `product/`、`technical/`，未实现的 `versions/`，实施中的 `plan/`，以及收尾前临时存放的 `drafts/`。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
 - 一级目录职责固定；新增一级目录前先确认现有目录无法承载，并在 `docs/README.md` 登记其职责。
 - `product/`、`technical/` 按模块或业务域建子目录，不在根目录堆积文件；每个子目录必须有 `README.md` 说明范围并索引其中的文件。
-- `versions/<版本>/` 的结构固定为 `README.md`、`open-questions.md`、`scope.md`（按需）、`product/`、`technical/`、`update/`、`bugfix/`、`plans/`，细节见[版本文档结构](version-docs-structure.md)。
+- `versions/<版本>/` 的结构固定为 `README.md`、`open-questions.md`、`scope.md`（按需）、`product/`、`technical/`、`update/`、`bugfix/`，细节见[版本文档结构](version-docs-structure.md)。
+- `plan/` 只保存实施中的任务计划，一个计划一个目录；目录已加入 `.gitignore`，不提交，结构见下文[实施计划](#实施计划-plan)。
 - `drafts/` 只存进行中的草案、探讨与咨询结论：一个主题一个文件，只写结论与待确认项；收尾后结论回写正式文档并删除文件，流程与文件结构见[讨论记录](../../implementation/discussion-record.md)。
 - 文件与目录名统一小写、kebab-case、`.md` 扩展名；名称表达主题，不用版本号、人名、日期（`update/`、`bugfix/` 的日期目录除外）或「note」「misc」这类无信息词。
 - 一个文件只写一个主题；内容跨两个业务域或篇幅超过单次阅读范围时拆分，并用子目录 `README.md` 串联。
+
+## 实施计划 `plan/`
+
+- 路径：`docs/plan/<分支名>/`，分支名中的 `/` 替换为 `-`；一个计划一个目录，仅在实施计划时创建。
+- `docs/plan/` 加入 `.gitignore`，本地保留、不提交；任务完成后、合并前删除当前计划目录。
+- 计划只管理任务执行；产品与技术结论放在 `update/`，计划中链接引用，不复制。
+
+| 路径 | 职责 |
+| --- | --- |
+| `index.md` | 任务目标、关联 `update/` 需求目录、分支与 worktree、实施阶段与任务状态 |
+| `task-plan.md` | 任务拆分、依赖关系、并行与串行顺序、每个任务的文件边界与验证方式 |
+| `tasks/<task-id>.md` | 一个任务一个文件：输入、产出、文件边界、验证方式与完成标准 |
+
+- `tasks/<task-id>` 与 `task-plan.md` 的编号一致，例如 `T01-baseline.md` 对应 `T01`；新增、拆分或取消任务时两处同步。
 
 ## 文档内部结构
 

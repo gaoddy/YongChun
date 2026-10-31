@@ -17,3 +17,6 @@ desktop.ini
 output/
 tmp/
 *.log
+
+# 任务实施计划（本地，不提交）
+docs/plan/
