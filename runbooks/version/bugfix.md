@@ -26,7 +26,7 @@
 3. 按[修复决策](../problems/fix-decision.md)确定修复层次、修改端与范围。
 4. 建立缺陷目录并按[版本文档结构](../docs/structure/version-docs-structure.md#缺陷修复-bugfix)写 `bugfix.md`，先写失败用例。
 5. 实施单一修复，只改决策范围内的文件。
-6. 按[补充测试与验证](../implementation/testing.md)验证失败用例与回归点，回写 `docs/product/`、`docs/technical/` 与版本基线。
+6. 按[补充测试与验证](../implementation/testing.md)验证失败用例与回归点，回写 `docs/current/product/`、`docs/current/technical/` 与版本基线。
 7. 删除缺陷目录；未确认事项转入版本 `open-questions.md`。
 
 ## 验证

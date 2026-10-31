@@ -2,7 +2,7 @@
 
 ## 适用场景
 
-- 新建或调整 `docs/product/ui/`、版本 `product/ui/` 与 UI 需求文档，确认页面、组件、设计系统文档的文件形式与落点。
+- 新建或调整 `docs/current/product/ui/`、版本 `product/ui/` 与 UI 需求文档，确认页面、组件、设计系统文档的文件形式与落点。
 - UI 的设计与实现流程见[UI 设计](../../product/ui/ui-design.md)与 `ui/` 分册；本文只规定文档形式。
 
 ## 前置读取
@@ -14,19 +14,19 @@
 
 | 场景 | 位置 | 状态标注 |
 | --- | --- | --- |
-| 已实现的页面、组件、设计系统 | `docs/product/ui/` | 已实现 |
+| 已实现的页面、组件、设计系统 | `docs/current/product/ui/` | 已实现 |
 | 本版本的目标 UI | `docs/versions/<版本>/product/ui/` | 方案未实施 |
 | UI 需求变动 | `update/<YYYY-MM-DD>-<slug>/product.md` 的页面与交互部分 | 按[需求变动](../../version/requirement-change.md) |
 | 设计未决事项 | 版本 `open-questions.md` | — |
 
 - UI 需求变动不新建文件，写在需求 `product.md` 内；目录与状态规则见[版本文档结构](version-docs-structure.md#需求变动-update)。
-- 只描述当前代码已实现的 UI 写入 `docs/product/ui/`；未实现的目标形态只写入版本基线或需求目录。
+- 只描述当前代码已实现的 UI 写入 `docs/current/product/ui/`；未实现的目标形态只写入版本基线或需求目录。
 - 不单独建「设计稿目录」；设计结论写入上述文档，原型与外部设计文件只留链接。
 
 ## 目录结构
 
 ```text
-docs/product/ui/
+docs/current/product/ui/
 ├── README.md              设计系统入口：概览、页面与组件索引
 ├── tokens.md              设计令牌清单
 ├── icons.md               图标清单
@@ -65,7 +65,7 @@ docs/product/ui/
 | 阶段 | 动作 |
 | --- | --- |
 | 设计确认 | 结论写入版本 `product/ui/` 或需求 `product.md`，标「方案未实施」 |
-| 代码落地 | 同一任务写入 `docs/product/ui/`，状态改为「已实现」，删除版本基线与 `update/` 中已实现部分 |
+| 代码落地 | 同一任务写入 `docs/current/product/ui/`，状态改为「已实现」，删除版本基线与 `update/` 中已实现部分 |
 | 版本完成 | 删除版本 `product/ui/` 基线，保留 `README.md` 与 `open-questions.md` |
 | 删除或替换 UI | 同一任务删除对应页面、组件文档与索引条目，不留孤儿文件 |
 
@@ -78,7 +78,7 @@ docs/product/ui/
 2. 按目录结构建立或更新文件，一个页面、一个组件各一个文件。
 3. 按文件职责写内容，状态、入口与出口逐项列全，链接代替复制。
 4. 更新 `README.md` 与 `pages/`、`components/` 索引。
-5. 代码落地后回写 `docs/product/ui/`，删除已实现部分与版本基线。
+5. 代码落地后回写 `docs/current/product/ui/`，删除已实现部分与版本基线。
 
 ## 验证
 

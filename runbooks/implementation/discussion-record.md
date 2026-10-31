@@ -3,7 +3,7 @@
 ## 适用场景
 
 - 草案、方案探讨、技术咨询、需求澄清等尚未形成确定结论的交流。
-- 已有承载文档（`docs/product/`、`docs/technical/`、版本基线或 runbook）时直接更新原文档，不建讨论记录。
+- 已有承载文档（`docs/current/product/`、`docs/current/technical/`、版本基线或 runbook）时直接更新原文档，不建讨论记录。
 - 目录位置与索引规则见[文档结构](../docs/structure/docs-structure.md)；结论回写见[文档回写](../docs/docs-sync.md)。
 
 ## 前置读取

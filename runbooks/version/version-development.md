@@ -53,7 +53,7 @@
 
 - 阶段顺序不可跳过：产品确认 → 技术确认 → 任务拆分；前一阶段未确认不进入下一步。
 - 版本内只描述本版本，不引用后续版本。
-- 未实现内容只写 `docs/versions/`，已实现状态只写 `docs/product/`、`docs/technical/`。
+- 未实现内容只写 `docs/versions/`，已实现状态只写 `docs/current/product/`、`docs/current/technical/`。
 - 开发阶段只提交并推送 `develop`；`main` 只在正式发版时更新。
 - 发版时将 `develop` 快进合并到 `main`（`git merge --ff-only`），不压缩或改写提交历史；发版点由 tag 标记。
 - 正式发版时按版本号打 annotated tag `v<版本>` 并推送；tag 与版本记录一致，不移动或复用已推送的 tag。

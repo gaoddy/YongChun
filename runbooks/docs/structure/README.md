@@ -8,7 +8,7 @@
 | 主题 | 文档 |
 | --- | --- |
 | `docs/` 目录职责、文档内部结构与索引 | [docs-structure.md](docs-structure.md) |
-| `docs/product/ui/` 的落点、目录与文件职责 | [ui-docs-structure.md](ui-docs-structure.md) |
+| `docs/current/product/ui/` 的落点、目录与文件职责 | [ui-docs-structure.md](ui-docs-structure.md) |
 | 版本文档的目录、文件清单与生命周期 | [version-docs-structure.md](version-docs-structure.md) |
 
 ## 阅读顺序

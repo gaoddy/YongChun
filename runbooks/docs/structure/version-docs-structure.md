@@ -30,7 +30,7 @@ docs/versions/<版本>/
 - 目录结构固定；调整前先确认[版本开发](../../version/version-development.md)的流程是否需要同步。
 - 实施计划不放在版本目录内，统一写在 `docs/plan/<分支名>/`，见[文档结构](docs-structure.md#实施计划-plan)。
 - 版本内文档只描述本版本，不链接或引用后续版本；后续版本可以引用前面版本。
-- 未实现的版本定义与需求变动只写入 `docs/versions/<版本>/`；`docs/product/`、`docs/technical/` 只描述当前代码已实现的状态。
+- 未实现的版本定义与需求变动只写入 `docs/versions/<版本>/`；`docs/current/product/`、`docs/current/technical/` 只描述当前代码已实现的状态。
 
 ## 文件清单
 
@@ -51,7 +51,7 @@ docs/versions/<版本>/
 - `scope.md` 只写本次包含与明确排除的内容及原因，不写功能规则与实现方案。
 - `product/`、`technical/` 是版本基线，描述本版本的目标形态；状态标注为「方案未实施」。
 - 架构方案候选 `technical/architecture-options.md` 标注「待选择」，用户选定后只保留选定方案并转为技术基线。
-- 版本基线与 `docs/product/`、`docs/technical/` 的边界见[文档结构](docs-structure.md)：基线写目标形态，已实现状态写 `docs/`。
+- 版本基线与 `docs/current/product/`、`docs/current/technical/` 的边界见[文档结构](docs-structure.md)：基线写目标形态，已实现状态写 `docs/current/`。
 - 文件命名、状态标注格式与索引更新按[文档结构](docs-structure.md)执行。
 
 ## 待确认项 `open-questions.md`
@@ -59,7 +59,7 @@ docs/versions/<版本>/
 - 记录本版本未确认的全部事项：产品决策、技术待定、UI 待设计，以及实现中发现的冲突、遗留与需要另定的接口或参数。
 - 每条写清：问题、影响范围、待谁确认、来源链接（需求目录、缺陷目录或计划）。
 - 由需求变动产生的条目注明来源需求并链接对应 `update/` 目录。
-- 事项确认后从文件移除，结论写入对应的 `product.md` / `technical.md` 与版本基线；已实现结论直接写入 `docs/product/`、`docs/technical/`。
+- 事项确认后从文件移除，结论写入对应的 `product.md` / `technical.md` 与版本基线；已实现结论直接写入 `docs/current/product/`、`docs/current/technical/`。
 - 不在需求、缺陷或计划目录内另建待确认文件，统一收敛到版本根目录。
 
 ## 需求变动 `update/`
@@ -92,7 +92,7 @@ docs/versions/<版本>/
 
 ## 版本完成
 
-- 确认 `docs/product/`、`docs/technical/` 已覆盖本版本基线，且 `update/`、`bugfix/` 为空。
+- 确认 `docs/current/product/`、`docs/current/technical/` 已覆盖本版本基线，且 `update/`、`bugfix/` 为空。
 - 删除版本内的 `product/`、`technical/` 基线。
 - 保留 `README.md` 与 `open-questions.md` 作为版本记录，并在 `docs/versions/README.md` 更新版本状态。
 - 版本目录结构与索引同步更新，规则见[文档结构](docs-structure.md)。

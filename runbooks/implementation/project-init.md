@@ -20,7 +20,7 @@
 - 项目事实必须覆盖 runbook 正文中出现的全部 `<...>` 取值：服务端与客户端目录、框架、入口、构建与迁移命令、接口前缀等。
 - 项目使用隔离 worktree 与合并队列交付时，从[配置模板](../../templates/worktree-merge-queue.toml)复制到 `.yongchun/worktree-merge-queue.toml` 并替换占位符；不使用队列时不创建该文件。
 - 项目阶段默认标记「开发阶段」；未上线前不做旧版兼容设计。
-- `docs/` 骨架在项目内建立：`docs/README.md`、`docs/product/`、`docs/technical/`、`docs/versions/<版本>/`，结构按[文档结构](../docs/structure/docs-structure.md)。
+- `docs/` 骨架在项目内建立：`docs/README.md`、`docs/current/README.md`、`docs/current/product/`、`docs/current/technical/`、`docs/versions/<版本>/`，结构按[文档结构](../docs/structure/docs-structure.md)。
 - Claude Code 通过公开 marketplace 使用命令层：`/plugin marketplace add gaoddy/YongChun` 后安装 `yongchun@yongchun`；本地开发可用 `claude --plugin-dir <本仓库路径>`。不复制 runbook 或命令文件到项目。
 
 ## 产品数据
