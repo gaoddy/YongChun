@@ -10,6 +10,9 @@
 # 命令模板占位符：{branch} {base_branch} {stage} {repo_path} {commit} {manifest}
 # {manifest} 由 helper 按 shell 参数引用，命令模板中不要给占位符加引号。
 #
+# 交付顺序固定：验证 → 合并 base_branch → 清理任务 worktree → 释放队列 →
+# 独立 worker 在合并 commit 上推送、部署与上传。不支持先部署任务分支或任务 worktree。
+#
 # 预演校验：
 # python3 <插件根>/skills/worktree-merge-queue-delivery/scripts/delivery_helper.py plan \
 #   --config .agent-runbook/worktree-merge-queue.toml \
@@ -31,7 +34,8 @@ merge_base = "git merge --ff-only {branch}"
 push_base = "git push origin {base_branch}"
 push_commit = "git push origin {commit}:refs/heads/{base_branch}"
 
-# 合并队列：不使用队列时删除本段，并删除各 repos 中的 queue_advance_after_*。
+# 合并队列：run 必须配置 queue.release_after_merge；仅在只做 plan 预演或改用手工交付时
+# 才可删除本段，并同步删除各 repos 中的 queue_advance_after_*。
 # stages 只列验证与本地集成阶段，最后一项作为根仓合并阶段。
 [queue]
 enabled = true
@@ -43,12 +47,12 @@ require_active = "<占用校验命令> {branch}"
 advance = "<阶段推进命令> {branch} {stage}"
 require_stage = "<阶段校验命令> {branch} {stage}"
 drop = "<出队命令> {branch}"
-# 本地合并完成后释放占位；可用占位符：{branch} {base_branch} {commit} {manifest}。
+# 必填：本地合并完成后释放占位；可用占位符：{branch} {base_branch} {commit} {manifest}。
 release_after_merge = "<释放占位命令> {branch} {commit} {manifest}"
 
-# 独立交付：仅在合并后需要独立 worker 推送、部署或上传时保留。
-# 启用 queue.release_after_merge 时，repos 中的 deploy、upload 与
-# post_delivery_checks 每一行都必须含 {commit}；未启用时不要使用 {commit}。
+# 独立交付：存在 push_base、deploy、upload 或 post_delivery_checks 时必填。
+# worker 只在基线合并后执行，命令中的 {commit} 是 base_branch 的合并 commit；
+# 每条推送、部署、上传与检查命令都必须含 {commit}，不得指向任务分支或任务 worktree。
 [post_merge]
 enqueue = "<交付入队命令> {manifest}"
 
@@ -65,9 +69,9 @@ push_base = true
 queue_advance_after_verify = "verified"
 queue_advance_after_merge = "children-merged"
 # sdk_generate = "<按契约生成客户端 SDK 的命令>"
-# deploy = "<部署命令，启用 release_after_merge 时需含 {commit}>"
-# upload = "<上传命令，启用 release_after_merge 时需含 {commit}>"
-# post_delivery_checks = ["<交付后检查命令，启用 release_after_merge 时需含 {commit}>"]
+# deploy = "<在 base_branch 合并 commit 上执行的部署命令，必须含 {commit}>"
+# upload = "<在 base_branch 合并 commit 上执行的上传命令，必须含 {commit}>"
+# post_delivery_checks = ["<在 base_branch 合并 commit 上执行的检查命令，必须含 {commit}>"]
 
 [[repos]]
 name = "root"

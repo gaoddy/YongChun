@@ -30,18 +30,19 @@
 | `queue.status` / `enqueue` / `claim` / `require_active` | 队列状态、入队、认领与占用校验 |
 | `queue.advance` / `require_stage` / `drop` | 阶段推进、阶段校验与出队 |
 | `queue.stages` | 只覆盖验证与本地集成的阶段名 |
-| `queue.release_after_merge` | 记录本地合并完成并释放占位；接受 `{branch}`、`{base_branch}`、`{commit}`、`{manifest}` |
-| `post_merge.enqueue` | 接收 `{manifest}` 的独立交付入口，必须幂等 |
+| `queue.release_after_merge` | 记录本地合并完成并释放占位；`run` 必填，缺少时拒绝执行；接受 `{branch}`、`{base_branch}`、`{commit}`、`{manifest}` |
+| `post_merge.enqueue` | 接收 `{manifest}` 的独立交付入口，必须幂等；存在推送、部署、上传或检查命令时必填 |
 | `delivery.merge_base` / `push_commit` | 基线分支合并与按 commit 推送 |
 | `repos[].name` / `path` / `role` / `needs` | 仓库标识、根相对路径、角色与依赖顺序 |
 | `repos[].verify` / `sdk_generate` | 任务 checkout 内的验证与生成命令 |
 | `repos[].merge_base` / `push_base` | 是否合并到基线、是否推送基线分支 |
-| `repos[].deploy` / `upload` / `post_delivery_checks` | 只由独立 worker 执行的交付命令 |
+| `repos[].deploy` / `upload` / `post_delivery_checks` | 只由独立 worker 在基线合并 commit 上执行的交付命令 |
 
 - 命令模板占位符：`{branch}`、`{base_branch}`、`{stage}`、`{repo_path}`、`{commit}`、`{manifest}`；`{manifest}` 由 helper 按 shell 参数引用，模板中不再加引号。
 
 ### 队列
 
+- 交付顺序固定为「先合并基线、后部署基线」：本地合并完成并释放占位后，才允许独立 worker 推送、部署或上传合并 commit；任务分支与任务 worktree 不执行部署。
 - 队列按入队顺序先进先出，同一时刻只有一个占位。
 - `enqueue` 对已入队分支是空操作，`run` 会再次调用它。
 - 未认领不得合并基线、推送、部署或上传；认领失败即停止。
@@ -65,6 +66,7 @@
 
 ### 交接与独立交付
 
+- 部署对象是 `base_branch` 上的合并 commit：`repos[].deploy`、`upload` 与 `post_delivery_checks` 每条都必须含 `{commit}`，不得指向任务分支或任务 worktree。
 - 根仓合并后，helper 把 manifest 写入共享 Git 目录的 `delivery-jobs/<id>.json`，记录每个仓库的来源路径、合并 commit 与已渲染的交付命令。
 - manifest 状态从 `awaiting-release` 开始，队列释放成功后变为 `ready`；worker 不消费未释放的任务。
 - 清理任务 worktree、释放占位、提交 handoff 都从基线 checkout 执行，不依赖已删除的任务目录。
@@ -88,7 +90,7 @@
 5. 按仓库顺序执行验证，全部通过后先合并子仓、最后合并根仓。
 6. 记录合并 commit 与交付命令到 manifest，清理任务 worktree。
 7. 从基线 checkout 释放队列占位，再提交 handoff。
-8. 由独立 worker 在记录 commit 上执行推送、部署与上传，并回报各自结果。
+8. 由独立 worker 在已合入 `base_branch` 的记录 commit 上执行推送、部署与上传，并回报各自结果。
 
 辅助脚本（插件内路径）：
 
@@ -112,6 +114,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/worktree-merge-queue-delivery/scripts/deli
 - 验证在认领与基线同步之后执行，失败即停，未验证的仓库没有合并或推送。
 - 子仓先于根仓合并，根仓提交包含最终子模块指针。
 - manifest 记录精确 commit，worker 使用独立 checkout，推送无 force。
+- 推送、部署与上传都使用基线合并 commit，任务 worktree 内没有部署步骤。
 - 任务 worktree 已清理，队列已释放，worker 结果与合并结果分别报告。
 - 异常路径报告失败命令、已合并范围与队列状态。
 
