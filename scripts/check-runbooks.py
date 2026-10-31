@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """校验 runbook 仓库的结构、链接与前置依赖。退出码 0 表示通过。"""
 import argparse
+import importlib.util
 import json
 import os
 import re
@@ -58,6 +59,11 @@ def headings(text):
 def section(text, name):
     m = re.search(r"^## %s\n(.*?)(?=^## |\Z)" % re.escape(name), text, re.S | re.M)
     return m.group(1) if m else None
+
+
+def without_frontmatter(text):
+    """去掉 YAML frontmatter，只统计正文字数。"""
+    return re.sub(r"\A---\n.*?\n---\n", "", text, count=1, flags=re.S)
 
 
 def main():
@@ -154,7 +160,7 @@ def main():
 
     for node in graph:
         c = closure(node)
-        lines = sum(len(read(x).splitlines()) for x in c)
+        lines = sum(len(without_frontmatter(read(x)).splitlines()) for x in c)
         if len(c) > 5 or lines > 500:
             bad("闭包", rel(root, bypath[node]), "递归前置 %d 篇 / %d 行，超过 5 篇 / 500 行" % (len(c), lines))
 
@@ -169,6 +175,19 @@ def main():
         pre = section(text, "前置读取")
         if pre is not None and not re.search(r"^- \[", pre, re.M):
             bad("章节", rel(root, p), "前置读取段为空")
+
+    # agent frontmatter 与生成物
+    generator = os.path.join(root, "scripts", "generate_runbook_agents.py")
+    if os.path.isfile(generator):
+        spec = importlib.util.spec_from_file_location("generate_runbook_agents", generator)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        entries, errors = module.collect(root)
+        for source, msg in errors:
+            bad("agent", source, msg)
+        if not errors:
+            for source, msg in module.check(root, entries):
+                bad("agent", source, msg)
 
     # 占位符：尖括号内出现中文标点，说明整句说明被当成取值
     for p in runbooks:

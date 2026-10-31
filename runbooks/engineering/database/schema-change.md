@@ -1,3 +1,8 @@
+---
+agent:
+  effort: xhigh
+---
+
 # Runbook：数据模型变更
 
 ## 适用场景

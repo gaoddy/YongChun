@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：补充测试与验证
 
 ## 适用场景

@@ -1,3 +1,8 @@
+---
+agent:
+  effort: xhigh
+---
+
 # Runbook：产品功能需求澄清
 
 ## 适用场景

@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：项目接入
 
 ## 适用场景
@@ -9,7 +14,6 @@
 
 - [runbook 编写与维护](../runbook.md)
 - [文档结构](../docs/structure/docs-structure.md)
-- [版本文档结构](../docs/structure/version-docs-structure.md)
 
 ## 规则
 

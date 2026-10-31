@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：SSE 接口
 
 ## 适用场景

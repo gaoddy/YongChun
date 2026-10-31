@@ -1,3 +1,8 @@
+---
+agent:
+  effort: xhigh
+---
+
 # Runbook：数据库表规划
 
 ## 适用场景

@@ -10,6 +10,7 @@ runbooks/
 ├── README.md          目录树与项目基线
 ├── index.md           全局索引：全部 runbook 登记
 ├── runbook.md         runbook 编写、拆分与索引维护
+├── runbook-agent-mapping.md  runbook 与 agent 映射、强度与生成
 ├── docs/              文档：写作、回写与文档结构分册
 │   └── structure/     文档结构分册：通用、UI 与版本文档
 ├── version/           版本：流程、需求、缺陷、计划

@@ -1,0 +1,12 @@
+# 由 scripts/generate_runbook_agents.py 根据 runbooks/product/ui/icons.md 生成，不要手改。
+
+name = "icons"
+description = "图标：新增、替换、调整图标，或处理图标在不同端与状态下的表现"
+model_reasoning_effort = "low"
+
+developer_instructions = """
+先读取项目 AGENTS.md 声明的 runbook 仓库中的 `runbooks/product/ui/icons.md`，再按该文「前置读取」补齐上游。
+
+1. 只处理本次请求；范围、判定与产物以该 runbook 为准。
+2. 按「步骤」执行，按「验证」判定；验证未通过不得声称完成。
+"""

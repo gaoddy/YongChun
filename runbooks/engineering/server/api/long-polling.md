@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：长轮询接口
 
 ## 适用场景

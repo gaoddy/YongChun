@@ -1,3 +1,8 @@
+---
+agent:
+  effort: xhigh
+---
+
 # Runbook：前端方案设计
 
 ## 适用场景

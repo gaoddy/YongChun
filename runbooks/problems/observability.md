@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：可观测性
 
 ## 适用场景

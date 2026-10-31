@@ -1,0 +1,12 @@
+# 由 scripts/generate_runbook_agents.py 根据 runbooks/problems/observability.md 生成，不要手改。
+
+name = "observability"
+description = "可观测性：新增或调整日志、指标、追踪与告警；服务上线前补齐观测能力；排查时发现信号不足，需要补埋点"
+model_reasoning_effort = "high"
+
+developer_instructions = """
+先读取项目 AGENTS.md 声明的 runbook 仓库中的 `runbooks/problems/observability.md`，再按该文「前置读取」补齐上游。
+
+1. 只处理本次请求；范围、判定与产物以该 runbook 为准。
+2. 按「步骤」执行，按「验证」判定；验证未通过不得声称完成。
+"""

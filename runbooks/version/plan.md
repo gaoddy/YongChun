@@ -1,3 +1,8 @@
+---
+agent:
+  effort: xhigh
+---
+
 # Runbook：任务计划
 
 ## 适用场景

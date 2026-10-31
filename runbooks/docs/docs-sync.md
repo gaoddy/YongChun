@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：文档回写
 
 ## 适用场景

@@ -1,3 +1,8 @@
+---
+agent:
+  effort: xhigh
+---
+
 # Runbook：产品功能可行性调研
 
 ## 适用场景

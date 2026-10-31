@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：版本文档结构
 
 ## 适用场景

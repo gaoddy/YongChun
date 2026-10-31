@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：任务执行与交付
 
 ## 适用场景

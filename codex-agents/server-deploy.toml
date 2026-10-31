@@ -1,0 +1,12 @@
+# 由 scripts/generate_runbook_agents.py 根据 runbooks/delivery/server-deploy.md 生成，不要手改。
+
+name = "server-deploy"
+description = "服务端发布：服务端部署、版本发布、滚动更新、配置与 Secret 变更，或回滚"
+model_reasoning_effort = "xhigh"
+
+developer_instructions = """
+先读取项目 AGENTS.md 声明的 runbook 仓库中的 `runbooks/delivery/server-deploy.md`，再按该文「前置读取」补齐上游。
+
+1. 只处理本次请求；范围、判定与产物以该 runbook 为准。
+2. 按「步骤」执行，按「验证」判定；验证未通过不得声称完成。
+"""

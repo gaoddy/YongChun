@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：Worktree 合并队列交付
 
 ## 适用场景

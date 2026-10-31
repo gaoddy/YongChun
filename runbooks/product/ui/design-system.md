@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：设计系统与公共 UI
 
 ## 适用场景

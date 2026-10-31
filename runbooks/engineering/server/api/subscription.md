@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：消息订阅接口
 
 ## 适用场景

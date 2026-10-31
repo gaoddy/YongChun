@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：gRPC 接口
 
 ## 适用场景

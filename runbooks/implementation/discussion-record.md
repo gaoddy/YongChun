@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：讨论记录
 
 ## 适用场景

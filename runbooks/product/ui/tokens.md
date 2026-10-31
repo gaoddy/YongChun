@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：设计 tokens
 
 ## 适用场景

@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：Worktree 创建时机
 
 ## 适用场景

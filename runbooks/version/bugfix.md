@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：缺陷修复
 
 ## 适用场景

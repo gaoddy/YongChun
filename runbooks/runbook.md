@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：runbook 编写与维护
 
 ## 适用场景
@@ -108,6 +113,7 @@
 - 根 `AGENTS.md` 触发表只登记「场景 → 文件」的映射，是唯一路由入口；新增场景先补 runbook 与触发行，不留无入口的流程。
 - 修改规则前全库检索引用者（runbook、`docs/`、代码与 `AGENTS.md`），同一任务同步更新；直接改原文，不保留旧版规则、兼容分支或旧做法说明。
 - `docs/`、其他 runbook 与代码中的引用一并更新；改标题锚点时全库检索。
+- agent 元数据、生成物与校验见 [Runbook 与 Agent 映射](runbook-agent-mapping.md)；新增、改名或删除 runbook 时，同一任务同步 frontmatter 与生成产物。
 - 每次调整后校验相对链接与锚点，清理被替代的旧文件。
 
 ## 审计

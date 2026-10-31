@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：图标
 
 ## 适用场景

@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：主题与视觉资源
 
 ## 适用场景

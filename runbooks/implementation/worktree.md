@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：Worktree 与分支
 
 ## 适用场景

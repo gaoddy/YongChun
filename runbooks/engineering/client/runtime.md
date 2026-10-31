@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：客户端运行
 
 ## 适用场景

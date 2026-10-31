@@ -2,6 +2,7 @@
 """check-runbooks.py 的测试：每个用例在临时目录构造最小仓库。"""
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -9,6 +10,7 @@ import unittest
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT = os.path.join(REPO, "scripts", "check-runbooks.py")
+GENERATOR = os.path.join(REPO, "scripts", "generate_runbook_agents.py")
 
 BASE = {
     "AGENTS.md": """# Agent
@@ -103,6 +105,30 @@ def run(root):
         capture_output=True, text=True,
     )
     return r.returncode, r.stdout + r.stderr
+
+
+def with_agent(text, effort="high"):
+    return "---\nagent:\n  effort: %s\n---\n\n%s" % (effort, text)
+
+
+def agent_repo(overrides=None):
+    merged = {
+        "runbooks/a.md": with_agent(BASE["runbooks/a.md"]),
+        "runbooks/b.md": with_agent(BASE["runbooks/b.md"]),
+    }
+    if overrides:
+        merged.update(overrides)
+    root = make_repo(overrides=merged)
+    os.makedirs(os.path.join(root, "scripts"), exist_ok=True)
+    shutil.copy(GENERATOR, os.path.join(root, "scripts", "generate_runbook_agents.py"))
+    return root
+
+
+def generate(root):
+    subprocess.run(
+        [sys.executable, GENERATOR, "--root", root],
+        capture_output=True, text=True,
+    )
 
 
 class CheckRunbooksTest(unittest.TestCase):
@@ -288,6 +314,40 @@ class CheckRunbooksTest(unittest.TestCase):
         code, out = run(make_repo(extra=extra))
         self.assertEqual(code, 1, out)
         self.assertIn("source 类型", out)
+
+    def test_agent_metadata_and_generated_pass(self):
+        root = agent_repo()
+        generate(root)
+        code, out = run(root)
+        self.assertEqual(code, 0, out)
+
+    def test_agent_missing_frontmatter_fails(self):
+        root = agent_repo({"runbooks/a.md": BASE["runbooks/a.md"]})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("agent", out)
+        self.assertIn("frontmatter", out)
+
+    def test_agent_invalid_effort_fails(self):
+        root = agent_repo({"runbooks/a.md": with_agent(BASE["runbooks/a.md"], "medium")})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("取值非法: medium", out)
+
+    def test_agent_missing_generated_fails(self):
+        root = agent_repo()
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("缺少生成物", out)
+
+    def test_agent_generated_drift_fails(self):
+        root = agent_repo()
+        generate(root)
+        with open(os.path.join(root, "agents/a.md"), "a", encoding="utf-8") as f:
+            f.write("\n手改\n")
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("内容与 runbook 不一致", out)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,12 @@
+# 由 scripts/generate_runbook_agents.py 根据 runbooks/docs/structure/ui-docs-structure.md 生成，不要手改。
+
+name = "ui-docs-structure"
+description = "UI 文档结构：新建或调整 `docs/current/product/ui/`、版本 `product/ui/` 与 UI 需求文档，确认页面、组件、设计系统文档的文件形式与落点"
+model_reasoning_effort = "high"
+
+developer_instructions = """
+先读取项目 AGENTS.md 声明的 runbook 仓库中的 `runbooks/docs/structure/ui-docs-structure.md`，再按该文「前置读取」补齐上游。
+
+1. 只处理本次请求；范围、判定与产物以该 runbook 为准。
+2. 按「步骤」执行，按「验证」判定；验证未通过不得声称完成。
+"""

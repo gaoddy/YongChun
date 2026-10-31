@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：组件设计
 
 ## 适用场景

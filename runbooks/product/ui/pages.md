@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：页面设计
 
 ## 适用场景

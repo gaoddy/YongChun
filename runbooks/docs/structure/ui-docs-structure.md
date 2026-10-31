@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：UI 文档结构
 
 ## 适用场景

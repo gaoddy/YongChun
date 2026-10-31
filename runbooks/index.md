@@ -9,6 +9,7 @@
 | 分组 | Runbook | 适用场景 |
 | --- | --- | --- |
 | runbook | [runbook.md](runbook.md) | runbook 的编写、拆分、命名与索引维护 |
+| runbook | [runbook-agent-mapping.md](runbook-agent-mapping.md) | runbook 与 Claude Code/Codex agent 的映射、思考强度与生成 |
 | docs | [docs-sync.md](docs/docs-sync.md) | 代码实现后的文档回写 |
 | docs | [docs-restructure.md](docs/docs-restructure.md) | 将现有 docs 目录重构为 runbook 文档结构 |
 | docs | [docs-writing.md](docs/docs-writing.md) | 文档表述、状态标注与写作规则 |

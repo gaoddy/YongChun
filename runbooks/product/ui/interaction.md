@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：交互与反馈
 
 ## 适用场景

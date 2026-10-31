@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：Make 构建入口
 
 ## 适用场景

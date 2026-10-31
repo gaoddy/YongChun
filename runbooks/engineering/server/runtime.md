@@ -1,3 +1,8 @@
+---
+agent:
+  effort: low
+---
+
 # Runbook：服务端运行
 
 ## 适用场景

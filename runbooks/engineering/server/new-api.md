@@ -1,3 +1,8 @@
+---
+agent:
+  effort: high
+---
+
 # Runbook：新增接口
 
 ## 适用场景

@@ -1,0 +1,12 @@
+# 由 scripts/generate_runbook_agents.py 根据 runbooks/problems/fix-decision.md 生成，不要手改。
+
+name = "fix-decision"
+description = "修复决策：排查已确认根因，需要决定修在哪一层、改哪一端、修到什么程度"
+model_reasoning_effort = "xhigh"
+
+developer_instructions = """
+先读取项目 AGENTS.md 声明的 runbook 仓库中的 `runbooks/problems/fix-decision.md`，再按该文「前置读取」补齐上游。
+
+1. 只处理本次请求；范围、判定与产物以该 runbook 为准。
+2. 按「步骤」执行，按「验证」判定；验证未通过不得声称完成。
+"""
