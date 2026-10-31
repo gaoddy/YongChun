@@ -14,7 +14,8 @@
 
 - 基线分支为 `develop`，用户明确指定其他分支时除外。
 - 一个任务一个 worktree 与分支；分支名与版本计划目录对应。
-- 子 agent 在主 agent 当前 worktree 目录内执行，不单独创建 worktree，不切换到其他目录。
+- 所有子 agent 统一使用主 agent 的 worktree：在主 agent 当前 worktree 目录内执行，不单独创建 worktree，不切换到其他目录或主仓库根目录。
+- 子 agent 使用低推理强度（low），模型沿用默认；每个子 agent 只执行一个任务。
 - 多个子 agent 并行时，各自只处理自己负责的文件，同一文件不并发写。
 - 交付与提交统一由主 agent 在主 worktree 完成。
 
