@@ -77,6 +77,7 @@ LICENSE                   MIT 许可证
 .agents/plugins/          Codex marketplace 登记
 claude-commands/          Claude Code 插件命令
 codex-commands/           Codex 插件命令
+templates/                配置模板：worktree 合并队列
 skills/                   双端共用的 skill：worktree 合并队列交付
 hooks/                    UserPromptSubmit 路由提示
 scripts/                  校验脚本与测试
@@ -100,7 +101,8 @@ runbooks/
 1. 在项目根创建 `AGENTS.md`，加入下面的声明块；`CLAUDE.md` 只写一行 `@AGENTS.md`。
 2. 填写项目事实：服务端与客户端目录、首个版本号，以及 runbook 中 `<...>` 对应的框架、命令与数据库取值。
 3. 按[文档结构](runbooks/docs/structure/docs-structure.md)建立 `docs/` 骨架，按[版本文档结构](runbooks/docs/structure/version-docs-structure.md)建立首个版本目录。
-4. 不复制 `runbooks/` 到项目；规则变化回本仓库修改，避免版本分叉。
+4. 使用隔离 worktree 与合并队列交付时，从[配置模板](templates/worktree-merge-queue.toml)复制到 `.agent-runbook/worktree-merge-queue.toml` 并替换占位符。
+5. 不复制 `runbooks/` 到项目；规则变化回本仓库修改，避免版本分叉。
 
 声明块：
 

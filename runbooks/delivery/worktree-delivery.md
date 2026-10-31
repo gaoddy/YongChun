@@ -18,6 +18,7 @@
 - 配置文件放在项目根：优先 `.agent-runbook/worktree-merge-queue.toml`，同时识别 `.codex/worktree-merge-queue-delivery.toml`；`--config` 显式指定时以参数为准。
 - 配置缺失时停止，先创建配置或改为手工交付，不凭默认值执行。
 - 分支前缀只由 `project.branch_prefix` 提供，不在脚本或文档中写死。
+- 接入时从[配置模板](../../templates/worktree-merge-queue.toml)复制，替换全部 `<...>` 并删除未启用段；模板本身不参与运行。
 
 | 字段 | 作用 |
 | --- | --- |

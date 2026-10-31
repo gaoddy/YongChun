@@ -1,0 +1,80 @@
+# Worktree 合并队列交付配置模板
+#
+# 使用方式：
+# 1. 复制到项目根 `.agent-runbook/worktree-merge-queue.toml`；Codex 兼容位置为
+#    `.codex/worktree-merge-queue-delivery.toml`。
+# 2. 替换全部 <...> 为项目实际值。
+# 3. 删除未启用的段与未使用的注释项。
+# 4. 字段与流程见 runbooks/delivery/worktree-delivery.md。
+#
+# 命令模板占位符：{branch} {base_branch} {stage} {repo_path} {commit} {manifest}
+# {manifest} 由 helper 按 shell 参数引用，命令模板中不要给占位符加引号。
+#
+# 预演校验：
+# python3 <插件根>/skills/worktree-merge-queue-delivery/scripts/delivery_helper.py plan \
+#   --config .agent-runbook/worktree-merge-queue.toml \
+#   --branch <任务分支> --root <任务 worktree 绝对路径>
+
+[project]
+name = "<项目名>"
+base_branch = "develop"
+branch_prefix = "<任务分支前缀，如 task/>"
+
+[worktree]
+create = "git worktree add -b {branch} ../{branch} {base_branch}"
+clean = "git worktree remove --force ../{branch} && git branch -D {branch}"
+list = "git worktree list"
+verify = "<任务 worktree 校验命令>"
+
+[delivery]
+merge_base = "git merge --ff-only {branch}"
+push_base = "git push origin {base_branch}"
+push_commit = "git push origin {commit}:refs/heads/{base_branch}"
+
+# 合并队列：不使用队列时删除本段，并删除各 repos 中的 queue_advance_after_*。
+# stages 只列验证与本地集成阶段，最后一项作为根仓合并阶段。
+[queue]
+enabled = true
+stages = ["verified", "children-merged", "root-merged"]
+status = "<队列状态命令>"
+enqueue = "<入队命令> {branch}"
+claim = "<认领命令> {branch}"
+require_active = "<占用校验命令> {branch}"
+advance = "<阶段推进命令> {branch} {stage}"
+require_stage = "<阶段校验命令> {branch} {stage}"
+drop = "<出队命令> {branch}"
+# 本地合并完成后释放占位；可用占位符：{branch} {base_branch} {commit} {manifest}。
+release_after_merge = "<释放占位命令> {branch} {commit} {manifest}"
+
+# 独立交付：仅在合并后需要独立 worker 推送、部署或上传时保留。
+# 启用 queue.release_after_merge 时，repos 中的 deploy、upload 与
+# post_delivery_checks 每一行都必须含 {commit}；未启用时不要使用 {commit}。
+[post_merge]
+enqueue = "<交付入队命令> {manifest}"
+
+# 仓库：子仓在前、根仓最后；repos 的书写顺序即合并顺序。
+# needs 填依赖仓库的 name；单仓项目只保留根仓。
+[[repos]]
+name = "<子仓名>"
+path = "<子仓相对项目根的路径>"
+role = "<角色，如 server>"
+needs = []
+verify = ["<定向验证命令>", "<全量验证命令>"]
+merge_base = true
+push_base = true
+queue_advance_after_verify = "verified"
+queue_advance_after_merge = "children-merged"
+# sdk_generate = "<按契约生成客户端 SDK 的命令>"
+# deploy = "<部署命令，启用 release_after_merge 时需含 {commit}>"
+# upload = "<上传命令，启用 release_after_merge 时需含 {commit}>"
+# post_delivery_checks = ["<交付后检查命令，启用 release_after_merge 时需含 {commit}>"]
+
+[[repos]]
+name = "root"
+path = "."
+role = "root"
+needs = ["<子仓名>"]
+verify = ["<根仓验证命令>"]
+merge_base = true
+push_base = true
+queue_advance_after_merge = "root-merged"
