@@ -3,7 +3,7 @@
 ## 适用场景
 
 - 版本进行中产生新需求、需求调整，或需要为已确认的产品改动补技术方案。
-- 新增产品功能先按[产品功能评估](../product/feature-assessment.md)完成需求澄清与可行性调研，本文件承接已确认结论。
+- 新增产品功能先按[产品需求澄清](../product/feature-requirements.md)与[可行性调研](../product/feature-feasibility.md)完成确认，本文件承接已确认结论。
 - 不用于缺陷修复（见[缺陷修复](bugfix.md)），也不用于纯文档调整。
 - 目录、文件与状态标注形式见[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)；`product.md` 的内容按产品定义，`technical.md` 按方案设计。
 
@@ -70,4 +70,5 @@
 ## 相关
 
 - [版本开发](version-development.md)
-- [产品功能评估](../product/feature-assessment.md)
+- [产品功能需求澄清](../product/feature-requirements.md)
+- [产品功能可行性调研](../product/feature-feasibility.md)

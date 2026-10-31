@@ -21,7 +21,8 @@
 | version | [bugfix.md](version/bugfix.md) | 缺陷修复的执行与验证 |
 | version | [plan.md](version/plan.md) | 任务计划与进度跟踪 |
 | product | [product-definition.md](product/product-definition.md) | 产品规则、页面与交互的定义与调整 |
-| product | [feature-assessment.md](product/feature-assessment.md) | 新增功能前的产品需求澄清、技术可行性与冲突评估 |
+| product | [feature-requirements.md](product/feature-requirements.md) | 新增功能前的产品需求澄清与确认 |
+| product | [feature-feasibility.md](product/feature-feasibility.md) | 已确认需求的技术可行性、冲突与风险评估 |
 | product | [ui-design.md](product/ui/ui-design.md) | UI 设计、改版、实现与评审 |
 | product | [ui/README.md](product/ui/README.md) | UI 分册索引与阅读顺序 |
 | product | [ui/directions.md](product/ui/directions.md) | 三种方向方案的写法与约束 |

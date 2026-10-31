@@ -30,7 +30,7 @@
 ### 产品定义
 
 - 版本基线按[产品定义文档](../product/product-definition.md)写入 `product/`；版本进行中的改动按[需求变动](requirement-change.md)写 `update/`。
-- 新增功能先按[产品功能评估](../product/feature-assessment.md)完成产品需求澄清与可行性调研，再写产品基线或 `update/`。
+- 新增功能先按[产品需求澄清](../product/feature-requirements.md)确认产品规则，再按[可行性调研](../product/feature-feasibility.md)确认技术可行性与冲突，然后写产品基线或 `update/`。
 - 产品规则确认后才进入技术方案；未确认内容只写 `open-questions.md`。
 
 ### 技术方案
