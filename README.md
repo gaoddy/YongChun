@@ -29,7 +29,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 - **进场约束**：每篇的「适用场景」判断是否命中，「前置读取」给出动手前必须读的上下文，避免只读到片段就开始改。
 - **执行路径**：「规则」划定边界与禁止项，「步骤」给出顺序，agent 按步骤推进而不是自由发挥。
 - **完成判定**：「验证」列出可检查项，未通过不算完成；跨场景任务要求读完全部相关 runbook。
-- **场景举例**：新增接口读 [new-api](runbooks/engineering/server/new-api.md)；调整目录或分层读 [directory-structure](runbooks/engineering/directory-structure.md)、[server/layering](runbooks/engineering/server/layering.md)、[client/layering](runbooks/engineering/client/layering.md)；定位问题先读 [troubleshooting](runbooks/problems/troubleshooting.md) 再读 [fix-decision](runbooks/problems/fix-decision.md)；做 UI 从 [ui-design](runbooks/product/ui/ui-design.md) 进入分册；推进版本读 [version-development](runbooks/version/version-development.md)。
+- **场景举例**：新增产品功能先读 [feature-requirements](runbooks/product/feature-requirements.md)，需求确认后读 [feature-feasibility](runbooks/product/feature-feasibility.md)；新增接口读 [new-api](runbooks/engineering/server/new-api.md)；调整目录或分层读 [directory-structure](runbooks/engineering/directory-structure.md)、[server/layering](runbooks/engineering/server/layering.md)、[client/layering](runbooks/engineering/client/layering.md)；定位问题先读 [troubleshooting](runbooks/problems/troubleshooting.md) 再读 [fix-decision](runbooks/problems/fix-decision.md)；做 UI 从 [ui-design](runbooks/product/ui/ui-design.md) 进入分册；推进版本读 [version-development](runbooks/version/version-development.md)。
 
 新增场景时先写 runbook，再登记到触发表与[全局索引](runbooks/index.md)；两者缺一，agent 就不会在该场景读到它。
 
@@ -39,7 +39,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 
 ### Claude Code
 
-根 `.claude-plugin/plugin.json` 声明插件，`claude-commands/` 提供六个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
+根 `.claude-plugin/plugin.json` 声明插件，`claude-commands/` 提供八个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
 claude plugin marketplace add gaoddy/YongChun
@@ -49,7 +49,7 @@ claude plugin marketplace add gaoddy/YongChun
 claude plugin install yongchun@yongchun
 ```
 
-安装后可用 `/yongchun:deliver`、`/yongchun:bugfix`、`/yongchun:new-api`、`/yongchun:plan`、`/yongchun:ui`、`/yongchun:docs-restructure`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update yongchun`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
+安装后可用 `/yongchun:deliver`、`/yongchun:bugfix`、`/yongchun:feature-requirements`、`/yongchun:feature-feasibility`、`/yongchun:new-api`、`/yongchun:plan`、`/yongchun:ui`、`/yongchun:docs-restructure`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update yongchun`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
 插件同时分发 `agents/`：每篇 runbook 一个 agent，名称、描述与思考强度来自 runbook frontmatter，调用名为 `yongchun:<name>`；生成与校验见[Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
 
@@ -93,7 +93,7 @@ runbooks/
 ├── runbook.md            runbook 的编写、拆分与索引维护
 ├── docs/                 文档：写作、回写与文档结构分册
 ├── version/              版本：流程、需求、缺陷、计划
-├── product/              产品定义与 UI 分册
+├── product/              产品定义、功能评估与 UI 分册
 ├── engineering/          选型、目录、接口、数据与服务端/客户端分册
 ├── implementation/       实施：接入、任务、讨论、worktree、构建、测试
 ├── delivery/             交付：服务端发布、客户端发布与合并队列交付

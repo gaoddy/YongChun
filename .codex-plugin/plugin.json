@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "YongChun",
     "shortDescription": "按场景路由的可执行工程 runbook",
-    "longDescription": "把协作原则、开发流程、文档规范与验证标准写成 agent 可直接执行的 runbook，并提供任务交付、缺陷修复、接口新增、计划编写、UI 与文档重构入口。",
+    "longDescription": "把协作原则、开发流程、文档规范与验证标准写成 agent 可直接执行的 runbook，并提供任务交付、缺陷修复、产品需求澄清、可行性调研、接口新增、计划编写、UI 与文档重构入口。",
     "developerName": "Gaoddy",
     "category": "Developer Tools",
     "capabilities": [
