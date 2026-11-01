@@ -89,6 +89,7 @@
 | 数据库表、字段、关系与索引规划 | [runbooks/engineering/database/table-design.md](runbooks/engineering/database/table-design.md) |
 | 数据模型、索引或迁移变更 | [runbooks/engineering/database/schema-change.md](runbooks/engineering/database/schema-change.md) |
 | 新增或调整代码数据结构、DTO 与枚举 | [runbooks/engineering/data-structure-design.md](runbooks/engineering/data-structure-design.md) |
+| 复杂问题先抽象为通用模型，再讨论算法实现 | [runbooks/engineering/algorithm-design.md](runbooks/engineering/algorithm-design.md) |
 | 补充测试与执行验证 | [runbooks/implementation/testing.md](runbooks/implementation/testing.md) |
 | 代码实现后的文档回写 | [runbooks/docs/docs-sync.md](runbooks/docs/docs-sync.md) |
 | 服务端部署、发布、配置变更与回滚 | [runbooks/delivery/server-deploy.md](runbooks/delivery/server-deploy.md) |

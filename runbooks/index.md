@@ -40,6 +40,7 @@
 | engineering | [database/table-design.md](engineering/database/table-design.md) | 数据库表、字段、关系与索引的规划 |
 | engineering | [database/schema-change.md](engineering/database/schema-change.md) | 数据模型、索引与迁移变更 |
 | engineering | [data-structure-design.md](engineering/data-structure-design.md) | 代码数据结构：领域模型、值对象、传输结构与枚举 |
+| engineering | [algorithm-design.md](engineering/algorithm-design.md) | 复杂问题的抽象建模与算法选择 |
 | engineering | [server/README.md](engineering/server/README.md) | 服务端分册索引与阅读顺序 |
 | engineering | [server/layering.md](engineering/server/layering.md) | 服务端依赖方向、端口与装配 |
 | engineering | [server/architecture-options.md](engineering/server/architecture-options.md) | 按产品需求与用户规模生成三种服务架构方案 |
