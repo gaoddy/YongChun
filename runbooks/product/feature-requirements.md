@@ -22,7 +22,7 @@ agent:
 - 每条规则写成可观察、可验收的行为；无法判定的表述（如「体验更好」）改为具体结果。
 - 明确本次不做的内容与原因，避免范围在后续评估中被反向扩大。
 - 需求澄清工作稿写在 `output/product-requirements/<需求-slug>/product.md`：尚未建立版本 `update/<需求>/` 时写该文件，已建立时直接更新其中的 `product.md`，不再另建工作稿。`output/` 已忽略，工作稿不提交。
-- 目录名用小写 kebab-case，一个需求一个目录，slug 与后续 `update/<YYYY-MM-DD>-<slug>/` 保持一致。工作稿首行标注「待确认」或「已确认」，每条结论标注「已确认」「待确认」或「已否决」；本阶段不建[讨论记录](../implementation/discussion-record.md)中的 `docs/drafts/`。
+- 目录名用小写 kebab-case，一个需求一个目录，slug 与后续 `update/<YYYY-MM-DD>-<slug>/` 保持一致。工作稿首行标注「待确认」或「已确认」，每条结论标注「已确认」「待确认」或「已否决」；本阶段不建[讨论记录](../implementation/discussion-record.md)中的 `output/drafts/`。
 - 完成条件：没有任何待确认项、每条规则可验收、用户明确确认；未满足前不进入可行性调研。
 - 无法确认的事项写入版本 `open-questions.md`，不在产品文档中保留待定分支或备选方案。
 

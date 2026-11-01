@@ -51,7 +51,7 @@ agent:
 
 ### 记录与落点
 
-- 讨论过程按[讨论记录](../implementation/discussion-record.md)写入 `docs/drafts/<主题>.md`，每轮先读文件再继续。
+- 讨论过程按[讨论记录](../implementation/discussion-record.md)写入 `output/drafts/<主题>.md`，每轮先读文件再继续。
 - 结论稳定后写入承载文档：版本开发中写入 `docs/versions/<版本>/technical/` 的技术方案，已实现的写入 `docs/current/technical/<模块>/`；位置规则见[版本文档结构](../docs/structure/version-docs-structure.md)与[文档结构](../docs/structure/docs-structure.md)。
 - 承载文档包含：问题陈述、对照表、规模假设、选定算法、复杂度、正确性依据、边界样例与否决方案的一句话原因；不写讨论过程。
 
@@ -64,7 +64,7 @@ agent:
 ## 步骤
 
 1. 确认问题不能靠现成能力直接解决；能解决时退出本流程。
-2. 建立 `docs/drafts/<主题>.md`，写一句话问题陈述、输入输出、目标函数、硬约束与软约束、样例。
+2. 建立 `output/drafts/<主题>.md`，写一句话问题陈述、输入输出、目标函数、硬约束与软约束、样例。
 3. 写「业务对象 → 抽象元素」对照表与规模数量级，尝试归约到已知问题类。
 4. 列出边界样例与期望结果，确认抽象模型能表达全部样例与约束。
 5. 写基线方案与至少一个优化方案，逐项给出复杂度、正确性依据与成本。

@@ -51,7 +51,7 @@ agent:
 | 产品需求的条件或调整 | 写回 `output/product-requirements/<需求-slug>/product.md`（尚未进入需求变动时）或 `docs/versions/<版本>/update/<需求>/product.md`，按[需求变动](../version/requirement-change.md) |
 | 可行性约束与冲突处理 | 产品确认后写入 `technical.md`，不提前写技术方案 |
 | 无法确认的事项 | 版本 `open-questions.md`，写明问题、影响范围与待确认方 |
-| 调研过程 | `docs/drafts/<主题>.md`，结论回写后删除 |
+| 调研过程 | `output/drafts/<主题>.md`，结论回写后删除 |
 
 ## 步骤
 

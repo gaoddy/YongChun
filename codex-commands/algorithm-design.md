@@ -9,7 +9,7 @@ argument-hint: <问题描述>
 2. 读取并按内容执行：
    - `runbooks/engineering/algorithm-design.md`
    - `runbooks/implementation/discussion-record.md`
-3. 先确认问题无法靠现成能力直接解决；在 `docs/drafts/<主题>.md` 写问题陈述、约束、样例、对照表、规模与边界样例。
+3. 先确认问题无法靠现成能力直接解决；在 `output/drafts/<主题>.md` 写问题陈述、约束、样例、对照表、规模与边界样例。
 4. 至少给基线与优化两个候选，各写复杂度、正确性依据与成本；近似方案给质量指标与阈值。
 5. 选满足规模与时限的最简单方案，经用户确认后写入承载文档并删除讨论记录。
 
