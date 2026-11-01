@@ -16,7 +16,7 @@ agent:
 
 ## 输入
 
-- 已确认的产品需求：`update/<需求>/product.md` 或版本 `product/` 基线。
+- 已确认的产品需求：`output/product-requirements/<需求-slug>/product.md`（尚未进入需求变动时）、`docs/versions/<版本>/update/<需求>/product.md` 或版本 `product/` 基线。
 - 现有实现：相关页面、接口、数据结构、依赖与共享层。
 
 ## 调研维度
@@ -48,19 +48,19 @@ agent:
 
 | 结论 | 落点 |
 | --- | --- |
-| 产品需求的条件或调整 | `docs/versions/<版本>/update/<需求>/product.md`，按[需求变动](../version/requirement-change.md) |
+| 产品需求的条件或调整 | 写回 `output/product-requirements/<需求-slug>/product.md`（尚未进入需求变动时）或 `docs/versions/<版本>/update/<需求>/product.md`，按[需求变动](../version/requirement-change.md) |
 | 可行性约束与冲突处理 | 产品确认后写入 `technical.md`，不提前写技术方案 |
 | 无法确认的事项 | 版本 `open-questions.md`，写明问题、影响范围与待确认方 |
 | 调研过程 | `docs/drafts/<主题>.md`，结论回写后删除 |
 
 ## 步骤
 
-1. 读取已确认的 `product.md` 或版本产品基线，确认没有待确认项；存在时停止并回到需求澄清。
+1. 读取已确认的产品需求工作稿、`update/` 中的 `product.md` 或版本产品基线，确认没有待确认项；存在时停止并回到需求澄清。
 2. 盘点相关页面、接口、数据结构、依赖与共享层，列出可复用与需改动项。
 3. 按调研维度逐项给出结论与可核实依据。
 4. 列出全部冲突点、成本与风险，给出可行、有条件可行或不可行的结论。
 5. 与用户确认结论；有条件可行与不可行时先调整并重新确认产品需求。
-6. 按[需求变动](../version/requirement-change.md)进入技术确认；有条件可行时先把条件写回 `product.md`，未决项写入版本 `open-questions.md`，删除讨论记录。
+6. 按[需求变动](../version/requirement-change.md)进入技术确认；有条件可行时先把条件写回产品需求工作稿或 `update/` 中的 `product.md`，未决项写入版本 `open-questions.md`，删除讨论记录。
 
 ## 验证
 
@@ -70,7 +70,7 @@ agent:
 - 每个冲突点写明受影响对象与处理方式。
 - 结论为三种之一；有条件可行写明前置条件，不可行给出替代方案或排除理由。
 - 未提前写 `technical.md` 或拆分任务。
-- 未决事项只在版本 `open-questions.md`，讨论记录已删除。
+- 未决事项只在版本 `open-questions.md`，讨论记录已删除；产品需求工作稿已按需求变动回写或保留在 `output/` 边界内。
 
 ## 相关
 
