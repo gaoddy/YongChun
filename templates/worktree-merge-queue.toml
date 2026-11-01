@@ -10,7 +10,7 @@
 # 命令模板占位符：{branch} {base_branch} {stage} {repo_path} {commit} {manifest}
 # {manifest} 由 helper 按 shell 参数引用，命令模板中不要给占位符加引号。
 #
-# 交付顺序固定：验证 → 合并 base_branch → 清理任务 worktree → 释放队列 →
+# 交付顺序固定：验证 → 合并 base_branch → 清理任务 worktree 与任务分支 → 释放队列 →
 # 独立 worker 在合并 commit 上推送、部署与上传。不支持先部署任务分支或任务 worktree。
 #
 # 预演校验：
@@ -25,6 +25,7 @@ branch_prefix = "<任务分支前缀，如 task/>"
 
 [worktree]
 create = "git worktree add -b {branch} ../{branch} {base_branch}"
+# clean 必须同时移除 worktree 并删除任务分支，合并后由 run 自动执行。
 clean = "git worktree remove --force ../{branch} && git branch -D {branch}"
 list = "git worktree list"
 verify = "<任务 worktree 校验命令>"

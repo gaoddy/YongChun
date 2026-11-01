@@ -74,7 +74,8 @@ agent:
 - 部署对象是 `base_branch` 上的合并 commit：`repos[].deploy`、`upload` 与 `post_delivery_checks` 每条都必须含 `{commit}`，不得指向任务分支或任务 worktree。
 - 根仓合并后，helper 把 manifest 写入共享 Git 目录的 `delivery-jobs/<id>.json`，记录每个仓库的来源路径、合并 commit 与已渲染的交付命令。
 - manifest 状态从 `awaiting-release` 开始，队列释放成功后变为 `ready`；worker 不消费未释放的任务。
-- 清理任务 worktree、释放占位、提交 handoff 都从基线 checkout 执行，不依赖已删除的任务目录。
+- 清理任务 worktree 与任务分支、释放占位、提交 handoff 都从基线 checkout 执行，不依赖已删除的任务目录。
+- `worktree.clean` 必须同时移除任务 worktree 并删除任务分支；只移除 worktree 而保留分支视为清理未完成，不释放队列占位。
 - 独立 worker 按 `{commit}` 取独立 checkout 或产物执行命令，不复用会移动的基线工作区。
 - 推送使用记录的确切 SHA，不加 force；远端已有更新的后代时先确认祖先关系。
 - 同一环境的部署串行执行或做代数校验，旧任务不得覆盖新结果；重试只复用同一 manifest，不重新合并。
@@ -93,7 +94,7 @@ agent:
 3. 任务完成后入队，等待前序任务结束并读取队列状态。
 4. 成为队首后执行 `run`，由它完成入队、认领与基线同步。
 5. 按仓库顺序执行验证，全部通过后先合并子仓、最后合并根仓。
-6. 记录合并 commit 与交付命令到 manifest，清理任务 worktree。
+6. 记录合并 commit 与交付命令到 manifest，清理任务 worktree 并删除任务分支。
 7. 从基线 checkout 释放队列占位，再提交 handoff。
 8. 由独立 worker 在已合入 `base_branch` 的记录 commit 上执行推送、部署与上传，并回报各自结果。
 
@@ -120,7 +121,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/worktree-merge-queue-delivery/scripts/deli
 - 子仓先于根仓合并，根仓提交包含最终子模块指针。
 - manifest 记录精确 commit，worker 使用独立 checkout，推送无 force。
 - 推送、部署与上传都使用基线合并 commit，任务 worktree 内没有部署步骤。
-- 任务 worktree 已清理，队列已释放，worker 结果与合并结果分别报告。
+- 任务 worktree 与任务分支均已清理，队列已释放，worker 结果与合并结果分别报告。
 - 异常路径报告失败命令、已合并范围与队列状态。
 
 ## 相关
