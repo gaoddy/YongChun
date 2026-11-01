@@ -1,6 +1,6 @@
 ---
 name: discussion-record
-description: "讨论记录：草案、方案探讨、技术咨询、需求澄清等尚未形成确定结论的交流"
+description: "讨论记录：草案、方案探讨、技术咨询、产品需求澄清等尚未形成确定结论的交流"
 effort: low
 ---
 

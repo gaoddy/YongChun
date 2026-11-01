@@ -8,7 +8,7 @@ agent:
 ## 适用场景
 
 - 版本进行中产生新需求、需求调整，或需要为已确认的产品改动补技术方案。
-- 新增产品功能先按[产品需求澄清](../product/feature-requirements.md)与[可行性调研](../product/feature-feasibility.md)完成确认，本文件承接已确认结论；澄清阶段的工作稿位于 `output/product-requirements/<需求-slug>/product.md`。
+- 新增产品功能先按[产品需求澄清](../product/feature-requirements.md)与[可行性调研](../product/feature-feasibility.md)完成确认，本文件承接已确认结论；澄清阶段的讨论记录位于 `output/drafts/<需求-slug>.md`。
 - 不用于缺陷修复（见[缺陷修复](bugfix.md)），也不用于纯文档调整。
 - 目录、文件与状态标注形式见[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)；`product.md` 的内容按产品定义，`technical.md` 按方案设计。
 
@@ -29,7 +29,7 @@ agent:
 ## 产品确认
 
 - 按[产品定义文档](../product/product-definition.md)写 `product.md`，只写相对版本基线的增量：新增、修改、删除分别是什么。
-- 澄清阶段已有 `output/product-requirements/<需求-slug>/product.md` 时，整理为相对版本基线的增量写入 `update/<需求>/product.md`，核对后删除工作稿；已建立 `update/<需求>/` 时直接更新其中的 `product.md`。
+- 澄清阶段已有 `output/drafts/<需求-slug>.md` 时，整理为相对版本基线的增量写入 `update/<需求>/product.md`，核对后删除讨论记录；已建立 `update/<需求>/` 时直接更新其中的 `product.md`。
 - 写清受影响页面、入口、状态（加载、空、错误、无权限、离线）与角色权限；每条规则可验收。
 - 不写接口、表结构、实现方案与任务拆分。
 - 不能确定的产品规则写入版本 `open-questions.md`，不在文件里保留备选或待定分支。
@@ -59,7 +59,7 @@ agent:
 ## 步骤
 
 1. 确认需求归属版本，判断属于需求变动、缺陷修复还是纯技术改动。
-2. 按[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)建立需求目录并写 `product.md`；澄清阶段已有 `output/` 工作稿时整理为增量写入后删除工作稿；纯技术改动直接写 `technical.md`。
+2. 按[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)建立需求目录并写 `product.md`；澄清阶段已有 `output/drafts/` 讨论记录时整理为增量写入后删除；纯技术改动直接写 `technical.md`。
 3. 与用户确认产品规则，结论同步版本产品基线。
 4. 按端编写 `technical.md`，确认后同步版本技术基线。
 5. 按[任务计划](plan.md)拆分任务并实施。
@@ -72,7 +72,7 @@ agent:
 - 产品规则未确认前没有 `technical.md` 与实施。
 - 每条产品规则在技术方案中有落点，技术方案未新增未确认规则。
 - 已实现内容已回写删除，未确认事项只在版本 `open-questions.md`。
-- `output/` 中的澄清工作稿已删除，未进入提交。
+- `output/drafts/` 中的澄清讨论记录已删除，未进入提交。
 
 ## 相关
 

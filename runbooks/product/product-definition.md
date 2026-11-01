@@ -21,7 +21,7 @@ agent:
 | --- | --- | --- |
 | 版本产品基线 | `docs/versions/<版本>/product/` | 目标形态，标注「方案未实施」 |
 | 需求变动 | `docs/versions/<版本>/update/<需求>/product.md` | 首行标注「待确认」或「已确认」 |
-| 需求澄清工作稿 | `output/product-requirements/<需求-slug>/product.md` | 首行标注「待确认」或「已确认」，确认后回写 `update/` 并删除，不提交 |
+| 需求澄清讨论记录 | `output/drafts/<需求-slug>.md` | 按[讨论记录](../implementation/discussion-record.md)标注状态，确认后回写 `update/` 并删除，不提交 |
 | 范围与排除项 | `docs/versions/<版本>/scope.md`（按需） | 与版本基线同步 |
 | 已实现状态 | `docs/current/product/` | 代码落地的同一任务内写入，标注「已实现」 |
 | 未确认事项 | `docs/versions/<版本>/open-questions.md` | 确认后移出，结论写入对应产品文档 |
@@ -68,7 +68,7 @@ agent:
 - 文档中不含技术实现、接口契约与任务拆分。
 - 未确认规则已进入 `open-questions.md`，文档内无待定分支。
 - 状态标注与内容一致，受影响的产品文档已列出或在同一任务内更新。
-- 需求澄清工作稿位于 `output/`，未提交；确认后已回写 `update/` 并删除。
+- 需求澄清讨论记录位于 `output/drafts/`，未提交；确认后已回写 `update/` 并删除。
 
 ## 相关
 

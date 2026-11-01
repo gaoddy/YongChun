@@ -21,26 +21,26 @@ agent:
 - 按产品定义要素逐项写清：定位与用户、范围、功能规则、页面与交互、状态与边界、角色与权限、数据与字段、验收标准。
 - 每条规则写成可观察、可验收的行为；无法判定的表述（如「体验更好」）改为具体结果。
 - 明确本次不做的内容与原因，避免范围在后续评估中被反向扩大。
-- 需求澄清工作稿写在 `output/product-requirements/<需求-slug>/product.md`：尚未建立版本 `update/<需求>/` 时写该文件，已建立时直接更新其中的 `product.md`，不再另建工作稿。`output/` 已忽略，工作稿不提交。
-- 目录名用小写 kebab-case，一个需求一个目录，slug 与后续 `update/<YYYY-MM-DD>-<slug>/` 保持一致。工作稿首行标注「待确认」或「已确认」，每条结论标注「已确认」「待确认」或「已否决」；本阶段不建[讨论记录](../implementation/discussion-record.md)中的 `output/drafts/`。
+- 澄清过程按[讨论记录](../implementation/discussion-record.md)写在 `output/drafts/<需求-slug>.md`：尚未建立版本 `update/<需求>/` 时写该文件，已建立时直接更新其中的 `product.md`，不再另建讨论记录。
+- slug 用小写 kebab-case，一个需求一个文件，与后续 `update/<YYYY-MM-DD>-<slug>/` 保持一致；已确认结论按产品定义要素分节。
 - 完成条件：没有任何待确认项、每条规则可验收、用户明确确认；未满足前不进入可行性调研。
 - 无法确认的事项写入版本 `open-questions.md`，不在产品文档中保留待定分支或备选方案。
 
 ## 步骤
 
 1. 写清功能设想：目标用户、使用场景、期望结果与明确不做。
-2. 尚未建立版本 `update/<需求>/` 时建立 `output/product-requirements/<需求-slug>/product.md`，按产品定义要素逐项列出待确认问题。
-3. 只澄清产品规则，逐条与用户确认并落盘到工作稿；技术问题记录后置。
+2. 尚未建立版本 `update/<需求>/` 时建立 `output/drafts/<需求-slug>.md`，按产品定义要素逐项列出待确认问题。
+3. 只澄清产品规则，逐条与用户确认并落盘到讨论记录；技术问题记录后置。
 4. 核对完成条件：无待确认项、每条规则可验收、用户确认。
-5. 按[需求变动](../version/requirement-change.md)把已确认需求写入 `docs/versions/<版本>/update/<需求>/product.md`，未决项写入版本 `open-questions.md`，核对后删除 `output/product-requirements/<需求-slug>/` 工作稿。
+5. 按[需求变动](../version/requirement-change.md)把已确认需求写入 `docs/versions/<版本>/update/<需求>/product.md`，未决项写入版本 `open-questions.md`，核对后删除 `output/drafts/<需求-slug>.md`。
 
 ## 验证
 
 - 全程没有讨论技术实现、接口、表结构、依赖与成本。
 - 每条产品规则可验收，无待确认项，用户已确认。
 - 明确不做的内容与原因已写明。
-- 未决事项只在版本 `open-questions.md`，工作稿已回写并删除。
-- 已确认需求可在 `docs/versions/<版本>/update/<需求>/product.md` 中找到；`output/` 工作稿未提交。
+- 未决事项只在版本 `open-questions.md`，讨论记录已回写并删除。
+- 已确认需求可在 `docs/versions/<版本>/update/<需求>/product.md` 中找到；讨论记录未提交。
 
 ## 相关
 
