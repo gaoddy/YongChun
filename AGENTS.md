@@ -38,7 +38,7 @@
 - 任务计划只在实施计划时创建，写在 `docs/plan/<分支名>/`，每个计划一个目录；`docs/plan/` 已忽略、不提交，任务完成后删除。
 - Agent 产物由 `scripts/generate_runbook_agents.py` 从 runbook frontmatter 生成：Claude Code 在 `agents/`，Codex 在 `codex-agents/`；生成物提交、禁止手改，规则见 [Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
 - 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
-- 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用、agent frontmatter 与生成物漂移、双端插件清单），退出码 0 为通过；skill 执行器测试入口是 `python3 -m unittest discover -s skills/worktree-merge-queue-delivery/scripts`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
+- 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用、agent frontmatter 与生成物漂移、双端插件清单），退出码 0 为通过；该脚本只校验本仓库自身，不随插件提供给接入项目，接入项目不得调用；skill 执行器测试入口是 `python3 -m unittest discover -s skills/worktree-merge-queue-delivery/scripts`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
 - 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；命令只做路由与执行契约，规则以 runbook 为准。
 - 开发阶段只提交并推送 `develop`；正式发版按[版本发布](runbooks/delivery/version-release.md)执行，快进合并到 `main`，以 `.claude-plugin/plugin.json` 的 `version` 打 `v<version>` annotated tag 并推送。
 
