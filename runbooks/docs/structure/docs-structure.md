@@ -29,17 +29,39 @@ docs/
 ├── versions/            按版本计划
 │   ├── README.md        版本总览
 │   └── <版本>/          版本目录，结构见版本开发
+├── releases/            已发布版本的更新内容
+│   ├── README.md        发版记录索引
+│   └── <版本>.md        单个版本的更新内容
 └── plan/                实施计划，每个计划一个目录（本地，不提交）
 ```
 
-- `docs/` 保存状态与计划：已实现的状态 `current/`，未实现的 `versions/`，实施中的 `plan/`；`current/` 对应当前代码实现，不写方案与规划。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
+- `docs/` 保存状态、记录与计划：已实现的状态 `current/`，未实现的 `versions/`，已发布版本的更新内容 `releases/`，实施中的 `plan/`；`current/` 对应当前代码实现，不写方案与规划。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
 - 一级目录职责固定；新增一级目录前先确认现有目录无法承载，并在 `docs/README.md` 登记其职责。
 - `current/product/`、`current/technical/` 按模块或业务域建子目录，不在根目录堆积文件；每个子目录必须有 `README.md` 说明范围并索引其中的文件。
 - `versions/<版本>/` 的结构固定为 `README.md`、`open-questions.md`、`scope.md`（按需）、`product/`、`technical/`、`update/`、`bugfix/`，细节见[版本文档结构](version-docs-structure.md)。
+- `releases/` 记录已发布版本的更新内容，一个版本一个文件，发版时写入，形式见下文[发版记录](#发版记录-releases)。
 - `plan/` 只保存实施中的任务计划，一个计划一个目录；目录已加入 `.gitignore`，不提交，结构见下文[实施计划](#实施计划-plan)。
 - 讨论记录（进行中的草案、探讨与咨询结论）不放在 `docs/`，统一写在 `output/drafts/<主题>.md`，`output/` 已忽略、不提交；流程与文件结构见[讨论记录](../../implementation/discussion-record.md)。
-- 文件与目录名统一小写、kebab-case、`.md` 扩展名；名称表达主题，不用版本号、人名、日期（`update/`、`bugfix/` 的日期目录除外）或「note」「misc」这类无信息词。
+- 文件与目录名统一小写、kebab-case、`.md` 扩展名；名称表达主题，不用版本号、人名、日期（`versions/`、`releases/` 的版本号与 `update/`、`bugfix/` 的日期目录除外）或「note」「misc」这类无信息词。
 - 一个文件只写一个主题；内容跨两个业务域或篇幅超过单次阅读范围时拆分，并用子目录 `README.md` 串联。
+
+## 发版记录 `releases/`
+
+- 路径：`docs/releases/<版本>.md`，一个已发布版本一个文件；版本号与 `docs/versions/<版本>/`、tag 及已发布产物一致。
+- 只在发版时创建：内容随发版提交进入 `main`，与 tag 指向同一次发布；未发布的版本不建文件。
+- 文件固定包含：
+
+| 内容 | 要求 |
+| --- | --- |
+| 标题 | `# <版本>`，与文件名一致 |
+| 发布日期 | `YYYY-MM-DD`，取实际发布当天 |
+| 更新内容 | 按「新增」「调整」「修复」分组，没有的组写「无」 |
+
+- 每条写用户可感知的变化，一句话说明；不写实现细节、备选方案与未发布内容。
+- 内容来源为版本 `README.md` 与 `update/`、`bugfix/` 中已确认的改动，不复制需求与技术方案原文。
+- 已发布的记录不修改；内容有误时提升版本号重新发布，并在新版本的记录中说明。
+- `releases/README.md` 按版本倒序列出全部发版记录与一句话说明。
+- 引入该目录时只登记本次及以后的发版，不补写历史版本。
 
 ## 实施计划 `plan/`
 

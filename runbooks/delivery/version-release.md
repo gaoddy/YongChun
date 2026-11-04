@@ -20,6 +20,7 @@ agent:
 - 版本状态为「已完成」，`update/`、`bugfix/` 为空，文档已按[文档回写](../docs/docs-sync.md)更新。
 - 验证矩阵全部通过，失败项已修复而非跳过或放宽断言。
 - 版本记录、待打 tag 与产物使用同一版本号；任一处不一致时不进入发版。
+- 发版记录 `docs/releases/<版本>.md` 已写入并与版本号一致；本仓库不维护 `docs/`，不适用该项。
 - `open-questions.md` 中没有阻塞发版的待确认项；存在时先确认并写入承载它的文档。
 
 ## 发布顺序与版本号
@@ -58,6 +59,7 @@ git push origin v<版本>
 ## 本仓库插件发版
 
 - 版本号同时写入 `.claude-plugin/plugin.json` 与 `.codex-plugin/plugin.json` 的 `version`，并与版本记录一致。
+- 本仓库不维护 `docs/`，跳过发版记录；版本号以两个插件清单的 `version` 与 tag 为准。
 - 发版前在仓库根目录运行：
 
 ```bash
@@ -72,17 +74,18 @@ python3 -m unittest discover -s skills/worktree-merge-queue-delivery/scripts
 ## 步骤
 
 1. 核对发布判定项：版本状态、`update/`、`bugfix/`、验证结果、待确认项与版本号。
-2. 确定版本号并同步版本记录；本仓库同时同步两个插件清单的 `version`。
+2. 确定版本号并同步版本记录；在 `docs/releases/<版本>.md` 写入本版本更新内容，形式见[文档结构](../docs/structure/docs-structure.md#发版记录-releases)；本仓库同时同步两个插件清单的 `version`，并跳过发版记录。
 3. 先发布服务端，再发布客户端；本仓库跳过此步。
 4. 在 `develop` 上完成发版提交并推送：`git push origin develop`。
 5. 快进合并 `main` 并推送。
 6. 创建 annotated tag 并推送。
-7. 核对 `main` 指向、tag、版本记录与插件清单一致；本仓库运行校验命令。
+7. 核对 `main` 指向、tag、版本记录、发版记录与插件清单一致；本仓库运行校验命令。
 
 ## 验证
 
 - `main` 是 `develop` 的快进结果，没有额外的合并提交或历史改写。
 - tag `v<版本>` 已推送并指向发版提交，与版本记录、插件清单中的版本号一致。
+- `docs/releases/<版本>.md` 已随发版提交，版本号与 tag、版本记录一致；本仓库不维护 `docs/`，不适用。
 - 服务端与客户端版本满足兼容要求，客户端最低支持版本已确认。
 - 回滚路径在发版前已确认可执行。
 - 本仓库的 `python3 scripts/check-runbooks.py` 与 skill 测试退出码为 0。
