@@ -37,6 +37,7 @@ push_commit = "git push origin {commit}:refs/heads/{base_branch}"
 
 # 合并队列：run 必须配置 queue.release_after_merge；仅在只做 plan 预演或改用手工交付时
 # 才可删除本段，并同步删除各 repos 中的 queue_advance_after_*。
+# 入队即开始合并：任务完成后不要提前入队，确定合并时再执行 run。
 # stages 只列验证与本地集成阶段，最后一项作为根仓合并阶段。
 [queue]
 enabled = true
