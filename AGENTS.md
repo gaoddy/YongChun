@@ -101,6 +101,7 @@
 | 日志、指标、追踪与告警 | [runbooks/problems/observability.md](runbooks/problems/observability.md) |
 | 服务端源码、依赖与本地运行 | [runbooks/engineering/server/runtime.md](runbooks/engineering/server/runtime.md) |
 | 客户端运行、联调与实机验证 | [runbooks/engineering/client/runtime.md](runbooks/engineering/client/runtime.md) |
+| Flutter 客户端构建、产物、混淆与签名 | [runbooks/engineering/client/flutter-build.md](runbooks/engineering/client/flutter-build.md) |
 | 文档写作与表述规范 | [runbooks/docs/docs-writing.md](runbooks/docs/docs-writing.md) |
 | 新建文档、调整 docs/ 目录与文档结构 | [runbooks/docs/structure/docs-structure.md](runbooks/docs/structure/docs-structure.md) |
 | 按 runbook 模式重构现有 docs 目录 | [runbooks/docs/docs-restructure.md](runbooks/docs/docs-restructure.md) |

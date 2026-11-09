@@ -43,4 +43,5 @@ agent:
 ## 相关
 
 - [客户端发布](../../delivery/client-release.md)
+- [Flutter 构建](flutter-build.md)
 - [Make 构建入口](../../implementation/make.md)

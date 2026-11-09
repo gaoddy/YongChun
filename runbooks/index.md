@@ -59,6 +59,7 @@
 | engineering | [client/layering.md](engineering/client/layering.md) | 客户端页面、状态、数据源与共享层分层 |
 | engineering | [client/design.md](engineering/client/design.md) | 客户端技术方案设计 |
 | engineering | [client/runtime.md](engineering/client/runtime.md) | 客户端运行、构建参数、联调与实机验证 |
+| engineering | [client/flutter-build.md](engineering/client/flutter-build.md) | Flutter 各端构建产物、混淆、签名与校验 |
 | implementation | [project-init.md](implementation/project-init.md) | 新项目接入 runbook 集合与文档骨架 |
 | implementation | [task-delivery.md](implementation/task-delivery.md) | 任务执行、验证与交付 |
 | implementation | [discussion-record.md](implementation/discussion-record.md) | 草案、探讨与咨询的结论记录与注意力锚定 |

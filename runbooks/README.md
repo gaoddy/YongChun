@@ -19,7 +19,7 @@ runbooks/
 ├── engineering/       工程规则：选型、目录、接口、数据、算法
 │   ├── database/      数据库分册：表规划与 schema 变更
 │   ├── server/        服务端分册：分层、方案设计、运行
-│   └── client/        客户端分册：分层、方案设计、运行
+│   └── client/        客户端分册：分层、方案设计、运行、Flutter 构建
 ├── implementation/    实施：任务执行、讨论记录、worktree、构建、测试
 ├── delivery/          交付：服务端发布、客户端发布、版本发布与合并队列交付
 └── problems/          问题处理：排查与修复决策
