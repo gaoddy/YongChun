@@ -24,11 +24,12 @@ base_branch = "develop"
 branch_prefix = "<任务分支前缀，如 task/>"
 
 [worktree]
-create = "git worktree add -b {branch} ../{branch} {base_branch}"
+# 创建只走插件提供的唯一入口；把 <插件根> 换成实际路径后使用。
+create = "sh <插件根>/skills/worktree-guard/scripts/worktree_create.sh {branch} {base_branch}"
 # clean 必须同时移除 worktree 并删除任务分支，合并后由 run 自动执行。
-clean = "git worktree remove --force ../{branch} && git branch -D {branch}"
+clean = "git worktree remove --force .worktrees/$(printf '%s' {branch} | tr / -) && git branch -D {branch}"
 list = "git worktree list"
-verify = "<任务 worktree 校验命令>"
+verify = "git worktree list --porcelain"
 
 [delivery]
 merge_base = "git merge --ff-only {branch}"
