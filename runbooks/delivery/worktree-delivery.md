@@ -44,7 +44,7 @@ agent:
 | `repos[].deploy` / `upload` / `post_delivery_checks` | 只由独立 worker 在基线合并 commit 上执行的交付命令 |
 
 - 命令模板占位符：`{branch}`、`{base_branch}`、`{stage}`、`{repo_path}`、`{commit}`、`{manifest}`；`{manifest}` 由 helper 按 shell 参数引用，模板中不再加引号。
-- `worktree.create` 指向 `skills/worktree-guard/scripts/worktree_create.sh`，模板写成 `worktree_create.sh {branch} {base_branch}`；创建期校验（基线、前缀、忽略规则、目标冲突）由脚本完成。
+- `worktree.create` 指向 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，模板写成 `worktree_create.sh {branch} {base_branch}`；创建期校验（基线、前缀、忽略规则、目标冲突）由脚本完成。
 - `worktree.verify` 只补充脚本不覆盖的检查，例如 worktree 路径位于 `<repo>/.worktrees/` 下、分支未被他处占用；不得用 `git worktree add` 替代 `worktree.create`。
 
 ### 队列
@@ -105,12 +105,12 @@ agent:
 辅助脚本（插件内路径）：
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/worktree-merge-queue-delivery/scripts/delivery_helper.py" plan \
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/delivery/delivery-merge-queue/scripts/delivery_helper.py" plan \
   --config <配置文件> --branch <任务分支> --root <任务 worktree 绝对路径>
 ```
 
 ```bash
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/worktree-merge-queue-delivery/scripts/delivery_helper.py" run \
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/delivery/delivery-merge-queue/scripts/delivery_helper.py" run \
   --config <配置文件> --branch <任务分支> --root <任务 worktree 绝对路径>
 ```
 

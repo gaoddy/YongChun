@@ -88,7 +88,7 @@ case "$subcommand" in
                 exit 0
                 ;;
             *)
-                deny "worktree 必须通过 worktree_create.sh 创建，见 yongchun runbooks/implementation/worktree.md。改用 skills/worktree-guard/scripts/worktree_create.sh <branch> [base]，不要直接调用 git worktree add。"
+                deny "worktree 必须通过 worktree_create.sh 创建，见 yongchun runbooks/implementation/worktree.md。改用 skills/worktree/worktree-guard/scripts/worktree_create.sh <branch> [base]，不要直接调用 git worktree add。"
                 ;;
         esac
         ;;

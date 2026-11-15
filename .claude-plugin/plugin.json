@@ -7,5 +7,6 @@
   },
   "license": "MIT",
   "repository": "https://github.com/gaoddy/YongChun",
-  "commands": ["./claude-commands/"]
+  "commands": ["./claude-commands/"],
+  "skills": ["./skills/worktree/", "./skills/delivery/"]
 }

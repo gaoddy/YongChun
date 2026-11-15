@@ -64,7 +64,7 @@ git push origin v<版本>
 
 ```bash
 python3 scripts/check-runbooks.py
-python3 -m unittest discover -s skills/worktree-merge-queue-delivery/scripts
+python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts
 ```
 
 - 两个命令退出码均为 0 才进入发版；失败时修复后重跑，不放宽校验。

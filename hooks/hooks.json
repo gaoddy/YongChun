@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/skills/worktree-guard/scripts/worktree_guard.sh\"",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_guard.sh\"",
             "timeout": 10
           }
         ]

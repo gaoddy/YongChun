@@ -18,7 +18,7 @@ agent:
 ## 规则
 
 - 基线分支为 `develop`，用户明确指定其他分支时除外；项目存在 `.yongchun/worktree-merge-queue.toml` 时以 `project.base_branch` 为准。
-- 创建只走 `skills/worktree-guard/scripts/worktree_create.sh`，不直接执行 `git worktree add`；绕过入口的命令由守卫拒绝。
+- 创建只走 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，不直接执行 `git worktree add`；绕过入口的命令由守卫拒绝。
 - worktree 根固定为 `<repo>/.worktrees/<branch 的 / 换成 ->`，该目录必须在 `.gitignore` 中忽略（`/.worktrees/`），否则创建失败。
 - 分支前缀白名单为 `feature/`、`fix/`、`claude/`；队列配置存在时以 `project.branch_prefix` 为准，不在脚本外另立前缀。
 - 一个任务一个 worktree 与分支；分支名与 `docs/plan/<分支名>/` 计划目录对应。
@@ -33,7 +33,7 @@ agent:
 2. 创建 worktree 与分支，冲突、脏工作区、基线缺失时脚本会拒绝执行：
 
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/skills/worktree-guard/scripts/worktree_create.sh" <branch> [base]
+"${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_create.sh" <branch> [base]
 ```
 
 3. 在 worktree 内完成修改与验证；计划目录见[任务执行与交付](task-delivery.md)。
@@ -60,7 +60,7 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/skills/worktree-guard/scripts/worktree_guard.sh\"",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_guard.sh\"",
             "timeout": 10
           }
         ]

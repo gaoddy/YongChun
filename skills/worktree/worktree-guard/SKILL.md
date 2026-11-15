@@ -11,12 +11,12 @@ description: Use when creating, removing, or validating task worktrees, or when 
 - 需要校验 worktree 是否符合基线分支、分支前缀与根目录约定。
 - 需要拦截绕过唯一创建入口的 `git worktree` 调用。
 
-创建时机与交付流程不在本文件，按插件根目录的 `runbooks/implementation/worktree.md` 执行，路径相对本文件为 `../../runbooks/implementation/worktree.md`。插件根目录在 Claude Code 为 `${CLAUDE_PLUGIN_ROOT}`，在 Codex 为插件安装目录。
+创建时机与交付流程不在本文件，按插件根目录的 `runbooks/implementation/worktree.md` 执行，路径相对本文件为 `../../../runbooks/implementation/worktree.md`。插件根目录在 Claude Code 为 `${CLAUDE_PLUGIN_ROOT}`，在 Codex 为插件安装目录。
 
 ## 唯一创建入口
 
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/skills/worktree-guard/scripts/worktree_create.sh" <branch> [base] [--root DIR]
+"${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_create.sh" <branch> [base] [--root DIR]
 ```
 
 - `<branch>` 必填，需带前缀：默认白名单 `feature/`、`fix/`、`claude/`；项目存在 `.yongchun/worktree-merge-queue.toml` 时以其 `project.branch_prefix` 为准。
@@ -43,5 +43,5 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
 ## 测试
 
 ```bash
-python3 -m unittest discover -s skills/worktree-guard/scripts
+python3 -m unittest discover -s skills/worktree/worktree-guard/scripts
 ```

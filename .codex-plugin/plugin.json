@@ -15,7 +15,10 @@
     "codex",
     "claude-code"
   ],
-  "skills": "./skills/",
+  "skills": [
+    "./skills/worktree/",
+    "./skills/delivery/"
+  ],
   "commands": "./codex-commands/",
   "hooks": "./hooks/hooks.json",
   "interface": {

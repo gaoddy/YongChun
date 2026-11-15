@@ -1,6 +1,6 @@
 """worktree_create.sh 与 worktree_guard.sh 的执行器测试。
 
-运行：python3 -m unittest discover -s skills/worktree-guard/scripts
+运行：python3 -m unittest discover -s skills/worktree/worktree-guard/scripts
 """
 
 import json

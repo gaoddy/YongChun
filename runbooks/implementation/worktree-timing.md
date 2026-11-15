@@ -16,7 +16,7 @@ agent:
 - 只有需要修改代码、文档或配置时才创建 worktree。
 - 小改动可直接在当前分支修改，不创建 worktree，也不进入 plan 模式：改动合计约 10 行以内、不新增或删除文件，且不改变对外接口、数据模型、依赖或目录结构。
 - 超出小改动范围的修改创建 worktree，并在实施前进入 plan 模式先定方案；只改文档或只改配置本身不构成豁免。
-- 判定需要创建时只通过 `skills/worktree-guard/scripts/worktree_create.sh` 创建，不直接执行 `git worktree add`，见[Worktree 与分支](worktree.md)。
+- 判定需要创建时只通过 `skills/worktree/worktree-guard/scripts/worktree_create.sh` 创建，不直接执行 `git worktree add`，见[Worktree 与分支](worktree.md)。
 - 不确定是否会产生文件修改时，先以只读方式执行；确认需要修改后再创建。
 - 一个任务只创建一个 worktree；子 agent 不单独创建，执行位置见[Worktree 与分支](worktree.md)。
 - 仓库没有可用基线分支（如尚无首次提交）时无法创建 worktree；在任务报告中说明原因后直接在当前目录执行。

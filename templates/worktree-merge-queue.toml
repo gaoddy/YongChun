@@ -14,7 +14,7 @@
 # 独立 worker 在合并 commit 上推送、部署与上传。不支持先部署任务分支或任务 worktree。
 #
 # 预演校验：
-# python3 <插件根>/skills/worktree-merge-queue-delivery/scripts/delivery_helper.py plan \
+# python3 <插件根>/skills/delivery/delivery-merge-queue/scripts/delivery_helper.py plan \
 #   --config .yongchun/worktree-merge-queue.toml \
 #   --branch <任务分支> --root <任务 worktree 绝对路径>
 
@@ -25,7 +25,7 @@ branch_prefix = "<任务分支前缀，如 task/>"
 
 [worktree]
 # 创建只走插件提供的唯一入口；把 <插件根> 换成实际路径后使用。
-create = "sh <插件根>/skills/worktree-guard/scripts/worktree_create.sh {branch} {base_branch}"
+create = "sh <插件根>/skills/worktree/worktree-guard/scripts/worktree_create.sh {branch} {base_branch}"
 # clean 必须同时移除 worktree 并删除任务分支，合并后由 run 自动执行。
 clean = "git worktree remove --force .worktrees/$(printf '%s' {branch} | tr / -) && git branch -D {branch}"
 list = "git worktree list"

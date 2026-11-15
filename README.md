@@ -84,7 +84,9 @@ codex-commands/           Codex 插件命令
 agents/                   Claude Code 插件 agent（由 runbook 生成）
 codex-agents/             Codex 自定义 agent（由 runbook 生成）
 templates/                配置模板：worktree 合并队列
-skills/                   双端共用的 skill：worktree 合并队列交付
+skills/                   双端共用的 skill，按域分目录
+├── worktree/             worktree 创建与守卫
+└── delivery/             合并队列交付
 hooks/                    UserPromptSubmit 路由提示
 scripts/                  校验脚本与测试
 runbooks/
