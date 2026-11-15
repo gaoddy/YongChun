@@ -12,11 +12,15 @@ desktop.ini
 
 # Claude Code 本地 worktree
 .claude/worktrees/
+.worktrees/
 
 # 本地输出、临时文件与日志
 output/
 tmp/
 *.log
+
+# Python 缓存
+__pycache__/
 
 # 任务实施计划（本地，不提交）
 docs/plan/
