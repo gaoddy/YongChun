@@ -49,7 +49,7 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
 
 `PreToolUse` 钩子把上述规则变成门禁：`git worktree add` 只有在命令包含 `worktree_create.sh` 时放行，`list`、`prune` 放行，`remove`、`move` 等写操作要求路径解析到 `<repo>/.worktrees/` 下。
 
-全局 `~/.claude/settings.json` 增加：
+钩子随插件提供，写在插件的 `hooks/hooks.json`，命令用 `${CLAUDE_PLUGIN_ROOT}` 指向插件安装地址：
 
 ```json
 {
@@ -60,7 +60,8 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
         "hooks": [
           {
             "type": "command",
-            "command": "sh \"$HOME/Projects/YongChun/skills/worktree-guard/scripts/worktree_guard.sh\""
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/skills/worktree-guard/scripts/worktree_guard.sh\"",
+            "timeout": 10
           }
         ]
       }
@@ -69,10 +70,11 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
 }
 ```
 
-- 钩子指向插件仓库路径，移动仓库或改用 marketplace 安装时同步修改该路径。
+- 插件以 user scope 启用，钩子对所有项目生效，无需改动 `~/.claude/settings.json`；若此前按旧方式在全局 settings 配置过守卫，删除该条，避免重复执行。
+- `${CLAUDE_PLUGIN_ROOT}` 由宿主替换为实际插件根：目录源市场指向插件仓库目录，打包安装指向安装副本，两种形态都不用改路径。
 - 守卫脚本依赖 `python3` 解析钩子 JSON；`python3` 不可用时放行，不阻塞其他命令。
 - 钩子只覆盖 Claude Code 的工具调用，不覆盖 T3 Code 等宿主自己创建的 worktree；这类场景仍按本 runbook 由 agent 调用脚本创建。
-- 排障时临时停用只能改 settings，不在脚本里留环境变量开关。
+- 排障时临时停用只能改插件钩子配置或停用插件，不在脚本里留环境变量开关。
 
 ## 验证
 

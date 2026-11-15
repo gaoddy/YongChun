@@ -9,6 +9,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/skills/worktree-guard/scripts/worktree_guard.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
