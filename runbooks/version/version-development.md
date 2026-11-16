@@ -37,6 +37,7 @@ agent:
 - 版本基线按[产品定义文档](../product/product-definition.md)写入 `product/`；版本进行中的改动按[需求变动](requirement-change.md)写 `update/`。
 - 新增功能先按[产品需求澄清](../product/feature-requirements.md)确认产品规则，再按[可行性调研](../product/feature-feasibility.md)确认技术可行性与冲突，然后写产品基线或 `update/`。
 - 产品规则确认后才进入技术方案；未确认内容只写 `open-questions.md`。
+- 产品规则标「已确认」或写入版本基线前，按[产品定义文档](../product/product-definition.md#完备性审查)完成纯产品层面的完备性审查；未通过不进入技术方案。
 
 ### 技术方案
 
@@ -57,7 +58,7 @@ agent:
 
 ## 规则
 
-- 阶段顺序不可跳过：产品确认 → 技术确认 → 任务拆分；前一阶段未确认不进入下一步。
+- 阶段顺序不可跳过：产品确认（含完备性审查）→ 技术确认 → 任务拆分；前一阶段未确认不进入下一步。
 - 版本内只描述本版本，不引用后续版本。
 - 未实现内容只写 `docs/versions/`，已实现状态只写 `docs/current/product/`、`docs/current/technical/`。
 - 版本发布的分支、tag 与回滚规则见[版本发布](../delivery/version-release.md)。

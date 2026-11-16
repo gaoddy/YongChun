@@ -64,7 +64,7 @@
 | 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |
 | 复盘最近一段时间的 PR 时长、Bug、返工、回滚与重复修改 | [runbooks/version/retrospective.md](runbooks/version/retrospective.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
-| 新增产品功能，先在产品层面澄清需求直到无待确认项 | [runbooks/product/feature-requirements.md](runbooks/product/feature-requirements.md) |
+| 新增产品功能，先在产品层面澄清需求并审查到无缺口 | [runbooks/product/feature-requirements.md](runbooks/product/feature-requirements.md) |
 | 产品需求已确认，确认技术可行性、约束与现有功能冲突 | [runbooks/product/feature-feasibility.md](runbooks/product/feature-feasibility.md) |
 | 在选定架构下实现服务端技术方案 | [runbooks/engineering/server/implementation.md](runbooks/engineering/server/implementation.md) |
 | 基于产品需求与用户规模生成三种服务架构方案 | [runbooks/engineering/server/architecture-options.md](runbooks/engineering/server/architecture-options.md) |

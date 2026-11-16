@@ -22,7 +22,7 @@
 | version | [bugfix.md](version/bugfix.md) | 缺陷修复的执行与验证 |
 | version | [plan.md](version/plan.md) | 任务计划与进度跟踪 |
 | version | [retrospective.md](version/retrospective.md) | 交付效率与质量问题的周期复盘与改进沉淀 |
-| product | [product-definition.md](product/product-definition.md) | 产品规则、页面与交互的定义与调整 |
+| product | [product-definition.md](product/product-definition.md) | 产品规则、页面与交互的定义、调整与完备性审查 |
 | product | [feature-requirements.md](product/feature-requirements.md) | 新增功能前的产品需求澄清与确认 |
 | product | [feature-feasibility.md](product/feature-feasibility.md) | 已确认需求的技术可行性、冲突与风险评估 |
 | product | [ui-design.md](product/ui/ui-design.md) | UI 设计、改版、实现与评审 |
