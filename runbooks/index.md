@@ -21,6 +21,7 @@
 | version | [requirement-change.md](version/requirement-change.md) | 需求变动的拆分、确认与实施 |
 | version | [bugfix.md](version/bugfix.md) | 缺陷修复的执行与验证 |
 | version | [plan.md](version/plan.md) | 任务计划与进度跟踪 |
+| version | [retrospective.md](version/retrospective.md) | 交付效率与质量问题的周期复盘与改进沉淀 |
 | product | [product-definition.md](product/product-definition.md) | 产品规则、页面与交互的定义与调整 |
 | product | [feature-requirements.md](product/feature-requirements.md) | 新增功能前的产品需求澄清与确认 |
 | product | [feature-feasibility.md](product/feature-feasibility.md) | 已确认需求的技术可行性、冲突与风险评估 |
@@ -36,6 +37,7 @@
 | product | [ui/interaction.md](product/ui/interaction.md) | 操作状态、反馈、表单、动效与无障碍 |
 | engineering | [tech-change.md](engineering/tech-change.md) | 引入、升级或移除技术依赖 |
 | engineering | [directory-structure.md](engineering/directory-structure.md) | 顶层与源码目录、模块归属与命名 |
+| engineering | [codebase-audit.md](engineering/codebase-audit.md) | 历史设计与遗留代码审计、认知成本评估与简化 |
 | engineering | [database/README.md](engineering/database/README.md) | 数据库分册索引与阅读顺序 |
 | engineering | [database/table-design.md](engineering/database/table-design.md) | 数据库表、字段、关系与索引的规划 |
 | engineering | [database/schema-change.md](engineering/database/schema-change.md) | 数据模型、索引与迁移变更 |

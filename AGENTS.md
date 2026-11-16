@@ -62,6 +62,7 @@
 | 需求变动的拆分、确认与实施 | [runbooks/version/requirement-change.md](runbooks/version/requirement-change.md) |
 | 缺陷修复、验证与收尾 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |
 | 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |
+| 复盘最近一段时间的 PR 时长、Bug、返工、回滚与重复修改 | [runbooks/version/retrospective.md](runbooks/version/retrospective.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
 | 新增产品功能，先在产品层面澄清需求直到无待确认项 | [runbooks/product/feature-requirements.md](runbooks/product/feature-requirements.md) |
 | 产品需求已确认，确认技术可行性、约束与现有功能冲突 | [runbooks/product/feature-feasibility.md](runbooks/product/feature-feasibility.md) |
@@ -84,6 +85,7 @@
 | 构建、测试、静态检查、本地运行 | [runbooks/implementation/make.md](runbooks/implementation/make.md) |
 | 引入、升级或移除技术依赖 | [runbooks/engineering/tech-change.md](runbooks/engineering/tech-change.md) |
 | 新增或调整目录、模块归属、命名与业务对象登记 | [runbooks/engineering/directory-structure.md](runbooks/engineering/directory-structure.md) |
+| 评估历史设计与遗留代码可否移除，或新人接手的认知成本与简化 | [runbooks/engineering/codebase-audit.md](runbooks/engineering/codebase-audit.md) |
 | 新增或调整服务端分层、依赖方向与装配 | [runbooks/engineering/server/layering.md](runbooks/engineering/server/layering.md) |
 | 新增或调整客户端页面、状态、数据源分层 | [runbooks/engineering/client/layering.md](runbooks/engineering/client/layering.md) |
 | 设计或调整服务端接口通用规则，或 HTTP、WebSocket、gRPC、SSE、消息订阅、长轮询协议规则 | [runbooks/engineering/server/api/contract.md](runbooks/engineering/server/api/contract.md) |

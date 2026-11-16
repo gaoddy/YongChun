@@ -13,10 +13,10 @@ runbooks/
 ├── runbook-agent-mapping.md  runbook 与 agent 映射、强度与生成
 ├── docs/              文档：写作、回写与文档结构分册
 │   └── structure/     文档结构分册：通用、UI 与版本文档
-├── version/           版本：流程、需求、缺陷、计划
+├── version/           版本：流程、需求、缺陷、计划、复盘
 ├── product/           产品定义与功能评估
 │   └── ui/            UI 分册：流程、方向、设计系统、主题、页面、组件、tokens、图标、交互
-├── engineering/       工程规则：选型、目录、接口、数据、算法
+├── engineering/       工程规则：选型、目录、接口、数据、算法、审计
 │   ├── database/      数据库分册：表规划与 schema 变更
 │   ├── server/        服务端分册：分层、方案设计、运行
 │   └── client/        客户端分册：分层、方案设计、运行、Flutter 构建
