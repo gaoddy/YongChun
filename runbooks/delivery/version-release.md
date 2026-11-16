@@ -71,6 +71,7 @@ python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts
 - 按「分支与 Tag」推送 `develop`、快进 `main` 并推送 tag；本仓库没有构建与产物上传步骤。
 - tag 推送后，Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装或更新，Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装或更新到该版本。
 - 从本地目录安装时，市场同步把插件根目录整目录复制到 `~/.claude/plugins/cache/<插件>/<插件>/<版本>/`，不按 `.gitignore` 过滤，`.worktrees/`、`.claude/`、`output/`、`__pycache__/` 都会进入副本。`githooks/pre-push` 在刷新插件后运行 `scripts/clean-plugin-cache.sh` 删除该版本副本中的这些目录，缓存仍有 `.worktrees/` 时删除副本并报错；清理失败不中断推送。
+- 刷新或安装后运行安装自检：`python3 scripts/plugin_selfcheck.py --require-installed`。退出码非 0 时按输出的问题逐项修复，不把安装视为完成；自检覆盖技能组声明、双端版本、命令文件与缓存残留目录。
 
 ## 步骤
 
