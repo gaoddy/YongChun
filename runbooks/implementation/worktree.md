@@ -47,6 +47,15 @@ agent:
 git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
 ```
 
+7. 运行收尾清单，确认没有残留的任务 worktree 与已合并分支：
+
+```bash
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_cleanup.py" --check
+```
+
+- 脚本输出任务 worktree 与已合并任务分支；存在残留时退出码为 1，逐项清理后重跑。
+- 未合并的 worktree 与分支会列在输出中但不阻断，按任务是否需要继续保留处理。
+
 ## 守卫
 
 `PreToolUse` 钩子把上述规则变成门禁：`git worktree add` 只有在命令包含 `worktree_create.sh` 时放行，`list`、`prune` 放行，`remove`、`move` 等写操作要求路径解析到 `<repo>/.worktrees/` 下。
@@ -86,6 +95,7 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
 - worktree 位于 `<repo>/.worktrees/` 下，`git status` 中没有未忽略的 worktree 目录。
 - 本仓库刷新插件后，`~/.claude/plugins/cache/<插件>/<插件>/<版本>/` 下没有 `.worktrees/`。
 - 计划目录、临时文件与测试专用文件已清理。
+- 收尾清单 `worktree_cleanup.py --check` 退出码为 0，未列出任务 worktree 或已合并的任务分支。
 
 ## 相关
 
