@@ -70,6 +70,7 @@ python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts
 - 两个命令退出码均为 0 才进入发版；失败时修复后重跑，不放宽校验。
 - 按「分支与 Tag」推送 `develop`、快进 `main` 并推送 tag；本仓库没有构建与产物上传步骤。
 - tag 推送后，Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装或更新，Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装或更新到该版本。
+- 从本地目录安装时，市场同步会整目录复制到 `~/.claude/plugins/cache/<插件>/<插件>/<版本>/`；缓存中出现 `.worktrees/` 等不应分发的目录时删除该副本，并在下次刷新前按[Worktree 与分支](../implementation/worktree.md)确认 worktree 只位于根目录 `.worktrees/` 下。
 
 ## 步骤
 
