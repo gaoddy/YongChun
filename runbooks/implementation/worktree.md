@@ -18,6 +18,7 @@ agent:
 ## 规则
 
 - 基线分支为 `develop`，用户明确指定其他分支时除外；项目存在 `.yongchun/worktree-merge-queue.toml` 时以 `project.base_branch` 为准。
+- 开工后在首次回复中用一行说明当前 worktree 的绝对路径与分支；路径与分支不符时先纠正再动手，不在主仓库或其他 worktree 中修改。
 - 创建只走 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，不直接执行 `git worktree add`；绕过入口的命令由守卫拒绝。
 - worktree 根固定为 `<repo>/.worktrees/<branch 的 / 换成 ->`，该目录必须在 `.gitignore` 中忽略（`/.worktrees/`），否则创建失败。
 - 本仓库同时是 Claude Code 插件的本地目录市场来源，市场同步按插件根目录整目录复制，`.worktrees/` 会被一起复制进插件缓存；刷新后由 `scripts/clean-plugin-cache.sh` 清理，见[版本发布](../delivery/version-release.md#本仓库插件发版)。worktree 仍只放在根目录 `.worktrees/` 下。
@@ -79,6 +80,7 @@ git worktree remove .worktrees/<branch 的 / 换成 -> && git branch -d <branch>
 
 ## 验证
 
+- 首次回复已说明 worktree 绝对路径与分支，改动只发生在该路径内。
 - 工作区干净，无未提交改动。
 - 分支基于最新 `develop`，合并后无残留 worktree。
 - worktree 位于 `<repo>/.worktrees/` 下，`git status` 中没有未忽略的 worktree 目录。
