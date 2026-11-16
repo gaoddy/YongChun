@@ -46,7 +46,7 @@
 | engineering | [algorithm-design.md](engineering/algorithm-design.md) | 复杂问题的抽象建模与算法选择 |
 | engineering | [server/README.md](engineering/server/README.md) | 服务端分册索引与阅读顺序 |
 | engineering | [server/layering.md](engineering/server/layering.md) | 服务端依赖方向、端口与装配 |
-| engineering | [server/architecture/index.md](engineering/server/architecture/index.md) | 服务架构方案入口与场景路由：三种方案对比与选择 |
+| engineering | [server/architecture/index.md](engineering/server/architecture/index.md) | 按产品需求、用户规模与游戏类型生成三种服务架构方案，含场景路由 |
 | engineering | [server/architecture/realtime-frame-sync.md](engineering/server/architecture/realtime-frame-sync.md) | 固定 tick、确定性输入广播的实时对战帧同步 |
 | engineering | [server/architecture/realtime-state-sync.md](engineering/server/architecture/realtime-state-sync.md) | 服务端权威、客户端预测校正的实时对战状态同步 |
 | engineering | [server/architecture/sports-competition.md](engineering/server/architecture/sports-competition.md) | 高帧率体育竞技、延迟补偿与观战回放 |

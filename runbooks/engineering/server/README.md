@@ -8,8 +8,7 @@
 | 主题 | 文档 |
 | --- | --- |
 | 依赖方向、端口、装配与分层 | [layering.md](layering.md) |
-| 服务架构方案入口与场景路由：生成三种方案并选择 | [architecture/index.md](architecture/index.md) |
-| 按游戏类型选择架构场景分册（帧同步、状态同步、体育、回合、大世界、沙盒、SLG、休闲） | [architecture/index.md](architecture/index.md) |
+| 服务架构方案入口与场景路由：按游戏类型选择分册（帧同步、状态同步、体育、回合、大世界、沙盒、SLG、休闲），生成三种方案并选择 | [architecture/index.md](architecture/index.md) |
 | 服务端方案实现（选定架构内） | [implementation.md](implementation.md) |
 | 源码、依赖、部署形态与本地运行 | [runtime.md](runtime.md) |
 | 接口规则：通用契约、协议选择与各协议 | [api/README.md](api/README.md) |
