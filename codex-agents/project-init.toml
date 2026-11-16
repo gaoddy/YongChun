@@ -1,7 +1,7 @@
 # 由 scripts/generate_runbook_agents.py 根据 runbooks/implementation/project-init.md 生成，不要手改。
 
 name = "project-init"
-description = "项目接入：新项目接入本 runbook 集合，或已有项目补建声明与文档骨架"
+description = "项目初始化：新项目建立时初始化开发工作空间：声明 runbook、建 `docs/` 骨架与首个版本目录"
 model_reasoning_effort = "high"
 
 developer_instructions = """

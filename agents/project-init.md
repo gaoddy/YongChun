@@ -1,6 +1,6 @@
 ---
 name: project-init
-description: "项目接入：新项目接入本 runbook 集合，或已有项目补建声明与文档骨架"
+description: "项目初始化：新项目建立时初始化开发工作空间：声明 runbook、建 `docs/` 骨架与首个版本目录"
 effort: high
 ---
 

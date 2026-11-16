@@ -22,6 +22,7 @@
 | version | [bugfix.md](version/bugfix.md) | 缺陷修复的执行与验证 |
 | version | [plan.md](version/plan.md) | 任务计划与进度跟踪 |
 | version | [retrospective.md](version/retrospective.md) | 交付效率与质量问题的周期复盘与改进沉淀 |
+| product | [product-init.md](product/product-init.md) | 产品初始化：引导完成产品名、介绍、用户规模、端与平台、功能列表的收集 |
 | product | [product-definition.md](product/product-definition.md) | 产品规则、页面与交互的定义、调整与完备性审查 |
 | product | [feature-requirements.md](product/feature-requirements.md) | 新增功能前的产品需求澄清与确认 |
 | product | [feature-feasibility.md](product/feature-feasibility.md) | 已确认需求的技术可行性、冲突与风险评估 |
@@ -62,7 +63,7 @@
 | engineering | [client/design.md](engineering/client/design.md) | 客户端技术方案设计 |
 | engineering | [client/runtime.md](engineering/client/runtime.md) | 客户端运行、构建参数、联调与实机验证 |
 | engineering | [client/flutter-build.md](engineering/client/flutter-build.md) | Flutter 各端构建产物、混淆、签名与校验 |
-| implementation | [project-init.md](implementation/project-init.md) | 新项目接入 runbook 集合与文档骨架 |
+| implementation | [project-init.md](implementation/project-init.md) | 项目初始化：开发工作空间声明、文档骨架与首个版本目录 |
 | implementation | [task-delivery.md](implementation/task-delivery.md) | 任务执行、验证与交付 |
 | implementation | [discussion-record.md](implementation/discussion-record.md) | 草案、探讨与咨询的结论记录与注意力锚定 |
 | implementation | [worktree-timing.md](implementation/worktree-timing.md) | 判断任务是否需要创建 worktree |

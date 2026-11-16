@@ -37,7 +37,7 @@
 - 配置模板位于 `templates/`，当前提供 `worktree-merge-queue.toml`；复制位置、字段与校验方式见[Worktree 合并队列交付](runbooks/delivery/worktree-delivery.md)。
 - 任务计划只在实施计划时创建，写在 `docs/plan/<分支名>/`，每个计划一个目录；`docs/plan/` 已忽略、不提交，任务完成后删除。
 - Agent 产物由 `scripts/generate_runbook_agents.py` 从 runbook frontmatter 生成：Claude Code 在 `agents/`，Codex 在 `codex-agents/`；生成物提交、禁止手改，规则见 [Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
-- 项目接入的声明模板与取值填写见[项目接入](runbooks/implementation/project-init.md)。
+- 项目初始化的声明模板与取值填写见[项目初始化](runbooks/implementation/project-init.md)；产品定义收集见[产品初始化](runbooks/product/product-init.md)。
 - worktree 的唯一创建入口是 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，绕过它的 `git worktree add` 由 `skills/worktree/worktree-guard/scripts/worktree_guard.sh` 在插件 `PreToolUse` 钩子中拒绝；规则与钩子配置见[Worktree 与分支](runbooks/implementation/worktree.md)。
 - 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用、agent frontmatter 与生成物漂移、双端插件清单），退出码 0 为通过；该脚本只校验本仓库自身，不随插件提供给接入项目，接入项目不得调用；skill 执行器测试入口是 `python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts` 与 `python3 -m unittest discover -s skills/worktree/worktree-guard/scripts`，插件安装自检入口是 `python3 scripts/plugin_selfcheck.py`，测试为 `python3 -m unittest discover -s scripts -p 'test_plugin_selfcheck.py'`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
 - 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；命令只做路由与执行契约，规则以 runbook 为准。
@@ -54,7 +54,8 @@
 | --- | --- |
 | 版本建立、推进与收尾的整体流程 | [runbooks/version/version-development.md](runbooks/version/version-development.md) |
 | 正式发版、版本收尾后发布、打 tag | [runbooks/delivery/version-release.md](runbooks/delivery/version-release.md) |
-| 新项目接入 runbook，或补建声明与文档骨架 | [runbooks/implementation/project-init.md](runbooks/implementation/project-init.md) |
+| 新建项目，初始化开发工作空间与文档骨架 | [runbooks/implementation/project-init.md](runbooks/implementation/project-init.md) |
+| 产品定义收集：产品名、介绍、用户规模、端与平台、功能列表 | [runbooks/product/product-init.md](runbooks/product/product-init.md) |
 | 建立或调整版本文档 | [runbooks/docs/structure/version-docs-structure.md](runbooks/docs/structure/version-docs-structure.md) |
 | 新建或调整 UI 文档 | [runbooks/docs/structure/ui-docs-structure.md](runbooks/docs/structure/ui-docs-structure.md) |
 | 新增、拆分、合并、移动或删除 runbook，或调整结构、命名与索引 | [runbooks/runbook.md](runbooks/runbook.md) |
