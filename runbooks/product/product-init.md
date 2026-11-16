@@ -43,7 +43,7 @@ agent:
 ### 数据要求
 
 - 不带的端不收集对应数据，也不在项目事实中留空占位。
-- 用户规模写最终目标值，不写当前值或短期目标；软件架构以该规模为容量基线演进，见[服务架构方案生成](../engineering/server/architecture-options.md)。
+- 用户规模写最终目标值，不写当前值或短期目标；软件架构以该规模为容量基线演进，见[服务架构方案生成](../engineering/server/architecture/index.md)。
 - 多端各有包名时逐端列出；包名按平台惯例给出建议值，由用户确认后写入。
 - 功能列表只记录功能名称与一句话作用，不写触发条件、页面、状态与验收标准；这些在版本产品定义阶段按[产品定义文档](product-definition.md)展开。
 - 产品名、产品描述、产品形态、包名、客户端平台与用户规模变化时更新项目事实并评估架构影响，不另建副本。
@@ -85,5 +85,5 @@ agent:
 
 - [项目初始化](../implementation/project-init.md)
 - [产品定义文档](product-definition.md)
-- [服务架构方案生成](../engineering/server/architecture-options.md)
+- [服务架构方案生成](../engineering/server/architecture/index.md)
 - [客户端运行](../engineering/client/runtime.md)

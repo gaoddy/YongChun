@@ -77,4 +77,4 @@ agent:
 - [需求变动](../version/requirement-change.md)
 - [版本开发](../version/version-development.md)
 - [技术选型变更](../engineering/tech-change.md)
-- [服务架构方案生成](../engineering/server/architecture-options.md)
+- [服务架构方案生成](../engineering/server/architecture/index.md)

@@ -20,8 +20,8 @@ agent:
 - 需要与其它版本并存、便于对比验证的实现放在 `<版本实现目录>`，版本号与 `docs/versions/` 目录名一致；跨版本共享的代码不进版本目录。
 - 新增、升级或移除依赖按[技术选型变更](../tech-change.md)执行，本地安装以提交的锁文件为准。
 - 配置通过环境变量注入，代码中不写死地址与凭证；本地默认值只用于本地，不进入发布产物。
-- 本地开发默认连接本机 `<数据库>` 与 `<缓存>`，两者由选定架构方案确定，见[服务架构方案生成](architecture-options.md)；共享服务与访问边界见[服务端发布](../../delivery/server-deploy.md)。
-- 选定架构的部署形态见[服务架构方案生成](architecture-options.md)，运行期部署要求（无状态、水平扩展、滚动更新、健康检查）见[服务端发布](../../delivery/server-deploy.md)；变更不得假设单实例。
+- 本地开发默认连接本机 `<数据库>` 与 `<缓存>`，两者由选定架构方案确定，见[服务架构方案生成](architecture/index.md)；共享服务与访问边界见[服务端发布](../../delivery/server-deploy.md)。
+- 选定架构的部署形态见[服务架构方案生成](architecture/index.md)，运行期部署要求（无状态、水平扩展、滚动更新、健康检查）见[服务端发布](../../delivery/server-deploy.md)；变更不得假设单实例。
 - 本地启动使用 `<本地启动命令>`，由脚本补齐本地环境变量；不手写等效命令。
 - 本地依赖端口与 e2e 环境保持一致。
 - 日志、指标与追踪按[可观测性](../../problems/observability.md)接入，不在业务代码里散落打印。
@@ -42,5 +42,5 @@ agent:
 
 ## 相关
 
-- [服务架构方案生成](architecture-options.md)
+- [服务架构方案生成](architecture/index.md)
 - [Make 构建入口](../../implementation/make.md)
