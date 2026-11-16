@@ -20,7 +20,7 @@ agent:
 - 基线分支为 `develop`，用户明确指定其他分支时除外；项目存在 `.yongchun/worktree-merge-queue.toml` 时以 `project.base_branch` 为准。
 - 创建只走 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，不直接执行 `git worktree add`；绕过入口的命令由守卫拒绝。
 - worktree 根固定为 `<repo>/.worktrees/<branch 的 / 换成 ->`，该目录必须在 `.gitignore` 中忽略（`/.worktrees/`），否则创建失败。
-- 本仓库同时是 Claude Code 插件的本地目录市场来源，市场同步会整目录复制，按 `.gitignore` 排除 `/.worktrees/`；因此 worktree 只放在根目录 `.worktrees/` 下，不放到 `skills/` 的子目录等其他位置，否则会被复制进插件缓存。
+- 本仓库同时是 Claude Code 插件的本地目录市场来源，市场同步按插件根目录整目录复制，`.worktrees/` 会被一起复制进插件缓存；刷新后由 `scripts/clean-plugin-cache.sh` 清理，见[版本发布](../delivery/version-release.md#本仓库插件发版)。worktree 仍只放在根目录 `.worktrees/` 下。
 - 分支前缀白名单为 `feature/`、`fix/`、`claude/`；队列配置存在时以 `project.branch_prefix` 为准，不在脚本外另立前缀。
 - 一个任务一个 worktree 与分支；分支名与 `docs/plan/<分支名>/` 计划目录对应。
 - 所有子 agent 统一使用主 agent 的 worktree：在主 agent 当前 worktree 目录内执行，不单独创建 worktree，不切换到其他目录或主仓库根目录。

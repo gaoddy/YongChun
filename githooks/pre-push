@@ -23,10 +23,12 @@ if ! command -v claude >/dev/null 2>&1; then
 fi
 
 echo "pre-push: 检测到版本 tag，刷新本地 Claude Code 插件"
+top=$(git rev-parse --show-toplevel) || exit 0
 if ! claude plugin marketplace update yongchun >/dev/null; then
   echo "pre-push: 刷新 marketplace yongchun 失败，继续推送" >&2
 fi
 if ! claude plugin update yongchun@yongchun -s user; then
   echo "pre-push: 更新插件 yongchun@yongchun 失败，继续推送" >&2
 fi
+sh "$top/scripts/clean-plugin-cache.sh" || echo "pre-push: 清理插件缓存未通过，继续推送" >&2
 exit 0
