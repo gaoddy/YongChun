@@ -68,7 +68,7 @@
 | 新增产品功能，先在产品层面澄清需求并审查到无缺口 | [runbooks/product/feature-requirements.md](runbooks/product/feature-requirements.md) |
 | 产品需求已确认，确认技术可行性、约束与现有功能冲突 | [runbooks/product/feature-feasibility.md](runbooks/product/feature-feasibility.md) |
 | 在选定架构下实现服务端技术方案 | [runbooks/engineering/server/implementation.md](runbooks/engineering/server/implementation.md) |
-| 基于产品需求与用户规模生成三种服务架构方案 | [runbooks/engineering/server/architecture-options.md](runbooks/engineering/server/architecture-options.md) |
+| 按产品需求、用户规模与游戏类型生成三种服务架构方案，并按类型选择分册 | [runbooks/engineering/server/architecture/index.md](runbooks/engineering/server/architecture/index.md) |
 | 设计客户端技术方案 | [runbooks/engineering/client/design.md](runbooks/engineering/client/design.md) |
 | UI 设计、实现、改版与评审 | [runbooks/product/ui/ui-design.md](runbooks/product/ui/ui-design.md) |
 | UI 设计与改版前的方向方案与选择 | [runbooks/product/ui/directions.md](runbooks/product/ui/directions.md) |

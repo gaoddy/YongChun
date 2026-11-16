@@ -41,7 +41,7 @@ agent:
 
 ### 技术方案
 
-- 架构方向未确定时，先按[服务架构方案生成](../engineering/server/architecture-options.md)给出三种方案并取得用户选择。
+- 架构方向未确定时，先按[服务架构方案生成](../engineering/server/architecture/index.md)给出三种方案并取得用户选择。
 - 按[服务端方案实现](../engineering/server/implementation.md)、[前端方案设计](../engineering/client/design.md)写 `technical/` 或 `update/`，确认后同步版本技术基线。
 - 方案确认后才拆分任务。
 
