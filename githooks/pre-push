@@ -1,0 +1,32 @@
+#!/bin/sh
+# 版本 tag 推送后自动刷新本地 Claude Code 插件。
+# 启用：git config core.hooksPath githooks
+set -u
+
+tag_pushed=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/tags/v*)
+      case "$local_sha" in
+        0000000000000000000000000000000000000000) ;;
+        *) tag_pushed=1 ;;
+      esac
+      ;;
+  esac
+done
+
+[ "$tag_pushed" -eq 1 ] || exit 0
+
+if ! command -v claude >/dev/null 2>&1; then
+  echo "pre-push: 未找到 claude 命令，跳过本地插件更新" >&2
+  exit 0
+fi
+
+echo "pre-push: 检测到版本 tag，刷新本地 Claude Code 插件"
+if ! claude plugin marketplace update yongchun >/dev/null; then
+  echo "pre-push: 刷新 marketplace yongchun 失败，继续推送" >&2
+fi
+if ! claude plugin update yongchun@yongchun -s user; then
+  echo "pre-push: 更新插件 yongchun@yongchun 失败，继续推送" >&2
+fi
+exit 0
