@@ -10,7 +10,7 @@
 
 ## 协作原则
 
-1. 使用中文，默认简短、直接，优先报告结果。
+1. 使用中文，结论先行：先给结果或判断，再给必要依据；默认简短、直接。
 2. 开始任务时用一句话说明目标，不展开执行步骤。
 3. 过程更新每次控制在 1–2 句，仅说明关键发现、阻塞或需要用户决定的事项；不逐步播报搜索、读文件、运行命令和常规验证。
 4. 最终回复简述完成内容、验证结果和未解决问题；简单任务一句话即可，不复述执行过程。
@@ -18,7 +18,7 @@
 6. 精简表达不减少实际执行、验证和交付工作，也不隐瞒失败或风险。
 7. 先查仓库事实，仅对无法查证的关键歧义提问。精准修改，不扩展功能或顺带重构。
 8. 多 agent 协作时，主 agent 只负责通信、协同与规划，不直接执行具体任务；每个子 agent 只完成一个任务，出现新任务时必须启用新的 agent，不复用已有 agent 承接新任务。
-9. 用户明确限定的范围与交付边界优先于本文件默认流程；已授权的开发连续执行，不重复询问是否继续、构建或部署。
+9. 用户明确限定的范围与交付边界优先于本文件默认流程；已授权的开发连续执行，构建、测试与本地验证不逐项询问；推送、部署与发版只在用户当轮明确要求时执行。
 10. 搜索先缩小目录、文件或符号范围；较大命令输出限制在 8,000–16,000 字节，日志和测试优先展示末尾相关内容并保留退出状态。
 11. 本仓库修改文件后，自动执行 `/reload-plugins` 重新加载插件，使改动生效。
 
@@ -41,7 +41,7 @@
 - worktree 的唯一创建入口是 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，绕过它的 `git worktree add` 由 `skills/worktree/worktree-guard/scripts/worktree_guard.sh` 在插件 `PreToolUse` 钩子中拒绝；规则与钩子配置见[Worktree 与分支](runbooks/implementation/worktree.md)。
 - 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用、agent frontmatter 与生成物漂移、双端插件清单），退出码 0 为通过；该脚本只校验本仓库自身，不随插件提供给接入项目，接入项目不得调用；skill 执行器测试入口是 `python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts` 与 `python3 -m unittest discover -s skills/worktree/worktree-guard/scripts`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
 - 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；命令只做路由与执行契约，规则以 runbook 为准。
-- 开发阶段只提交并推送 `develop`；正式发版按[版本发布](runbooks/delivery/version-release.md)执行，快进合并到 `main`，以 `.claude-plugin/plugin.json` 的 `version` 打 `v<version>` annotated tag 并推送。
+- 开发阶段只向 `develop` 提交与合并；推送按协作原则 9 执行。正式发版按[版本发布](runbooks/delivery/version-release.md)执行，快进合并到 `main`，以 `.claude-plugin/plugin.json` 的 `version` 打 `v<version>` annotated tag 并推送。
 
 ## 触发
 
