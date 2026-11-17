@@ -25,10 +25,12 @@ agent:
 
 1. 确认现有实现、受影响页面与组件、需要覆盖的业务状态，区分已实现功能、设计建议与未实现能力。
 2. 按[方向方案](directions.md)给出三种可区分方向与可视化，取得用户选择。
-3. 按分册确定页面（[pages](pages.md)）、组件（[components](components.md)）、令牌与图标（[tokens](tokens.md)、[icons](icons.md)）、交互与主题（[interaction](interaction.md)、[theme](theme.md)）；数据与状态设计写入客户端方案。
-4. 按[设计系统与公共 UI](design-system.md)先扩展共享层，再实现页面与业务组件。
-5. 修改共享内容前检查全部消费者，按影响范围同步调整。
-6. 按分册验证项检查后交付；按[UI 文档结构](../../docs/structure/ui-docs-structure.md)与[文档回写](../../docs/docs-sync.md)完成回写。
+3. 按分册确定令牌与图标（[tokens](tokens.md)、[icons](icons.md)）。
+4. 按分册确定页面（[pages](pages.md)）；数据与状态设计写入客户端方案。
+5. 按分册确定组件（[components](components.md)）。
+6. 按分册确定交互与主题（[interaction](interaction.md)、[theme](theme.md)）。
+7. 按[设计系统与公共 UI](design-system.md)先扩展共享层，再实现页面与业务组件；修改共享内容前检查全部消费者，按影响范围同步调整。
+8. 按分册验证项检查后交付；按[UI 文档结构](../../docs/structure/ui-docs-structure.md)与[文档回写](../../docs/docs-sync.md)完成回写。
 
 ## 验证
 
@@ -36,7 +38,7 @@ agent:
 - 涉及分册的验证项全部满足；页面状态齐全、组件边界清晰、无硬编码视觉值、图标语义唯一、交互状态完整、深浅色结构一致。
 - 数据与状态设计已在客户端方案中落点，页面状态与数据状态一一对应。
 - 文档已按[UI 文档结构](../../docs/structure/ui-docs-structure.md)回写，索引与链接完整。
-- 客户端验证入口见[任务执行与交付](../../implementation/task-delivery.md)。
+- 客户端验证入口见[任务执行与交付](../../implementation/change-delivery.md)。
 
 ## 相关
 

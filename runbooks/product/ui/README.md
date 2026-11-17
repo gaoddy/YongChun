@@ -7,7 +7,7 @@
 
 | 主题 | 文档 |
 | --- | --- |
-| 任务流程与交付检查 | [../ui-design.md](ui-design.md) |
+| 任务流程与交付检查 | [UI 设计](ui-design.md) |
 | 三种方向方案的写法与约束 | [directions.md](directions.md) |
 | 设计系统与公共 UI 的落地 | [design-system.md](design-system.md) |
 | 主题、深浅色与视觉资源 | [theme.md](theme.md) |
@@ -23,9 +23,9 @@
 
 1. 先读 [UI 设计](ui-design.md)，确认流程、范围与交付检查。
 2. 按改动涉及的主题读对应分册；跨主题时全部读取。
-3. 页面与组件同时改动时先读 `pages.md` 再读 `components.md`；令牌与图标先于二者确定。
+3. 页面与组件同时改动时先读 `pages.md` 再读 `components.md`；共享层落地先于页面与业务组件实现。
 
 ## 分册规则
 
 - 规则只在所属分册写一次，其他文档用相对链接引用，不复制内容。
-- 新增、拆分或删除分册时，同一任务内更新本文件与[runbooks 索引](../../README.md)。
+- 新增、拆分或删除分册时，同一任务内更新本文件、[全局索引](../../index.md)、[目录树](../../README.md)与根 `AGENTS.md` 触发表。

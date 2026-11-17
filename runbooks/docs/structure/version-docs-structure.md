@@ -70,6 +70,7 @@ docs/versions/<版本>/
 ## 需求变动 `update/`
 
 - 路径：`update/<YYYY-MM-DD>-<slug>/`，日期取需求建立当天；slug 用小写英文与 `-`，表达需求主题，不用版本号、人名或「fix」「update」这类无信息词。
+- 正文中的 `<需求>` 是 `update/<YYYY-MM-DD>-<slug>/` 的简写，`update/<需求>/` 与该完整路径等价。
 - 目录内最多两份文件，至少存在一份：
   - `product.md`：产品改动。
   - `technical.md`：技术实现方案，按端分节。
