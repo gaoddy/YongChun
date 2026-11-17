@@ -75,7 +75,7 @@
 | 设计系统与公共 UI 落地 | [runbooks/product/ui/design-system.md](runbooks/product/ui/design-system.md) |
 | 主题、深浅色与视觉资源 | [runbooks/product/ui/theme.md](runbooks/product/ui/theme.md) |
 | 页面结构、页面状态与适配 | [runbooks/product/ui/pages.md](runbooks/product/ui/pages.md) |
-| 公共组件拆分、接口与扩展 | [runbooks/product/ui/components.md](runbooks/product/ui/components.md) |
+| 组件化粒度、公共组件拆分、接口与扩展 | [runbooks/product/ui/components.md](runbooks/product/ui/components.md) |
 | 设计 tokens 的定义与变更 | [runbooks/product/ui/tokens.md](runbooks/product/ui/tokens.md) |
 | 图标新增、替换与复用 | [runbooks/product/ui/icons.md](runbooks/product/ui/icons.md) |
 | 操作反馈、表单、动效与无障碍 | [runbooks/product/ui/interaction.md](runbooks/product/ui/interaction.md) |

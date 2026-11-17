@@ -32,7 +32,7 @@
 | product | [ui/design-system.md](product/ui/design-system.md) | 设计系统与公共 UI 的落地 |
 | product | [ui/theme.md](product/ui/theme.md) | 深色浅色、主题切换与视觉资源 |
 | product | [ui/pages.md](product/ui/pages.md) | 页面结构、页面状态、适配与首屏性能 |
-| product | [ui/components.md](product/ui/components.md) | 组件复用判定、接口边界与扩展 |
+| product | [ui/components.md](product/ui/components.md) | 组件化粒度、复用判定、接口边界与扩展 |
 | product | [ui/tokens.md](product/ui/tokens.md) | 视觉令牌的定义、使用与变更 |
 | product | [ui/icons.md](product/ui/icons.md) | 图标的共享入口、语义、风格与可访问性 |
 | product | [ui/interaction.md](product/ui/interaction.md) | 操作状态、反馈、表单、动效与无障碍 |

@@ -12,7 +12,7 @@
 | 设计系统与公共 UI 的落地 | [design-system.md](design-system.md) |
 | 主题、深浅色与视觉资源 | [theme.md](theme.md) |
 | 页面结构、状态与适配 | [pages.md](pages.md) |
-| 组件拆分、接口与扩展 | [components.md](components.md) |
+| 组件化粒度、复用判定、接口边界与扩展 | [components.md](components.md) |
 | 设计 tokens | [tokens.md](tokens.md) |
 | 图标 | [icons.md](icons.md) |
 | 交互、反馈与无障碍 | [interaction.md](interaction.md) |
