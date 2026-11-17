@@ -153,6 +153,69 @@ class CheckRunbooksTest(unittest.TestCase):
         self.assertEqual(code, 1, out)
         self.assertIn("锚点", out)
 
+    def test_too_many_prerequisites_fails(self):
+        a = BASE["runbooks/a.md"].replace(
+            "- [B](b.md)", "- [B](b.md)\n- [C](c.md)\n- [D](d.md)"
+        )
+        index = BASE["runbooks/index.md"] + (
+            "| test | [c.md](c.md) | C |\n"
+            "| test | [d.md](d.md) | D |\n"
+        )
+        extra = {
+            "runbooks/c.md": BASE["runbooks/b.md"].replace("B", "C"),
+            "runbooks/d.md": BASE["runbooks/b.md"].replace("B", "D"),
+        }
+        code, out = run(make_repo(overrides={
+            "runbooks/a.md": a,
+            "runbooks/index.md": index,
+        }, extra=extra))
+        self.assertEqual(code, 1, out)
+        self.assertIn("前置", out)
+
+    def test_registered_subdir_index_is_checked(self):
+        index = BASE["runbooks/index.md"] + "| test | [sub/index.md](sub/index.md) | S |\n"
+        sub = """# 索引
+
+## 适用场景
+
+- 测试。
+
+## 步骤
+
+1. 步骤。
+
+## 验证
+
+- 通过。
+"""
+        overrides = {"runbooks/index.md": index}
+        code, out = run(make_repo(overrides=overrides, extra={"runbooks/sub/index.md": sub}))
+        self.assertEqual(code, 0, out)
+
+        missing = sub.replace("## 验证\n\n- 通过。\n", "")
+        code, out = run(make_repo(overrides=overrides, extra={"runbooks/sub/index.md": missing}))
+        self.assertEqual(code, 1, out)
+        self.assertIn("章节", out)
+
+    def test_unregistered_subdir_index_fails(self):
+        sub = """# 索引
+
+## 适用场景
+
+- 测试。
+
+## 步骤
+
+1. 步骤。
+
+## 验证
+
+- 通过。
+"""
+        code, out = run(make_repo(extra={"runbooks/sub/index.md": sub}))
+        self.assertEqual(code, 1, out)
+        self.assertIn("索引", out)
+
     def test_cycle_fails(self):
         b = BASE["runbooks/b.md"].replace(
             "## 规则", "## 前置读取\n\n- [A](a.md)\n\n## 规则"

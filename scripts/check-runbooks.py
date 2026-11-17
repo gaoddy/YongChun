@@ -90,7 +90,7 @@ def main():
     for link in re.findall(r"\]\(([^)#]+)(?:#[^)]*)?\)", index_text):
         indexed.add(os.path.normpath(os.path.join(os.path.dirname(index_path), link)))
     for p in runbooks:
-        if os.path.basename(p) != "index.md" and os.path.normpath(p) not in indexed:
+        if os.path.normpath(p) != os.path.normpath(index_path) and os.path.normpath(p) not in indexed:
             bad("索引", rel(root, p), "未在 runbooks/index.md 登记")
 
     # 触发表
@@ -126,6 +126,10 @@ def main():
                 if t in bypath and t != os.path.normpath(p):
                     deps.append(t)
         graph[os.path.normpath(p)] = deps
+
+    for node in graph:
+        if len(graph[node]) > 2:
+            bad("前置", rel(root, bypath[node]), "前置读取 %d 篇，超过 2 篇" % len(graph[node]))
 
     seen, stack, on_stack = set(), [], set()
     cycles = set()
@@ -166,7 +170,7 @@ def main():
 
     # 必备章节
     for p in runbooks:
-        if os.path.basename(p) in ("README.md", "index.md"):
+        if os.path.normpath(p) == os.path.normpath(index_path) or os.path.basename(p) == "README.md":
             continue
         text = read(p)
         for name in ("适用场景", "步骤", "验证"):
