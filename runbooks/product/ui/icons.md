@@ -9,10 +9,6 @@ agent:
 
 - 新增、替换、调整图标，或处理图标在不同端与状态下的表现。
 
-## 前置读取
-
-- [UI 设计](ui-design.md)
-
 ## 规则
 
 - 图标统一从共享入口引用，不在页面内联 SVG 或重复定义。
@@ -40,5 +36,6 @@ agent:
 
 ## 相关
 
+- [UI 设计](ui-design.md)
 - [组件设计](components.md)
 - [设计 tokens](tokens.md)

@@ -11,7 +11,6 @@ agent:
 
 ## 前置读取
 
-- [UI 设计](ui-design.md)
 - [组件设计](components.md)
 
 ## 规则
@@ -59,6 +58,7 @@ agent:
 
 ## 相关
 
+- [UI 设计](ui-design.md)
 - [前端方案设计](../../engineering/client/design.md)
 - [设计 tokens](tokens.md)
 - [交互与反馈](interaction.md)

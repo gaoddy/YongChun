@@ -9,10 +9,6 @@ agent:
 
 - 新增、调整或使用颜色、字体、间距、圆角、阴影、层级等视觉令牌。
 
-## 前置读取
-
-- [UI 设计](ui-design.md)
-
 ## 规则
 
 ### 定义
@@ -54,6 +50,7 @@ agent:
 
 ## 相关
 
+- [UI 设计](ui-design.md)
 - [页面设计](pages.md)
 - [组件设计](components.md)
 - [图标](icons.md)

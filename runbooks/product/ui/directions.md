@@ -10,10 +10,6 @@ agent:
 - UI 设计与改版开始前，向用户呈现可比较的方向并取得选择。
 - 设计与实现流程见[UI 设计](ui-design.md)；本文只规定方向方案的内容与约束。
 
-## 前置读取
-
-- [UI 设计](ui-design.md)
-
 ## 规则
 
 ### 方案数量与范围
@@ -58,6 +54,7 @@ agent:
 
 ## 相关
 
+- [UI 设计](ui-design.md)
 - [页面设计](pages.md)
 - [主题与视觉资源](theme.md)
 - [设计系统与公共 UI](design-system.md)

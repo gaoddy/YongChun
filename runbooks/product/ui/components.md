@@ -9,10 +9,6 @@ agent:
 
 - 新增或调整通用组件、业务组件，或判断某段 UI 是否应抽成组件。
 
-## 前置读取
-
-- [UI 设计](ui-design.md)
-
 ## 规则
 
 ### 组件粒度
@@ -60,6 +56,7 @@ agent:
 
 ## 相关
 
+- [UI 设计](ui-design.md)
 - [页面设计](pages.md)
 - [设计 tokens](tokens.md)
 - [图标](icons.md)
