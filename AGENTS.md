@@ -96,6 +96,7 @@
 | 数据模型、索引或迁移变更 | [runbooks/engineering/database/schema-change.md](runbooks/engineering/database/schema-change.md) |
 | 新增或调整代码数据结构、DTO 与枚举 | [runbooks/engineering/data-structure-design.md](runbooks/engineering/data-structure-design.md) |
 | 复杂问题先抽象为通用模型，再讨论算法实现 | [runbooks/engineering/algorithm-design.md](runbooks/engineering/algorithm-design.md) |
+| 文案外置、多语言、locale、时区与格式化、运营内容翻译 | [runbooks/engineering/internationalization-design.md](runbooks/engineering/internationalization-design.md) |
 | 补充测试与执行验证 | [runbooks/implementation/testing.md](runbooks/implementation/testing.md) |
 | 代码实现后的文档回写 | [runbooks/docs/docs-sync.md](runbooks/docs/docs-sync.md) |
 | 服务端部署、发布、配置变更与回滚 | [runbooks/delivery/server-deploy.md](runbooks/delivery/server-deploy.md) |

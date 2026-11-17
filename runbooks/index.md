@@ -44,6 +44,7 @@
 | engineering | [database/schema-change.md](engineering/database/schema-change.md) | 数据模型、索引与迁移变更 |
 | engineering | [data-structure-design.md](engineering/data-structure-design.md) | 代码数据结构：领域模型、值对象、传输结构与枚举 |
 | engineering | [algorithm-design.md](engineering/algorithm-design.md) | 复杂问题的抽象建模与算法选择 |
+| engineering | [internationalization-design.md](engineering/internationalization-design.md) | 客户端与服务端方案的国际化预留：文案外置、locale 透传、运营内容多语言、格式化与时区 |
 | engineering | [server/README.md](engineering/server/README.md) | 服务端分册索引与阅读顺序 |
 | engineering | [server/layering.md](engineering/server/layering.md) | 服务端依赖方向、端口、装配与文件粒度 |
 | engineering | [server/data-access.md](engineering/server/data-access.md) | 服务端数据访问：真相源、事务边界、查询、锁与并发、缓存键 |
