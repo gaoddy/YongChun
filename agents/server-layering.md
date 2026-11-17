@@ -1,6 +1,6 @@
 ---
 name: server-layering
-description: "服务端分层：新增或调整服务端模块、依赖方向、端口与装配方式"
+description: "服务端分层：新增或调整服务端模块、依赖方向、端口、装配方式与文件粒度"
 effort: xhigh
 ---
 
