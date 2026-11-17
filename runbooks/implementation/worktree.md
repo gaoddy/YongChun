@@ -38,9 +38,9 @@ agent:
 "${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_create.sh" <branch> [base]
 ```
 
-3. 在 worktree 内完成修改与验证；计划目录见[任务执行与交付](task-delivery.md)。
+3. 在 worktree 内完成修改与验证；计划目录见[任务执行与交付](change-delivery.md)。
 4. 提交前检查 `git diff`，确认只包含任务范围内的改动。
-5. 合并前删除计划目录，再合并到 `develop`。
+5. 合并前按[任务计划](../version/plan.md)清理计划目录，再合并到 `develop`。
 6. 删除已合并的 worktree 与分支：
 
 ```bash
