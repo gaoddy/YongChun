@@ -27,7 +27,7 @@ agent:
 | 改动 | 写入位置 | 同时删除 |
 | --- | --- | --- |
 | 产品规则、页面与交互 | `docs/current/product/` 对应文档，标注「已实现」 | `update/<需求>/product.md` 中已实现部分 |
-| UI 页面、组件与设计系统 | `docs/current/product/ui/` 对应文档，按[UI 文档结构](structure/ui-docs-structure.md) | 版本 `product/ui/` 与 `update/` 中已实现部分 |
+| UI 页面、组件与设计系统 | `docs/current/product/ui/` 对应文档，按[UI 文档结构](structure/ui-docs-structure.md) | `update/` 中已实现部分 |
 | 接口契约、数据模型 | `docs/current/technical/` 对应文档；数据结构与表按[文档结构](structure/docs-structure.md#数据结构文档)一结构一文件 | `update/<需求>/technical.md` 中已实现部分 |
 | 缺陷修复 | 受影响的 `docs/current/product/`、`docs/current/technical/` | `bugfix/<日期>-<slug>/` |
 | 分层、目录与命名 | [目录结构与命名](../engineering/directory-structure.md)、[服务端分层](../engineering/server/layering.md)、[客户端分层](../engineering/client/layering.md)、相关技术文档 | — |

@@ -71,7 +71,7 @@ docs/current/product/ui/
 | 阶段 | 动作 |
 | --- | --- |
 | 设计确认 | 结论写入版本 `product/ui/` 或需求 `product.md`，标「方案未实施」 |
-| 代码落地 | 同一任务写入 `docs/current/product/ui/`，状态改为「已实现」，删除版本基线与 `update/` 中已实现部分 |
+| 代码落地 | 同一任务写入 `docs/current/product/ui/`，状态改为「已实现」，删除 `update/` 中已实现部分；版本 `product/ui/` 基线保留到版本完成 |
 | 版本完成 | 删除版本 `product/ui/` 基线，保留 `README.md` 与 `open-questions.md` |
 | 删除或替换 UI | 同一任务删除对应页面、组件文档与索引条目，不留孤儿文件 |
 
@@ -84,7 +84,7 @@ docs/current/product/ui/
 2. 按目录结构建立或更新文件，一个页面、一个组件各一个文件；页面内组件同样建 `components/<组件>.md`。
 3. 按文件职责写内容，状态、入口与出口逐项列全，链接代替复制。
 4. 更新 `README.md` 与 `pages/`、`components/` 索引。
-5. 代码落地后回写 `docs/current/product/ui/`，删除已实现部分与版本基线。
+5. 代码落地后回写 `docs/current/product/ui/`，删除 `update/` 中已实现部分；版本基线在版本完成时删除。
 
 ## 验证
 
