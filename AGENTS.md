@@ -87,7 +87,7 @@
 | 引入、升级或移除技术依赖 | [runbooks/engineering/tech-change.md](runbooks/engineering/tech-change.md) |
 | 新增或调整目录、模块归属、命名与业务对象登记 | [runbooks/engineering/directory-structure.md](runbooks/engineering/directory-structure.md) |
 | 评估历史设计与遗留代码可否移除，或新人接手的认知成本与简化 | [runbooks/engineering/codebase-audit.md](runbooks/engineering/codebase-audit.md) |
-| 新增或调整服务端分层、依赖方向与装配 | [runbooks/engineering/server/layering.md](runbooks/engineering/server/layering.md) |
+| 新增或调整服务端分层、依赖方向、装配与文件粒度 | [runbooks/engineering/server/layering.md](runbooks/engineering/server/layering.md) |
 | 新增或调整客户端页面、状态、数据源分层 | [runbooks/engineering/client/layering.md](runbooks/engineering/client/layering.md) |
 | 设计或调整服务端接口通用规则，或 HTTP、WebSocket、gRPC、SSE、消息订阅、长轮询协议规则 | [runbooks/engineering/server/api/contract.md](runbooks/engineering/server/api/contract.md) |
 | 新增或修改服务端接口 | [runbooks/engineering/server/new-api.md](runbooks/engineering/server/new-api.md) |
