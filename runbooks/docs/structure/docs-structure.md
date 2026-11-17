@@ -26,6 +26,8 @@ docs/
 │   │   └── ui/          UI 设计系统、页面与组件，见 UI 文档
 │   └── technical/       已实现的技术状态
 │       └── README.md    技术文档索引
+├── decisions/           已采用的决策与已否决的请求（跨版本）
+│   └── README.md        决策记录索引
 ├── versions/            按版本计划
 │   ├── README.md        版本总览
 │   └── <版本>/          版本目录，结构见版本开发
@@ -35,14 +37,15 @@ docs/
 └── plan/                实施计划，每个计划一个目录（本地，不提交）
 ```
 
-- `docs/` 保存状态、记录与计划：已实现的状态 `current/`，未实现的 `versions/`，已发布版本的更新内容 `releases/`，实施中的 `plan/`；`current/` 对应当前代码实现，不写方案与规划。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
+- `docs/` 保存状态、记录与计划：已实现的状态 `current/`，跨版本决策 `decisions/`，未实现的 `versions/`，已发布版本的更新内容 `releases/`，实施中的 `plan/`；`current/` 对应当前代码实现，不写方案与规划。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
 - 一级目录职责固定；新增一级目录前先确认现有目录无法承载，并在 `docs/README.md` 登记其职责。
+- `decisions/` 存放跨版本的结论与否决记录：一个决策或一个被否决的概念一个文件，写入时机与写法见[决策记录](../../version/decision-record.md)；版本内未决事项仍写版本 `open-questions.md`，确认后按该规则决定是否进入 `decisions/`。
 - `current/product/`、`current/technical/` 按模块或业务域建子目录，不在根目录堆积文件；每个子目录必须有 `README.md` 说明范围并索引其中的文件。
 - `versions/<版本>/` 的结构固定为 `README.md`、`open-questions.md`、`scope.md`（按需）、`product/`、`technical/`、`update/`、`bugfix/`，细节见[版本文档结构](version-docs-structure.md)。
 - `releases/` 记录已发布版本的更新内容，一个版本一个文件，发版时写入，形式见下文[发版记录](#发版记录-releases)。
 - `plan/` 只保存实施中的任务计划，一个计划一个目录；目录已加入 `.gitignore`，不提交，结构见下文[实施计划](#实施计划-plan)。
 - 讨论记录（进行中的草案、探讨与咨询结论）不放在 `docs/`，统一写在 `output/drafts/<主题>.md`，`output/` 已忽略、不提交；流程与文件结构见[讨论记录](../../implementation/discussion-record.md)。
-- 文件与目录名统一小写、kebab-case、`.md` 扩展名；名称表达主题，不用版本号、人名、日期（`versions/`、`releases/` 的版本号与 `update/`、`bugfix/` 的日期目录除外）或「note」「misc」这类无信息词。
+- 文件与目录名统一小写、kebab-case、`.md` 扩展名；名称表达主题，不用版本号、人名、日期（`versions/`、`releases/` 的版本号、`update/`、`bugfix/` 的日期目录与 `decisions/` 的编号前缀除外）或「note」「misc」这类无信息词。
 - 一个文件只写一个主题；内容跨两个业务域或篇幅超过单次阅读范围时拆分，并用子目录 `README.md` 串联。
 
 ## 发版记录 `releases/`
@@ -62,6 +65,13 @@ docs/
 - 已发布的记录不修改；内容有误时提升版本号重新发布，并在新版本的记录中说明。
 - `releases/README.md` 按版本倒序列出全部发版记录与一句话说明。
 - 引入该目录时只登记本次及以后的发版，不补写历史版本。
+
+## 决策记录 `decisions/`
+
+- 路径：`docs/decisions/<四位编号>-<slug>.md`，一个决策一个文件，编号连续递增；被否决的请求放在 `docs/decisions/rejected/<概念 slug>.md`，一个概念一个文件。
+- 文件固定包含标题与一段正文：标题是结论或概念名；正文写结论、原因与排除的替代方案，一段即可，不强制分节。
+- `decisions/README.md` 与 `decisions/rejected/README.md` 各列出本目录记录与一句话结论。
+- 写入门槛、理由写法与更新规则见[决策记录](../../version/decision-record.md)，不在本节重复。
 
 ## 实施计划 `plan/`
 
@@ -85,7 +95,7 @@ docs/
 - 状态标注：`docs/current/product/`、`docs/current/technical/` 文档标注「已实现」；版本 `product/`、`technical/` 标注「方案未实施」；`update/` 内文件按[需求变动](../../version/requirement-change.md)的状态规则；`README.md` 索引不标状态。
 - 章节顺序：先总览后细节；规则用列表，字段与对照用表格，操作步骤用编号列表，命令与输出用代码块并标注语言。
 - 相关文档：文末用相对链接列出上游规则、下游文档与索引；链接到具体文件，不复述对方内容。
-- 不写决策过程、备选方案、历史版本与聊天结论；结论直接写进承载它的文档。`output/drafts/` 讨论记录可保留待确认项与否决原因，随收尾删除。
+- 不写决策过程、备选方案、历史版本与聊天结论；结论直接写进承载它的文档，满足[决策记录](../../version/decision-record.md)门槛的写在 `decisions/`。`output/drafts/` 讨论记录可保留待确认项与否决原因，随收尾删除。
 - 不内嵌大段代码，指向源码路径；必要的片段只保留能说明问题的最小部分。数据结构文档除外，按下文「数据结构文档」整段同步定义代码。
 
 ## 数据结构文档
@@ -138,6 +148,7 @@ docs/
 - 命名符合小写 kebab-case，一文件一主题。
 - 文档有范围说明与状态标注，标题层级不跳级。
 - 数据结构与数据库表一个文件一个结构，含原始定义代码与 `keypath` 字段表。
+- `decisions/` 一个决策或一个概念一个文件，编号连续、无同一概念的重复记录；写入门槛与理由写法符合[决策记录](../../version/decision-record.md)。
 - 索引与入链完整，无死链与孤儿文档。
 - `docs/` 内没有讨论记录；`output/drafts/` 讨论收尾后已删除并回写正式文档。
 - 正式文档内容为结论，无决策过程、备选方案与历史记录。

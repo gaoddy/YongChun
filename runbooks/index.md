@@ -22,6 +22,7 @@
 | version | [bugfix.md](version/bugfix.md) | 缺陷修复的执行与验证 |
 | version | [plan.md](version/plan.md) | 任务计划与进度跟踪 |
 | version | [retrospective.md](version/retrospective.md) | 交付效率与质量问题的周期复盘与改进沉淀 |
+| version | [decision-record.md](version/decision-record.md) | 跨版本记录已采用的决策与已否决的请求 |
 | product | [product-init.md](product/product-init.md) | 产品初始化：引导完成产品名、介绍、用户规模、端与平台、功能列表的收集 |
 | product | [product-definition.md](product/product-definition.md) | 产品规则、页面与交互的定义、调整与完备性审查 |
 | product | [feature-requirements.md](product/feature-requirements.md) | 新增功能前的产品需求澄清与确认 |

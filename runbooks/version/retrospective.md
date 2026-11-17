@@ -40,6 +40,7 @@ agent:
 ### 结论落点
 
 - 规则改进直接写入对应 runbook，自动化写入 `scripts/` 或 CI 配置，Skill 与 agent 按[Runbook 与 Agent 映射](../runbook-agent-mapping.md)更新。
+- 复盘形成的、满足[决策记录](decision-record.md)门槛的流程取舍写入 `docs/decisions/`，避免下一次复盘重新提出已否决的改进。
 - 不新建复盘报告、问题清单或历史变更日志；结论直接进入承载它的规则、测试或自动化。
 
 ## 步骤
@@ -58,6 +59,7 @@ agent:
 - 质量事件逐个记录发现阶段与原因，共同根因已合并计数。
 - 每个共性根因都有可执行的改进项，写明落点与验证方式，无「加强评审」类表述。
 - 改进已落地到 runbook、测试或自动化，未新建复盘报告。
+- 已否决的改进已按[决策记录](decision-record.md)落盘，下一窗口不重复提出。
 - 下一窗口已核对改进效果，未生效项已修改方案。
 
 ## 相关
@@ -66,3 +68,4 @@ agent:
 - [缺陷修复](bugfix.md)
 - [问题排查](../problems/troubleshooting.md)
 - [Runbook 编写与维护](../runbook.md)
+- [决策记录](decision-record.md)

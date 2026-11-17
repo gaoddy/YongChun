@@ -64,6 +64,7 @@
 | 缺陷修复、验证与收尾 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |
 | 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |
 | 复盘最近一段时间的 PR 时长、Bug、返工、回滚与重复修改 | [runbooks/version/retrospective.md](runbooks/version/retrospective.md) |
+| 记录不应被重新推翻的决策，或判断某项需求、方案是否已否决 | [runbooks/version/decision-record.md](runbooks/version/decision-record.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
 | 新增产品功能，先在产品层面澄清需求并审查到无缺口 | [runbooks/product/feature-requirements.md](runbooks/product/feature-requirements.md) |
 | 产品需求已确认，确认技术可行性、约束与现有功能冲突 | [runbooks/product/feature-feasibility.md](runbooks/product/feature-feasibility.md) |

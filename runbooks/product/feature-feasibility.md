@@ -51,6 +51,7 @@ agent:
 | 产品需求的条件或调整 | 写回 `output/drafts/<需求-slug>.md`（尚未进入需求变动时）或 `docs/versions/<版本>/update/<需求>/product.md`，按[需求变动](../version/requirement-change.md) |
 | 可行性约束与冲突处理 | 产品确认后写入 `technical.md`，不提前写技术方案 |
 | 无法确认的事项 | 版本 `open-questions.md`，写明问题、影响范围与待确认方 |
+| 技术不可行且逆转成本高的需求 | `docs/decisions/rejected/` 记录否决结论与实质理由，按[决策记录](../version/decision-record.md) |
 | 调研过程 | `output/drafts/<需求-slug>.md`，结论回写后删除 |
 
 ## 步骤
