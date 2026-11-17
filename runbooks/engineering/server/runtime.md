@@ -31,7 +31,7 @@ agent:
 1. 确认入口、依赖清单与部署形态，新增依赖先说明用途与替代方案。
 2. 用统一的本地启动命令拉起服务与依赖，检查 `/healthz`、`/readyz`。
 3. 依赖或配置变化后同步依赖清单、锁文件、本地默认值脚本与部署配置。
-4. 按[任务执行与交付](../../implementation/task-delivery.md)执行验证。
+4. 按[任务执行与交付](../../implementation/change-delivery.md)执行验证。
 
 ## 验证
 

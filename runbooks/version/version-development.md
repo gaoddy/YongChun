@@ -47,7 +47,7 @@ agent:
 
 ### 实施
 
-- 按[任务计划](plan.md)拆分任务，按[任务执行与交付](../implementation/task-delivery.md)执行。
+- 按[任务计划](plan.md)拆分任务，按[任务执行与交付](../implementation/change-delivery.md)执行。
 - 实施中出现的新需求按需求变动处理，缺陷按缺陷修复处理，无法当场决定的写入 `open-questions.md`。
 
 ### 收尾

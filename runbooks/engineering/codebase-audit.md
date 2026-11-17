@@ -35,7 +35,7 @@ agent:
 ### 结论落点
 
 - 审计结论写入版本 `technical/` 或 `docs/current/technical/` 的对应模块文档，按[文档写作](../docs/docs-writing.md)与[文档回写](../docs/docs-sync.md)回写；不新建审计报告、问题清单或历史变更日志。
-- 可立即执行的简化按[任务执行与交付](../implementation/task-delivery.md)进入任务；无法立即执行的写入版本 `open-questions.md`。
+- 可立即执行的简化按[任务执行与交付](../implementation/change-delivery.md)进入任务；无法立即执行的写入版本 `open-questions.md`。
 
 ## 步骤
 
@@ -44,7 +44,7 @@ agent:
 3. 对疑似可移除项核对调用方、外部契约、数据迁移与运行时依赖，形成可移除、需收敛、保留三张清单。
 4. 以新工程师视角走查典型任务，列出认知成本点及所需前置知识。
 5. 按优先级提出单一、可独立验证的简化方案，写明收益、风险与回退方式。
-6. 与用户确认后按[任务执行与交付](../implementation/task-delivery.md)实施；结论回写承载文档，未决项写入版本 `open-questions.md`。
+6. 与用户确认后按[任务执行与交付](../implementation/change-delivery.md)实施；结论回写承载文档，未决项写入版本 `open-questions.md`。
 
 ## 验证
 

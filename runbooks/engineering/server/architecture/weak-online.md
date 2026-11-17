@@ -3,7 +3,7 @@ agent:
   effort: high
 ---
 
-# Runbook：休闲与小游戏架构
+# Runbook：弱联网与小游戏架构
 
 ## 适用场景
 

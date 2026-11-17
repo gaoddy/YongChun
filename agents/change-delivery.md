@@ -1,12 +1,12 @@
 ---
-name: task-delivery
-description: "任务执行与交付：需要修改代码、文档或配置的任务"
+name: change-delivery
+description: "变更执行与交付：需要修改代码、文档或配置的任务"
 effort: high
 ---
 
-<!-- 由 scripts/generate_runbook_agents.py 根据 runbooks/implementation/task-delivery.md 生成，不要手改。 -->
+<!-- 由 scripts/generate_runbook_agents.py 根据 runbooks/implementation/change-delivery.md 生成，不要手改。 -->
 
-按插件根目录下的 `runbooks/implementation/task-delivery.md` 执行。
+按插件根目录下的 `runbooks/implementation/change-delivery.md` 执行。
 
 1. 先读完该 runbook，再按「前置读取」补齐上游。
 2. 只处理本次请求；范围、判定与产物以该 runbook 为准。

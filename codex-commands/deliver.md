@@ -7,7 +7,7 @@ argument-hint: <任务描述>
 
 1. 定位插件根目录：Claude Code 为插件根（环境变量 CLAUDE_PLUGIN_ROOT）；Codex 为插件安装目录，位于 `~/.codex/plugins/cache` 下。
 2. 读取并按内容执行：
-   - `runbooks/implementation/task-delivery.md`
+   - `runbooks/implementation/change-delivery.md`
    - `runbooks/implementation/worktree-timing.md`
 3. 只改任务范围内的文件，不扩展功能、不顺带重构。
 4. 按验证矩阵执行构建、检查与测试；验证失败不得跳过或放宽断言。

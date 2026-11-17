@@ -13,7 +13,7 @@ agent:
 
 ## 前置读取
 
-- [任务执行与交付](../implementation/task-delivery.md)
+- [任务执行与交付](../implementation/change-delivery.md)
 - [Worktree 与分支](../implementation/worktree.md)
 
 ## 规则

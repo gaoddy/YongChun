@@ -46,6 +46,7 @@
 | engineering | [algorithm-design.md](engineering/algorithm-design.md) | 复杂问题的抽象建模与算法选择 |
 | engineering | [server/README.md](engineering/server/README.md) | 服务端分册索引与阅读顺序 |
 | engineering | [server/layering.md](engineering/server/layering.md) | 服务端依赖方向、端口、装配与文件粒度 |
+| engineering | [server/data-access.md](engineering/server/data-access.md) | 服务端数据访问：真相源、事务边界、查询、锁与并发、缓存键 |
 | engineering | [server/architecture/index.md](engineering/server/architecture/index.md) | 服务架构场景路由与分册入口；入口与索引合一使用 index.md |
 | engineering | [server/architecture/requirements.md](engineering/server/architecture/requirements.md) | 服务架构三种方案的通用输入、要求与选择规则 |
 | engineering | [server/architecture/realtime-frame-sync.md](engineering/server/architecture/realtime-frame-sync.md) | 固定 tick、确定性输入广播的实时对战帧同步 |
@@ -55,7 +56,7 @@
 | engineering | [server/architecture/persistent-world.md](engineering/server/architecture/persistent-world.md) | 持久大世界、分线分片与 AOI |
 | engineering | [server/architecture/sandbox.md](engineering/server/architecture/sandbox.md) | 玩家可改世界、区块加载与 UGC |
 | engineering | [server/architecture/slg.md](engineering/server/architecture/slg.md) | 大地图定时事件、资源强一致与分区开服 |
-| engineering | [server/architecture/casual.md](engineering/server/architecture/casual.md) | 弱在线、本地计算、云存档与排行 |
+| engineering | [server/architecture/weak-online.md](engineering/server/architecture/weak-online.md) | 弱在线、本地计算、云存档与排行 |
 | engineering | [server/implementation.md](engineering/server/implementation.md) | 在选定架构下实现服务端方案 |
 | engineering | [server/runtime.md](engineering/server/runtime.md) | 服务端源码、依赖、部署形态与本地运行 |
 | engineering | [server/api/README.md](engineering/server/api/README.md) | 服务端接口分册索引与阅读顺序 |
@@ -73,7 +74,7 @@
 | engineering | [client/runtime.md](engineering/client/runtime.md) | 客户端运行、构建参数、联调与实机验证 |
 | engineering | [client/flutter-build.md](engineering/client/flutter-build.md) | Flutter 各端构建产物、混淆、签名与校验 |
 | implementation | [project-init.md](implementation/project-init.md) | 项目初始化：开发工作空间声明、文档骨架与首个版本目录 |
-| implementation | [task-delivery.md](implementation/task-delivery.md) | 任务执行、验证与交付 |
+| implementation | [change-delivery.md](implementation/change-delivery.md) | 修改类任务执行、验证与交付 |
 | implementation | [discussion-record.md](implementation/discussion-record.md) | 草案、探讨与咨询的结论记录与注意力锚定 |
 | implementation | [worktree-timing.md](implementation/worktree-timing.md) | 判断任务是否需要创建 worktree |
 | implementation | [worktree.md](implementation/worktree.md) | Worktree 创建、分支与清理 |

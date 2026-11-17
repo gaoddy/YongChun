@@ -3,7 +3,7 @@ agent:
   effort: high
 ---
 
-# Runbook：任务执行与交付
+# Runbook：变更执行与交付
 
 ## 适用场景
 
@@ -53,7 +53,7 @@ agent:
 
 ### 任务流程
 
-- 只读任务不建 worktree；修改仓库文件 → 按[Worktree 创建时机](worktree-timing.md)判定 → 需要隔离时从 `develop` 建 worktree 与分支 → 大改动在 `docs/plan/<分支名>/` 写实施计划 → 实施 → 验证 → 回写文档 → 提交 → 删除计划目录 → 合并 → 需要时清理 worktree。
+- 只读任务不建 worktree；修改仓库文件 → 按[Worktree 创建时机](worktree-timing.md)判定 → 需要隔离时从 `develop` 建 worktree 与分支 → 大改动在 `docs/plan/<分支名>/` 写实施计划 → 实施 → 验证 → 回写文档 → 提交 → 按[任务计划](../version/plan.md)清理计划目录 → 合并 → 需要时清理 worktree。
 - 属于[小改动](worktree-timing.md)的任务直接在当前分支修改，不建 worktree，也不进入 plan 模式；只有大改动才启用 plan 模式与计划目录。
 - 实施前确认任务范围与可验证的成功标准；实施中只改任务范围内的文件，不扩展功能、不顺带重构。
 
@@ -94,8 +94,7 @@ agent:
 
 ### 计划
 
-- 计划结构见[任务计划](../version/plan.md)：`index.md`、`task-plan.md`、`tasks/`；产品与技术结论链接 `update/`，不复制。
-- 计划写在 `docs/plan/<分支名>/`，一个计划一个目录，只在实施计划时创建；`docs/plan/` 已忽略、不提交，任务完成后、合并前删除。
+- 计划结构、创建与删除时机见[任务计划](../version/plan.md)：`index.md`、`task-plan.md`、`tasks/`；产品与技术结论链接 `update/`，不复制。
 
 ### 本地数据
 
@@ -111,7 +110,7 @@ agent:
 5. 按验证矩阵执行命令，记录输出与退出状态。
 6. 同一任务内回写受影响文档，清理临时文件与测试专用文件。
 7. 提交前检查 `git diff`，按主题提交。
-8. 合并前删除计划目录；已创建 worktree 的任务在合并后清理 worktree。
+8. 合并前按[任务计划](../version/plan.md)清理计划目录；已创建 worktree 的任务在合并后清理 worktree。
 
 ## 验证
 
