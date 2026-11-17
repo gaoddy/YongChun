@@ -72,6 +72,7 @@ agent:
 
 ## 相关
 
+- [数据访问](../server/data-access.md)
 - [数据模型变更](schema-change.md)
 - [服务端分层](../server/layering.md)
 - [可观测性](../../problems/observability.md)

@@ -45,7 +45,7 @@
 
 ## 触发
 
-- 未指定命令或场景时，按[任务执行与交付](runbooks/implementation/task-delivery.md#场景判定)的场景判定自动路由；只读问答不触发。
+- 未指定命令或场景时，按[任务执行与交付](runbooks/implementation/change-delivery.md#场景判定)的场景判定自动路由；只读问答不触发。
 - 只读观察、验证、回查、评审、答疑和检索等不修改仓库文件的任务，无需 worktree。
 - 修改代码、文档或配置前，按触发读取对应 runbook；跨场景任务读取所有相关文档。
 - 本表只服务本仓库；接入项目的场景路由使用[全局索引](runbooks/index.md)，不复制本表。
@@ -79,7 +79,7 @@
 | 设计 tokens 的定义与变更 | [runbooks/product/ui/tokens.md](runbooks/product/ui/tokens.md) |
 | 图标新增、替换与复用 | [runbooks/product/ui/icons.md](runbooks/product/ui/icons.md) |
 | 操作反馈、表单、动效与无障碍 | [runbooks/product/ui/interaction.md](runbooks/product/ui/interaction.md) |
-| 修改代码、文档或配置，执行与交付 | [runbooks/implementation/task-delivery.md](runbooks/implementation/task-delivery.md) |
+| 修改代码、文档或配置，执行与交付 | [runbooks/implementation/change-delivery.md](runbooks/implementation/change-delivery.md) |
 | 草案、方案探讨或技术咨询，需持续记录结论 | [runbooks/implementation/discussion-record.md](runbooks/implementation/discussion-record.md) |
 | 任务开始前判断是否需要创建 worktree | [runbooks/implementation/worktree-timing.md](runbooks/implementation/worktree-timing.md) |
 | 创建或清理 worktree、切换分支，或并行派发子 agent | [runbooks/implementation/worktree.md](runbooks/implementation/worktree.md) |
@@ -88,6 +88,7 @@
 | 新增或调整目录、模块归属、命名与业务对象登记 | [runbooks/engineering/directory-structure.md](runbooks/engineering/directory-structure.md) |
 | 评估历史设计与遗留代码可否移除，或新人接手的认知成本与简化 | [runbooks/engineering/codebase-audit.md](runbooks/engineering/codebase-audit.md) |
 | 新增或调整服务端分层、依赖方向、装配与文件粒度 | [runbooks/engineering/server/layering.md](runbooks/engineering/server/layering.md) |
+| 设计或调整服务端数据访问：真相源、事务边界、查询、锁与并发、缓存键 | [runbooks/engineering/server/data-access.md](runbooks/engineering/server/data-access.md) |
 | 新增或调整客户端页面、状态、数据源分层 | [runbooks/engineering/client/layering.md](runbooks/engineering/client/layering.md) |
 | 设计或调整服务端接口通用规则，或 HTTP、WebSocket、gRPC、SSE、消息订阅、长轮询协议规则 | [runbooks/engineering/server/api/contract.md](runbooks/engineering/server/api/contract.md) |
 | 新增或修改服务端接口 | [runbooks/engineering/server/new-api.md](runbooks/engineering/server/new-api.md) |
