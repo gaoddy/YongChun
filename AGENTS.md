@@ -35,7 +35,7 @@
 - 本仓库即 runbook 集合本身，没有服务端与客户端代码，接入项目所需的目录、框架、迁移与运维命令取值在本仓库不适用。
 - 文档位于 `runbooks/`，入口见 [runbooks/index.md](runbooks/index.md)。
 - 配置模板位于 `templates/`，当前提供 `worktree-merge-queue.toml`；复制位置、字段与校验方式见[Worktree 合并队列交付](runbooks/delivery/worktree-delivery.md)。
-- 任务计划只在实施计划时创建，写在 `docs/plan/<分支名>/`，每个计划一个目录；`docs/plan/` 已忽略、不提交，任务完成后删除。
+- 任务计划的创建、结构与删除时机见[任务计划](runbooks/version/plan.md)；`docs/plan/` 已忽略、不提交。
 - Agent 产物由 `scripts/generate_runbook_agents.py` 从 runbook frontmatter 生成：Claude Code 在 `agents/`，Codex 在 `codex-agents/`；生成物提交、禁止手改，规则见 [Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
 - 项目初始化的声明模板与取值填写见[项目初始化](runbooks/implementation/project-init.md)；产品定义收集见[产品初始化](runbooks/product/product-init.md)。
 - worktree 的唯一创建入口是 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，绕过它的 `git worktree add` 由 `skills/worktree/worktree-guard/scripts/worktree_guard.sh` 在插件 `PreToolUse` 钩子中拒绝；规则与钩子配置见[Worktree 与分支](runbooks/implementation/worktree.md)。
