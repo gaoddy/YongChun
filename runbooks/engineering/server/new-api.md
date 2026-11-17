@@ -13,14 +13,12 @@ agent:
 ## 前置读取
 
 - [接口契约](api/contract.md)
-- [服务端运行](runtime.md)
-- [可观测性](../../problems/observability.md)
 
 ## 步骤
 
 1. 确认协议、调用方与契约变更点，在版本 `update/<需求>/technical.md` 写明路径、消息、字段、错误码、鉴权与幂等，确认后实施。
 2. 按[接口契约](api/contract.md)的通用规则与所选的协议文档设计契约；分层落点按[服务端分层](layering.md)。
-3. 在 `domain` 定义业务规则与端口，`application` 编排事务，`handler` 只做参数解析、鉴权入口与状态码映射。
+3. 在 `domain` 定义业务规则与端口，`application` 编排事务；handler 职责与分层落点见[服务端分层](layering.md)。
 4. 修改契约定义与注释，执行 `<生成命令>`；生成物与源契约一起提交。
 5. 补充端到端测试：成功、参数错误、权限拒绝与幂等重复请求；长连接与流式接口覆盖连接建立、重连、超时、背压与取消。
 6. 同步更新 `docs/current/technical/` 的接口文档与错误码说明。
@@ -37,3 +35,5 @@ agent:
 
 - [服务端方案实现](implementation.md)
 - [服务端分层](layering.md)
+- [服务端运行](runtime.md)
+- [可观测性](../../problems/observability.md)

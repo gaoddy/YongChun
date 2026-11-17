@@ -12,8 +12,6 @@ agent:
 ## 前置读取
 
 - [目录结构与命名](directory-structure.md)
-- [服务端运行](server/runtime.md)
-- [客户端运行](client/runtime.md)
 
 ## 选型原则
 
@@ -57,4 +55,6 @@ agent:
 
 ## 相关
 
-- [任务执行与交付](../implementation/task-delivery.md)
+- [任务执行与交付](../implementation/change-delivery.md)
+- [服务端运行](server/runtime.md)
+- [客户端运行](client/runtime.md)
