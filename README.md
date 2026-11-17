@@ -9,7 +9,7 @@
 - 每个项目各存一份规则，版本分叉后互相矛盾，无法判断哪份有效。
 - 文档与代码脱节，已实现状态和规划混在一起，无法作为后续工作的依据。
 
-本项目的做法是把这些内容集中固化为 runbook：每篇有适用场景、前置读取、规则、步骤与验证，agent 触发对应场景时按文执行，人按同一篇文评审。接入项目只声明「遵循哪套 runbook」，规则本身只维护一份。
+本项目的做法是把这些内容集中固化为 runbook：每篇有适用场景、规则、步骤与验证，前置读取按需设置，agent 触发对应场景时按文执行，人按同一篇文评审。接入项目只声明「遵循哪套 runbook」，规则本身只维护一份。
 
 ## 工作方式
 
@@ -39,7 +39,7 @@ runbooks 记录的不是泛泛的建议，而是每个场景下 agent 的进场�
 
 ### Claude Code
 
-根 `.claude-plugin/plugin.json` 声明插件，`claude-commands/` 提供十一个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
+根 `.claude-plugin/plugin.json` 声明插件，`claude-commands/` 提供十二个命令，marketplace 的 `source` 指向仓库根。接入项目在 Claude Code 中安装：
 
 ```bash
 claude plugin marketplace add gaoddy/YongChun
@@ -49,7 +49,7 @@ claude plugin marketplace add gaoddy/YongChun
 claude plugin install yongchun@yongchun
 ```
 
-安装后可用 `/yongchun:deliver`、`/yongchun:bugfix`、`/yongchun:feature-requirements`、`/yongchun:feature-feasibility`、`/yongchun:new-api`、`/yongchun:algorithm-design`、`/yongchun:plan`、`/yongchun:ui`、`/yongchun:docs-restructure`、`/yongchun:release`、`/yongchun:server-deploy`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update yongchun`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
+安装后可用 `/yongchun:init`、`/yongchun:deliver`、`/yongchun:bugfix`、`/yongchun:feature-requirements`、`/yongchun:feature-feasibility`、`/yongchun:new-api`、`/yongchun:algorithm-design`、`/yongchun:plan`、`/yongchun:ui`、`/yongchun:docs-restructure`、`/yongchun:release`、`/yongchun:server-deploy`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update yongchun`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
 插件同时分发 `agents/`：每篇 runbook 一个 agent，名称、描述与思考强度来自 runbook frontmatter，调用名为 `yongchun:<name>`；生成与校验见[Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
 
@@ -87,19 +87,20 @@ templates/                配置模板：worktree 合并队列
 skills/                   双端共用的 skill，按域分目录
 ├── worktree/             worktree 创建与守卫
 └── delivery/             合并队列交付
-hooks/                    UserPromptSubmit 路由提示
+hooks/                    UserPromptSubmit 路由提示与 PreToolUse worktree 守卫
 scripts/                  校验脚本与测试
 runbooks/
 ├── README.md             目录树与项目基线
 ├── index.md              全局索引：全部 runbook 登记
 ├── runbook.md            runbook 的编写、拆分与索引维护
+├── runbook-agent-mapping.md  runbook 与 agent 映射、强度与生成
 ├── docs/                 文档：写作、回写与文档结构分册
-├── version/              版本：流程、需求、缺陷、计划
+├── version/              版本：流程、需求、缺陷、计划、复盘
 ├── product/              产品定义、功能评估与 UI 分册
 ├── engineering/          选型、目录、接口、数据与服务端/客户端分册
 ├── implementation/       实施：接入、任务、讨论、worktree、构建、测试
-├── delivery/             交付：服务端发布、客户端发布与合并队列交付
-└── problems/             问题排查与修复决策
+├── delivery/             交付：版本发布、服务端发布、客户端发布与合并队列交付
+└── problems/             问题排查、修复决策与可观测性
 ```
 
 接入项目根下的 `docs/`、`server/`、`client/` 目录属于项目本身，不在本仓库内维护。
