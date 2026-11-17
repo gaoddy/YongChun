@@ -31,8 +31,8 @@ agent:
 
 ## 步骤
 
-1. 按[Worktree 创建时机](worktree-timing.md)判定任务需要修改仓库文件。
-2. 创建 worktree 与分支，冲突、脏工作区、基线缺失时脚本会拒绝执行：
+1. 按[Worktree 创建时机](worktree-timing.md)判定任务是否需要隔离：只读任务与[小改动](worktree-timing.md)直接在当前分支执行，不创建 worktree。
+2. 需要隔离时创建 worktree 与分支，冲突、脏工作区、基线缺失时脚本会拒绝执行：
 
 ```bash
 "${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_create.sh" <branch> [base]
