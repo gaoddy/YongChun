@@ -7,7 +7,8 @@
 - 场景与必读对应见 [runbooks/index.md](runbooks/index.md)；修改代码、文档或配置前按场景读取对应 runbook。
 - 项目特有场景在本文件补充入口，指向上述 runbook；不复制 runbook 内容。
 - runbook 与本文件冲突时以 runbook 为准，并修正本文件。
-- `runbooks/index.md` 是全部 runbook 的唯一登记处：每个可执行 runbook 一行，路径与文件名一致，适用场景写成一句话；新增、改名、移动或删除 runbook 时，同一任务内更新该表，旧条目随文件删除，不留「已废弃」记录。
+- `runbooks/index.md` 登记面向外部项目的全部 runbook：每个可执行 runbook 一行，路径与文件名一致，适用场景写成一句话；新增、改名、移动或删除 runbook 时，同一任务内更新该表，旧条目随文件删除，不留「已废弃」记录。
+- `runbooks/` 根目录的维护文档（`README.md`、`runbook.md`、`runbook-agent-mapping.md`）不进入全局索引，在本文件触发表登记。
 - 索引不重复正文内容：适用场景只写触发条件，不写步骤与规则；每次调整后与 `runbooks/README.md` 的目录树、本文件触发表保持一致，并校验链接与锚点。
 
 ## 协作原则
@@ -62,6 +63,7 @@
 | 新建或调整 UI 文档 | [runbooks/docs/structure/ui-docs-structure.md](runbooks/docs/structure/ui-docs-structure.md) |
 | 新增、拆分、合并、移动或删除 runbook，或调整结构、命名与索引 | [runbooks/runbook.md](runbooks/runbook.md) |
 | 新增、调整或校验 runbook 对应的 agent 与思考强度 | [runbooks/runbook-agent-mapping.md](runbooks/runbook-agent-mapping.md) |
+| 查看 runbooks 目录树与项目基线 | [runbooks/README.md](runbooks/README.md) |
 | 需求变动的拆分、确认与实施 | [runbooks/version/requirement-change.md](runbooks/version/requirement-change.md) |
 | 缺陷修复、验证与收尾 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |
 | 任务计划的规划、跟踪与清理 | [runbooks/version/plan.md](runbooks/version/plan.md) |

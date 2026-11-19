@@ -141,6 +141,19 @@ class CheckRunbooksTest(unittest.TestCase):
         self.assertEqual(code, 1, out)
         self.assertIn("索引", out)
 
+    def test_maintenance_runbook_registered_in_agents_passes(self):
+        agents = BASE["AGENTS.md"] + "\n| 维护 | [runbook.md](runbooks/runbook.md) |\n"
+        content = BASE["runbooks/b.md"].replace("B", "维护")
+        code, out = run(make_repo(overrides={"AGENTS.md": agents},
+                                  extra={"runbooks/runbook.md": content}))
+        self.assertEqual(code, 0, out)
+
+    def test_maintenance_runbook_missing_from_agents_fails(self):
+        content = BASE["runbooks/b.md"].replace("B", "维护")
+        code, out = run(make_repo(extra={"runbooks/runbook.md": content}))
+        self.assertEqual(code, 1, out)
+        self.assertIn("AGENTS.md 触发表", out)
+
     def test_dead_link_fails(self):
         a = BASE["runbooks/a.md"] + "\n[缺失](missing.md)\n"
         code, out = run(make_repo(overrides={"runbooks/a.md": a}))

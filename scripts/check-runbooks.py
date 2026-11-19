@@ -7,6 +7,14 @@ import os
 import re
 import sys
 
+# 根目录维护文档由 AGENTS.md 触发表登记，其余 runbook 由 index.md 登记。
+# 新增此类文档时同步更新本清单与 AGENTS.md 的 Runbook 段。
+MAINTENANCE_RUNBOOKS = (
+    "runbooks/README.md",
+    "runbooks/runbook.md",
+    "runbooks/runbook-agent-mapping.md",
+)
+
 
 def read(path):
     with open(path, encoding="utf-8") as f:
@@ -83,14 +91,26 @@ def main():
         if os.path.exists(p):
             all_md.append(p)
 
-    # 索引覆盖
+    # 索引覆盖：根目录维护文档由 AGENTS.md 触发表登记，其余由 index.md 登记
     index_path = os.path.join(root, "runbooks", "index.md")
     index_text = read(index_path) if os.path.exists(index_path) else ""
     indexed = set()
     for link in re.findall(r"\]\(([^)#]+)(?:#[^)]*)?\)", index_text):
         indexed.add(os.path.normpath(os.path.join(os.path.dirname(index_path), link)))
+    agents_path = os.path.join(root, "AGENTS.md")
+    agents_text = read(agents_path) if os.path.exists(agents_path) else ""
+    registered_in_agents = set()
+    for link in re.findall(r"\]\(([^)#]+)(?:#[^)]*)?\)", section(agents_text, "触发") or ""):
+        registered_in_agents.add(os.path.normpath(os.path.join(root, link)))
+    maintenance = {os.path.normpath(os.path.join(root, p)) for p in MAINTENANCE_RUNBOOKS}
     for p in runbooks:
-        if os.path.normpath(p) != os.path.normpath(index_path) and os.path.normpath(p) not in indexed:
+        key = os.path.normpath(p)
+        if key == os.path.normpath(index_path):
+            continue
+        if key in maintenance:
+            if key not in registered_in_agents:
+                bad("索引", rel(root, p), "未在 AGENTS.md 触发表登记")
+        elif key not in indexed:
             bad("索引", rel(root, p), "未在 runbooks/index.md 登记")
 
     # 触发表

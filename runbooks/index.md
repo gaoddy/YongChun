@@ -124,11 +124,10 @@
 | 根因已确认，决定修复层次、修改端与范围 | [problems/fix-decision.md](problems/fix-decision.md) |
 | 日志、指标、追踪与告警 | [problems/observability.md](problems/observability.md) |
 
-## 文档与 runbook 维护
+## 文档
 
 | 任务 / 触发 | 读 |
 | --- | --- |
-| 目录树与项目基线 | [README.md](README.md) |
 | 文档写作与表述规范 | [docs/docs-writing.md](docs/docs-writing.md) |
 | 代码实现后的文档回写 | [docs/docs-sync.md](docs/docs-sync.md) |
 | 把现有 docs 目录重构为 runbook 文档结构 | [docs/docs-restructure.md](docs/docs-restructure.md) |
@@ -136,5 +135,3 @@
 | docs 目录与文档内部结构规范 | [docs/structure/docs-structure.md](docs/structure/docs-structure.md) |
 | UI 文档落点、目录、职责与生命周期 | [docs/structure/ui-docs-structure.md](docs/structure/ui-docs-structure.md) |
 | 版本文档目录、文件形式与生命周期 | [docs/structure/version-docs-structure.md](docs/structure/version-docs-structure.md) |
-| 新增、拆分、合并、移动或删除 runbook，或调整结构与索引 | [runbook.md](runbook.md) |
-| runbook 与 Claude Code/Codex agent 的映射、强度与生成 | [runbook-agent-mapping.md](runbook-agent-mapping.md) |

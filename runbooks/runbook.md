@@ -79,7 +79,7 @@ agent:
 - 目录层级最多三级（分组 → 分册 → 子分册），不再向下嵌套；子分册只用于分册内已有两个以上按主题拆分的同族文件（如 `engineering/server/api/`），其余细分内容用一篇文档内的章节承载。
 - 分册与子分册目录必须有 `README.md`，列出本目录文件与一句话说明；分册索引只链到子目录 `README.md`，不重复列子目录内文件，[全局索引](index.md)仍逐篇登记；一级分组不设 `README.md`，由根目录树与全局索引承载。
 - `engineering/server/architecture/` 因入口与索引合一使用 `index.md` 作为入口，其余分册目录仍用 `README.md`。
-- `runbooks/` 根目录另有[全局索引](index.md)，登记全部 runbook，与目录树、触发表保持一致。
+- `runbooks/` 根目录另有[全局索引](index.md)，登记面向外部项目的全部 runbook；根目录维护文档（`README.md`、`runbook.md`、`runbook-agent-mapping.md`）由根 `AGENTS.md` 触发表登记，与目录树保持一致。
 - 新增一级目录前先确认现有分组无法承载，并在[全局索引](index.md)、[目录树](README.md)与根 `AGENTS.md` 触发表登记。
 - 删除或移动目录时同步索引与入链，不留空目录与孤儿文件。
 
@@ -152,6 +152,6 @@ agent:
 - 术语全文一致，标识符、命令与路径保留原文；占位符统一，示例可在仓库核实。
 - 每条规则只围绕一个主题；不同主题的约束已拆条。
 - 触发表覆盖所有会修改仓库的场景；无孤儿文件、重复主题、失效引用与过期规则。
-- 全局索引覆盖 `runbooks/` 下全部 runbook，无遗漏、无死链。
+- 全局索引覆盖 `runbooks/` 下全部面向外部项目的 runbook；根目录维护文档已在 `AGENTS.md` 触发表登记，无遗漏、无死链。
 - 索引、目录树、触发表与入链一致，无死链、坏锚点与孤儿文件。
 - `python3 scripts/check-runbooks.py` 退出码为 0。
