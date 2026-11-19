@@ -7,6 +7,8 @@
 - 场景与必读对应见 [runbooks/index.md](runbooks/index.md)；修改代码、文档或配置前按场景读取对应 runbook。
 - 项目特有场景在本文件补充入口，指向上述 runbook；不复制 runbook 内容。
 - runbook 与本文件冲突时以 runbook 为准，并修正本文件。
+- `runbooks/index.md` 是全部 runbook 的唯一登记处：每个可执行 runbook 一行，路径与文件名一致，适用场景写成一句话；新增、改名、移动或删除 runbook 时，同一任务内更新该表，旧条目随文件删除，不留「已废弃」记录。
+- 索引不重复正文内容：适用场景只写触发条件，不写步骤与规则；每次调整后与 `runbooks/README.md` 的目录树、本文件触发表保持一致，并校验链接与锚点。
 
 ## 协作原则
 

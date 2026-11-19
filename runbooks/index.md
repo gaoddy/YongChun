@@ -1,6 +1,6 @@
 # Runbook 全局索引
 
-> `runbooks/` 下全部 runbook 的唯一登记处。新增、改名、移动或删除 runbook 时，在同一任务内更新本表。
+> `runbooks/` 下全部 runbook 的唯一登记处；登记与维护规则见根 [AGENTS.md](../AGENTS.md)。
 > 目录树与项目基线见 [README.md](README.md)；编写与索引规则见 [runbook.md](runbook.md)。
 > 按场景查找入口见根 [AGENTS.md](../AGENTS.md) 的触发表。
 
@@ -89,10 +89,3 @@
 | problems | [troubleshooting.md](problems/troubleshooting.md) | 本地或线上问题定位 |
 | problems | [fix-decision.md](problems/fix-decision.md) | 确认根因后的修复层次、修改端与范围 |
 | problems | [observability.md](problems/observability.md) | 日志、指标、追踪与告警 |
-
-## 维护
-
-- 本表是 runbook 的唯一登记处：每个可执行 runbook 一行，路径与文件名一致，适用场景写成一句话。
-- 新增、改名、移动或删除 runbook 时，同一任务内更新本表；旧条目随文件删除，不留「已废弃」记录。
-- 索引不重复正文内容；适用场景只写触发条件，不写步骤与规则。
-- 索引与 `README.md` 的目录树、根 `AGENTS.md` 的触发表保持一致；每次调整后校验链接与锚点。
