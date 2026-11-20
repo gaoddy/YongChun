@@ -78,7 +78,7 @@
 | UI 设计、实现、改版与评审 | [runbooks/product/ui/ui-design.md](runbooks/product/ui/ui-design.md) |
 | UI 设计与改版前的方向方案与选择 | [runbooks/product/ui/directions.md](runbooks/product/ui/directions.md) |
 | 设计系统与公共 UI 落地 | [runbooks/product/ui/design-system.md](runbooks/product/ui/design-system.md) |
-| 主题、深浅色与视觉资源 | [runbooks/product/ui/theme.md](runbooks/product/ui/theme.md) |
+| 主题范围（单主题或深浅色）与视觉资源 | [runbooks/product/ui/theme.md](runbooks/product/ui/theme.md) |
 | 页面结构、页面状态与适配 | [runbooks/product/ui/pages.md](runbooks/product/ui/pages.md) |
 | 组件化粒度、公共组件拆分、接口与扩展 | [runbooks/product/ui/components.md](runbooks/product/ui/components.md) |
 | 设计 tokens 的定义与变更 | [runbooks/product/ui/tokens.md](runbooks/product/ui/tokens.md) |

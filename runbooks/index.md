@@ -31,7 +31,7 @@
 | UI 分册索引与阅读顺序 | [product/ui/README.md](product/ui/README.md) |
 | UI 改版前给出可比较的方向方案 | [product/ui/directions.md](product/ui/directions.md) |
 | 设计系统与公共 UI 落地 | [product/ui/design-system.md](product/ui/design-system.md) |
-| 深色与浅色主题、主题切换、视觉资源 | [product/ui/theme.md](product/ui/theme.md) |
+| 主题范围（单主题或深浅色）、主题切换、视觉资源 | [product/ui/theme.md](product/ui/theme.md) |
 | 页面结构、页面状态与适配 | [product/ui/pages.md](product/ui/pages.md) |
 | 组件粒度、公共组件拆分与接口边界 | [product/ui/components.md](product/ui/components.md) |
 | 设计 tokens 的定义与变更 | [product/ui/tokens.md](product/ui/tokens.md) |
