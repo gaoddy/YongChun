@@ -94,10 +94,17 @@ case "$subcommand" in
         ;;
 esac
 
-# remove / move / repair / lock / unlock：只允许操作 <repo>/.worktrees 下的 worktree
+# remove / move / repair / lock / unlock：只允许操作 <repo>/.worktrees 下的 worktree。
+# 仓库根按目标路径所属的主仓库判定，路径不可定位时退回 cwd 所属仓库；在 worktree 内执行时同样按主仓库校验。
 [ -n "$cwd" ] || cwd="."
-repo=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null) || exit 0
-root="$repo/.worktrees"
+
+repo_root_of() {
+    common=$(git -C "$1" rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || return 1
+    [ -n "$common" ] || return 1
+    dirname "$common"
+}
+
+fallback_repo=$(repo_root_of "$cwd" 2>/dev/null) || fallback_repo=""
 
 paths=$(printf '%s' "$command" | python3 -c '
 import shlex
@@ -132,14 +139,14 @@ import sys
 
 print(os.path.realpath(os.path.join(sys.argv[1], sys.argv[2])))
 ' "$cwd" "$path" 2>/dev/null) || continue
-    case "$resolved" in
-        "$root"/*)
-            ;;
-        *)
-            printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"只允许操作 %s 下的 worktree，命令中的路径是 %s。"}}\n' "$root" "$resolved"
-            exit 0
-            ;;
-    esac
+    repo=$(repo_root_of "$resolved" 2>/dev/null) || repo="$fallback_repo"
+    [ -n "$repo" ] || continue
+    root="$repo/.worktrees"
+    if [ "$(dirname "$resolved")" = "$root" ]; then
+        continue
+    fi
+    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"只允许操作 %s 下的 worktree，命令中的路径是 %s。"}}\n' "$root" "$resolved"
+    exit 0
 done <<EOF
 $paths
 EOF

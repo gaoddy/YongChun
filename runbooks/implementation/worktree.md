@@ -58,7 +58,11 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_c
 
 ## 守卫
 
-`PreToolUse` 钩子把上述规则变成门禁：`git worktree add` 只有在命令包含 `worktree_create.sh` 时放行，`list`、`prune` 放行，`remove`、`move` 等写操作要求路径解析到 `<repo>/.worktrees/` 下。
+`PreToolUse` 钩子把上述规则变成门禁：`git worktree add` 只有在命令包含 `worktree_create.sh` 时放行，`list`、`prune` 放行，`remove`、`move` 等写操作要求路径直接位于 `<repo>/.worktrees/` 下。
+
+- 仓库根按目标路径所属的主仓库判定（`git rev-parse --git-common-dir`），在 worktree 内执行同样按主仓库的 `.worktrees/` 校验，不受当前目录影响。
+- 目标路径不存在或不属于任何仓库时，退回当前目录所属仓库判定；两者都无法定位时放行，不阻塞命令。
+- 只放行 `.worktrees/` 的直接子目录；解析到 `.worktrees/` 之下的嵌套目录仍拒绝。
 
 钩子随插件提供，写在插件的 `hooks/hooks.json`，命令用 `${CLAUDE_PLUGIN_ROOT}` 指向插件安装地址：
 

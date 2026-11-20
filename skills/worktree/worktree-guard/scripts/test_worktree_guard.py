@@ -197,6 +197,36 @@ class WorktreeGuardTests(RepositoryTestCase):
     def test_allows_chained_remove_inside_project(self):
         self.assert_allowed("git worktree remove .worktrees/feature-login && git branch -d feature/login")
 
+    def test_allows_remove_from_inside_worktree(self):
+        self.create("feature/login")
+        target = os.path.join(self.repo, ".worktrees", "feature-login")
+        self.assert_allowed("git worktree remove %s" % target, cwd=target)
+        self.assert_allowed(
+            "git -C %s worktree remove %s" % (self.repo, target), cwd=target
+        )
+
+    def test_denies_relative_remove_from_inside_worktree(self):
+        self.create("feature/login")
+        target = os.path.join(self.repo, ".worktrees", "feature-login")
+        self.assert_denied("git worktree remove .worktrees/feature-login", cwd=target)
+
+    def test_allows_remove_of_another_repository_worktree(self):
+        other = os.path.join(self.tmp, "other")
+        os.makedirs(other)
+        run(["git", "init", "-q", "-b", "develop"], cwd=other)
+        with open(os.path.join(other, ".gitignore"), "w", encoding="utf-8") as handle:
+            handle.write("/.worktrees/\n")
+        with open(os.path.join(other, "README.md"), "w", encoding="utf-8") as handle:
+            handle.write("other\n")
+        run(["git", "add", "."], cwd=other)
+        run(["git", "commit", "-q", "-m", "init"], cwd=other)
+        created = run([CREATE, "feature/other"], cwd=other)
+        self.assertEqual(created.returncode, 0, created.stderr)
+        target = os.path.join(other, ".worktrees", "feature-other")
+        self.assert_allowed(
+            "git -C %s worktree remove %s" % (other, target), cwd=self.repo
+        )
+
     def test_ignores_non_bash_tools(self):
         payload = json.dumps({"tool_name": "Read", "tool_input": {"file_path": "x"}, "cwd": self.repo})
         result = run([GUARD], self.repo, stdin=payload)
