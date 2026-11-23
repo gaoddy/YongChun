@@ -1,6 +1,6 @@
 # Runbook 索引
 
-按任务查一行，读对应文件；多个场景同时命中时按依赖顺序全读。只读问答不读，规则以 runbook 正文为准。
+按任务查一行，读对应文件；多个场景同时命中时按依赖顺序全读。只读问答不读，按受众解释时读[解释与讲解](docs/explanation.md)；规则以 runbook 正文为准。
 
 ## 项目与版本
 
@@ -129,6 +129,7 @@
 | 任务 / 触发 | 读 |
 | --- | --- |
 | 文档写作与表述规范 | [docs/docs-writing.md](docs/docs-writing.md) |
+| 按受众层次解释代码、概念、报错或方案（ELI5） | [docs/explanation.md](docs/explanation.md) |
 | 代码实现后的文档回写 | [docs/docs-sync.md](docs/docs-sync.md) |
 | 把现有 docs 目录重构为 runbook 文档结构 | [docs/docs-restructure.md](docs/docs-restructure.md) |
 | 文档结构分册索引与阅读顺序 | [docs/structure/README.md](docs/structure/README.md) |

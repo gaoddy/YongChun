@@ -48,7 +48,7 @@
 
 ## 触发
 
-- 未指定命令或场景时，按[任务执行与交付](runbooks/implementation/change-delivery.md#场景判定)的场景判定自动路由；只读问答不触发。
+- 未指定命令或场景时，按[任务执行与交付](runbooks/implementation/change-delivery.md#场景判定)的场景判定自动路由；只读问答不触发，按受众解释的请求读[解释与讲解](runbooks/docs/explanation.md)。
 - 只读观察、验证、回查、评审、答疑和检索等不修改仓库文件的任务，无需 worktree。
 - 修改代码、文档或配置前，按触发读取对应 runbook；跨场景任务读取所有相关文档。
 - 本表只服务本仓库；接入项目的场景路由使用[全局索引](runbooks/index.md)，不复制本表。
@@ -114,5 +114,6 @@
 | 客户端运行、联调与实机验证 | [runbooks/engineering/client/runtime.md](runbooks/engineering/client/runtime.md) |
 | Flutter 客户端构建、产物、混淆与签名 | [runbooks/engineering/client/flutter-build.md](runbooks/engineering/client/flutter-build.md) |
 | 文档写作与表述规范 | [runbooks/docs/docs-writing.md](runbooks/docs/docs-writing.md) |
+| 按受众层次解释代码、概念、报错或方案 | [runbooks/docs/explanation.md](runbooks/docs/explanation.md) |
 | 新建文档、调整 docs/ 目录与文档结构 | [runbooks/docs/structure/docs-structure.md](runbooks/docs/structure/docs-structure.md) |
 | 按 runbook 模式重构现有 docs 目录 | [runbooks/docs/docs-restructure.md](runbooks/docs/docs-restructure.md) |
