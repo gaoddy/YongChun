@@ -103,7 +103,7 @@ docs/
 
 - 标题：`#` 级标题与文件名一致，使用名词短语；层级不跳级，最多三级。
 - 范围说明：标题下一段说明本文档描述什么、不描述什么，以及它对应的目录职责。
-- 状态标注：`docs/current/product/`、`docs/current/technical/` 文档标注「已实现」；版本 `product/`、`technical/` 标注「方案未实施」；`update/` 内文件按[需求变动](../../version/requirement-change.md)的状态规则；`docs/requirements/` 按[产品需求文档](../../product/requirements-document.md)标注状态与实现版本；`README.md` 索引不标状态。
+- 状态标注：`docs/current/product/`、`docs/current/technical/` 文档标注「已实现」；版本 `product/`、`technical/` 标注「方案未实施」；`update/` 内文件按[需求变动](../../version/requirement-change.md)的状态规则；`docs/requirements/README.md` 作为需求总表，按[产品需求文档](../../product/requirements-document.md)标注状态与实现版本；其余 `README.md` 索引不标状态。
 - 章节顺序：先总览后细节；规则用列表，字段与对照用表格，操作步骤用编号列表，命令与输出用代码块并标注语言。
 - 相关文档：文末用相对链接列出上游规则、下游文档与索引；链接到具体文件，不复述对方内容。
 - 不写决策过程、备选方案、历史版本与聊天结论；结论直接写进承载它的文档，满足[决策记录](../../version/decision-record.md)门槛的写在 `decisions/`。`output/drafts/` 讨论记录可保留待确认项与否决原因，随收尾删除。
@@ -133,7 +133,7 @@ docs/
 
 - `docs/README.md` 是总索引，列出各目录入口与跨版本文档，不重复正文内容；`requirements/` 入口登记为需求总表。
 - `current/README.md` 是已实现状态的入口，指向 `product/README.md` 与 `technical/README.md`，不列具体文件。
-- 每个子目录的 `README.md` 列出本目录文件与一句话说明，作为该目录入口。
+- 每个子目录的 `README.md` 列出本目录文件与一句话说明，作为该目录入口；`requirements/README.md` 即需求总表，同时承担该目录索引。
 - 索引只链一层：总索引指向子目录 `README.md`，子目录索引指向具体文件，避免两级索引重复列同一文件。
 - 新增、移动、重命名或删除文档时，同一任务内更新索引与所有入链，不留孤儿文档与死链。
 
