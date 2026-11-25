@@ -28,6 +28,8 @@ docs/
 │       └── README.md    技术文档索引
 ├── decisions/           已采用的决策与已否决的请求（跨版本）
 │   └── README.md        决策记录索引
+├── requirements/        全部产品需求汇总与单个需求文档（跨版本）
+│   └── README.md        需求总表
 ├── versions/            按版本计划
 │   ├── README.md        版本总览
 │   └── <版本>/          版本目录，结构见版本开发
@@ -37,9 +39,10 @@ docs/
 └── plan/                实施计划，每个计划一个目录（本地，不提交）
 ```
 
-- `docs/` 保存状态、记录与计划：已实现的状态 `current/`，跨版本决策 `decisions/`，未实现的 `versions/`，已发布版本的更新内容 `releases/`，实施中的 `plan/`；`current/` 对应当前代码实现，不写方案与规划。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
+- `docs/` 保存状态、记录与计划：已实现的状态 `current/`，跨版本决策 `decisions/`，跨版本需求 `requirements/`，未实现的 `versions/`，已发布版本的更新内容 `releases/`，实施中的 `plan/`；`current/` 对应当前代码实现，不写方案与规划。协作原则在根 `AGENTS.md`，流程与操作手册在 runbook 仓库（位置见 `AGENTS.md` 声明）；三者不互相复制内容。
 - 一级目录职责固定；新增一级目录前先确认现有目录无法承载，并在 `docs/README.md` 登记其职责。
 - `decisions/` 存放跨版本的结论与否决记录：一个决策或一个被否决的概念一个文件，写入时机与写法见[决策记录](../../version/decision-record.md)；版本内未决事项仍写版本 `open-questions.md`，确认后按该规则决定是否进入 `decisions/`。
+- `requirements/` 存放跨版本的产品需求总表与单个需求文档：`README.md` 为需求总表，一个需求一份文档，长期保留；文件形式见下文[产品需求文档](#产品需求文档-requirements)，登记、状态与同步规则见[产品需求文档](../../product/requirements-document.md)。
 - `current/product/`、`current/technical/` 按模块或业务域建子目录，不在根目录堆积文件；每个子目录必须有 `README.md` 说明范围并索引其中的文件。
 - `versions/<版本>/` 的结构固定为 `README.md`、`open-questions.md`、`scope.md`（按需）、`product/`、`technical/`、`update/`、`bugfix/`，细节见[版本文档结构](version-docs-structure.md)。
 - `releases/` 记录已发布版本的更新内容，一个版本一个文件，发版时写入，形式见下文[发版记录](#发版记录-releases)。
@@ -73,6 +76,14 @@ docs/
 - `decisions/README.md` 与 `decisions/rejected/README.md` 各列出本目录记录与一句话结论。
 - 写入门槛、理由写法与更新规则见[决策记录](../../version/decision-record.md)，不在本节重复。
 
+## 产品需求文档 `requirements/`
+
+- 路径：`docs/requirements/README.md` 为需求总表，一行一条需求；`docs/requirements/<slug>.md` 为单个需求文档，一个需求一份。
+- slug 与版本 `update/<需求>/` 同一规则，建立后不改名。
+- 需求文档的固定章节、状态与实现版本取值、登记与同步规则见[产品需求文档](../../product/requirements-document.md)，本节只规定落点与文件形式。
+- 需求文档内不写接口、表结构、实现方案与任务拆分。
+- `README.md` 兼作目录索引，不重复需求文档正文。
+
 ## 实施计划 `plan/`
 
 - 路径：`docs/plan/<分支名>/`，分支名中的 `/` 替换为 `-`；一个计划一个目录，仅在实施计划时创建。
@@ -92,7 +103,7 @@ docs/
 
 - 标题：`#` 级标题与文件名一致，使用名词短语；层级不跳级，最多三级。
 - 范围说明：标题下一段说明本文档描述什么、不描述什么，以及它对应的目录职责。
-- 状态标注：`docs/current/product/`、`docs/current/technical/` 文档标注「已实现」；版本 `product/`、`technical/` 标注「方案未实施」；`update/` 内文件按[需求变动](../../version/requirement-change.md)的状态规则；`README.md` 索引不标状态。
+- 状态标注：`docs/current/product/`、`docs/current/technical/` 文档标注「已实现」；版本 `product/`、`technical/` 标注「方案未实施」；`update/` 内文件按[需求变动](../../version/requirement-change.md)的状态规则；`docs/requirements/` 按[产品需求文档](../../product/requirements-document.md)标注状态与实现版本；`README.md` 索引不标状态。
 - 章节顺序：先总览后细节；规则用列表，字段与对照用表格，操作步骤用编号列表，命令与输出用代码块并标注语言。
 - 相关文档：文末用相对链接列出上游规则、下游文档与索引；链接到具体文件，不复述对方内容。
 - 不写决策过程、备选方案、历史版本与聊天结论；结论直接写进承载它的文档，满足[决策记录](../../version/decision-record.md)门槛的写在 `decisions/`。`output/drafts/` 讨论记录可保留待确认项与否决原因，随收尾删除。
@@ -120,7 +131,7 @@ docs/
 
 ## 索引与导航
 
-- `docs/README.md` 是总索引，列出各目录入口与跨版本文档，不重复正文内容。
+- `docs/README.md` 是总索引，列出各目录入口与跨版本文档，不重复正文内容；`requirements/` 入口登记为需求总表。
 - `current/README.md` 是已实现状态的入口，指向 `product/README.md` 与 `technical/README.md`，不列具体文件。
 - 每个子目录的 `README.md` 列出本目录文件与一句话说明，作为该目录入口。
 - 索引只链一层：总索引指向子目录 `README.md`，子目录索引指向具体文件，避免两级索引重复列同一文件。
