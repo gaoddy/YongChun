@@ -21,6 +21,7 @@ agent:
 | --- | --- | --- |
 | 版本产品基线 | `docs/versions/<版本>/product/` | 目标形态，标注「方案未实施」 |
 | 需求变动 | `docs/versions/<版本>/update/<需求>/product.md` | 首行标注「待确认」或「已确认」 |
+| 需求总表与需求文档 | `docs/requirements/` | 按[产品需求文档](requirements-document.md)标注状态与实现版本 |
 | 需求澄清讨论记录 | `output/drafts/<需求-slug>.md` | 按[讨论记录](../implementation/discussion-record.md)标注状态，确认后回写 `update/` 并删除，不提交 |
 | 范围与排除项 | `docs/versions/<版本>/scope.md`（按需） | 与版本基线同步 |
 | 已实现状态 | `docs/current/product/` | 代码落地的同一任务内写入，标注「已实现」 |
@@ -45,6 +46,7 @@ agent:
 ## 编写原则
 
 - 只写产品规则，不写技术实现、接口、表结构或任务拆分；技术方案见[服务架构方案生成](../engineering/server/architecture/index.md)、[服务端方案实现](../engineering/server/implementation.md)与[前端方案设计](../engineering/client/design.md)。
+- 产品规则的主源是需求文档；版本 `product/` 与 `update/<需求>/product.md` 只写相对需求文档的版本差异，不复制规则。
 - 产品名、产品描述、产品形态、客户端平台、包名与用户规模在产品初始化时确定，见[产品初始化](product-init.md)；产品文档引用这些结论，不重复定义。
 - 每条规则写成可观察、可验收的行为，避免「优化」「友好」等无法判定的表述。
 - 术语全文统一，新增术语首次出现时给出定义。
@@ -74,7 +76,7 @@ agent:
 
 ## 步骤
 
-1. 读取版本 `README.md`、`scope.md` 与版本 `product/` 基线，确认本次是新增能力还是调整既有规则。
+1. 先在需求总表核对需求是否已登记，已有则更新原需求文档；再读取版本 `README.md`、`scope.md` 与版本 `product/` 基线，确认本次是新增能力还是调整既有规则。
 2. 列出功能清单与受影响页面，逐项写出产品定义要素。
 3. 标注文档状态：需求变动写「待确认」，版本基线写「方案未实施」。
 4. 按「完备性审查」逐项审查；有缺口先补齐并重审，无缺口后与用户确认产品规则，再把状态改为「已确认」，同步更新版本 `product/` 基线与 `scope.md`。
@@ -100,4 +102,5 @@ agent:
 - [文档结构](../docs/structure/docs-structure.md)
 - [UI 设计](ui/ui-design.md)
 - [产品功能需求澄清](feature-requirements.md)
+- [产品需求文档](requirements-document.md)
 - [产品功能可行性调研](feature-feasibility.md)

@@ -28,10 +28,11 @@ agent:
 
 ## 产品确认
 
-- 按[产品定义文档](../product/product-definition.md)写 `product.md`，只写相对版本基线的增量：新增、修改、删除分别是什么。
-- 澄清阶段已有 `output/drafts/<需求-slug>.md` 时，整理为相对版本基线的增量写入 `update/<需求>/product.md`，核对后删除讨论记录；已建立 `update/<需求>/` 时直接更新其中的 `product.md`。
+- 需求与产品规则写入 `docs/requirements/<slug>.md`，按[产品需求文档](../product/requirements-document.md)维护，只写相对版本基线与既有需求的增量：新增、修改、删除分别是什么。
+- `product.md` 只写相对需求文档的版本裁剪或调整，无变化不建。
+- 澄清阶段已有 `output/drafts/<需求-slug>.md` 时，整理为增量写入需求文档与 `update/<需求>/product.md`（需要版本裁剪时），核对后删除讨论记录；已建立 `update/<需求>/` 时直接更新其中文件。
 - 写清受影响页面、入口、状态（加载、空、错误、无权限、离线）与角色权限；每条规则可验收。
-- `product.md` 写完后按[产品定义文档](../product/product-definition.md#完备性审查)执行完备性审查；有缺口先补齐并重审，无缺口后才与用户确认并标「已确认」，之后才写 `technical.md`、拆分任务。
+- 需求文档与 `product.md` 写完后按[产品定义文档](../product/product-definition.md#完备性审查)执行完备性审查；有缺口先补齐并重审，无缺口后才与用户确认并标「已确认」，之后才写 `technical.md`、拆分任务。
 - 不写接口、表结构、实现方案与任务拆分。
 - 不能确定的产品规则写入版本 `open-questions.md`，不在文件里保留备选或待定分支。
 - 产品规则确认前不写 `technical.md`，也不开始实施。
@@ -55,13 +56,14 @@ agent:
 | 全部实现 | 删除目录 | — | 两份文件无剩余内容 |
 
 - 状态只前移；产品规则变化时回到产品确认，重新执行完备性审查并确认后再更新技术方案。
+- 需求文档的状态按[产品需求文档](../product/requirements-document.md)维护；`product.md` 不存在时以需求文档状态为准。
 - 状态取值与文件形式见[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)。
 
 ## 步骤
 
 1. 确认需求归属版本，判断属于需求变动、缺陷修复还是纯技术改动。
-2. 按[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)建立需求目录并写 `product.md`；澄清阶段已有 `output/drafts/` 讨论记录时整理为增量写入后删除；纯技术改动直接写 `technical.md`。
-3. 按[产品定义文档](../product/product-definition.md#完备性审查)逐项审查 `product.md`，补齐缺口并重审；无缺口后与用户确认产品规则，结论同步版本产品基线。
+2. 先按[产品需求文档](../product/requirements-document.md)更新需求文档与需求总表；再按[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)建立需求目录并按需写版本裁剪 `product.md`；澄清阶段已有 `output/drafts/` 讨论记录时整理为增量写入后删除；纯技术改动直接写 `technical.md`。
+3. 按[产品定义文档](../product/product-definition.md#完备性审查)逐项审查需求文档与 `product.md`，补齐缺口并重审；无缺口后与用户确认产品规则，结论同步版本产品基线。
 4. 按端编写 `technical.md`，确认后同步版本技术基线。
 5. 按[任务计划](plan.md)拆分任务并实施。
 6. 按[文档回写](../docs/docs-sync.md)更新 `docs/` 与版本基线，删除已实现部分。
@@ -79,5 +81,6 @@ agent:
 ## 相关
 
 - [版本开发](version-development.md)
+- [产品需求文档](../product/requirements-document.md)
 - [产品功能需求澄清](../product/feature-requirements.md)
 - [产品功能可行性调研](../product/feature-feasibility.md)

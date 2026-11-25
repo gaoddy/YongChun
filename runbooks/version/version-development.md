@@ -35,6 +35,7 @@ agent:
 ### 产品定义
 
 - 版本基线按[产品定义文档](../product/product-definition.md)写入 `product/`；版本进行中的改动按[需求变动](requirement-change.md)写 `update/`。
+- 新需求先登记需求总表并建立需求文档，见[产品需求文档](../product/requirements-document.md)；版本 `product/` 与 `update/product.md` 只写版本差异。
 - 新增功能先按[产品需求澄清](../product/feature-requirements.md)确认产品规则，再按[可行性调研](../product/feature-feasibility.md)确认技术可行性与冲突，然后写产品基线或 `update/`。
 - 产品规则确认后才进入技术方案；未确认内容只写 `open-questions.md`。
 - 产品规则标「已确认」或写入版本基线前，按[产品定义文档](../product/product-definition.md#完备性审查)完成纯产品层面的完备性审查；未通过不进入技术方案。
@@ -48,7 +49,7 @@ agent:
 ### 实施
 
 - 按[任务计划](plan.md)拆分任务，按[任务执行与交付](../implementation/change-delivery.md)执行。
-- 实施中出现的新需求按需求变动处理，缺陷按缺陷修复处理，无法当场决定的写入 `open-questions.md`。
+- 实施中出现的新需求按需求变动处理，缺陷按缺陷修复处理；需求相关的待定夺写入需求文档，版本 `open-questions.md` 只保留跨需求或归属不明的事项。
 
 ### 收尾
 

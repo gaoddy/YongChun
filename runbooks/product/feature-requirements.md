@@ -23,8 +23,9 @@ agent:
 - 按产品定义要素逐项写清：定位与用户、范围、功能规则、页面与交互、状态与边界、角色与权限、数据与字段、验收标准。
 - 每条规则写成可观察、可验收的行为；无法判定的表述（如「体验更好」）改为具体结果。
 - 明确本次不做的内容与原因，避免范围在后续评估中被反向扩大；同一概念此前已按[决策记录](../version/decision-record.md)否决时，追加历史请求并引用原记录，不重新论证。
-- 澄清过程按[讨论记录](../implementation/discussion-record.md)写在 `output/drafts/<需求-slug>.md`：尚未建立版本 `update/<需求>/` 时写该文件，已建立时直接更新其中的 `product.md`，不再另建讨论记录。
+- 澄清过程按[讨论记录](../implementation/discussion-record.md)写在 `output/drafts/<需求-slug>.md`：尚未建立版本 `update/<需求>/` 时写该文件；已建立时直接更新其中的 `product.md`，产品规则写入需求文档，不再另建讨论记录。
 - slug 用小写 kebab-case，一个需求一个文件，与后续 `update/<YYYY-MM-DD>-<slug>/` 保持一致；已确认结论按产品定义要素分节。
+- 澄清完成后把需求登记到需求总表并建立需求文档，按[产品需求文档](requirements-document.md)写规则、验收与待定夺。
 - 完成条件：按[产品定义文档](product-definition.md#完备性审查)执行纯产品层面审查，逐项无缺口；没有任何待确认项、每条规则可验收、用户明确确认。未满足前不进入可行性调研。
 - 审查只判产品层；无法确认的事项与需要技术事实才能判定的缺口写入版本 `open-questions.md`，技术缺口转可行性调研，不在澄清阶段拍板，也不在产品文档中保留待定分支或备选方案。
 
@@ -35,7 +36,7 @@ agent:
 3. 尚未建立版本 `update/<需求>/` 时建立 `output/drafts/<需求-slug>.md`，按产品定义要素逐项列出待确认问题。
 4. 只澄清产品规则，逐条与用户确认并落盘到讨论记录；技术问题记录后置。
 5. 按[产品定义文档](product-definition.md#完备性审查)逐项审查，补齐缺口并重审，直到无缺口；再核对无待确认项、每条规则可验收、用户确认。
-6. 按[需求变动](../version/requirement-change.md)把已确认需求写入 `docs/versions/<版本>/update/<需求>/product.md`，未决项写入版本 `open-questions.md`，核对后删除 `output/drafts/<需求-slug>.md`。
+6. 先按[产品需求文档](requirements-document.md)把已确认规则、实现版本（未定写「待定」）与待定夺写入需求文档，再按[需求变动](../version/requirement-change.md)写入版本 `update/`；未决项写入版本 `open-questions.md`，核对后删除 `output/drafts/<需求-slug>.md`。
 
 ## 验证
 
@@ -45,11 +46,13 @@ agent:
 - 每条产品规则可验收，无待确认项，用户已确认。
 - 明确不做的内容与原因已写明。
 - 未决事项只在版本 `open-questions.md`，讨论记录已回写并删除。
-- 已确认需求可在 `docs/versions/<版本>/update/<需求>/product.md` 中找到；讨论记录未提交。
+- 需求已在总表登记且需求文档存在，实现版本已填具体版本或「待定」。
+- 已确认需求可在 `docs/requirements/<slug>.md` 中找到；版本需要裁剪时另有 `update/<需求>/product.md`；讨论记录未提交。
 
 ## 相关
 
 - [产品功能可行性调研](feature-feasibility.md)
+- [产品需求文档](requirements-document.md)
 - [需求变动](../version/requirement-change.md)
 - [版本开发](../version/version-development.md)
 - [讨论记录](../implementation/discussion-record.md)
