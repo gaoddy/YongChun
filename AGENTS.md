@@ -70,6 +70,7 @@
 | 复盘最近一段时间的 PR 时长、Bug、返工、回滚与重复修改 | [runbooks/version/retrospective.md](runbooks/version/retrospective.md) |
 | 记录不应被重新推翻的决策，或判断某项需求、方案是否已否决 | [runbooks/version/decision-record.md](runbooks/version/decision-record.md) |
 | 定义或调整产品规则、页面与交互 | [runbooks/product/product-definition.md](runbooks/product/product-definition.md) |
+| 汇总或更新产品需求、维护需求文档与实现版本 | [runbooks/product/requirements-document.md](runbooks/product/requirements-document.md) |
 | 新增产品功能，先在产品层面澄清需求并审查到无缺口 | [runbooks/product/feature-requirements.md](runbooks/product/feature-requirements.md) |
 | 产品需求已确认，确认技术可行性、约束与现有功能冲突 | [runbooks/product/feature-feasibility.md](runbooks/product/feature-feasibility.md) |
 | 在选定架构下实现服务端技术方案 | [runbooks/engineering/server/implementation.md](runbooks/engineering/server/implementation.md) |

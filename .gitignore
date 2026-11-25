@@ -19,6 +19,9 @@ output/
 tmp/
 *.log
 
+# 本地设计、计划与报告（不提交）
+.superpowers/
+
 # Python 缓存
 __pycache__/
 

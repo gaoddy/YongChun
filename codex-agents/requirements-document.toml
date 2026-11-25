@@ -1,0 +1,12 @@
+# 由 scripts/generate_runbook_agents.py 根据 runbooks/product/requirements-document.md 生成，不要手改。
+
+name = "requirements-document"
+description = "产品需求文档：汇总或更新全部产品需求，维护需求总表与单个需求文档"
+model_reasoning_effort = "xhigh"
+
+developer_instructions = """
+先读取项目 AGENTS.md 声明的 runbook 仓库中的 `runbooks/product/requirements-document.md`，再按该文「前置读取」补齐上游。
+
+1. 只处理本次请求；范围、判定与产物以该 runbook 为准。
+2. 按「步骤」执行，按「验证」判定；验证未通过不得声称完成。
+"""

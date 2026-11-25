@@ -18,6 +18,7 @@
 | 任务 / 触发 | 读 |
 | --- | --- |
 | 定义或调整产品规则、页面与交互 | [product/product-definition.md](product/product-definition.md) |
+| 汇总全部产品需求，维护需求文档、待定夺事项与实现版本 | [product/requirements-document.md](product/requirements-document.md) |
 | 新增功能，先在产品层面澄清需求 | [product/feature-requirements.md](product/feature-requirements.md) |
 | 需求已确认，确认技术可行性、约束与冲突 | [product/feature-feasibility.md](product/feature-feasibility.md) |
 | 需求变动：改成、新增、去掉、调整规则或行为 | [version/requirement-change.md](version/requirement-change.md) |
