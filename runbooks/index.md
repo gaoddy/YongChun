@@ -108,7 +108,7 @@
 | --- | --- |
 | 修改代码、文档或配置：场景判定、执行与验证 | [implementation/change-delivery.md](implementation/change-delivery.md) |
 | 草案、方案探讨与技术咨询的结论记录 | [implementation/discussion-record.md](implementation/discussion-record.md) |
-| 判断任务是否需要创建 worktree | [implementation/worktree-timing.md](implementation/worktree-timing.md) |
+| 判断修改任务是否需要创建 worktree | [implementation/worktree-timing.md](implementation/worktree-timing.md) |
 | 创建 worktree、切换分支与清理 | [implementation/worktree.md](implementation/worktree.md) |
 | 构建、测试、静态检查与本地运行入口 | [implementation/make.md](implementation/make.md) |
 | 补充测试与执行验证 | [implementation/testing.md](implementation/testing.md) |

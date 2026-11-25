@@ -50,6 +50,7 @@
 
 - 未指定命令或场景时，按[任务执行与交付](runbooks/implementation/change-delivery.md#场景判定)的场景判定自动路由；只读问答不触发，按受众解释的请求读[解释与讲解](runbooks/docs/explanation.md)。
 - 只读观察、验证、回查、评审、答疑和检索等不修改仓库文件的任务，无需 worktree。
+- 修改仓库文件一律在该任务的 worktree 内完成，改动量不作为豁免；无法创建 worktree 时阻塞并报告，不在当前目录修改。
 - 修改代码、文档或配置前，按触发读取对应 runbook；跨场景任务读取所有相关文档。
 - 本表只服务本仓库；接入项目的场景路由使用[全局索引](runbooks/index.md)，不复制本表。
 

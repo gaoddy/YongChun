@@ -9,9 +9,10 @@ argument-hint: <任务描述>
 2. 读取并按内容执行：
    - `runbooks/implementation/change-delivery.md`
    - `runbooks/implementation/worktree-timing.md`
-3. 只改任务范围内的文件，不扩展功能、不顺带重构。
-4. 按验证矩阵执行构建、检查与测试；验证失败不得跳过或放宽断言。
-5. 同一任务回写文档，提交前检查 `git diff`，任务完成后、合并前删除 `docs/plan/<分支名>/` 计划目录。
-6. 本仓库另需运行 `python3 scripts/check-runbooks.py`。
+3. 只读任务直接执行；任何写入仓库文件的修改都创建 worktree 与分支，改动量不作为豁免。
+4. 只改任务范围内的文件，不扩展功能、不顺带重构。
+5. 按验证矩阵执行构建、检查与测试；验证失败不得跳过或放宽断言。
+6. 同一任务回写文档，提交前检查 `git diff`，任务完成后、合并前删除 `docs/plan/<分支名>/` 计划目录。
+7. 本仓库另需运行 `python3 scripts/check-runbooks.py`。
 
 完成判定：验证通过，`git diff` 只含任务范围，文档已回写，计划目录已清理。
