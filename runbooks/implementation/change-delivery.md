@@ -53,8 +53,8 @@ agent:
 
 ### 任务流程
 
-- 只读任务不建 worktree；修改仓库文件 → 按[Worktree 创建时机](worktree-timing.md)判定 → 需要隔离时从 `develop` 建 worktree 与分支 → 大改动在 `docs/plan/<分支名>/` 写实施计划 → 实施 → 验证 → 回写文档 → 提交 → 按[任务计划](../version/plan.md)清理计划目录 → 合并 → 需要时清理 worktree。
-- 属于[小改动](worktree-timing.md)的任务直接在当前分支修改，不建 worktree，也不进入 plan 模式；只有大改动才启用 plan 模式与计划目录。
+- 只读任务不建 worktree；修改仓库文件时按[Worktree 创建时机](worktree-timing.md)一律创建 worktree 与分支（改动量不作为豁免）→ 大改动在 `docs/plan/<分支名>/` 写实施计划 → 实施 → 验证 → 回写文档 → 提交 → 按[任务计划](../version/plan.md)清理计划目录 → 合并 → 清理 worktree。
+- 属于[小改动](worktree-timing.md)的任务仍创建 worktree，但可不建计划目录、不进入 plan 模式；只有大改动才启用 plan 模式与计划目录。
 - 实施前确认任务范围与可验证的成功标准；实施中只改任务范围内的文件，不扩展功能、不顺带重构。
 
 ### 评审
@@ -105,7 +105,7 @@ agent:
 ## 步骤
 
 1. 明确目标、范围与可验证的成功标准，确认任务所属版本。
-2. 按[Worktree 创建时机](worktree-timing.md)判定：需要隔离时创建 worktree 与分支，分支基线为 `develop`，用户另有指定时除外；小改动直接在当前分支修改，不创建 worktree。
+2. 按[Worktree 创建时机](worktree-timing.md)创建 worktree 与分支，分支基线为 `develop`，用户另有指定时除外；改动量不作为豁免，创建失败时阻塞并报告。
 3. 大改动进入实施计划时，在 `docs/plan/<分支名>/` 写计划；项目事实另有规定的从其规定。
 4. 按任务边界实施，只改任务范围内的文件。
 5. 按验证矩阵执行命令，记录输出与退出状态。

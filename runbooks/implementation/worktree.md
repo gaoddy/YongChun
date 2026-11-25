@@ -18,6 +18,7 @@ agent:
 ## 规则
 
 - 基线分支为 `develop`，用户明确指定其他分支时除外；项目存在 `.yongchun/worktree-merge-queue.toml` 时以 `project.base_branch` 为准。
+- 所有写入仓库文件的修改都在本任务的 worktree 内完成；未创建 worktree 时不允许修改，改动量不作为豁免。
 - 开工后在首次回复中用一行说明当前 worktree 的绝对路径与分支；路径与分支不符时先纠正再动手，不在主仓库或其他 worktree 中修改。
 - 创建只走 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，不直接执行 `git worktree add`；绕过入口的命令由守卫拒绝。
 - worktree 根固定为 `<repo>/.worktrees/<branch 的 / 换成 ->`，该目录必须在 `.gitignore` 中忽略（`/.worktrees/`），否则创建失败。
@@ -31,7 +32,7 @@ agent:
 
 ## 步骤
 
-1. 按[Worktree 创建时机](worktree-timing.md)判定任务是否需要隔离：只读任务与[小改动](worktree-timing.md)直接在当前分支执行，不创建 worktree。
+1. 按[Worktree 创建时机](worktree-timing.md)判定：只读任务直接在当前目录执行；修改仓库文件的任务一律创建 worktree，改动量不作为豁免。
 2. 需要隔离时创建 worktree 与分支，冲突、脏工作区、基线缺失时脚本会拒绝执行：
 
 ```bash
