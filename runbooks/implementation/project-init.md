@@ -37,7 +37,7 @@ agent:
 2. 核对产品数据是否齐全：按项目事实逐项检查产品名、产品描述、产品形态，以及带服务端时的用户规模、带客户端时的客户端平台与包名、功能列表；有缺失或未定项时先走[产品初始化](../product/product-init.md)补齐，不自行填值。
 3. 在项目根写 `AGENTS.md`：runbook 声明块、协作原则、项目阶段、项目事实（含产品数据、UI 主题范围与慢命令阈值 `120s`）；产品数据取自产品初始化草稿 `output/drafts/product-init.md` 或已有文档。
 4. 写 `CLAUDE.md`，引入 `AGENTS.md`。
-5. 按文档结构建立 `docs/` 骨架与 `docs/README.md` 索引，含 `docs/requirements/README.md` 需求总表。
+5. 按文档结构建立 `docs/` 骨架与 `docs/README.md` 索引，含需求总表与分类代码表。
 6. 按版本文档结构建立首个版本目录 `docs/versions/0.0.1/`，写 `README.md`（含产品描述与功能列表）与 `open-questions.md`（承接产品初始化草稿中的未定项）。
 7. 用户要求隔离 worktree 与合并队列时，复制配置模板并替换占位符；未要求时不创建。
 8. 逐项核对 runbook 中的 `<...>` 与 `{{...}}`，把取值补入项目事实；产品数据取自产品初始化结论。把产品初始化草稿的分项落盘到项目事实、首个版本 `README.md`、版本 `product/`、需求总表与逐个需求文档以及 `open-questions.md`，落盘后删除 `output/drafts/product-init.md`。
@@ -55,7 +55,7 @@ agent:
 - 项目事实覆盖全部 `<...>` 与 `{{...}}` 取值，无占位符残留。
 - 使用隔离 worktree 与合并队列交付时，`.yongchun/worktree-merge-queue.toml` 已创建且无 `<...>` 残留；不使用队列时未创建。
 - `docs/` 骨架与首个版本目录符合文档结构与版本文档结构。
-- `docs/requirements/README.md` 已建立，表头为「编号、需求、状态、实现版本、待定夺、需求文档」。
+- `docs/requirements/README.md` 已建立，表头为「编号、需求、状态、实现版本、待定夺、需求文档」，开头含类型与模块的分类代码表。
 - 首个版本功能已在需求总表登记，每个功能有对应需求文档，实现版本为「待定」或已确定版本。
 - 项目阶段标记为「开发阶段」。
 - Claude Code 中 `/yongchun:deliver` 等命令可用；项目内无 `runbooks/`、`commands/` 或 `.claude/commands/` 副本。
