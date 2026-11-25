@@ -40,7 +40,7 @@ agent:
 5. 按文档结构建立 `docs/` 骨架与 `docs/README.md` 索引，含 `docs/requirements/README.md` 需求总表。
 6. 按版本文档结构建立首个版本目录 `docs/versions/0.0.1/`，写 `README.md`（含产品描述与功能列表）与 `open-questions.md`（承接产品初始化草稿中的未定项）。
 7. 用户要求隔离 worktree 与合并队列时，复制配置模板并替换占位符；未要求时不创建。
-8. 逐项核对 runbook 中的 `<...>` 与 `{{...}}`，把取值补入项目事实；产品数据取自产品初始化结论。把产品初始化草稿的分项落盘到项目事实、首个版本 `README.md`、版本 `product/` 与 `open-questions.md`，落盘后删除 `output/drafts/product-init.md`。
+8. 逐项核对 runbook 中的 `<...>` 与 `{{...}}`，把取值补入项目事实；产品数据取自产品初始化结论。把产品初始化草稿的分项落盘到项目事实、首个版本 `README.md`、版本 `product/`、需求总表与逐个需求文档以及 `open-questions.md`，落盘后删除 `output/drafts/product-init.md`。
 9. 校验声明可解析、文档骨架完整、项目内无 `runbooks/` 副本。
 
 ## 验证
@@ -56,5 +56,6 @@ agent:
 - 使用隔离 worktree 与合并队列交付时，`.yongchun/worktree-merge-queue.toml` 已创建且无 `<...>` 残留；不使用队列时未创建。
 - `docs/` 骨架与首个版本目录符合文档结构与版本文档结构。
 - `docs/requirements/README.md` 已建立，表头为「编号、需求、状态、实现版本、待定夺、需求文档」。
+- 首个版本功能已在需求总表登记，每个功能有对应需求文档，实现版本为「待定」或已确定版本。
 - 项目阶段标记为「开发阶段」。
 - Claude Code 中 `/yongchun:deliver` 等命令可用；项目内无 `runbooks/`、`commands/` 或 `.claude/commands/` 副本。
