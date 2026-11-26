@@ -21,7 +21,7 @@ runbooks/
 │   ├── server/        服务端分册：分层、数据访问、方案设计、运行
 │   │   └── architecture/  架构场景分册：通用要求、入口与帧同步、状态同步、体育、回合、大世界、沙盒、SLG、休闲
 │   └── client/        客户端分册：分层、方案设计、运行、Flutter 构建
-├── implementation/    实施：任务执行、讨论记录、worktree、构建、测试
+├── implementation/    实施：任务执行、讨论记录、worktree、构建、测试、终端命令
 ├── delivery/          交付：服务端发布、客户端发布、版本发布与合并队列交付
 └── problems/          问题处理：排查、修复决策与可观测性
 ```
