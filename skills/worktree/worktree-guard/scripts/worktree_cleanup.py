@@ -79,7 +79,20 @@ def main(argv):
     branches = branch_list(root, base) if base else {}
     checked_out = {w.get("branch", "").replace("refs/heads/", "") for w in worktrees}
 
-    prefixes = ("feature/", "fix/", "claude/")
+    # 与 worktree_create.sh 的 branch_prefixes 保持一致。
+    prefixes = (
+        "feature/",
+        "fix/",
+        "hotfix/",
+        "chore/",
+        "docs/",
+        "refactor/",
+        "test/",
+        "perf/",
+        "ci/",
+        "build/",
+        "release/",
+    )
     residual_worktrees = []
     residual_branches = []
     for entry in others:

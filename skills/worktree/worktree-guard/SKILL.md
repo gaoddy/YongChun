@@ -19,7 +19,7 @@ description: Use when creating, removing, or validating task worktrees, or when 
 "${CLAUDE_PLUGIN_ROOT}/skills/worktree/worktree-guard/scripts/worktree_create.sh" <branch> [base] [--root DIR]
 ```
 
-- `<branch>` 必填，需带前缀：默认白名单 `feature/`、`fix/`、`claude/`；项目存在 `.yongchun/worktree-merge-queue.toml` 时以其 `project.branch_prefix` 为准。
+- `<branch>` 必填，需带白名单前缀：`feature/`、`fix/`、`hotfix/`、`chore/`、`docs/`、`refactor/`、`test/`、`perf/`、`ci/`、`build/`、`release/`；前缀不在队列配置中提供。
 - `[base]` 缺省为该配置的 `project.base_branch`，再缺省为 `develop`。
 - worktree 根缺省 `<repo>/.worktrees/<branch 的 / 换成 ->`，且该目录必须已被 `.gitignore` 忽略；`--root` 只用于临时排障。
 - 成功时把绝对路径打印到 stdout；工作区不干净、基线不存在、前缀不符、目标已存在、目录未忽略时退出码非 0，不创建任何东西。

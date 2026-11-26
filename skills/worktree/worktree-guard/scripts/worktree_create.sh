@@ -2,13 +2,16 @@
 # 唯一允许的 worktree 创建入口。规则见 runbooks/implementation/worktree.md。
 #
 # 用法：worktree_create.sh <branch> [base] [--root DIR]
-#   branch  任务分支名，需带配置或默认白名单中的前缀
+#   branch  任务分支名，需带白名单前缀，见下方 branch_prefixes
 #   base    基线分支，缺省为队列配置的 project.base_branch，再缺省为 develop
 #   --root  worktree 根目录，缺省为 <repo>/.worktrees
 #
 # 成功时把新建 worktree 的绝对路径打印到 stdout；失败时退出码非 0，原因写到 stderr。
 
 set -eu
+
+# 分支前缀白名单，与 worktree_cleanup.py 的 prefixes 保持一致。
+branch_prefixes="feature/ fix/ hotfix/ chore/ docs/ refactor/ test/ perf/ ci/ build/ release/"
 
 usage() {
     printf '用法: %s <branch> [base] [--root DIR]\n' "$(basename "$0")" >&2
@@ -89,10 +92,8 @@ read_config() {
 }
 
 config_base=""
-config_prefix=""
 if [ -n "$config" ]; then
     config_base=$(read_config "$config" project base_branch)
-    config_prefix=$(read_config "$config" project branch_prefix)
 fi
 
 [ -n "$base" ] || base="${config_base:-develop}"
@@ -105,17 +106,10 @@ git rev-parse --verify --quiet "$base^{commit}" >/dev/null \
 git check-ref-format --branch "$branch" >/dev/null 2>&1 \
     || die "分支名非法: $branch"
 
-if [ -n "$config_prefix" ]; then
-    case "$branch" in
-        "$config_prefix"*) ;;
-        *) die "分支必须带队列配置的 project.branch_prefix 前缀: $config_prefix" ;;
-    esac
-else
-    case "$branch" in
-        feature/*|fix/*|claude/*) ;;
-        *) die "分支必须带前缀: feature/ fix/ claude/" ;;
-    esac
-fi
+case "$branch" in
+    feature/*|fix/*|hotfix/*|chore/*|docs/*|refactor/*|test/*|perf/*|ci/*|build/*|release/*) ;;
+    *) die "分支必须带前缀: $branch_prefixes" ;;
+esac
 
 # 5) 工作区必须干净，避免把未提交改动带进 worktree 判定
 if [ -n "$(git status --porcelain)" ]; then

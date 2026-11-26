@@ -22,14 +22,13 @@ agent:
 
 - 配置文件放在项目根：优先 `.yongchun/worktree-merge-queue.toml`，同时识别 `.codex/worktree-merge-queue-delivery.toml`；`--config` 显式指定时以参数为准。
 - 配置缺失时停止，先创建配置或改为手工交付，不凭默认值执行。
-- 分支前缀只由 `project.branch_prefix` 提供，不在脚本或文档中写死。
+- 配置不提供任务分支前缀；前缀按 [Worktree 与分支](../implementation/worktree.md) 的白名单校验，配置中出现的 `project.branch_prefix` 被忽略。
 - 接入时从[配置模板](../../templates/worktree-merge-queue.toml)复制，替换全部 `<...>` 并删除未启用段；模板本身不参与运行。
 
 | 字段 | 作用 |
 | --- | --- |
 | `project.name` | 配置标识 |
 | `project.base_branch` | 合并目标分支，如 `develop` |
-| `project.branch_prefix` | 任务分支前缀 |
 | `worktree.create` / `clean` / `list` / `verify` | 任务 worktree 的创建、清理、列出与校验命令 |
 | `queue.enabled` | 是否启用合并队列 |
 | `queue.status` / `enqueue` / `claim` / `require_active` | 队列状态、入队、认领与占用校验 |
@@ -93,7 +92,7 @@ agent:
 
 ## 步骤
 
-1. 读取配置，确认 `base_branch`、`branch_prefix`、仓库顺序与队列命令。
+1. 读取配置，确认 `base_branch`、仓库顺序与队列命令。
 2. 复用或创建任务 worktree，运行 `worktree.verify`。
 3. 任务完成后保留任务 worktree 与任务分支，不提前入队；确认要合并时再进入合并流程。
 4. 开始合并时执行 `run`，由它完成入队、认领与基线同步；需要先确认队列顺序时，可提前单独执行 `enqueue` 并读取队列状态。

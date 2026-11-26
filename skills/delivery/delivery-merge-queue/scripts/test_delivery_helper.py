@@ -28,7 +28,6 @@ CONFIG_TEXT = textwrap.dedent(
     [project]
     name = "Example"
     base_branch = "develop"
-    branch_prefix = "feature/"
 
     [worktree]
     create = "make worktree-create BRANCH={branch}"

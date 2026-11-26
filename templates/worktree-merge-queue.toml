@@ -21,7 +21,6 @@
 [project]
 name = "<项目名>"
 base_branch = "develop"
-branch_prefix = "<任务分支前缀，如 task/>"
 
 [worktree]
 # 创建只走插件提供的唯一入口；把 <插件根> 换成实际路径后使用。

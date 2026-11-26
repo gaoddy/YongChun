@@ -82,6 +82,18 @@ class WorktreeCleanupTest(unittest.TestCase):
         self.git("branch", "-d", "feature/demo")
         self.assertEqual(0, self.run_script("--check").returncode)
 
+    def test_counts_any_whitelist_prefix_as_task_branch(self):
+        for branch in ("release/1.0", "chore/demo"):
+            with self.subTest(branch=branch):
+                path = self.create_worktree(branch)
+                self.git("merge", "--no-ff", "-q", "-m", "merge", branch)
+                self.git("worktree", "remove", str(path))
+                result = self.run_script("--check")
+                self.assertEqual(1, result.returncode)
+                self.assertIn(f"branch {branch} 已合并", result.stdout)
+                self.git("branch", "-d", branch)
+        self.assertEqual(0, self.run_script("--check").returncode)
+
 
 if __name__ == "__main__":
     unittest.main()

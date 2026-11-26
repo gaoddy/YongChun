@@ -100,9 +100,25 @@ class WorktreeCreateTests(RepositoryTestCase):
         self.assertIn("工作区", result.stderr)
 
     def test_refuses_branch_outside_prefix_whitelist(self):
-        result = self.create("release/1.0")
+        result = self.create("random/1.0")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("前缀", result.stderr)
+
+    def test_refuses_claude_prefix(self):
+        result = self.create("claude/session")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("前缀", result.stderr)
+
+    def test_accepts_whitelist_prefixes(self):
+        prefixes = ("feature/", "fix/", "hotfix/", "chore/", "docs/", "refactor/",
+                    "test/", "perf/", "ci/", "build/", "release/")
+        for prefix in prefixes:
+            with self.subTest(prefix=prefix):
+                branch = prefix + "demo"
+                result = self.create(branch)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                target = os.path.join(self.repo, ".worktrees", branch.replace("/", "-"))
+                self.assertEqual(result.stdout.strip(), target)
 
     def test_refuses_existing_target(self):
         os.makedirs(os.path.join(self.repo, ".worktrees", "feature-login"))
@@ -123,20 +139,28 @@ class WorktreeCreateTests(RepositoryTestCase):
         self.assertEqual(self.git("-C", target, "rev-parse", "HEAD").strip(),
                          self.git("rev-parse", "develop").strip())
 
-    def test_reads_queue_config_for_base_and_prefix(self):
+    def test_reads_queue_config_for_base(self):
         self.git("branch", "main-base")
         self.write(".yongchun/worktree-merge-queue.toml",
-                   "[project]\nbase_branch = \"main-base\"\nbranch_prefix = \"task/\"\n")
+                   "[project]\nbase_branch = \"main-base\"\n")
         self.git("add", ".")
         self.git("commit", "-q", "-m", "config")
-        result = self.create("task/pay")
+        result = self.create("feature/pay")
         self.assertEqual(result.returncode, 0, result.stderr)
-        target = os.path.join(self.repo, ".worktrees", "task-pay")
+        target = os.path.join(self.repo, ".worktrees", "feature-pay")
         self.assertEqual(self.git("-C", target, "rev-parse", "HEAD").strip(),
                          self.git("rev-parse", "main-base").strip())
-        refused = self.create("feature/other")
+
+    def test_ignores_queue_config_branch_prefix(self):
+        self.write(".yongchun/worktree-merge-queue.toml",
+                   "[project]\nbase_branch = \"develop\"\nbranch_prefix = \"task/\"\n")
+        self.git("add", ".")
+        self.git("commit", "-q", "-m", "config")
+        refused = self.create("task/pay")
         self.assertNotEqual(refused.returncode, 0)
         self.assertIn("前缀", refused.stderr)
+        result = self.create("feature/pay")
+        self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_refuses_invalid_ref_name(self):
         result = self.create("feature/..bad")
