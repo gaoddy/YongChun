@@ -43,6 +43,7 @@ agent:
 - 覆盖改动边界、分层落点、接口契约、数据模型与迁移、兼容要求、可观测性与测试方式。
 - 每条产品规则能在方案中找到落点；方案不新增未确认的产品规则，发现缺口时回到产品确认。
 - 纯技术改动（重构、性能、依赖升级等）只写 `technical.md`，不补 `product.md`。
+- 技术方案确认后进入计划阶段，先按[验收标准与映射](../implementation/acceptance.md)建立映射；映射无缺口才拆分任务。
 
 ## 状态流转
 
@@ -65,7 +66,7 @@ agent:
 2. 先按[产品需求文档](../product/requirements-document.md)更新需求文档与需求总表；再按[版本文档结构](../docs/structure/version-docs-structure.md#需求变动-update)建立需求目录并按需写版本裁剪 `product.md`；澄清阶段已有 `output/drafts/` 讨论记录时整理为增量写入后删除；纯技术改动直接写 `technical.md`。
 3. 按[产品定义文档](../product/product-definition.md#完备性审查)逐项审查需求文档与 `product.md`，补齐缺口并重审；无缺口后与用户确认产品规则，结论同步版本产品基线。
 4. 按端编写 `technical.md`，确认后同步版本技术基线。
-5. 按[任务计划](plan.md)拆分任务并实施。
+5. 按[任务计划](plan.md)拆分任务并建立验收映射，映射无缺口后实施。
 6. 按[文档回写](../docs/docs-sync.md)更新 `docs/` 与版本基线，删除已实现部分。
 7. 全部实现后删除需求目录，并移除 `open-questions.md` 中对应条目。
 
