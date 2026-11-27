@@ -84,6 +84,7 @@ skill:
 - 生成：`python3 scripts/generate_runbook_skills.py`；漂移检查：`python3 scripts/generate_runbook_skills.py --check`，与磁盘不一致时退出码 1。
 - 无启用项时视为通过，不要求 `skills/runbooks/` 存在；写入时只删除 `skills/runbooks/` 下带生成标记的多余薄壳，不触碰 `skills/worktree/` 与 `skills/delivery/` 的手写 skill。
 - 首次生成 skill 时，两端插件清单 `.claude-plugin/plugin.json` 与 `.codex-plugin/plugin.json` 的 `skills` 数组同时加入 `./skills/runbooks/`；分组未声明时 `scripts/plugin_selfcheck.py` 报错。
+- 当所有生成项被移除（例如全部 `skill.enabled` 回退），生成器会删除空的 `skills/runbooks/` 目录；此时必须同步从两端插件清单的 `skills` 数组移除 `./skills/runbooks/`，再运行 `python3 scripts/plugin_selfcheck.py` 确认分组已清理。
 - 生成物只读：改规则先改 runbook，再运行生成器，不直接编辑 `skills/runbooks/` 下的 `SKILL.md`。
 
 ### 迁移顺序
@@ -94,14 +95,14 @@ skill:
 2. 批次 2：[任务执行与交付](implementation/change-delivery.md)场景判定表中的其余 runbook。
 3. 批次 3：其余判定为必须或可选 skill 的 runbook，按目录顺序。
 
-每批完成标准：为对应 runbook 加 `skill.enabled: true` → 运行 `python3 scripts/generate_runbook_skills.py` → 首次生成时更新两端清单 → `generate_runbook_skills.py --check`、`generate_runbook_agents.py --check`、`check-runbooks.py`、`plugin_selfcheck.py` 与测试全部通过。
+每批完成标准：为对应 runbook 加 `skill.enabled: true` → 运行 `python3 scripts/generate_runbook_skills.py` → 首次生成时更新两端清单，并在 `README.md` 的 `skills/` 目录树中加入 `runbooks/` 条目 → `generate_runbook_skills.py --check`、`generate_runbook_agents.py --check`、`check-runbooks.py`、`plugin_selfcheck.py` 与测试全部通过。
 
 ## 步骤
 
 1. 修改或新增 runbook，按规则写 `agent.effort`；判定为必须或可选 skill 的，再加 `skill.enabled: true`。
 2. 运行 `python3 scripts/generate_runbook_agents.py` 重新生成两端产物。
-3. 运行 `python3 scripts/generate_runbook_skills.py` 生成 skill 薄壳；首次生成时同步两端插件清单的 `skills` 数组。
-4. 运行 `python3 scripts/generate_runbook_agents.py --check`、`python3 scripts/generate_runbook_skills.py --check` 与 `python3 scripts/check-runbooks.py`，确认退出码为 0。
+3. 运行 `python3 scripts/generate_runbook_skills.py` 生成 skill 薄壳；首次生成时同步两端插件清单的 `skills` 数组，全部启用项移除时同步从两端清单删除 `./skills/runbooks/`。
+4. 运行 `python3 scripts/generate_runbook_agents.py --check`、`python3 scripts/generate_runbook_skills.py --check`、`python3 scripts/check-runbooks.py` 与 `python3 scripts/plugin_selfcheck.py`，确认退出码为 0。
 5. Codex 接入项目复制 TOML：`python3 scripts/generate_runbook_agents.py --install-codex <项目目录>`。
 6. 同一任务提交 runbook、`agents/`、`codex-agents/` 与变更的 `skills/runbooks/`。
 
@@ -110,7 +111,8 @@ skill:
 - 每篇可执行 runbook 都有合法 `agent.effort`，README 与索引除外。
 - 判定为必须或可选的 runbook 已标记 `skill.enabled: true`；手写 skill 承载项、维护文档、索引与纯规则文档未标记。
 - `agents/` 与 `codex-agents/` 数量等于可执行 runbook 数量，无多余、无缺失；`skills/runbooks/` 只含启用项生成的薄壳。
-- `generate_runbook_agents.py --check`、`generate_runbook_skills.py --check` 与 `check-runbooks.py` 退出码为 0。
+- `generate_runbook_agents.py --check`、`generate_runbook_skills.py --check`、`check-runbooks.py`、`plugin_selfcheck.py` 与 `python3 -m unittest discover -s scripts -p 'test_*.py'` 退出码为 0。
+- 无启用项时 `skills/runbooks/` 与两端插件清单中的 `./skills/runbooks/` 均不存在；有启用项时两端清单已声明该分组。
 - 生成物中的名称、描述与强度与 runbook 一致，无手改痕迹；每篇启用项的 skill 与 runbook 一致，双端路径 `../../../runbooks/<stem>.md` 可用。
 
 ## 相关

@@ -74,7 +74,13 @@ def generated_files(root):
     for name in sorted(os.listdir(base)):
         rel = "%s/%s/SKILL.md" % (GROUP, name)
         path = os.path.join(root, rel)
-        if os.path.isfile(path) and MARKER in read(path):
+        if not os.path.isfile(path):
+            continue
+        try:
+            text = read(path)
+        except (OSError, UnicodeDecodeError):
+            continue
+        if MARKER in text:
             out.append(rel)
     return out
 
@@ -117,6 +123,9 @@ def write(root, entries):
         parent = os.path.dirname(path)
         if not os.listdir(parent):
             os.rmdir(parent)
+    base = os.path.join(root, GROUP)
+    if os.path.isdir(base) and not os.listdir(base):
+        os.rmdir(base)
     return written, removed
 
 

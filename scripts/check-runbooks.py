@@ -221,10 +221,11 @@ def main():
         spec = importlib.util.spec_from_file_location("generate_runbook_skills", skill_generator)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        skill_entries, skill_errors = module.collect(root)
-        for source, msg in skill_errors:
-            bad("skill", source, msg)
-        if not skill_errors:
+        try:
+            skill_entries, _ = module.collect(root)
+        except RuntimeError as e:
+            bad("skill", rel(root, skill_generator), str(e))
+        else:
             for source, msg in module.check(root, skill_entries):
                 bad("skill", source, msg)
 

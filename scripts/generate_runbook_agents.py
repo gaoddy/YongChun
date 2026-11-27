@@ -10,6 +10,7 @@ LEVELS = ("low", "high", "xhigh")
 FRONTMATTER = re.compile(
     r"\A---\nagent:\n  effort: ([a-z]+)\n(?:skill:\n  enabled: (true|false)\n)?---\n"
 )
+EFFORT_LINE = re.compile(r"\A---\nagent:\n  effort: ([a-z]+)\n")
 TITLE = re.compile(r"^#\s+(.+?)\s*$", re.M)
 BULLET = re.compile(r"^-\s+(.+)$", re.M)
 NAME = re.compile(r"\A[a-z0-9][a-z0-9-]*\Z")
@@ -130,8 +131,13 @@ def collect(root):
             text = read(os.path.join(root, rel))
             m = FRONTMATTER.match(text)
             if not m:
-                head = text.split("\n---\n", 1)[0]
-                if re.search(r"^skill:", head, re.M):
+                core = EFFORT_LINE.match(text)
+                if not core:
+                    raise ValueError("缺少 agent.effort frontmatter")
+                if core.group(1) not in LEVELS:
+                    raise ValueError("agent.effort 取值非法: %s" % core.group(1))
+                # effort 行合法仍不匹配，只有紧跟的 skill 块格式非法时才归因到 skill
+                if re.match(r"skill:", text[core.end():]):
                     raise ValueError("skill.enabled 取值非法，仅支持 true 或 false")
                 raise ValueError("缺少 agent.effort frontmatter")
             effort = m.group(1)

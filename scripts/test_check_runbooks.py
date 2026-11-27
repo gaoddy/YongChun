@@ -466,6 +466,17 @@ class CheckRunbooksTest(unittest.TestCase):
         code, out = run(root)
         self.assertEqual(code, 1, out)
         self.assertIn("skill.enabled 取值非法", out)
+        self.assertIn("[agent]", out)
+        self.assertNotIn("[skill]", out)
+
+    def test_skill_generator_without_agent_generator_fails_cleanly(self):
+        root = make_repo({"runbooks/a.md": with_skill(BASE["runbooks/a.md"])})
+        os.makedirs(os.path.join(root, "scripts"), exist_ok=True)
+        shutil.copy(SKILL_GENERATOR, os.path.join(root, "scripts", "generate_runbook_skills.py"))
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("[skill]", out)
+        self.assertNotIn("Traceback", out)
 
 
 if __name__ == "__main__":

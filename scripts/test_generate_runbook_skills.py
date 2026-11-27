@@ -67,6 +67,14 @@ def run(root, *args):
     return r.returncode, r.stdout + r.stderr
 
 
+def run_ok(root, *args):
+    """运行生成器并断言退出码为 0。"""
+    code, out = run(root, *args)
+    if code != 0:
+        raise AssertionError("生成器退出码 %d：%s" % (code, out))
+    return out
+
+
 def read(root, name):
     with open(os.path.join(root, name), encoding="utf-8") as f:
         return f.read()
@@ -87,13 +95,13 @@ def append(root, name, content):
 class GenerateSkillsTest(unittest.TestCase):
     def test_no_enabled_generates_nothing_and_check_passes(self):
         root = make_repo({"runbooks/a.md": fixture("A")})
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         self.assertFalse(os.path.isdir(os.path.join(root, "skills/runbooks")))
-        self.assertEqual(run(root, "--check")[0], 0)
+        run_ok(root, "--check")
 
     def test_generate_creates_dual_end_skill(self):
         root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         text = read(root, "skills/runbooks/a/SKILL.md")
         self.assertIn("name: a", text)
         self.assertIn('description: "A：处理 A 场景"', text)
@@ -103,7 +111,7 @@ class GenerateSkillsTest(unittest.TestCase):
 
     def test_check_detects_content_drift(self):
         root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         append(root, "skills/runbooks/a/SKILL.md", "\n手改\n")
         code, out = run(root, "--check")
         self.assertEqual(code, 1, out)
@@ -111,7 +119,7 @@ class GenerateSkillsTest(unittest.TestCase):
 
     def test_check_detects_extra_generated_skill(self):
         root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         write(root, "skills/runbooks/old/SKILL.md",
               "---\nname: old\ndescription: x\n---\n\n"
               "由 scripts/generate_runbook_skills.py 根据 runbooks/old.md 生成\n")
@@ -121,19 +129,44 @@ class GenerateSkillsTest(unittest.TestCase):
 
     def test_write_removes_extra_generated_skill_but_keeps_handwritten(self):
         root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         write(root, "skills/runbooks/old/SKILL.md",
               "---\nname: old\ndescription: x\n---\n\n"
               "由 scripts/generate_runbook_skills.py 根据 runbooks/old.md 生成\n")
         write(root, "skills/worktree/hand/SKILL.md", "手写\n")
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         self.assertFalse(os.path.exists(os.path.join(root, "skills/runbooks/old/SKILL.md")))
         self.assertTrue(os.path.isfile(os.path.join(root, "skills/worktree/hand/SKILL.md")))
 
     def test_skill_disabled_is_not_generated(self):
         root = make_repo({"runbooks/a.md": fixture("A", skill=False)})
-        self.assertEqual(run(root)[0], 0)
+        run_ok(root)
         self.assertFalse(os.path.exists(os.path.join(root, "skills/runbooks/a/SKILL.md")))
+
+    def test_unmarked_skill_in_group_is_kept_and_not_reported(self):
+        root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
+        run_ok(root)
+        write(root, "skills/runbooks/hand/SKILL.md", "手写\n")
+        run_ok(root, "--check")
+        run_ok(root)
+        self.assertTrue(os.path.isfile(os.path.join(root, "skills/runbooks/hand/SKILL.md")))
+
+    def test_revert_to_zero_removes_group_dir(self):
+        root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
+        run_ok(root)
+        self.assertTrue(os.path.isdir(os.path.join(root, "skills/runbooks")))
+        write(root, "runbooks/a.md", fixture("A"))
+        run_ok(root)
+        self.assertFalse(os.path.exists(os.path.join(root, "skills/runbooks")))
+
+    def test_group_dir_survives_revert_when_unmarked_remains(self):
+        root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
+        run_ok(root)
+        write(root, "skills/runbooks/hand/SKILL.md", "手写\n")
+        write(root, "runbooks/a.md", fixture("A"))
+        run_ok(root)
+        self.assertTrue(os.path.isdir(os.path.join(root, "skills/runbooks")))
+        self.assertFalse(os.path.exists(os.path.join(root, "skills/runbooks/a")))
 
 
 if __name__ == "__main__":

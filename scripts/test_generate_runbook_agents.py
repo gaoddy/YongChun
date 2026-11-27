@@ -95,6 +95,38 @@ class GenerateAgentsTest(unittest.TestCase):
         self.assertEqual(code, 1, out)
         self.assertIn("skill.enabled 取值非法", out)
 
+    def test_invalid_effort_with_skill_reports_effort(self):
+        root = make_repo({"runbooks/a.md": fixture("A", effort="max", skill=True)})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("agent.effort 取值非法: max", out)
+        self.assertNotIn("skill.enabled 取值非法", out)
+
+    def test_no_frontmatter_with_skill_in_body_reports_missing_effort(self):
+        body = """# Runbook：A
+
+## 适用场景
+
+- 处理 A 场景。
+
+## 规则
+
+skill: true
+
+## 步骤
+
+1. 步骤。
+
+## 验证
+
+- 通过。
+"""
+        root = make_repo({"runbooks/a.md": body})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("缺少 agent.effort frontmatter", out)
+        self.assertNotIn("skill.enabled 取值非法", out)
+
     def test_generate_and_check(self):
         root = make_repo({"runbooks/a.md": fixture("A")})
         code, out = run(root)
