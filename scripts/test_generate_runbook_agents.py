@@ -10,11 +10,19 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT = os.path.join(REPO, "scripts", "generate_runbook_agents.py")
 
 
-def fixture(title="A", effort="high"):
+def fixture(title="A", effort="high", skill=None):
+    if skill is True:
+        block = "skill:\n  enabled: true\n"
+    elif skill is False:
+        block = "skill:\n  enabled: false\n"
+    elif skill is None:
+        block = ""
+    else:
+        block = "skill:\n  enabled: %s\n" % skill
     return """---
 agent:
   effort: %s
----
+%s---
 
 # Runbook：%s
 
@@ -33,7 +41,16 @@ agent:
 ## 验证
 
 - 通过。
-""" % (effort, title, title)
+""" % (effort, block, title, title)
+
+
+def load_module():
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("generate_runbook_agents", SCRIPT)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def make_repo(files):
@@ -60,6 +77,24 @@ def read(root, name):
 
 
 class GenerateAgentsTest(unittest.TestCase):
+    def test_skill_enabled_parsed(self):
+        root = make_repo({"runbooks/a.md": fixture("A", skill=True)})
+        entries, errors = load_module().collect(root)
+        self.assertEqual([], errors)
+        self.assertTrue(entries[0]["skill_enabled"])
+
+    def test_skill_disabled_by_default(self):
+        root = make_repo({"runbooks/a.md": fixture("A")})
+        entries, errors = load_module().collect(root)
+        self.assertEqual([], errors)
+        self.assertFalse(entries[0]["skill_enabled"])
+
+    def test_invalid_skill_value_fails(self):
+        root = make_repo({"runbooks/a.md": fixture("A", skill="yes")})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("skill.enabled 取值非法", out)
+
     def test_generate_and_check(self):
         root = make_repo({"runbooks/a.md": fixture("A")})
         code, out = run(root)

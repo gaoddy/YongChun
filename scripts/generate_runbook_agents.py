@@ -7,7 +7,9 @@ import re
 import sys
 
 LEVELS = ("low", "high", "xhigh")
-FRONTMATTER = re.compile(r"\A---\nagent:\n  effort: ([a-z]+)\n---\n")
+FRONTMATTER = re.compile(
+    r"\A---\nagent:\n  effort: ([a-z]+)\n(?:skill:\n  enabled: (true|false)\n)?---\n"
+)
 TITLE = re.compile(r"^#\s+(.+?)\s*$", re.M)
 BULLET = re.compile(r"^-\s+(.+)$", re.M)
 NAME = re.compile(r"\A[a-z0-9][a-z0-9-]*\Z")
@@ -128,8 +130,12 @@ def collect(root):
             text = read(os.path.join(root, rel))
             m = FRONTMATTER.match(text)
             if not m:
+                head = text.split("\n---\n", 1)[0]
+                if re.search(r"^skill:", head, re.M):
+                    raise ValueError("skill.enabled 取值非法，仅支持 true 或 false")
                 raise ValueError("缺少 agent.effort frontmatter")
             effort = m.group(1)
+            skill_enabled = m.group(2) == "true"
             if effort not in LEVELS:
                 raise ValueError("agent.effort 取值非法: %s" % effort)
             title, desc = describe(rel, text)
@@ -144,6 +150,7 @@ def collect(root):
                 "source": rel,
                 "name": name,
                 "effort": effort,
+                "skill_enabled": skill_enabled,
                 "title": title,
                 "description": desc,
                 "claude_path": "agents/%s.md" % name,
