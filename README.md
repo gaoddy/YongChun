@@ -51,7 +51,7 @@ claude plugin install yongchun@yongchun
 
 安装后可用 `/yongchun:init`、`/yongchun:deliver`、`/yongchun:bugfix`、`/yongchun:feature-requirements`、`/yongchun:feature-feasibility`、`/yongchun:new-api`、`/yongchun:algorithm-design`、`/yongchun:plan`、`/yongchun:ui`、`/yongchun:docs-restructure`、`/yongchun:release`、`/yongchun:server-deploy`。命令通过 `${CLAUDE_PLUGIN_ROOT}` 引用插件内的 runbook，接入项目不复制 runbook 或命令文件。GitHub 源安装的是发布副本，更新时执行 `claude plugin update yongchun`；参与本仓库开发时用 `claude --plugin-dir <本仓库路径>` 直接加载工作区。
 
-插件同时分发 `agents/`：每篇 runbook 一个 agent，名称、描述与思考强度来自 runbook frontmatter，调用名为 `yongchun:<name>`；生成与校验见[Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
+插件同时分发 `agents/`：每篇 runbook 一个 agent，名称、描述与思考强度来自 runbook frontmatter，调用名为 `yongchun:<name>`；生成与校验见[Runbook 与 Agent/Skill 映射](runbooks/runbook-agent-skill-mapping.md)。
 
 ### Codex
 
@@ -67,7 +67,7 @@ codex plugin add yongchun@yongchun
 
 Codex 没有插件斜杠命令，加载时会把 `codex-commands/` 的命令转换为 `source-command-<name>` skill。命令正文统一用「用户本次请求」这类通用表述，不写 `$ARGUMENTS`、编号占位符、`{{...}}`、`` !` `` 或 `@` 开头的 token，含这些内容的命令会被 Codex 跳过；Claude Code 在正文没有占位符时把参数以 `ARGUMENTS: <原文>` 追加到末尾，因此两端正文一致，两个命令目录的差异只剩引用 runbook 的写法。插件钩子需要在本机确认信任，安装后按 Codex 提示审核。
 
-Codex 插件清单不支持 `agents` 字段，安装插件不会带上 agent。需要时在 runbook 仓库执行 `python3 scripts/generate_runbook_agents.py --install-codex <项目目录>`，把 `codex-agents/*.toml` 安装到项目的 `.codex/agents/`；规则见[Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
+Codex 插件清单不支持 `agents` 字段，安装插件不会带上 agent。需要时在 runbook 仓库执行 `python3 scripts/generate_runbook_agents.py --install-codex <项目目录>`，把 `codex-agents/*.toml` 安装到项目的 `.codex/agents/`；规则见[Runbook 与 Agent/Skill 映射](runbooks/runbook-agent-skill-mapping.md)。
 
 ### 本仓库结构
 
@@ -93,7 +93,7 @@ runbooks/
 ├── README.md             目录树与项目基线
 ├── index.md              全局索引：全部 runbook 登记
 ├── runbook.md            runbook 的编写、拆分与索引维护
-├── runbook-agent-mapping.md  runbook 与 agent 映射、强度与生成
+├── runbook-agent-skill-mapping.md  runbook 与 agent/skill 映射、判定与生成
 ├── docs/                 文档：写作、回写与文档结构分册
 ├── version/              版本：流程、需求、缺陷、计划、复盘
 ├── product/              产品定义、功能评估与 UI 分册

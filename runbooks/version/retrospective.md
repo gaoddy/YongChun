@@ -39,7 +39,7 @@ agent:
 
 ### 结论落点
 
-- 规则改进直接写入对应 runbook，自动化写入 `scripts/` 或 CI 配置，Skill 与 agent 按[Runbook 与 Agent 映射](../runbook-agent-mapping.md)更新。
+- 规则改进直接写入对应 runbook，自动化写入 `scripts/` 或 CI 配置，Skill 与 agent 按[Runbook 与 Agent/Skill 映射](../runbook-agent-skill-mapping.md)更新。
 - 复盘形成的、满足[决策记录](decision-record.md)门槛的流程取舍写入 `docs/decisions/`，避免下一次复盘重新提出已否决的改进。
 - 不新建复盘报告、问题清单或历史变更日志；结论直接进入承载它的规则、测试或自动化。
 

@@ -79,7 +79,7 @@ agent:
 - 目录层级最多三级（分组 → 分册 → 子分册），不再向下嵌套；子分册只用于分册内已有两个以上按主题拆分的同族文件（如 `engineering/server/api/`），其余细分内容用一篇文档内的章节承载。
 - 分册与子分册目录必须有 `README.md`，列出本目录文件与一句话说明；分册索引只链到子目录 `README.md`，不重复列子目录内文件，[全局索引](index.md)仍逐篇登记；一级分组不设 `README.md`，由根目录树与全局索引承载。
 - `engineering/server/architecture/` 因入口与索引合一使用 `index.md` 作为入口，其余分册目录仍用 `README.md`。
-- `runbooks/` 根目录另有[全局索引](index.md)，登记面向外部项目的全部 runbook；根目录维护文档（`README.md`、`runbook.md`、`runbook-agent-mapping.md`）由根 `AGENTS.md` 触发表登记，与目录树保持一致。
+- `runbooks/` 根目录另有[全局索引](index.md)，登记面向外部项目的全部 runbook；根目录维护文档（`README.md`、`runbook.md`、`runbook-agent-skill-mapping.md`）由根 `AGENTS.md` 触发表登记，与目录树保持一致。
 - 新增一级目录前先确认现有分组无法承载，并在[全局索引](index.md)、[目录树](README.md)与根 `AGENTS.md` 触发表登记。
 - 删除或移动目录时同步索引与入链，不留空目录与孤儿文件。
 
@@ -118,7 +118,7 @@ agent:
 - 根 `AGENTS.md` 触发表只登记「场景 → 文件」的映射，是唯一路由入口；新增场景先补 runbook 与触发行，不留无入口的流程。
 - 修改规则前全库检索引用者（runbook、`docs/`、代码与 `AGENTS.md`），同一任务同步更新；直接改原文，不保留旧版规则、兼容分支或旧做法说明。
 - `docs/`、其他 runbook 与代码中的引用一并更新；改标题锚点时全库检索。
-- agent 元数据、生成物与校验见 [Runbook 与 Agent 映射](runbook-agent-mapping.md)；新增、改名或删除 runbook 时，同一任务同步 frontmatter 与生成产物。
+- agent 与 skill 元数据、生成物与校验见 [Runbook 与 Agent/Skill 映射](runbook-agent-skill-mapping.md)；新增、改名或删除 runbook 时，同一任务同步 frontmatter 与生成产物。
 
 ## 审计
 

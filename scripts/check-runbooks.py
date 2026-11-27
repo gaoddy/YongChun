@@ -12,7 +12,7 @@ import sys
 MAINTENANCE_RUNBOOKS = (
     "runbooks/README.md",
     "runbooks/runbook.md",
-    "runbooks/runbook-agent-mapping.md",
+    "runbooks/runbook-agent-skill-mapping.md",
 )
 
 

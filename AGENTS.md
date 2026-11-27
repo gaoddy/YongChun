@@ -8,7 +8,7 @@
 - 项目特有场景在本文件补充入口，指向上述 runbook；不复制 runbook 内容。
 - runbook 与本文件冲突时以 runbook 为准，并修正本文件。
 - `runbooks/index.md` 登记面向外部项目的全部 runbook：每个可执行 runbook 一行，路径与文件名一致，适用场景写成一句话；新增、改名、移动或删除 runbook 时，同一任务内更新该表，旧条目随文件删除，不留「已废弃」记录。
-- `runbooks/` 根目录的维护文档（`README.md`、`runbook.md`、`runbook-agent-mapping.md`）不进入全局索引，在本文件触发表登记。
+- `runbooks/` 根目录的维护文档（`README.md`、`runbook.md`、`runbook-agent-skill-mapping.md`）不进入全局索引，在本文件触发表登记。
 - 索引不重复正文内容：适用场景只写触发条件，不写步骤与规则；每次调整后与 `runbooks/README.md` 的目录树、本文件触发表保持一致，并校验链接与锚点。
 
 ## 协作原则
@@ -39,11 +39,11 @@
 - 文档位于 `runbooks/`，入口见 [runbooks/index.md](runbooks/index.md)。
 - 配置模板位于 `templates/`，当前提供 `worktree-merge-queue.toml`；复制位置、字段与校验方式见[Worktree 合并队列交付](runbooks/delivery/worktree-delivery.md)。
 - 任务计划的创建、结构与删除时机见[任务计划](runbooks/version/plan.md)；`docs/plan/` 已忽略、不提交。
-- Agent 产物由 `scripts/generate_runbook_agents.py` 从 runbook frontmatter 生成：Claude Code 在 `agents/`，Codex 在 `codex-agents/`；生成物提交、禁止手改，规则见 [Runbook 与 Agent 映射](runbooks/runbook-agent-mapping.md)。
+- Agent 与 skill 产物分别由 `scripts/generate_runbook_agents.py` 与 `scripts/generate_runbook_skills.py` 从 runbook frontmatter 生成：Claude Code agent 在 `agents/`，Codex agent 在 `codex-agents/`，启用项的 skill 薄壳在 `skills/runbooks/`；生成物提交、禁止手改，规则见 [Runbook 与 Agent/Skill 映射](runbooks/runbook-agent-skill-mapping.md)。
 - 项目初始化的声明模板与取值填写见[项目初始化](runbooks/implementation/project-init.md)；产品定义收集见[产品初始化](runbooks/product/product-init.md)。
 - worktree 的唯一创建入口是 `skills/worktree/worktree-guard/scripts/worktree_create.sh`，绕过它的 `git worktree add` 由 `skills/worktree/worktree-guard/scripts/worktree_guard.sh` 在插件 `PreToolUse` 钩子中拒绝；规则与钩子配置见[Worktree 与分支](runbooks/implementation/worktree.md)。
-- 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用、agent frontmatter 与生成物漂移、双端插件清单），退出码 0 为通过；该脚本只校验本仓库自身，不随插件提供给接入项目，接入项目不得调用；skill 执行器测试入口是 `python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts` 与 `python3 -m unittest discover -s skills/worktree/worktree-guard/scripts`，插件安装自检入口是 `python3 scripts/plugin_selfcheck.py`，测试为 `python3 -m unittest discover -s scripts -p 'test_plugin_selfcheck.py'`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
-- 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；命令只做路由与执行契约，规则以 runbook 为准。
+- 本仓库的校验入口是 `python3 scripts/check-runbooks.py`（索引、链接、锚点、前置图、章节、占位符、命令引用、agent/skill frontmatter 与生成物漂移、双端插件清单），退出码 0 为通过；该脚本只校验本仓库自身，不随插件提供给接入项目，接入项目不得调用；skill 执行器测试入口是 `python3 -m unittest discover -s skills/delivery/delivery-merge-queue/scripts` 与 `python3 -m unittest discover -s skills/worktree/worktree-guard/scripts`，插件安装自检入口是 `python3 scripts/plugin_selfcheck.py`，测试为 `python3 -m unittest discover -s scripts -p 'test_plugin_selfcheck.py'`；不定义构建、测试、生成、迁移与本地启动目标，接入项目按 [Make 构建入口](runbooks/implementation/make.md) 自行登记。
+- 插件双端分发：Claude Code 通过 GitHub marketplace `gaoddy/YongChun` 安装，清单在 `.claude-plugin/`，命令在 `claude-commands/`；Codex 通过 `codex plugin marketplace add gaoddy/YongChun` 安装，清单在 `.codex-plugin/`，命令在 `codex-commands/`（Codex 会把命令转换为 `source-command-*` skill）。两端共用 `skills/`、`hooks/hooks.json` 与 `runbooks/`；skill 按分组目录在两端清单的 `skills` 数组声明，手写 skill 与由 runbook 生成的薄壳同在此目录，生成规则见 [Runbook 与 Agent/Skill 映射](runbooks/runbook-agent-skill-mapping.md)；命令只做路由与执行契约，规则以 runbook 为准。
 - 开发阶段只向 `develop` 提交与合并；推送按协作原则 9 执行。正式发版按[版本发布](runbooks/delivery/version-release.md)执行，快进合并到 `main`，以 `.claude-plugin/plugin.json` 的 `version` 打 `v<version>` annotated tag 并推送。
 
 ## 触发
@@ -63,7 +63,7 @@
 | 建立或调整版本文档 | [runbooks/docs/structure/version-docs-structure.md](runbooks/docs/structure/version-docs-structure.md) |
 | 新建或调整 UI 文档 | [runbooks/docs/structure/ui-docs-structure.md](runbooks/docs/structure/ui-docs-structure.md) |
 | 新增、拆分、合并、移动或删除 runbook，或调整结构、命名与索引 | [runbooks/runbook.md](runbooks/runbook.md) |
-| 新增、调整或校验 runbook 对应的 agent 与思考强度 | [runbooks/runbook-agent-mapping.md](runbooks/runbook-agent-mapping.md) |
+| 新增、调整或校验 runbook 对应的 agent、skill 与思考强度 | [runbooks/runbook-agent-skill-mapping.md](runbooks/runbook-agent-skill-mapping.md) |
 | 查看 runbooks 目录树与项目基线 | [runbooks/README.md](runbooks/README.md) |
 | 需求变动的拆分、确认与实施 | [runbooks/version/requirement-change.md](runbooks/version/requirement-change.md) |
 | 缺陷修复、验证与收尾 | [runbooks/version/bugfix.md](runbooks/version/bugfix.md) |

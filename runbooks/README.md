@@ -10,7 +10,7 @@ runbooks/
 ├── README.md          目录树与项目基线
 ├── index.md           全局索引：全部 runbook 登记
 ├── runbook.md         runbook 编写、拆分与索引维护
-├── runbook-agent-mapping.md  runbook 与 agent 映射、强度与生成
+├── runbook-agent-skill-mapping.md  runbook 与 agent/skill 映射、判定与生成
 ├── docs/              文档：写作、回写、解释与文档结构分册
 │   └── structure/     文档结构分册：通用、UI 与版本文档
 ├── version/           版本：流程、需求、缺陷、计划、复盘、决策记录
@@ -28,7 +28,7 @@ runbooks/
 
 ## 索引
 
-- 面向外部项目的全部 runbook 见[全局索引](index.md)；根目录维护文档（本文件、`runbook.md`、`runbook-agent-mapping.md`）由根 `AGENTS.md` 触发表登记；本文件只维护目录树与项目基线。
+- 面向外部项目的全部 runbook 见[全局索引](index.md)；根目录维护文档（本文件、`runbook.md`、`runbook-agent-skill-mapping.md`）由根 `AGENTS.md` 触发表登记；本文件只维护目录树与项目基线。
 - 本文件不重复登记单个 runbook，避免同一文件出现两处索引。
 
 ## 工程基线
