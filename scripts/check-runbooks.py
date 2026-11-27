@@ -201,17 +201,32 @@ def main():
             bad("章节", rel(root, p), "前置读取段为空")
 
     # agent frontmatter 与生成物
+    agent_errors = []
     generator = os.path.join(root, "scripts", "generate_runbook_agents.py")
     if os.path.isfile(generator):
         spec = importlib.util.spec_from_file_location("generate_runbook_agents", generator)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         entries, errors = module.collect(root)
+        agent_errors = errors
         for source, msg in errors:
             bad("agent", source, msg)
         if not errors:
             for source, msg in module.check(root, entries):
                 bad("agent", source, msg)
+
+    # skill frontmatter 与生成物：frontmatter 错误已在 agent 块报告，避免重复
+    skill_generator = os.path.join(root, "scripts", "generate_runbook_skills.py")
+    if not agent_errors and os.path.isfile(skill_generator):
+        spec = importlib.util.spec_from_file_location("generate_runbook_skills", skill_generator)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        skill_entries, skill_errors = module.collect(root)
+        for source, msg in skill_errors:
+            bad("skill", source, msg)
+        if not skill_errors:
+            for source, msg in module.check(root, skill_entries):
+                bad("skill", source, msg)
 
     # 占位符：尖括号内出现中文标点，说明整句说明被当成取值
     for p in runbooks:

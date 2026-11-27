@@ -11,6 +11,7 @@ import unittest
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT = os.path.join(REPO, "scripts", "check-runbooks.py")
 GENERATOR = os.path.join(REPO, "scripts", "generate_runbook_agents.py")
+SKILL_GENERATOR = os.path.join(REPO, "scripts", "generate_runbook_skills.py")
 
 BASE = {
     "AGENTS.md": """# Agent
@@ -121,6 +122,8 @@ def agent_repo(overrides=None):
     root = make_repo(overrides=merged)
     os.makedirs(os.path.join(root, "scripts"), exist_ok=True)
     shutil.copy(GENERATOR, os.path.join(root, "scripts", "generate_runbook_agents.py"))
+    if os.path.isfile(SKILL_GENERATOR):
+        shutil.copy(SKILL_GENERATOR, os.path.join(root, "scripts", "generate_runbook_skills.py"))
     return root
 
 
@@ -129,6 +132,15 @@ def generate(root):
         [sys.executable, GENERATOR, "--root", root],
         capture_output=True, text=True,
     )
+
+
+def with_skill(text, enabled="true"):
+    return "---\nagent:\n  effort: high\nskill:\n  enabled: %s\n---\n\n%s" % (enabled, text)
+
+
+def generate_skills(root):
+    subprocess.run([sys.executable, SKILL_GENERATOR, "--root", root],
+                   capture_output=True, text=True)
 
 
 class CheckRunbooksTest(unittest.TestCase):
@@ -424,6 +436,36 @@ class CheckRunbooksTest(unittest.TestCase):
         code, out = run(root)
         self.assertEqual(code, 1, out)
         self.assertIn("内容与 runbook 不一致", out)
+
+    def test_skill_missing_generated_fails(self):
+        root = agent_repo({"runbooks/a.md": with_skill(BASE["runbooks/a.md"])})
+        generate(root)
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("[skill]", out)
+        self.assertIn("缺少生成物", out)
+
+    def test_frontmatter_error_reported_once(self):
+        root = agent_repo({"runbooks/a.md": BASE["runbooks/a.md"]})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertEqual(1, out.count("缺少 agent.effort frontmatter"), out)
+
+    def test_skill_generated_drift_fails(self):
+        root = agent_repo({"runbooks/a.md": with_skill(BASE["runbooks/a.md"])})
+        generate(root)
+        generate_skills(root)
+        with open(os.path.join(root, "skills/runbooks/a/SKILL.md"), "a", encoding="utf-8") as f:
+            f.write("\n手改\n")
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("内容与 runbook 不一致", out)
+
+    def test_invalid_skill_value_fails(self):
+        root = agent_repo({"runbooks/a.md": with_skill(BASE["runbooks/a.md"], "yes")})
+        code, out = run(root)
+        self.assertEqual(code, 1, out)
+        self.assertIn("skill.enabled 取值非法", out)
 
 
 if __name__ == "__main__":
