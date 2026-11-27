@@ -87,6 +87,7 @@
 | 图标新增、替换与复用 | [runbooks/product/ui/icons.md](runbooks/product/ui/icons.md) |
 | 操作反馈、表单、动效与无障碍 | [runbooks/product/ui/interaction.md](runbooks/product/ui/interaction.md) |
 | 修改代码、文档或配置，执行与交付 | [runbooks/implementation/change-delivery.md](runbooks/implementation/change-delivery.md) |
+| 建立或核对验收标准映射，判断「什么算完成」 | [runbooks/implementation/acceptance.md](runbooks/implementation/acceptance.md) |
 | 在终端执行命令：输出裁剪、退出码、后台任务与危险操作 | [runbooks/implementation/terminal-execution.md](runbooks/implementation/terminal-execution.md) |
 | 草案、方案探讨或技术咨询，需持续记录结论 | [runbooks/implementation/discussion-record.md](runbooks/implementation/discussion-record.md) |
 | 任务开始前判断是否需要创建 worktree | [runbooks/implementation/worktree-timing.md](runbooks/implementation/worktree-timing.md) |

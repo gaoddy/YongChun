@@ -107,6 +107,7 @@
 | 任务 / 触发 | 读 |
 | --- | --- |
 | 修改代码、文档或配置：场景判定、执行与验证 | [implementation/change-delivery.md](implementation/change-delivery.md) |
+| 建立或核对验收标准映射，判断「什么算完成」 | [implementation/acceptance.md](implementation/acceptance.md) |
 | 在终端执行命令：非交互、输出裁剪、退出码、后台与危险操作 | [implementation/terminal-execution.md](implementation/terminal-execution.md) |
 | 草案、方案探讨与技术咨询的结论记录 | [implementation/discussion-record.md](implementation/discussion-record.md) |
 | 判断修改任务是否需要创建 worktree | [implementation/worktree-timing.md](implementation/worktree-timing.md) |
